@@ -174,7 +174,9 @@ export async function runPipeline(runId: string, appUrl: string) {
         }
         const ex = result.extraction;
         const latency = result.attempts.filter((a) => a.ok).reduce((s, a) => s + a.ms, 0);
-        await query(
+        // Readings made while sorting an email's attachments are already stored for this run.
+        const alreadyStored = cached && prior?.run_id === runId && prior.document_id === d.id;
+        if (!alreadyStored) await query(
           `insert into extractions (id, run_id, document_id, slot, detected_type, type_confidence, legibility, fields, notes, model, latency_ms, cached, provider, attempts, pdf)
            values ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9,$10,$11,$12,$13,$14::jsonb,$15::jsonb)`,
           [`EXT-${randomUUID().slice(0, 8)}`, runId, d.id, d.slot, ex.detected_type, ex.type_confidence, ex.legibility,
