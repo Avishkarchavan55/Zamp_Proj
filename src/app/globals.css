@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design system — from ui-ux-pro-max (product types: Banking / Document Workflow / B2B Service):
+ * Swiss-minimal + accessible, trust navy + action blue, status green/amber/red, IBM Plex ("Financial Trust"),
+ * flat surfaces, 150–200 ms transitions. Avoid: purple/pink "AI" gradients, heavy shadows, decoration.
+ */
+@theme {
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-ink-2: #475569;
+  --color-ink-3: #64748b;
+  --color-line: #e2e8f0;
+  --color-line-2: #f1f5f9;
+
+  /* Trust navy (structure) and action blue (interactive). */
+  --color-navy: #1e3a5f;
+  --color-navy-2: #132a47;
+  --color-navy-soft: #e9eef5;
+  --color-brand: #2563eb;
+  --color-brand-2: #1d4ed8;
+  --color-brand-soft: #eff6ff;
+
+  /* Status — always paired with an icon + label, never colour alone. */
+  --color-good: #16a34a;
+  --color-good-ink: #15803d;
+  --color-good-soft: #f0fdf4;
+  --color-warn: #d97706;
+  --color-warn-ink: #b45309;
+  --color-warn-soft: #fffbeb;
+  --color-serious: #ea580c;
+  --color-serious-ink: #c2410c;
+  --color-serious-soft: #fff7ed;
+  --color-critical: #dc2626;
+  --color-critical-ink: #b91c1c;
+  --color-critical-soft: #fef2f2;
+  --color-info: #0369a1;
+  --color-info-ink: #075985;
+  --color-info-soft: #f0f9ff;
+
+  /* Single-hue magnitude ramp for charts. */
+  --color-seq: #2563eb;
+  --color-seq-soft: #dbeafe;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-pop: 0 12px 32px rgba(15, 23, 42, 0.14);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "ss02";
+}
+
+::selection {
+  background: #bfdbfe;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.2s ease-out both;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgba(37, 99, 235, 0);
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-pulse-ring,
+  .animate-spin,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+@layer components {
+  .input {
+    @apply rounded-lg border border-line bg-surface px-3 py-2.5 text-[14px] text-ink transition-colors duration-150 placeholder:text-ink-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/15;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-ink-2;
+  }
 }

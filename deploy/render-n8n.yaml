@@ -1,0 +1,50 @@
+# Render blueprint for n8n (free web service). Its data lives in Supabase Postgres (schema "n8n"),
+# so restarts on the free tier lose nothing. Keep it awake with an uptime monitor hitting /healthz.
+#
+# Render → New → Blueprint → point at this file, then fill the "sync: false" values in the dashboard.
+services:
+  - type: web
+    name: vendoriq-n8n
+    runtime: image
+    image:
+      url: docker.io/n8nio/n8n:latest
+    plan: free
+    region: singapore
+    healthCheckPath: /healthz
+    envVars:
+      - key: N8N_PORT
+        value: "5678"
+      - key: PORT
+        value: "5678"
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL                 # e.g. https://vendoriq-n8n.onrender.com/
+        sync: false
+      - key: N8N_HOST                    # e.g. vendoriq-n8n.onrender.com
+        sync: false
+      - key: N8N_ENCRYPTION_KEY          # long random string — keep it safe, credentials are encrypted with it
+        sync: false
+      - key: GENERIC_TIMEZONE
+        value: Asia/Kolkata
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_HOST          # Supabase → Connect → Session pooler host (IPv4), e.g. aws-0-ap-south-1.pooler.supabase.com
+        sync: false
+      - key: DB_POSTGRESDB_PORT
+        value: "5432"
+      - key: DB_POSTGRESDB_DATABASE
+        value: postgres
+      - key: DB_POSTGRESDB_USER          # postgres.<project-ref>
+        sync: false
+      - key: DB_POSTGRESDB_PASSWORD
+        sync: false
+      - key: DB_POSTGRESDB_SCHEMA
+        value: n8n
+      - key: DB_POSTGRESDB_SSL_ENABLED
+        value: "true"
+      - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+        value: "false"
+      - key: N8N_RUNNERS_ENABLED
+        value: "true"
+      - key: N8N_DIAGNOSTICS_ENABLED
+        value: "false"

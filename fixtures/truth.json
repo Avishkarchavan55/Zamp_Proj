@@ -1,0 +1,2206 @@
+{
+ "5a71f5bbf50275ba39c2c821d6a3a44d6dc21cd5dfd807bedb8a95390e59fc34": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that SHREEJI PRECISION COMPONENTS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U29299MH2019PTC324118",
+    "source_quote": "Corporate Identity Number of the company is U29299MH2019PTC324118",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAKCS4471M",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAKCS4471M",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-03-12",
+    "source_quote": "2019-03-12",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot No. 47, MIDC Bhosari, Pune, Maharashtra, India - 411026",
+    "source_quote": "Plot No. 47, MIDC Bhosari, Pune, Maharashtra, India - 411026",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1554b8a10ee12f617a96d30a4b044c41767e5f2c8d5d827be91ba2b34004c1fa": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAKCS4471M1ZQ",
+    "source_quote": "Registration Number : 27AAKCS4471M1ZQ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "source_quote": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "source_quote": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot No. 47, MIDC Bhosari, Pune, Maharashtra, 411026",
+    "source_quote": "Plot No. 47, MIDC Bhosari, Pune, Maharashtra, 411026",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "e05a729dd27daf310371a0d567e0435a9ae5ad0974b51e8840773a072efa43c2": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKCS4471M",
+    "source_quote": "AAKCS4471M",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "source_quote": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-03-12",
+    "source_quote": "2019-03-12",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "0132628bacbc803918f63c366272cef11e231987fa484d685e237a3d8cd5a485": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SHREEJI PRECISION COMPONENTS PVT LTD",
+    "source_quote": "For SHREEJI PRECISION COMPONENTS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200041187623",
+    "source_quote": "50200041187623",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000103",
+    "source_quote": "IFSC: HDFC0000103",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "PUNE - FERGUSSON COLLEGE ROAD",
+    "source_quote": "PUNE - FERGUSSON COLLEGE ROAD",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "e6a466e066e1c34aaf77e32b44a3d6d8e3d39a21d8f189d1f0f39b907b05ef64": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-MH-26-0012345",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-MH-26-0012345",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE SHREEJI PRECISION COMPONENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Micro",
+    "source_quote": "TYPE OF ENTERPRISE Micro",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "3d6afa9032a8d04530a2819a118a61a303d220b86c5de61869e409fea796f904": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U63030KA2016PTC094512",
+    "source_quote": "Corporate Identity Number of the company is U63030KA2016PTC094512",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAHCK8812F",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAHCK8812F",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-08-04",
+    "source_quote": "2016-08-04",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, India - 560058",
+    "source_quote": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, India - 560058",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "4cb03266506648bfb45397532622b0926464d3c97724b524c38624cf1888d2c1": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "29AAHCK8812F1ZB",
+    "source_quote": "Registration Number : 29AAHCK8812F1ZB",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, 560058",
+    "source_quote": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, 560058",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "de689b9a2496fc1ea02676d62b1570ad3967e9414526ad0d5f20972a08da6478": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAHCK8812F",
+    "source_quote": "AAHCK8812F",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-08-04",
+    "source_quote": "2016-08-04",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "8d80422814a7872f34897a58204681d13a98bbe8bc92e1ffb72feca3782fdd4c": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "29AAHCK8812F1ZB",
+    "source_quote": "Registration Number : 29AAHCK8812F1ZB",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "source_quote": "KAVERI FREIGHT & LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, 560058",
+    "source_quote": "No. 18, 2nd Cross, Peenya Industrial Area Phase 2, Bengaluru, Karnataka, 560058",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "810bd44629d913d72344d594deb4a00dc3818c3327c65984d97808025a59ec42": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "KAVERI FREIGHT & LOGISTICS PVT LTD",
+    "source_quote": "For KAVERI FREIGHT & LOGISTICS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50100213378541",
+    "source_quote": "50100213378541",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000053",
+    "source_quote": "IFSC: HDFC0000053",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "BANGALORE - KORAMANGALAM",
+    "source_quote": "BANGALORE - KORAMANGALAM",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "8c7916fbe7fdc50d4c044752664fc2843579531f42a6a5167efaca8ccf8d050c": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "NORTHSTAR INDUSTRIAL SUPPLIES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that NORTHSTAR INDUSTRIAL SUPPLIES PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U51909GJ2017PTC098761",
+    "source_quote": "Corporate Identity Number of the company is U51909GJ2017PTC098761",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAECN4821K",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAECN4821K",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-06-21",
+    "source_quote": "2017-06-21",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Shed 12, GIDC Vatva Phase 4, Ahmedabad, Gujarat, India - 382445",
+    "source_quote": "Shed 12, GIDC Vatva Phase 4, Ahmedabad, Gujarat, India - 382445",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "9bea626a97edce43d0e1493debafb90a32a63024b66ef684a29be7650a296435": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAFCN7310M1ZE",
+    "source_quote": "Registration Number : 24AAFCN7310M1ZE",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "NORTHSTAR INDUSTRIAL SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "NORTHSTAR INDUSTRIAL SOLUTIONS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "NORTHSTAR INDUSTRIAL SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "NORTHSTAR INDUSTRIAL SOLUTIONS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Shed 12, GIDC Vatva Phase 4, Ahmedabad, Gujarat, 382445",
+    "source_quote": "Shed 12, GIDC Vatva Phase 4, Ahmedabad, Gujarat, 382445",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "6b7e9f211972f138d4fc461581562200523de143316fc02792a5453643f39738": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAECN4821K",
+    "source_quote": "AAECN4821K",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "NORTHSTAR INDUSTRIAL SUPPLIES PRIVATE LIMITED",
+    "source_quote": "NORTHSTAR INDUSTRIAL SUPPLIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-06-21",
+    "source_quote": "2017-06-21",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "d5e7b0819d47e776da9a39165fa8d42bd68d41abdd0af05ac3f57743378a7584": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "NORTHSTAR INDUSTRIAL SUPPLIES PVT LTD",
+    "source_quote": "For NORTHSTAR INDUSTRIAL SUPPLIES PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "917020045566102",
+    "source_quote": "917020045566102",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000080",
+    "source_quote": "IFSC: UTIB0000080",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MANINAGAR",
+    "source_quote": "MANINAGAR",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "8716540e95c920b6929924aa3c6392440edf2e1c5f7d3533b88d224ab9609b8f": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U74999TG2020PTC141207",
+    "source_quote": "Corporate Identity Number of the company is U74999TG2020PTC141207",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAJCM6390Q",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAJCM6390Q",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2020-01-09",
+    "source_quote": "2020-01-09",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Unit 304, Cyber Pearl, HITEC City, Hyderabad, Telangana, India - 500081",
+    "source_quote": "Unit 304, Cyber Pearl, HITEC City, Hyderabad, Telangana, India - 500081",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Telangana",
+    "source_quote": "Telangana",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "35adcfd28a7efae5eb36724d282f81ec40273b6b80b48791d38a3e85eda8b0aa": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "36AAJCM6390Q1ZK",
+    "source_quote": "Registration Number : 36AAJCM6390Q1ZK",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Unit 304, Cyber Pearl, HITEC City, Hyderabad, Telangana, 500081",
+    "source_quote": "Unit 304, Cyber Pearl, HITEC City, Hyderabad, Telangana, 500081",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Telangana",
+    "source_quote": "Telangana",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "e9748e0db79a6599b735b973c2f0cfe65908a258e51c4379814b86259195d5e6": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAJCM6390Q",
+    "source_quote": "AAJCM6390Q",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "source_quote": "MERIDIAN OFFICE SOLUTIONS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2020-01-09",
+    "source_quote": "2020-01-09",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "64f9b03cba1cf85a8f0557e8a37ddc282d74d6ac3a909994bf427fea0a28cdca": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "MERIDIAN OFFICE SOLUTIONS PVT LTD",
+    "source_quote": "For MERIDIAN OFFICE SOLUTIONS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "38291045672",
+    "source_quote": "38291045672",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "SBIN0000847",
+    "source_quote": "IFSC: SBIN0000847",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "HYDERABAD MAIN",
+    "source_quote": "HYDERABAD MAIN",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "940b44dbd5190d0f6242f8c8064ddb4c8e97951cc5cca716b3b79250ffc07b37": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "VERTEX PACKAGING PRIVATE LIMITED",
+    "source_quote": "I hereby certify that VERTEX PACKAGING PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U21012MH2018PTC311470",
+    "source_quote": "Corporate Identity Number of the company is U21012MH2018PTC311470",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAGCV5530D",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAGCV5530D",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-02-02",
+    "source_quote": "2018-02-02",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gala 9, Vasant Industrial Estate, Andheri East, Mumbai, Maharashtra, India - 400093",
+    "source_quote": "Gala 9, Vasant Industrial Estate, Andheri East, Mumbai, Maharashtra, India - 400093",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1bf01980b160f874067c78fc1f5dff66a9b99887545958d65d002803b516b4eb": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAGCV5530D1ZG",
+    "source_quote": "Registration Number : 27AAGCV5530D1ZG",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "VERTEX PACKAGING PRIVATE LIMITED",
+    "source_quote": "VERTEX PACKAGING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "VERTEX PACKAGING PRIVATE LIMITED",
+    "source_quote": "VERTEX PACKAGING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gala 9, Vasant Industrial Estate, Andheri East, Mumbai, Maharashtra, 400093",
+    "source_quote": "Gala 9, Vasant Industrial Estate, Andheri East, Mumbai, Maharashtra, 400093",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "7a5f23efa2cb886f0eeb404821a41eb553260fb8f6cab75fe045d79aebd9fa7c": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAGCV5530D",
+    "source_quote": "AAGCV5530D",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "VERTEX PACKAGING PRIVATE LIMITED",
+    "source_quote": "VERTEX PACKAGING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-02-02",
+    "source_quote": "2018-02-02",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "0698d560c78c3366405aee0c1b2841d9e7624b153f1adccb2ae0fba0d504f6c9": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "VERTEX PACKAGING PVT LTD",
+    "source_quote": "For VERTEX PACKAGING PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "000405021876",
+    "source_quote": "000405021876",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000004",
+    "source_quote": "IFSC: ICIC0000004",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "ICICI BANK",
+    "source_quote": "ICICI BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MUMBAI NARIMAN POINT",
+    "source_quote": "MUMBAI NARIMAN POINT",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "34698d4ffb9de18cafd9a14a057d02372c6f8bb81f02bf751978156cb55e0617": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "degraded",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "33BXRPS5521K1ZY",
+    "source_quote": "Registration Number : 33BXRPS5521K1ZY",
+    "confidence": 0.86
+   },
+   {
+    "key": "legal_name",
+    "value": "MURUGAN SELVARAJ",
+    "source_quote": "MURUGAN SELVARAJ",
+    "confidence": 0.86
+   },
+   {
+    "key": "trade_name",
+    "value": "MURUGAN ELECTRICALS",
+    "source_quote": "MURUGAN ELECTRICALS",
+    "confidence": 0.86
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Proprietorship",
+    "source_quote": "Proprietorship",
+    "confidence": 0.86
+   },
+   {
+    "key": "address",
+    "value": "14, Ranganathan Street, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "source_quote": "14, Ranganathan Street, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "confidence": 0.86
+   },
+   {
+    "key": "state",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
+    "confidence": 0.86
+   }
+  ],
+  "notes": ""
+ },
+ "9a40ef4ede7386f8e0a524d562cb2589c2c08b34d1063b3b95ebe66b4672b4f4": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "BXRPS5521K",
+    "source_quote": "BXRPS5521K",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "MURUGAN SELVARAJ",
+    "source_quote": "MURUGAN SELVARAJ",
+    "confidence": 0.98
+   },
+   {
+    "key": "father_name",
+    "value": "SELVARAJ KANDASAMY",
+    "source_quote": "SELVARAJ KANDASAMY",
+    "confidence": 0.98
+   },
+   {
+    "key": "date_of_birth",
+    "value": "14/07/1981",
+    "source_quote": "14/07/1981",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "897e7ad5c9c9f5d8c13088f03265dd51e347364884ec6be0aa07a67ce5e32ddf": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "degraded",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "MURUGAN ELECTRICALS",
+    "source_quote": "For MURUGAN ELECTRICALS",
+    "confidence": 0.84
+   },
+   {
+    "key": "account_number",
+    "value": "602105500318",
+    "source_quote": "602105500318",
+    "confidence": 0.84
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000009",
+    "source_quote": "IFSC: ICIC0000009",
+    "confidence": 0.84
+   },
+   {
+    "key": "bank_name",
+    "value": "ICICI BANK",
+    "source_quote": "ICICI BANK",
+    "confidence": 0.84
+   },
+   {
+    "key": "branch",
+    "value": "CHENNAI NUNGAMBAKKAM",
+    "source_quote": "CHENNAI NUNGAMBAKKAM",
+    "confidence": 0.84
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "ba9e8bfba4ad140f0a53572681530b18f3818438eb1ba05552f523337f4b53aa": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that BLUEWAVE TECHNOLOGIES PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U72900KA2019PTC127745",
+    "source_quote": "Corporate Identity Number of the company is U72900KA2019PTC127745",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAJCB3326H",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAJCB3326H",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-04-05",
+    "source_quote": "2019-04-05",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "3rd Floor, 80 Feet Road, Indiranagar, Bengaluru, Karnataka, India - 560038",
+    "source_quote": "3rd Floor, 80 Feet Road, Indiranagar, Bengaluru, Karnataka, India - 560038",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "c890f4b775d84c0159167a980c72cb6223a436da71b8ca447d63b408a53af58f": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "29AAJCB3326H1ZN",
+    "source_quote": "Registration Number : 29AAJCB3326H1ZN",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+    "source_quote": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+    "source_quote": "BLUEWAVE TECHNOLOGIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "3rd Floor, 80 Feet Road, Indiranagar, Bengaluru, Karnataka, 560038",
+    "source_quote": "3rd Floor, 80 Feet Road, Indiranagar, Bengaluru, Karnataka, 560038",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "18dcc32a433ec9464a4515cd5b165126ed856ed3c974e7b196530ad296e0f93d": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "BLUEWAVE TECHNOLOGIES PVT LTD",
+    "source_quote": "For BLUEWAVE TECHNOLOGIES PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "4612098735",
+    "source_quote": "4612098735",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "KKBK0000431",
+    "source_quote": "IFSC: KKBK0000431",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "KOTAK MAHINDRA BANK",
+    "source_quote": "KOTAK MAHINDRA BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "BANGALORE - INDIRANAGAR",
+    "source_quote": "BANGALORE - INDIRANAGAR",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "006412ef900c39a3d342febe53dba013179822e99af48244e737a590cffdf5a1": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that LAKSHMI ENGINEERING WORKS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U29100MH2018PTC309982",
+    "source_quote": "Corporate Identity Number of the company is U29100MH2018PTC309982",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAECL6624P",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAECL6624P",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-07-11",
+    "source_quote": "2018-07-11",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot C-12, MIDC Satpur, Nashik, Maharashtra, India - 422007",
+    "source_quote": "Plot C-12, MIDC Satpur, Nashik, Maharashtra, India - 422007",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1c6d52f74589e83aa631e915e7af385d3145836053515b0e48d56bf685cdbc20": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAECL6624P1ZY",
+    "source_quote": "Registration Number : 27AAECL6624P1ZY",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "source_quote": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "source_quote": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot C-12, MIDC Satpur, Nashik, Maharashtra, 422007",
+    "source_quote": "Plot C-12, MIDC Satpur, Nashik, Maharashtra, 422007",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "298086610ede8f56b233ff4e8bb7ad8b65752ec10452e4e73365e61d1f62dc08": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAECL6624P",
+    "source_quote": "AAECL6624P",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "source_quote": "LAKSHMI ENGINEERING WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-07-11",
+    "source_quote": "2018-07-11",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "7bb2629fb2ab4a10e94f1c51cdee8ea2f499c012bdae98ac6196ed7f10cda4d7": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "LAKSHMI ENGINEERING WORKS PVT LTD",
+    "source_quote": "For LAKSHMI ENGINEERING WORKS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50100388412907",
+    "source_quote": "50100388412907",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000027",
+    "source_quote": "IFSC: ICIC0000027",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "NASHIK",
+    "source_quote": "NASHIK",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "98593d976a56cf6b9189b1f5e16da9c86123e11dc96042c7a2ec0208ac915a97": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that PRAGATI POLYMERS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U25209GJ2014PTC081146",
+    "source_quote": "Corporate Identity Number of the company is U25209GJ2014PTC081146",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAHCP3381E",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAHCP3381E",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2014-03-03",
+    "source_quote": "2014-03-03",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 54, GIDC Naroda, Ahmedabad, Gujarat, India - 382330",
+    "source_quote": "Plot 54, GIDC Naroda, Ahmedabad, Gujarat, India - 382330",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "a5e24865a7bab47a3cb209a079c405fa71d6129f45d7e2ad2f85ad9b0b067017": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAHCP3381E1ZK",
+    "source_quote": "Registration Number : 24AAHCP3381E1ZK",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "source_quote": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "source_quote": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 54, GIDC Naroda, Ahmedabad, Gujarat, 382330",
+    "source_quote": "Plot 54, GIDC Naroda, Ahmedabad, Gujarat, 382330",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "dc4fb61a62feb463aa3c6a004062c8daddfc0c66a2bae2db4389b07d0203951c": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAHCP3381E",
+    "source_quote": "AAHCP3381E",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "source_quote": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2014-03-03",
+    "source_quote": "2014-03-03",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "bb2ef268ac05533a59e98dd2bc8eff6f4cff9104c40b2776a4d0002f81699a56": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "PRAGATI POLYMERS PVT LTD",
+    "source_quote": "For PRAGATI POLYMERS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "915020034418871",
+    "source_quote": "915020034418871",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000080",
+    "source_quote": "IFSC: UTIB0000080",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MANINAGAR",
+    "source_quote": "MANINAGAR",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "fb887e3e0264b820db7ddc140cf2575a8af1d7a48b951d57566e0af622a89285": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-GJ-01-0048213",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-GJ-01-0048213",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "PRAGATI POLYMERS PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE PRAGATI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Medium",
+    "source_quote": "TYPE OF ENTERPRISE Medium",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "8422ccab6241a8339bdbdc812de2d425a268583cddcda08a0925d96b50dad237": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that APEX FACILITY SERVICES PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U74900TG2015PTC099884",
+    "source_quote": "Corporate Identity Number of the company is U74900TG2015PTC099884",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAFCA2210J",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAFCA2210J",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2015-11-17",
+    "source_quote": "2015-11-17",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "5-9-22, Adarsh Nagar, Hyderabad, Telangana, India - 500063",
+    "source_quote": "5-9-22, Adarsh Nagar, Hyderabad, Telangana, India - 500063",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Telangana",
+    "source_quote": "Telangana",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "b7afc4d4fa1eb73ea899f03dd31460b656bd8a70f2d09538e5fdfeef40393f23": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "36AAFCA2210J1Z3",
+    "source_quote": "Registration Number : 36AAFCA2210J1Z3",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "source_quote": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "source_quote": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "5-9-22, Adarsh Nagar, Hyderabad, Telangana, 500063",
+    "source_quote": "5-9-22, Adarsh Nagar, Hyderabad, Telangana, 500063",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Telangana",
+    "source_quote": "Telangana",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "46fd00d80da744c50b698523215b7951fba067b96ce2a40f68df93455c9b7c5a": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAFCA2210J",
+    "source_quote": "AAFCA2210J",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "source_quote": "APEX FACILITY SERVICES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2015-11-17",
+    "source_quote": "2015-11-17",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "4dbbb8ef453beb17585815328e72140b27ef1dea908bdd783751a115d3c59549": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "APEX FACILITY SERVICES PVT LTD",
+    "source_quote": "For APEX FACILITY SERVICES PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "38291045672",
+    "source_quote": "38291045672",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "SBIN0000847",
+    "source_quote": "IFSC: SBIN0000847",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "HYDERABAD MAIN",
+    "source_quote": "HYDERABAD MAIN",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "5d2348dfb269323f482f96097997deabfabaa1682101da751924b025ec1bdda4": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that SAI KRUPA FABRICATORS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U28110MH2021PTC356092",
+    "source_quote": "Corporate Identity Number of the company is U28110MH2021PTC356092",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAKCS9017B",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAKCS9017B",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2021-09-23",
+    "source_quote": "2021-09-23",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot F-31, MIDC Ambad, Nashik, Maharashtra, India - 422010",
+    "source_quote": "Plot F-31, MIDC Ambad, Nashik, Maharashtra, India - 422010",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "95019237a7007689686f4b6f8a147a02cc9f03a102a9792bbd0059c03c756648": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAKCS9017B1ZD",
+    "source_quote": "Registration Number : 27AAKCS9017B1ZD",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "source_quote": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "source_quote": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot F-31, MIDC Ambad, Nashik, Maharashtra, 422010",
+    "source_quote": "Plot F-31, MIDC Ambad, Nashik, Maharashtra, 422010",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "f04b268d8d335b5de7c995835f7e2ff6bec93c34f096eefcd220dda32c4184bb": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKCS9017B",
+    "source_quote": "AAKCS9017B",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "source_quote": "SAI KRUPA FABRICATORS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2021-09-23",
+    "source_quote": "2021-09-23",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "e550e083a54ba284effbb081a0c0e49f02fe00b52a1d7b0b960216b22b721411": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SAI KRUPA FABRICATORS PVT LTD",
+    "source_quote": "For SAI KRUPA FABRICATORS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "002705018342",
+    "source_quote": "002705018342",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000027",
+    "source_quote": "IFSC: ICIC0000027",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "ICICI BANK",
+    "source_quote": "ICICI BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "NASHIK",
+    "source_quote": "NASHIK",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "3f151b13ef3c87b704f2db220bdbfb563d9114c8e8225384683249b711c971a2": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that ORION SPECIALTY CHEMICALS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U24100GJ2016PTC093315",
+    "source_quote": "Corporate Identity Number of the company is U24100GJ2016PTC093315",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAFCO6612R",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAFCO6612R",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-05-30",
+    "source_quote": "2016-05-30",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 118, GIDC Makarpura, Vadodara, Gujarat, India - 390010",
+    "source_quote": "Plot 118, GIDC Makarpura, Vadodara, Gujarat, India - 390010",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "c2a821b4c4fd5de23f17e4750a828707a055861120a5a0cc1622ee3578830e7d": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAFCO6612R1Z0",
+    "source_quote": "Registration Number : 24AAFCO6612R1Z0",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "source_quote": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "source_quote": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 118, GIDC Makarpura, Vadodara, Gujarat, 390010",
+    "source_quote": "Plot 118, GIDC Makarpura, Vadodara, Gujarat, 390010",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "3faff0b74c7cbb656811f9ce7c0ffea4ca50e984c824b8892ee30525b8e8be77": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAFCO6612R",
+    "source_quote": "AAFCO6612R",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "source_quote": "ORION SPECIALTY CHEMICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-05-30",
+    "source_quote": "2016-05-30",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "b6bd48d96a827fd3893183e79a817a0fb6a2a3d933a766c290792d64a62f57ff": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "ORION SPECIALTY CHEMICALS PVT LTD",
+    "source_quote": "For ORION SPECIALTY CHEMICALS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "916020078812240",
+    "source_quote": "916020078812240",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000080",
+    "source_quote": "IFSC: UTIB0000080",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MANINAGAR",
+    "source_quote": "MANINAGAR",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "b05b4864be381700ba77759a91a28ce251371e4882c3e3940476ccad8cf085f3": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that DECCAN AGRO EQUIPMENTS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U29219MH2017PTC298850",
+    "source_quote": "Corporate Identity Number of the company is U29219MH2017PTC298850",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAHCD7745N",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAHCD7745N",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-12-14",
+    "source_quote": "2017-12-14",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Survey No. 212, Chakan Industrial Area, Pune, Maharashtra, India - 410501",
+    "source_quote": "Survey No. 212, Chakan Industrial Area, Pune, Maharashtra, India - 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "89e2d4b8c16a5e47b5c593e755aaa7cd6a5c00da553d7cb8933051bb69e0afff": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAHCD7745N1ZZ",
+    "source_quote": "Registration Number : 27AAHCD7745N1ZZ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "source_quote": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "source_quote": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Survey No. 212, Chakan Industrial Area, Pune, Maharashtra, 410501",
+    "source_quote": "Survey No. 212, Chakan Industrial Area, Pune, Maharashtra, 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "be590fa66b6242cbfd11a2129bbb62efd74c6bf658f5e04f2122e50910a65b02": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAHCD7745N",
+    "source_quote": "AAHCD7745N",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "source_quote": "DECCAN AGRO EQUIPMENTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-12-14",
+    "source_quote": "2017-12-14",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "e74d8d6b334828b7b844c1c5706d3de3cc6b375759fc8263acba19898b62b578": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "DECCAN AGRO EQUIPMENTS PVT LTD",
+    "source_quote": "For DECCAN AGRO EQUIPMENTS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "7311452268",
+    "source_quote": "7311452268",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "KKBK0000721",
+    "source_quote": "IFSC: KKBK0000721",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "KOTAK MAHINDRA BANK",
+    "source_quote": "KOTAK MAHINDRA BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "PUNE",
+    "source_quote": "PUNE",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "66b19efcd96207b975117e3ff53bde8cd9c3539ac3598042d202d4bd4607c3e0": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that SAHYADRI CASTINGS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U27100MH2016PTC284477",
+    "source_quote": "Corporate Identity Number of the company is U27100MH2016PTC284477",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAKCS2208H",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAKCS2208H",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-10-19",
+    "source_quote": "2016-10-19",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat No. 118, Kharabwadi, Chakan, Pune, Maharashtra, India - 410501",
+    "source_quote": "Gat No. 118, Kharabwadi, Chakan, Pune, Maharashtra, India - 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "ba1c7d820f590b1b08b5631b40094748276b158f274a6cb7be9c238f85d62321": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAKCS2208H1ZE",
+    "source_quote": "Registration Number : 27AAKCS2208H1ZE",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "source_quote": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "source_quote": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat No. 118, Kharabwadi, Chakan, Pune, Maharashtra, 410501",
+    "source_quote": "Gat No. 118, Kharabwadi, Chakan, Pune, Maharashtra, 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "8989a5b746a5ae823484ee9bd278c6bbad8bdc9422489488ced888b80e01e75b": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKCS2208H",
+    "source_quote": "AAKCS2208H",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "source_quote": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-10-19",
+    "source_quote": "2016-10-19",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "978ec75610ab5e8997db4d7c450c78851906541ef18bff4be0959acb7e9f39d9": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-MH-26-0071952",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-MH-26-0071952",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SAHYADRI CASTINGS PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE SAHYADRI CASTINGS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Small",
+    "source_quote": "TYPE OF ENTERPRISE Small",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "9e954cde4342ae0e0327fef7522ee78fa0260d7836f07ade68e3d5e488908cc7": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SAHYADRI CASTINGS PVT LTD",
+    "source_quote": "For SAHYADRI CASTINGS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "9412287730",
+    "source_quote": "9412287730",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "KKBK0000721",
+    "source_quote": "IFSC: KKBK0000721",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "KOTAK MAHINDRA BANK",
+    "source_quote": "KOTAK MAHINDRA BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "PUNE",
+    "source_quote": "PUNE",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ }
+}

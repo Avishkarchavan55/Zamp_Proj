@@ -1,0 +1,306 @@
+{
+  "name": "VendorIQ — Vendor communications & reminders",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## VendorIQ → n8n\nVendorIQ decides **what** to ask the vendor. This workflow owns **delivery, waiting, chasing and escalation**.\n\n1. Webhook receives the composed email + reminder policy\n2. Gmail sends it; delivery reported back\n3. Wait N minutes → ask VendorIQ \"still waiting?\"\n4. Remind (fresh content each time) until the vendor resubmits\n5. Out of reminders → escalate\n\nThe loop is stateless: every callback response tells the workflow its next step.\n\n**Setup:** connect Gmail on both Gmail nodes and replace `REPLACE_WITH_SHARED_SECRET` (4 places) with the app's `N8N_SHARED_SECRET`.",
+        "height": 380,
+        "width": 420,
+        "color": 5
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000001",
+      "name": "About",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-120, -420]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vendoriq-comms",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000002",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "6f0f6c3e-5b0e-4a8b-9d55-vendoriqcomms"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "c-auth",
+              "leftValue": "={{ $json.headers['x-vendoriq-secret'] }}",
+              "rightValue": "REPLACE_WITH_SHARED_SECRET",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000003",
+      "name": "Authorised?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.body.to }}",
+        "subject": "={{ $json.body.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.body.html }}",
+        "options": { "appendAttribution": false }
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000004",
+      "name": "Send email (Gmail)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [460, -20],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.callback_url }}",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $('Webhook').first().json.body.communication_id, event: 'sent', message_id: $json.id }) }}",
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000005",
+      "name": "Report: delivered",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, -120]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.callback_url }}",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $('Webhook').first().json.body.communication_id, event: 'failed', error: $json.error?.message ?? 'Gmail send failed' }) }}",
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000006",
+      "name": "Report: send failed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 100]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "c-next",
+              "leftValue": "={{ $json.next.enabled }}",
+              "rightValue": "",
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000007",
+      "name": "Reminders scheduled?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [940, -120]
+    },
+    {
+      "parameters": {},
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000008",
+      "name": "One-off notice — done",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [1180, 40]
+    },
+    {
+      "parameters": {
+        "amount": "={{ $json.next.after_minutes }}",
+        "unit": "minutes"
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000009",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1180, -160],
+      "webhookId": "0b7d2d1e-7e2f-4a36-8c1c-vendoriqwait"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.next.status_url }}",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000010",
+      "name": "Still waiting on vendor?",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1400, -160]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "c-waiting",
+              "leftValue": "={{ $json.waiting }}",
+              "rightValue": "",
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000011",
+      "name": "Vendor still silent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1620, -160]
+    },
+    {
+      "parameters": {},
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000012",
+      "name": "Vendor responded — stop",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [1860, 20]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "c-left",
+              "leftValue": "={{ $json.reminders_left }}",
+              "rightValue": "",
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000013",
+      "name": "Reminders left?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1860, -200]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.to }}",
+        "subject": "={{ $json.reminder.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.reminder.html }}",
+        "options": { "appendAttribution": false }
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000014",
+      "name": "Send reminder (Gmail)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [2100, -320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.callback_url }}",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $('Still waiting on vendor?').item.json.communication_id, event: 'reminder_sent', reminder_no: $('Still waiting on vendor?').item.json.reminder_no, subject: $('Still waiting on vendor?').item.json.reminder.subject, html: $('Still waiting on vendor?').item.json.reminder.html, to: $('Still waiting on vendor?').item.json.to, message_id: $json.id }) }}",
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000015",
+      "name": "Report: reminder sent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2320, -320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').first().json.body.callback_url }}",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $json.communication_id, event: 'escalated' }) }}",
+        "options": {}
+      },
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000016",
+      "name": "Escalate: vendor unresponsive",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2100, -100]
+    },
+    {
+      "parameters": {},
+      "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000017",
+      "name": "Reject: bad secret",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [460, 180]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Authorised?", "type": "main", "index": 0 }]] },
+    "Authorised?": {
+      "main": [
+        [{ "node": "Send email (Gmail)", "type": "main", "index": 0 }],
+        [{ "node": "Reject: bad secret", "type": "main", "index": 0 }]
+      ]
+    },
+    "Send email (Gmail)": {
+      "main": [
+        [{ "node": "Report: delivered", "type": "main", "index": 0 }],
+        [{ "node": "Report: send failed", "type": "main", "index": 0 }]
+      ]
+    },
+    "Report: delivered": { "main": [[{ "node": "Reminders scheduled?", "type": "main", "index": 0 }]] },
+    "Reminders scheduled?": {
+      "main": [
+        [{ "node": "Wait", "type": "main", "index": 0 }],
+        [{ "node": "One-off notice — done", "type": "main", "index": 0 }]
+      ]
+    },
+    "Wait": { "main": [[{ "node": "Still waiting on vendor?", "type": "main", "index": 0 }]] },
+    "Still waiting on vendor?": { "main": [[{ "node": "Vendor still silent?", "type": "main", "index": 0 }]] },
+    "Vendor still silent?": {
+      "main": [
+        [{ "node": "Reminders left?", "type": "main", "index": 0 }],
+        [{ "node": "Vendor responded — stop", "type": "main", "index": 0 }]
+      ]
+    },
+    "Reminders left?": {
+      "main": [
+        [{ "node": "Send reminder (Gmail)", "type": "main", "index": 0 }],
+        [{ "node": "Escalate: vendor unresponsive", "type": "main", "index": 0 }]
+      ]
+    },
+    "Send reminder (Gmail)": { "main": [[{ "node": "Report: reminder sent", "type": "main", "index": 0 }]] },
+    "Report: reminder sent": { "main": [[{ "node": "Wait", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

@@ -1,0 +1,120 @@
+/**
+ * VendorIQ — Google Form intake (Apps Script, free, runs inside Google).
+ *
+ * 1. Open https://script.google.com → New project → paste this file.
+ * 2. Set VENDORIQ_URL and SECRET below (SECRET = the app's INTAKE_SHARED_SECRET).
+ * 3. Run createVendorForm() once. It builds the form with all text questions and format validations,
+ *    and installs the on-submit trigger. Apps Script cannot create file-upload questions, so add the
+ *    five upload questions by hand (titles must match FILE_MAP exactly) — see google/README.md.
+ * 4. Each submission is posted to VendorIQ with its files; the files are read straight from Drive here,
+ *    so VendorIQ never needs access to your Drive.
+ */
+
+const VENDORIQ_URL = "https://REPLACE-WITH-YOUR-APP.vercel.app/api/intake/form";
+const SECRET = "REPLACE_WITH_INTAKE_SHARED_SECRET";
+
+const FIELD_MAP = {
+  "Legal name of business": "legal_name",
+  "Entity type": "entity_type",
+  "Proprietor / authorised signatory": "owner_name",
+  "PAN": "pan",
+  "GSTIN": "gstin",
+  "CIN (companies only)": "cin",
+  "Registered address": "address",
+  "City": "city",
+  "State": "state",
+  "PIN code": "pincode",
+  "Contact person": "contact_name",
+  "Contact email": "contact_email",
+  "Phone": "contact_phone",
+  "What will you supply?": "category",
+  "Account holder name": "bank_account_holder",
+  "Account number": "bank_account_number",
+  "IFSC": "bank_ifsc",
+  "Bank name": "bank_name",
+  "MSME (Udyam) registered?": "msme_registered",
+  "Udyam registration number": "udyam_number",
+  "MSME category": "msme_category",
+};
+
+const FILE_MAP = {
+  "Certificate of Incorporation": "incorporation",
+  "GST Registration Certificate": "gst",
+  "PAN Card": "pan",
+  "Cancelled cheque or bank letter": "bank_proof",
+  "Udyam certificate (if MSME)": "udyam",
+};
+
+const ENTITY_MAP = {
+  "Private Limited Company": "private_limited",
+  "Public Limited Company": "public_limited",
+  "Limited Liability Partnership": "llp",
+  "Partnership Firm": "partnership",
+  "Sole Proprietorship": "proprietorship",
+};
+
+function onFormSubmit(e) {
+  const response = e.response;
+  const fields = {};
+  const files = [];
+  response.getItemResponses().forEach(function (r) {
+    const title = r.getItem().getTitle();
+    const answer = r.getResponse();
+    if (FILE_MAP[title]) {
+      (Array.isArray(answer) ? answer : [answer]).forEach(function (fileId) {
+        const file = DriveApp.getFileById(fileId);
+        const blob = file.getBlob();
+        files.push({ slot: FILE_MAP[title], name: file.getName(), mime: blob.getContentType(), b64: Utilities.base64Encode(blob.getBytes()) });
+      });
+    } else if (FIELD_MAP[title]) {
+      let value = String(answer || "").trim();
+      if (title === "Entity type") value = ENTITY_MAP[value] || value;
+      if (title === "MSME (Udyam) registered?") value = value === "Yes" ? "yes" : "no";
+      fields[FIELD_MAP[title]] = value;
+    }
+  });
+  const res = UrlFetchApp.fetch(VENDORIQ_URL, {
+    method: "post",
+    contentType: "application/json",
+    headers: { "x-vendoriq-secret": SECRET },
+    payload: JSON.stringify({ fields: fields, files: files, response_id: response.getId(), respondent_email: response.getRespondentEmail() }),
+    muteHttpExceptions: true,
+  });
+  console.log("VendorIQ responded", res.getResponseCode(), res.getContentText());
+}
+
+/** One-off: builds the form with validations and installs the submit trigger. */
+function createVendorForm() {
+  const form = FormApp.create("Acme Manufacturing — Supplier registration");
+  form.setDescription("Register as a supplier. Your documents are verified automatically; we'll email you if anything is missing.");
+  form.setCollectEmail(true);
+  const text = function (title, required, pattern, help) {
+    const item = form.addTextItem().setTitle(title).setRequired(!!required);
+    if (pattern) item.setValidation(FormApp.createTextValidation().requireTextMatchesPattern(pattern).setHelpText(help).build());
+    return item;
+  };
+  text("Legal name of business", true);
+  form.addListItem().setTitle("Entity type").setChoiceValues(Object.keys(ENTITY_MAP)).setRequired(true);
+  text("Proprietor / authorised signatory", false);
+  text("PAN", true, "^[A-Za-z]{5}[0-9]{4}[A-Za-z]$", "PAN looks like AAAAA9999A");
+  text("GSTIN", true, "^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z][1-9A-Za-z][Zz][0-9A-Za-z]$", "GSTIN is 15 characters, e.g. 27AAAAA9999A1Z5");
+  text("CIN (companies only)", false, "^[UuLl][0-9]{5}[A-Za-z]{2}[0-9]{4}[A-Za-z]{3}[0-9]{6}$", "CIN is 21 characters, e.g. U12345MH2019PTC123456");
+  text("Registered address", true);
+  text("City", true);
+  text("State", true);
+  text("PIN code", true, "^[1-9][0-9]{5}$", "6-digit PIN code");
+  text("Contact person", true);
+  text("Contact email", true);
+  text("Phone", false);
+  text("What will you supply?", false);
+  text("Account holder name", true);
+  text("Account number", true, "^[0-9 ]{9,20}$", "Digits only");
+  text("IFSC", true, "^[A-Za-z]{4}0[A-Za-z0-9]{6}$", "IFSC looks like HDFC0001234");
+  text("Bank name", false);
+  form.addMultipleChoiceItem().setTitle("MSME (Udyam) registered?").setChoiceValues(["Yes", "No"]).setRequired(true);
+  text("Udyam registration number", false, "^UDYAM-[A-Za-z]{2}-[0-9]{2}-[0-9]{7}$", "Format UDYAM-XX-00-0000000");
+  form.addListItem().setTitle("MSME category").setChoiceValues(["Micro", "Small", "Medium", "Not applicable"]);
+  ScriptApp.newTrigger("onFormSubmit").forForm(form).onFormSubmit().create();
+  console.log("Form created: " + form.getEditUrl());
+  console.log("Now add these file-upload questions by hand: " + Object.keys(FILE_MAP).join(" | "));
+}
