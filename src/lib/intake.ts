@@ -254,7 +254,8 @@ export async function intakeEmail(mail: InboundEmail): Promise<IntakeResult> {
     return { id: app.id, runId, mode: "resubmission" };
   }
 
-  // New vendor by email.
+  // New vendor by email. Mail without any attachment is not an application — ignore it.
+  if (!mail.attachments.length) return { id: "", runId: null, mode: "ignored", note: "No attachments and not a reply" };
   const { bySlot, ignored } = await classifyAttachments(mail.attachments);
   const [{ form, sources }, body] = await Promise.all([Promise.resolve(draftFromDocuments(bySlot)), readEmailBody(mail.from, mail.text)]);
   const domain = fromAddr.split("@")[1] ?? "";
