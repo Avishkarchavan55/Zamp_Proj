@@ -123,7 +123,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
   return (
-    <div className="min-h-screen lg:pl-64">
+    <div className="min-h-viewport lg:pl-64">
       <aside className="fixed inset-y-0 left-0 hidden w-64 lg:block">
         <Sidebar onSearch={() => setPalette(true)} />
       </aside>

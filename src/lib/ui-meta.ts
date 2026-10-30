@@ -54,6 +54,7 @@ export const ACTION_LABEL: Record<string, string> = {
   run_failed: "Run failed",
   details_confirmed: "Vendor confirmed details",
   email_reply: "Vendor replied by email",
+  details_filled_from_documents: "Details filled in from documents",
   erp_exported: "Exported to ERP",
 };
 
@@ -102,6 +103,11 @@ const ISSUE_TITLES: [RegExp, string][] = [
   [/^fmt\.udyam$/, "Udyam number invalid"],
   [/^doc\..*\.type$/, "Wrong or unclear document"],
   [/^doc\..*\.quality$/, "Document hard to read"],
+  [/^intake\.doc\.incorporation$/, "Incorporation certificate missing"],
+  [/^intake\.doc\.gst$/, "GST certificate missing"],
+  [/^intake\.doc\.pan$/, "PAN card missing"],
+  [/^intake\.doc\.bank_proof$/, "Bank proof missing"],
+  [/^intake\.doc\.udyam$/, "Udyam certificate missing"],
   [/^intake\.doc\./, "Document missing"],
   [/^intake\.required_fields$/, "Details missing"],
   [/^intake\.confirmation$/, "Vendor must confirm details"],

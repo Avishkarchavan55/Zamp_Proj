@@ -30,7 +30,7 @@ function Login() {
   }
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
+    <div className="grid min-h-viewport lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-navy p-12 text-white lg:flex">
         <div className="flex items-center gap-2.5">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand"><ShieldCheck className="h-5 w-5" /></div>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${plex.variable} ${plexMono.variable} antialiased`}>
-      <body className="min-h-screen font-sans text-[15px] leading-normal">
+      <body className="min-h-viewport font-sans text-[15px] leading-normal">
         <Providers>{children}</Providers>
       </body>
     </html>

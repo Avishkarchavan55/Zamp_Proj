@@ -18,5 +18,7 @@ export async function GET() {
     email_override: !!process.env.EMAIL_OVERRIDE_TO,
     procurement_alerts: !!process.env.PROCUREMENT_EMAIL,
     reminders: COMMS,
+    // Shown on the overview so the team knows where vendors can email their documents.
+    intake_email: process.env.INTAKE_EMAIL || process.env.SMTP_USER || null,
   });
 }

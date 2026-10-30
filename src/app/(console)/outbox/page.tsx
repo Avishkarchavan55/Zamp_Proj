@@ -27,14 +27,14 @@ export default function Outbox() {
       <PageHeader title="Emails to vendors" subtitle="Every request, reminder and approval sent on your behalf." />
 
       <Card>
-        <CardHeader title="How the n8n workflow handles every request" icon={GitBranch} right={<Badge tone={sys?.n8n ? "good" : "warn"}>{sys?.n8n ? "n8n connected" : "n8n webhook not configured"}</Badge>} />
+        <CardHeader title="How vendor follow-ups work" subtitle="When something is missing, emails and reminders go out automatically — nobody has to chase." icon={GitBranch} right={<Badge tone={sys?.n8n ? "good" : "warn"}>{sys?.n8n ? "Email automation on" : "Email automation off"}</Badge>} />
         <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
           {[
-            { icon: Webhook, t: "Webhook trigger", d: "VendorIQ posts the composed email + reminder policy" },
-            { icon: Send, t: "Send via Gmail", d: "Delivered from the procurement mailbox; delivery reported back" },
-            { icon: Hourglass, t: `Wait ${sys?.reminders.reminderAfterMinutes ?? "N"} min`, d: "Demo setting — days in production" },
-            { icon: Bell, t: "Still waiting?", d: "Asks VendorIQ; stops the moment the vendor resubmits" },
-            { icon: CheckCircle2, t: `Remind ×${sys?.reminders.maxReminders ?? "N"} → escalate`, d: "Then flags the vendor as unresponsive" },
+            { icon: Webhook, t: "Request written", d: "VendorIQ writes the email listing exactly what is missing" },
+            { icon: Send, t: "Sent from Gmail", d: "Goes out from the onboarding inbox; delivery is confirmed back" },
+            { icon: Hourglass, t: `Wait ${sys?.reminders.reminderAfterMinutes ?? "N"} min`, d: "Demo timing — 1 to 2 days in real use" },
+            { icon: Bell, t: "Vendor replied?", d: "If they replied or uploaded, reminders stop and checks re-run" },
+            { icon: CheckCircle2, t: `Up to ${sys?.reminders.maxReminders ?? "N"} reminders`, d: "Still silent? The vendor is flagged “No reply” for your team" },
           ].map((s, i) => (
             <div key={s.t} className="bg-surface p-4">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-ink"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft text-[11px] text-brand-2">{i + 1}</span>{s.t}</div>
@@ -42,6 +42,7 @@ export default function Outbox() {
             </div>
           ))}
         </div>
+        <p className="border-t border-line px-4 py-2.5 text-[12.5px] text-ink-3">Runs on n8n. If n8n is ever down, VendorIQ sends the email itself through Gmail, so no vendor is missed.</p>
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-5">
