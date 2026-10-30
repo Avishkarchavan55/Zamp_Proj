@@ -2,7 +2,7 @@ import { after } from "next/server";
 import { appUrl, bad, n8nAuthorised } from "@/lib/http";
 import { intakeEmail } from "@/lib/intake";
 import { runPipeline } from "@/lib/pipeline";
-import { mimeFromName, type IncomingFile } from "@/lib/repo";
+import { realMime, type IncomingFile } from "@/lib/repo";
 
 export const maxDuration = 300;
 
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const attachments: IncomingFile[] = [];
     for (const [, v] of fd.entries()) {
       if (v instanceof File && v.size > 0) {
-        attachments.push({ name: v.name, type: v.type || mimeFromName(v.name), bytes: Buffer.from(await v.arrayBuffer()) });
+        attachments.push({ name: v.name, type: realMime(v.type, v.name), bytes: Buffer.from(await v.arrayBuffer()) });
       }
     }
     mail = {
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     };
     mail = {
       from: body.from, subject: body.subject ?? "", text: body.text ?? "", messageId: body.message_id, auth: body.auth,
-      attachments: (body.attachments ?? []).map((a) => ({ name: a.name, type: a.mime || mimeFromName(a.name), bytes: Buffer.from(a.b64, "base64") })),
+      attachments: (body.attachments ?? []).map((a) => ({ name: a.name, type: realMime(a.mime, a.name), bytes: Buffer.from(a.b64, "base64") })),
     };
   }
   if (!mail.from) return bad("Missing sender");

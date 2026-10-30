@@ -20,7 +20,13 @@ export async function GET(req: Request, ctx: RouteContext<"/api/n8n/status/[id]"
     `select count(*)::int as n from audit_log where application_id=$1 and action in ('resubmitted','details_confirmed') and ts > $2`,
     [app.id, comm.created_at],
   );
-  const waiting = app.status === "awaiting_vendor" && (resubmitted?.n ?? 0) === 0;
+  // A newer request to the same vendor carries its own reminders — this older loop stops.
+  const newer = await one<{ n: number }>(
+    `select count(*)::int as n from communications where application_id=$1 and kind=$2 and created_at > $3`,
+    [app.id, comm.kind, comm.created_at],
+  );
+  const superseded = (newer?.n ?? 0) > 0;
+  const waiting = app.status === "awaiting_vendor" && (resubmitted?.n ?? 0) === 0 && !superseded;
   const reminderNo = Number(new URL(req.url).searchParams.get("reminder") ?? 1);
   const reminder = waiting
     ? await composeInformationRequest(app, app.decision?.requested_items ?? [], appUrl(req), reminderNo)
@@ -32,7 +38,7 @@ export async function GET(req: Request, ctx: RouteContext<"/api/n8n/status/[id]"
     application_id: app.id,
     application_status: app.status,
     waiting,
-    reason: waiting ? "Vendor has not responded" : resubmitted?.n ? "Vendor resubmitted" : `Application is ${app.status}`,
+    reason: waiting ? "Vendor has not responded" : resubmitted?.n ? "Vendor resubmitted" : superseded ? "A newer request was sent" : `Application is ${app.status}`,
     to: process.env.EMAIL_OVERRIDE_TO || app.contact_email,
     reminder: reminder && { subject: reminder.subject, html: reminder.html, text: reminder.text },
   });

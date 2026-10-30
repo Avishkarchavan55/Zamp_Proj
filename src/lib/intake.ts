@@ -5,11 +5,12 @@ import { geminiJson } from "./ai/gemini";
 import { REF_RE } from "./comms";
 import { json, query } from "./db";
 import { extractDocument, type ReadResult } from "./extractor";
-import { FREE_EMAIL_DOMAINS, validateGstin } from "./india";
+import { draftFromDocuments } from "./draft";
+import { FREE_EMAIL_DOMAINS } from "./india";
 import { providerLabel } from "./ai/chain";
 import { createRun } from "./pipeline";
-import { addDocument, audit, createApplication, getApplication, normaliseForm, updateApplicationFields, type IncomingFile } from "./repo";
-import type { ApplicationForm, DocSlot, DocType, EntityType, Extraction } from "./types";
+import { addDocument, audit, createApplication, getApplication, normaliseForm, type IncomingFile } from "./repo";
+import type { DocSlot, DocType } from "./types";
 
 /**
  * Intake normaliser: every channel (vendor portal, email, Google Form) ends up as the same
@@ -106,33 +107,6 @@ async function classifyAttachments(files: IncomingFile[]) {
   return { bySlot, ignored };
 }
 
-/** Normalises only the given keys (normaliseForm fills every field). */
-function normalisePartial(fields: Partial<ApplicationForm>): Partial<ApplicationForm> {
-  const full = normaliseForm(fields as Record<string, unknown>);
-  return Object.fromEntries(Object.keys(fields).map((k) => [k, full[k as keyof ApplicationForm]])) as Partial<ApplicationForm>;
-}
-
-/** Certificates print names in capitals; drafts read better (and match how vendors type) in title case. */
-const KEEP_UPPER = new Set(["LLP", "OPC", "HUF", "MIDC", "GIDC", "II", "III"]);
-function titleCase(s: string) {
-  if (!s || s !== s.toUpperCase()) return s;
-  return s
-    .toLowerCase()
-    .replace(/[a-z0-9]+/g, (w) => (KEEP_UPPER.has(w.toUpperCase()) ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1)));
-}
-
-const val = (ex: Extraction | undefined, key: string) => ex?.fields.find((f) => f.key === key)?.value ?? "";
-
-function entityFrom(constitution: string, pan: string): EntityType {
-  const c = constitution.toLowerCase();
-  if (c.includes("proprietor")) return "proprietorship";
-  if (c.includes("liability partnership")) return "llp";
-  if (c.includes("partnership")) return "partnership";
-  if (c.includes("public")) return "public_limited";
-  if (c.includes("private") || c.includes("company")) return "private_limited";
-  return pan[3] === "P" ? "proprietorship" : pan[3] === "F" ? "partnership" : "private_limited";
-}
-
 const BodySchema = z.object({
   contact_name: z.string().default(""),
   contact_phone: z.string().default(""),
@@ -164,56 +138,6 @@ async function readEmailBody(from: string, text: string) {
   }
 }
 
-/** Builds a draft application from what the documents say, remembering which document each value came from. */
-function draftFromDocuments(bySlot: Map<DocSlot, Classified>) {
-  const ex = (s: DocSlot) => bySlot.get(s)?.read.extraction;
-  const gst = ex("gst"), ud = ex("udyam");
-  const sources: Record<string, DocSlot> = {};
-  const pick = (field: string, ...cands: [DocSlot, string][]) => {
-    for (const [slot, key] of cands) {
-      const v = val(ex(slot), key);
-      if (v) {
-        sources[field] = slot;
-        return v;
-      }
-    }
-    return "";
-  };
-  const gstin = pick("gstin", ["gst", "gstin"]);
-  let panNo = pick("pan", ["pan", "pan"], ["incorporation", "pan"]);
-  if (!panNo && gstin && validateGstin(gstin).formatValid) {
-    panNo = gstin.slice(2, 12);
-    sources.pan = "gst";
-  }
-  const entity = entityFrom(val(gst, "constitution_of_business"), panNo);
-  const proprietor = entity === "proprietorship";
-  const legal = proprietor
-    ? pick("legal_name", ["gst", "trade_name"], ["bank_proof", "account_holder_name"])
-    : pick("legal_name", ["incorporation", "legal_name"], ["gst", "legal_name"], ["pan", "legal_name"]);
-  const owner = proprietor ? pick("owner_name", ["pan", "legal_name"], ["gst", "legal_name"]) : "";
-  const address = pick("address", ["gst", "address"], ["incorporation", "address"]);
-  const state = pick("state", ["gst", "state"], ["incorporation", "state"]);
-  const pincode = address.match(/\b\d{6}\b/)?.[0] ?? val(gst, "pincode");
-  const parts = address.split(",").map((s) => s.trim()).filter(Boolean);
-  const stateIdx = parts.findIndex((p) => state && p.toLowerCase().startsWith(state.toLowerCase()));
-  const city = stateIdx > 0 ? parts[stateIdx - 1] : parts.at(-2) ?? "";
-  return {
-    form: {
-      legal_name: titleCase(legal), trade_name: proprietor ? "" : val(gst, "trade_name") !== legal ? val(gst, "trade_name") : "",
-      entity_type: entity, owner_name: titleCase(owner), pan: panNo, gstin, cin: pick("cin", ["incorporation", "cin"]),
-      address: titleCase(stateIdx > 1 ? parts.slice(0, stateIdx - 1).join(", ") : address), city: titleCase(city), state, pincode,
-      bank_account_holder: titleCase(pick("bank_account_holder", ["bank_proof", "account_holder_name"])),
-      bank_account_number: pick("bank_account_number", ["bank_proof", "account_number"]),
-      bank_ifsc: pick("bank_ifsc", ["bank_proof", "ifsc"]),
-      bank_name: titleCase(pick("bank_name", ["bank_proof", "bank_name"])),
-      udyam_number: pick("udyam_number", ["udyam", "udyam_number"]),
-      msme_category: val(ud, "msme_category"),
-      msme_registered: ud ? "yes" : "",
-    } as Partial<ApplicationForm>,
-    sources,
-  };
-}
-
 /** Stores the readings made during intake so the pipeline reuses them instead of calling AI again. */
 async function seedExtractions(runId: string, applicationId: string, bySlot: Map<DocSlot, Classified>) {
   for (const [slot, c] of bySlot) {
@@ -233,6 +157,25 @@ async function seedExtractions(runId: string, applicationId: string, bySlot: Map
   }
 }
 
+/** Documents emailed for an application that already exists: stored, then re-checked (unless nothing is new). */
+async function addToApplication(appId: string, bySlot: Map<DocSlot, Classified>, ignored: { name: string; reason: string }[], fromAddr: string, subject: string): Promise<IntakeResult> {
+  if (!bySlot.size) {
+    await audit(appId, "vendor", "email_reply", { from: fromAddr, subject, note: "Email without usable documents", ignored });
+    return { id: appId, runId: null, mode: "ignored", note: "No documents in email" };
+  }
+  let added = 0;
+  for (const [slot, c] of bySlot) if ((await addDocument(appId, slot, c.file)).added) added++;
+  if (!added) {
+    // e.g. Gmail re-attaching the original files: nothing new, so no new check and no new email.
+    await audit(appId, "vendor", "email_reply", { from: fromAddr, subject, note: "Email only contained documents already on file", ignored });
+    return { id: appId, runId: null, mode: "ignored", note: "No new documents in email" };
+  }
+  await audit(appId, "vendor", "resubmitted", { channel: "email", from: fromAddr, documents: [...bySlot].map(([slot, c]) => ({ slot, filename: c.file.name })), ignored });
+  const runId = await createRun(appId, "resubmission");
+  await seedExtractions(runId, appId, bySlot);
+  return { id: appId, runId, mode: "resubmission" };
+}
+
 export async function intakeEmail(mail: InboundEmail): Promise<IntakeResult> {
   const fromAddr = (mail.from.match(/<([^>]+)>/)?.[1] ?? mail.from).trim().toLowerCase();
   const refId = mail.subject.match(REF_RE)?.[1];
@@ -241,35 +184,33 @@ export async function intakeEmail(mail: InboundEmail): Promise<IntakeResult> {
   if (refId) {
     const app = await getApplication(refId);
     if (!app) return { id: refId, runId: null, mode: "ignored", note: "Unknown application reference" };
+    // Only an application waiting on the vendor (or mid-check) takes new documents — a late reply must not reopen a decision.
+    if (app.status !== "awaiting_vendor" && app.status !== "processing") {
+      await audit(app.id, "vendor", "email_reply", { from: fromAddr, subject: mail.subject, note: `Reply received while the application is ${app.status} — not re-checked` });
+      return { id: app.id, runId: null, mode: "ignored", note: `Application is ${app.status}` };
+    }
     const { bySlot, ignored } = await classifyAttachments(mail.attachments);
-    if (!bySlot.size) {
-      await audit(app.id, "vendor", "email_reply", { from: fromAddr, subject: mail.subject, note: "Reply without usable documents", ignored });
-      return { id: app.id, runId: null, mode: "ignored", note: "No documents in reply" };
-    }
-    for (const [slot, c] of bySlot) await addDocument(app.id, slot, c.file);
-    if (app.needs_confirmation) {
-      // Still a draft built from documents: fill any blanks from the newly sent documents.
-      const { form, sources } = draftFromDocuments(bySlot);
-      const blanks = Object.fromEntries(
-        Object.entries(form).filter(([k, v]) => v && !String((app as unknown as Record<string, unknown>)[k] ?? "").trim()),
-      ) as Partial<ApplicationForm>;
-      if (Object.keys(blanks).length) {
-        await updateApplicationFields(app.id, normalisePartial(blanks));
-        const meta = (app.intake_meta ?? {}) as { field_sources?: Record<string, DocSlot> };
-        const merged = { ...meta, field_sources: { ...meta.field_sources, ...Object.fromEntries(Object.keys(blanks).map((k) => [k, sources[k]])) } };
-        await query(`update applications set intake_meta=$2::jsonb where id=$1`, [app.id, json(merged)]);
-      }
-    }
-    await audit(app.id, "vendor", "resubmitted", { channel: "email", from: fromAddr, documents: [...bySlot].map(([slot, c]) => ({ slot, filename: c.file.name })), ignored });
-    const runId = await createRun(app.id, "resubmission");
-    await seedExtractions(runId, app.id, bySlot);
-    return { id: app.id, runId, mode: "resubmission" };
+    return addToApplication(app.id, bySlot, ignored, fromAddr, mail.subject);
   }
 
   // New vendor by email. Mail without any attachment is not an application — ignore it.
   if (!mail.attachments.length) return { id: "", runId: null, mode: "ignored", note: "No attachments and not a reply" };
   const { bySlot, ignored } = await classifyAttachments(mail.attachments);
-  const [{ form, sources }, body] = await Promise.all([Promise.resolve(draftFromDocuments(bySlot)), readEmailBody(mail.from, mail.text)]);
+  if (!bySlot.size) return { id: "", runId: null, mode: "ignored", note: `No registration documents among the attachments (${ignored.map((i) => i.name).join(", ")})` };
+  const { form, sources } = draftFromDocuments((slot) => bySlot.get(slot)?.read.extraction);
+
+  // Vendors often send documents in several emails ("PFA GST cert", later "PFA cheque") without our [VEN-…]
+  // reference. Join the sender's open application if the documents are for the same business (same PAN or
+  // GSTIN), or carry no PAN/GSTIN at all (e.g. only a cheque). A different PAN/GSTIN is a new application.
+  const open = await query<{ id: string; pan: string; gstin: string }>(
+    `select id, pan, gstin from applications where lower(contact_email)=$1 and source='email'
+        and status in ('awaiting_vendor','processing') order by created_at desc limit 5`, [fromAddr],
+  );
+  const pan = (form.pan ?? "").toUpperCase(), gstin = (form.gstin ?? "").toUpperCase();
+  const same = open.find((a) => (pan && a.pan === pan) || (gstin && a.gstin === gstin)) ?? (!pan && !gstin ? open[0] : undefined);
+  if (same) return addToApplication(same.id, bySlot, ignored, fromAddr, mail.subject);
+
+  const body = await readEmailBody(mail.from, mail.text);
   const domain = fromAddr.split("@")[1] ?? "";
   const draft = normaliseForm({
     ...form,

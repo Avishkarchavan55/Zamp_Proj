@@ -128,8 +128,24 @@ export function validatePhone(phone: string) {
 
 export const MSME_CATEGORIES = ["micro", "small", "medium"] as const;
 
+/** Older or informal names that documents and APIs still print. */
+const STATE_ALIASES: Record<string, string> = {
+  "new delhi": "Delhi", "nct of delhi": "Delhi", "national capital territory of delhi": "Delhi",
+  orissa: "Odisha", pondicherry: "Puducherry", uttaranchal: "Uttarakhand", "jammu kashmir": "Jammu and Kashmir",
+  "andaman nicobar": "Andaman and Nicobar Islands", "andaman and nicobar": "Andaman and Nicobar Islands",
+  "dadra and nagar haveli": "Dadra and Nagar Haveli and Daman and Diu", "daman and diu": "Dadra and Nagar Haveli and Daman and Diu",
+};
+const stateKey = (s: string) => s.trim().toLowerCase().replace(/&/g, " and ").replace(/[^a-z ]+/g, " ").replace(/\s+/g, " ").trim();
+
+/** Maps a state as written anywhere ("NCT of Delhi", "ORISSA", "Tamil Nadu (33)") onto the official GST name. */
+export function canonicalState(s?: string | null): string {
+  if (!s?.trim()) return "";
+  const k = stateKey(s);
+  return STATES.find((x) => stateKey(x) === k) ?? STATE_ALIASES[k] ?? STATES.find((x) => k.includes(stateKey(x))) ?? s.trim();
+}
+
 export const sameState = (a?: string | null, b?: string | null) =>
-  !!a && !!b && a.trim().toLowerCase().replace(/&/g, "and") === b.trim().toLowerCase().replace(/&/g, "and");
+  !!a?.trim() && !!b?.trim() && stateKey(canonicalState(a)) === stateKey(canonicalState(b));
 
 export const ENTITY_LABELS: Record<EntityType, string> = {
   private_limited: "Private Limited Company",

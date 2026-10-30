@@ -59,7 +59,7 @@ export const REQUIRED_DOCS: Record<EntityType, DocSlot[]> = {
 
 /** Fields per document that must be read confidently, otherwise a human confirms them. */
 export const KEY_FIELDS: Record<DocSlot, string[]> = {
-  incorporation: ["legal_name", "cin"],
+  incorporation: ["legal_name"],  // CIN is cross-checked on its own (xref.cin_doc); LLP certificates carry an LLPIN instead
   gst: ["gstin", "legal_name"],
   pan: ["pan", "legal_name"],
   bank_proof: ["account_holder_name", "account_number", "ifsc"],

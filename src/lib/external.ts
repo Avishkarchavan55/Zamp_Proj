@@ -61,7 +61,9 @@ export async function lookupPincode(pincode: string): Promise<{ state: string; d
   });
   if (!res.ok) throw new Error(`Pincode service returned ${res.status}`);
   const [data] = (await res.json()) as { Status: string; PostOffice: { State: string; District: string }[] | null }[];
-  const hit = data?.Status === "Success" && data.PostOffice?.length ? { state: data.PostOffice[0].State, district: data.PostOffice[0].District } : null;
+  // Only India Post's explicit "Error" (no records) means the PIN does not exist; anything else is a service hiccup.
+  if (data?.Status !== "Success" && data?.Status !== "Error") throw new Error(`Pincode service gave an unexpected answer (${data?.Status ?? "empty"})`);
+  const hit = data.Status === "Success" && data.PostOffice?.length ? { state: data.PostOffice[0].State, district: data.PostOffice[0].District } : null;
   pincodeCache.set(pincode, hit);
   return hit;
 }

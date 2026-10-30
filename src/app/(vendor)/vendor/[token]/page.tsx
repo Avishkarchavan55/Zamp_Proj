@@ -28,14 +28,19 @@ interface VendorView {
 const FIELD_LABEL: Partial<Record<keyof ApplicationForm, string>> = {
   gstin: "GSTIN", pan: "PAN", cin: "CIN", bank_ifsc: "IFSC", bank_account_number: "Account number",
   bank_account_holder: "Account holder name", legal_name: "Legal name", pincode: "PIN code", udyam_number: "Udyam number",
+  owner_name: "Proprietor name", contact_name: "Contact person", contact_phone: "Phone", address: "Address", city: "City",
+  state: "State", bank_name: "Bank",
 };
 
+/** Identifiers are typed in capitals; names and addresses are not. */
+const ID_FIELDS = new Set<keyof ApplicationForm>(["gstin", "pan", "cin", "bank_ifsc", "bank_account_number", "pincode", "udyam_number"]);
+
 /** Fields shown in the confirm-your-details form (email intake). */
-const CONFIRM_GROUPS: { title: string; fields: [keyof ApplicationForm, string, ("mono" | "state" | "entity")?][] }[] = [
+const CONFIRM_GROUPS: { title: string; fields: [keyof ApplicationForm, string, ("mono" | "state" | "entity" | "yesno")?][] }[] = [
   { title: "Business", fields: [["legal_name", "Legal name"], ["entity_type", "Entity type", "entity"], ["owner_name", "Proprietor / signatory"], ["pan", "PAN", "mono"], ["gstin", "GSTIN", "mono"], ["cin", "CIN", "mono"], ["category", "What you supply"]] },
   { title: "Address & contact", fields: [["address", "Address"], ["city", "City"], ["state", "State", "state"], ["pincode", "PIN code", "mono"], ["contact_name", "Contact person"], ["contact_phone", "Phone"]] },
   { title: "Bank", fields: [["bank_account_holder", "Account holder"], ["bank_account_number", "Account number", "mono"], ["bank_ifsc", "IFSC", "mono"], ["bank_name", "Bank"]] },
-  { title: "MSME", fields: [["udyam_number", "Udyam number", "mono"], ["msme_category", "MSME category"]] },
+  { title: "MSME", fields: [["msme_registered", "Registered as MSME (Udyam)?", "yesno"], ["udyam_number", "Udyam number", "mono"], ["msme_category", "MSME category"]] },
 ];
 
 export default function ResubmitPage() {
@@ -50,10 +55,16 @@ export default function ResubmitPage() {
   if (error) return <Card className="p-8 text-center text-sm text-ink-2"><AlertCircle className="mx-auto mb-2 h-6 w-6 text-critical" />{error.message}</Card>;
   if (!data) return <Skeleton className="h-80" />;
 
-  const confirming = data.requested_items.some((i) => i.kind === "confirm");
-  const docItems = data.requested_items.filter((i) => i.kind === "document" && i.slot);
-  const fieldItems = confirming ? [] : data.requested_items.filter((i) => i.kind === "field" && i.field);
-  const freeItems = data.requested_items.filter((i) => i.kind !== "confirm" && !(i.kind === "document" && i.slot) && !(i.kind === "field" && i.field));
+  // "Complete missing details" lists several fields: give each its own input.
+  const items = data.requested_items.flatMap((i) =>
+    i.kind === "field" && !i.field && i.fields?.length
+      ? i.fields.map((f) => ({ ...i, code: `${i.code}.${f}`, field: f, title: `Provide ${FIELD_LABEL[f] ?? f}`, instruction: "This was missing from your application." }))
+      : [i],
+  );
+  const confirming = items.some((i) => i.kind === "confirm");
+  const docItems = items.filter((i) => i.kind === "document" && i.slot);
+  const fieldItems = confirming ? [] : items.filter((i) => i.kind === "field" && i.field);
+  const freeItems = items.filter((i) => i.kind !== "confirm" && !(i.kind === "document" && i.slot) && !(i.kind === "field" && i.field));
   const value = (k: keyof ApplicationForm) => fields[k] ?? data.form[k] ?? "";
 
   async function submit() {
@@ -154,6 +165,12 @@ export default function ResubmitPage() {
                           <option value="">Select…</option>
                           {STATES.map((s) => <option key={s}>{s}</option>)}
                         </select>
+                      ) : kind === "yesno" ? (
+                        <select className="input w-full" value={value(k)} onChange={(e) => setFields((f) => ({ ...f, [k]: e.target.value }))}>
+                          <option value="">Not stated</option>
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
                       ) : kind === "entity" ? (
                         <select className="input w-full" value={value(k)} onChange={(e) => setFields((f) => ({ ...f, [k]: e.target.value }))}>
                           {Object.entries(ENTITY_LABELS).map(([ek, ev]) => <option key={ek} value={ek}>{ev}</option>)}
@@ -190,7 +207,7 @@ export default function ResubmitPage() {
               <p className="mb-2 text-[13px] text-ink-2">{i.instruction}</p>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs text-ink-3">{FIELD_LABEL[i.field!] ?? i.field}</span>
-                <input className="input min-w-0 flex-1 font-mono uppercase" value={value(i.field!)} onChange={(e) => setFields((f) => ({ ...f, [i.field!]: e.target.value }))} />
+                <input className={cx("input min-w-0 flex-1", ID_FIELDS.has(i.field!) && "font-mono uppercase")} value={value(i.field!)} onChange={(e) => setFields((f) => ({ ...f, [i.field!]: e.target.value }))} />
                 {i.suggested_value && (
                   <button onClick={() => setFields((f) => ({ ...f, [i.field!]: i.suggested_value }))} className="flex items-center gap-1 rounded-lg border border-brand/30 px-2.5 py-1.5 text-[12.5px] font-medium text-brand-2 hover:bg-brand-soft">
                     <Sparkles className="h-3.5 w-3.5" /> Use {i.suggested_value}

@@ -2,7 +2,7 @@ import { after } from "next/server";
 import { SLOTS, appUrl, bad } from "@/lib/http";
 import { intakeStructured } from "@/lib/intake";
 import { runPipeline } from "@/lib/pipeline";
-import { mimeFromName, type IncomingFile } from "@/lib/repo";
+import { realMime, type IncomingFile } from "@/lib/repo";
 import { trustedCaller } from "@/lib/turnstile";
 import type { DocSlot } from "@/lib/types";
 
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
   if (!body.fields?.legal_name) return bad("legal_name is required");
   const files: [DocSlot, IncomingFile][] = (body.files ?? [])
     .filter((f) => SLOTS.includes(f.slot as DocSlot) && f.b64)
-    .map((f) => [f.slot as DocSlot, { name: f.name, type: f.mime || mimeFromName(f.name), bytes: Buffer.from(f.b64, "base64") }]);
+    .map((f) => [f.slot as DocSlot, { name: f.name, type: realMime(f.mime, f.name), bytes: Buffer.from(f.b64, "base64") }]);
 
   const result = await intakeStructured({
     source: "google_form",

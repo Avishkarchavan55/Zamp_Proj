@@ -125,6 +125,8 @@ export interface RequestedItem {
   kind: "document" | "field" | "confirm";
   slot?: DocSlot;
   field?: keyof ApplicationForm;
+  /** Several blank fields asked for at once ("Complete missing details"). */
+  fields?: (keyof ApplicationForm)[];
   title: string;
   instruction: string;
   suggested_value?: string;

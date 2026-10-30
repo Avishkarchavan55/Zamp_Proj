@@ -60,10 +60,14 @@ export async function POST(req: Request, ctx: RouteContext<"/api/vendor/[token]"
   if (!confirming && !files.length && !Object.keys(changed).length) return bad("Please upload a document or correct a field before submitting.");
 
   await updateApplicationFields(app.id, changed);
-  for (const [slot, f] of files) await addDocument(app.id, slot, f);
+  const added: typeof files = [];
+  for (const [slot, f] of files) if ((await addDocument(app.id, slot, f)).added) added.push([slot, f]);
+  if (!confirming && !added.length && !Object.keys(changed).length) {
+    return bad("Those files are already on file and nothing was changed. Please upload the document that was asked for, or correct the details shown.");
+  }
   if (confirming) await query(`update applications set needs_confirmation=false, updated_at=now() where id=$1`, [app.id]);
   await audit(app.id, "vendor", confirming ? "details_confirmed" : "resubmitted", {
-    documents: files.map(([slot, f]) => ({ slot, filename: f.name })),
+    documents: added.map(([slot, f]) => ({ slot, filename: f.name })),
     fields: Object.fromEntries(Object.entries(changed).map(([k, v]) => [k, { from: app[k as keyof ApplicationForm], to: v }])),
   });
   const runId = await createRun(app.id, confirming ? "confirmation" : "resubmission");

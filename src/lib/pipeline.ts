@@ -12,10 +12,11 @@ import { json, one, query } from "./db";
 import { decide } from "./decision";
 import { extractDocument, extractorLabel, extractorMode, type ReadResult } from "./extractor";
 import { DOC_SLOTS, DOC_TYPE_LABELS } from "./policy";
-import { audit, getApplication } from "./repo";
+import { draftFromDocuments } from "./draft";
+import { FORM_FIELDS, audit, getApplication, normaliseForm, updateApplicationFields } from "./repo";
 import { getDocumentBytes } from "./storage";
 import { broadcast } from "./supabase";
-import type { DocSlot, Extraction, Stage } from "./types";
+import type { ApplicationForm, DocSlot, Extraction, Stage } from "./types";
 
 const PACE_MS = Number(process.env.STAGE_PACING_MS ?? 350);
 const pause = () => new Promise((r) => setTimeout(r, PACE_MS));
@@ -202,6 +203,37 @@ export async function runPipeline(runId: string, appUrl: string) {
     await record(docChecks);
     await stageDone("extraction", docChecks, "Reading documents");
 
+    // Email and Google Form applications can arrive without some details (e.g. bank details before the
+    // cheque was sent). Whatever is still blank is taken from the documents just read, then intake re-checked.
+    if (app.source !== "portal") {
+      const { form, sources } = draftFromDocuments((slot) => ctx.extractions[slot]);
+      const known = ((ctx.app.intake_meta ?? {}) as { field_sources?: Record<string, DocSlot> }).field_sources ?? {};
+      // Before the vendor confirms, the draft's guesses (default entity type, "(unconfirmed)" name) give way
+      // to what the documents now say. After confirmation only truly blank fields are filled.
+      const guessed = (k: string) => ctx.app.needs_confirmation && !known[k] && !!sources[k] &&
+        (k === "entity_type" || (k === "legal_name" && (/\(unconfirmed\)$/.test(ctx.app.legal_name) || ctx.app.legal_name === ctx.app.contact_email)));
+      const blanks = Object.fromEntries(
+        Object.entries(form).filter(([k, v]) => v && FORM_FIELDS.includes(k as keyof ApplicationForm) &&
+          (!String(ctx.app[k as keyof ApplicationForm] ?? "").trim() || (guessed(k) && v !== ctx.app[k as keyof ApplicationForm]))),
+      );
+      if (Object.keys(blanks).length) {
+        const full = normaliseForm({ ...ctx.app, ...blanks });
+        const filled = Object.fromEntries(Object.keys(blanks).map((k) => [k, full[k as keyof ApplicationForm]])) as Partial<ApplicationForm>;
+        await updateApplicationFields(appId, filled);
+        const meta = (ctx.app.intake_meta ?? {}) as { field_sources?: Record<string, DocSlot> };
+        await query(`update applications set intake_meta=$2::jsonb where id=$1`, [appId, json({
+          ...meta, field_sources: { ...meta.field_sources, ...Object.fromEntries(Object.keys(filled).map((k) => [k, sources[k]])) },
+        })]);
+        await audit(appId, "system", "details_filled_from_documents", { run_id: runId, fields: filled });
+        ctx.app = (await getApplication(appId))!;
+        await emit("extraction", "info", `Filled ${Object.keys(filled).length} blank detail(s) from the documents: ${Object.keys(filled).map((k) => k.replaceAll("_", " ")).join(", ")}`, { fields: Object.keys(filled) });
+        // Re-run intake against the completed details (e.g. "required details missing" may now pass).
+        await query(`delete from checks where run_id=$1 and category='intake'`, [runId]);
+        for (let i = all.length - 1; i >= 0; i--) if (all[i].category === "intake") all.splice(i, 1);
+        await record(intakeChecks(ctx));
+      }
+    }
+
     // 3–4. Deterministic validation + cross-reference --------------------------------------------
     await enter("validation");
     const v = validationChecks(ctx);
@@ -228,13 +260,22 @@ export async function runPipeline(runId: string, appUrl: string) {
 
     // 7. Decision --------------------------------------------------------------------------------
     await enter("decision");
-    const decision = decide(all, app.legal_name || "This vendor");
+    const decision = decide(all, ctx.app.legal_name || "This vendor");
     const fired = decision.rule_trace.find((t) => t.matched)!;
     await emit("decision", decision.outcome === "approved" ? "success" : decision.outcome === "rejected" ? "error" : "warning",
       `${fired.rule} → ${decision.headline}`, { outcome: decision.outcome });
     if (decision.outcome === "in_review") {
       decision.ai_brief = await reviewerBrief(app.legal_name, all);
       if (decision.ai_brief) await emit("decision", "info", `Reviewer brief drafted by ${decision.ai_brief.model} (does not affect the decision)`);
+    }
+    // A newer run started meanwhile (the vendor sent more while this one was checking): it decides, not us.
+    const latest = await one<{ latest_run_id: string }>(`select latest_run_id from applications where id=$1`, [appId]);
+    if (latest && latest.latest_run_id !== runId) {
+      await emit("decision", "info", `Superseded by newer run ${latest.latest_run_id} — that run makes the decision.`);
+      await query(`update runs set status='completed', current_stage='done', finished_at=now(), duration_ms=$2, outcome=$3, decision=$4::jsonb where id=$1`, [
+        runId, Date.now() - started, decision.outcome, json(decision),
+      ]);
+      return;
     }
     await query(
       `update applications set status=$2, decision=$3::jsonb, decided_at=now(), decided_by='policy_engine', updated_at=now() where id=$1`,

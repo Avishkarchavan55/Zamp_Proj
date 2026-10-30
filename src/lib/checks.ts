@@ -71,7 +71,7 @@ export function intakeChecks(ctx: CheckContext): Check[] {
         : `All ${REQUIRED_FIELDS.length} mandatory fields are filled in.`,
       rule: "Every mandatory field on the registration form must be completed.",
       request: missing.length
-        ? { code: "field.missing", kind: "field", title: "Complete missing details", instruction: `Please provide: ${missing.map((f) => FIELD_LABELS[f as keyof ApplicationForm] ?? f).join(", ")}.` }
+        ? { code: "field.missing", kind: "field", fields: missing as (keyof ApplicationForm)[], title: "Complete missing details", instruction: `Please provide: ${missing.map((f) => FIELD_LABELS[f as keyof ApplicationForm] ?? f).join(", ")}.` }
         : undefined,
     },
   ];
@@ -256,7 +256,19 @@ export function validationChecks(ctx: CheckContext): Check[] {
     request: ifsc.valid ? undefined : fieldRequest("bank_ifsc", "The IFSC entered is invalid. Please copy it from your cheque or bank letter."),
   });
 
-  if (isCompany(app)) {
+  if (app.entity_type === "llp") {
+    // LLPs are registered under the LLP Act and get an LLPIN (e.g. AAB-1234), not a CIN.
+    const llpin = clean(app.cin);
+    const ok = /^[A-Z]{3}-?\d{4}$/.test(llpin);
+    out.push({
+      code: "fmt.cin", category: "validation", label: "LLPIN provided & valid",
+      status: !llpin ? "warning" : ok ? "passed" : "failed", severity: "low", route: !llpin || ok ? "none" : "vendor",
+      message: !llpin ? "No LLPIN given — it is on the LLP's Certificate of Incorporation." : ok ? `${llpin}: valid LLP Identification Number format.` : `"${app.cin}" is not a valid LLPIN (format AAA-1234).`,
+      evidence: { form: app.cin },
+      rule: "LLPIN = three letters + four digits, issued by the Registrar under the LLP Act, 2008.",
+      request: !llpin || ok ? undefined : fieldRequest("cin", "The LLPIN entered is invalid. Please copy it from your LLP's Certificate of Incorporation (format AAA-1234)."),
+    });
+  } else if (isCompany(app)) {
     if (!app.cin?.trim()) {
       out.push({
         code: "fmt.cin", category: "validation", label: "CIN provided & valid",
@@ -573,7 +585,11 @@ export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
         if (printedBank) {
           const a = coreName(printedBank).replace(/\bBANK\b/g, "").trim();
           const b = coreName(rec.BANK).replace(/\bBANK\b/g, "").trim();
-          const ok = !!a && !!b && (a.includes(b) || b.includes(a) || a.split(" ")[0] === b.split(" ")[0]);
+          // Banks are often written as initials: SBI = State Bank of India, PNB = Punjab National Bank.
+          const initials = (n: string) => coreName(n).split(" ").filter((w) => w && !["OF", "AND", "THE"].includes(w)).map((w) => w[0]).join("");
+          const compact = (n: string) => coreName(n).replace(/\s+/g, "");
+          const ok = !!a && !!b && (a.includes(b) || b.includes(a) || a.split(" ")[0] === b.split(" ")[0] ||
+            initials(rec.BANK) === compact(printedBank) || initials(printedBank) === compact(rec.BANK));
           out.push({
             code: "ext.bank_name", category: "external", label: "Bank on document matches IFSC",
             status: ok ? "passed" : "failed", severity: "high", route: ok ? "none" : "review",
@@ -683,8 +699,19 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
         and upper(bank_ifsc) = $3 and status in ('approved','in_review','awaiting_vendor')`,
     [app.id, account, ifsc],
   ) : [];
-  const otherEntity = sameAccount.filter((r) => clean(r.pan) !== pan);
-  if (!account || !ifsc) out.push({
+  // Reject only when both sides carry a valid, different PAN. A blank or mistyped PAN on either side
+  // (e.g. an email draft not yet confirmed) can't prove "different company" — a human looks instead.
+  const panOk = (p: string) => validatePan(p).valid;
+  const otherEntity = sameAccount.filter((r) => panOk(pan) && panOk(clean(r.pan)) && clean(r.pan) !== pan);
+  const unclear = sameAccount.filter((r) => !(panOk(pan) && panOk(clean(r.pan))));
+  if (account && ifsc && !otherEntity.length && unclear.length) out.push({
+    code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
+    status: "warning", severity: "high", route: "review",
+    message: `Account ${account} at ${ifsc} also appears on ${unclear.map((r) => `${r.legal_name} (${r.id}, ${r.status.replace("_", " ")})`).join(", ")}. A PAN is missing or invalid, so it is unclear whether this is the same business — please check.`,
+    evidence: { form: `${account} / ${ifsc}`, matches: unclear },
+    rule: "One bank account may belong to only one legal entity. Sharing an account with another vendor is a hallmark of payment-diversion fraud.",
+  });
+  else if (!account || !ifsc) out.push({
     code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
     status: "skipped", severity: "info", route: "none",
     message: "No bank details yet — checked once the vendor provides them.",

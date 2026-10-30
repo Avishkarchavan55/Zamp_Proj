@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { json, one, query } from "./db";
+import { canonicalState } from "./india";
 import { MANUAL_MINUTES } from "./policy";
 import { putDocumentBytes } from "./storage";
 import type { Application, ApplicationForm, DocSlot, IntakeSource } from "./types";
@@ -20,6 +21,7 @@ export function normaliseForm(input: Record<string, unknown>): ApplicationForm {
     if (UPPER_FIELDS.has(f)) v = v.toUpperCase().replace(/\s+/g, "");
     if (f === "contact_email" || f === "msme_registered") v = v.toLowerCase();
     if (f === "bank_account_number") v = v.replace(/\s+/g, "");
+    if (f === "state") v = canonicalState(v);
     out[f] = v;
   }
   return out as unknown as ApplicationForm;
@@ -72,11 +74,16 @@ export async function addDocument(applicationId: string, slot: DocSlot, file: In
   const f = file instanceof File ? await toIncoming(file) : file;
   const buf = f.bytes;
   const sha256 = createHash("sha256").update(buf).digest("hex");
+  // The same file sent again (e.g. a reply that quotes the original attachments) is not a new version.
+  const same = await one<{ id: string }>(
+    `select id from documents where application_id=$1 and slot=$2 and sha256=$3 and not superseded limit 1`, [applicationId, slot, sha256],
+  );
+  if (same) return { id: same.id, added: false };
   const prev = await one<{ version: number }>(
     `select coalesce(max(version),0)::int as version from documents where application_id=$1 and slot=$2`, [applicationId, slot],
   );
   await query(`update documents set superseded=true where application_id=$1 and slot=$2`, [applicationId, slot]);
-  const mime = f.type || mimeFromName(f.name);
+  const mime = realMime(f.type, f.name);
   const id = `DOC-${randomUUID().slice(0, 8)}`;
   const stored = await putDocumentBytes(applicationId, id, f.name, mime, buf);
   await query(
@@ -84,7 +91,13 @@ export async function addDocument(applicationId: string, slot: DocSlot, file: In
      values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
     [id, applicationId, slot, f.name, mime, buf.length, sha256, stored.data_b64, stored.storage_path, (prev?.version ?? 0) + 1],
   );
-  return id;
+  return { id, added: true };
+}
+
+/** The declared type, unless it is missing or generic (Gmail often sends PDFs as application/octet-stream). */
+export function realMime(declared: string | undefined, name: string) {
+  if (declared && declared !== "application/octet-stream") return declared;
+  return /\.(pdf|png|jpe?g|webp)$/i.test(name) ? mimeFromName(name) : declared || "application/octet-stream";
 }
 
 export function mimeFromName(name: string) {

@@ -29,8 +29,10 @@ export interface Communication {
   meta: Record<string, unknown> | null;
 }
 
-export const n8nConfigured = () => !!process.env.N8N_WEBHOOK_URL;
-export const smtpConfigured = () => !!(process.env.SMTP_USER && process.env.SMTP_PASS);
+/** EMAIL_PAUSED=1 stops every outgoing email (n8n and SMTP); messages are recorded but not delivered. */
+const paused = () => /^(1|true|yes)$/i.test(process.env.EMAIL_PAUSED ?? "");
+export const n8nConfigured = () => !paused() && !!process.env.N8N_WEBHOOK_URL;
+export const smtpConfigured = () => !paused() && !!(process.env.SMTP_USER && process.env.SMTP_PASS);
 
 /** Subject tag that lets inbound replies find their application. */
 export const ref = (appId: string) => `[${appId}]`;
@@ -133,6 +135,12 @@ export async function smtpFallback(id: string, reason: string) {
     ]);
     return;
   }
+  // Claim it first: overlapping watchdog pings or a late n8n callback must never send the same email twice.
+  const claimed = await one<{ id: string }>(
+    `update communications set meta = coalesce(meta,'{}'::jsonb) || '{"smtp_claimed": true}'::jsonb
+      where id=$1 and status='queued' and not (coalesce(meta,'{}'::jsonb) ? 'smtp_claimed') returning id`, [id],
+  );
+  if (!claimed) return;
   try {
     const messageId = await sendSmtp(to, c.subject, c.body, (c.meta?.text as string) ?? c.subject);
     await query(
@@ -231,6 +239,6 @@ export async function sweepUndelivered(maxAgeMinutes = 3) {
 export function describeDelivery(c: Communication, to: string) {
   if (c.status === "queued") return { level: "success" as const, text: `handed to n8n → ${to}` };
   if (c.status === "sent") return { level: "success" as const, text: `sent directly over SMTP → ${to} (${String(c.meta?.fallback_reason ?? "backup")})` };
-  if (c.status === "not_configured") return { level: "warning" as const, text: "drafted only — neither n8n nor SMTP is configured" };
+  if (c.status === "not_configured") return { level: "warning" as const, text: "drafted only — email sending is paused or not configured" };
   return { level: "error" as const, text: `delivery failed (${String(c.meta?.error ?? c.meta?.fallback_reason ?? "unknown")})` };
 }

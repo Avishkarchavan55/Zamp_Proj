@@ -14,7 +14,10 @@ export function appUrl(req: Request) {
 export function validateFile(file: File): string | null {
   if (file.size === 0) return `${file.name} is empty`;
   if (file.size > MAX_FILE_BYTES) return `${file.name} is larger than 4 MB`;
-  const type = file.type || (file.name.toLowerCase().endsWith(".pdf") ? "application/pdf" : "");
+  // Some browsers/OSes send no type or a generic one; fall back to the file extension.
+  const ext = file.name.toLowerCase().match(/\.(pdf|png|jpe?g|webp)$/)?.[1];
+  const byExt = ext === "pdf" ? "application/pdf" : ext === "png" ? "image/png" : ext === "webp" ? "image/webp" : ext ? "image/jpeg" : "";
+  const type = file.type && file.type !== "application/octet-stream" ? file.type : byExt;
   if (!ALLOWED_MIME.includes(type)) return `${file.name}: only PDF, PNG, JPG or WEBP files are accepted`;
   return null;
 }
