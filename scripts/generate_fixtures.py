@@ -243,6 +243,19 @@ VENDORS = {
         account="9412287730", cheque_name="SAHYADRI CASTINGS PVT LTD", micr="411485002",
         udyam="UDYAM-MH-26-0071952", msme_declared="Small", msme_cert="Small",
     ),
+    # Email-intake demo vendor (the user's chosen name): applies by email, no portal.
+    "lokseva": dict(
+        legal_name="LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+        form_name="Lokseva Pashukhadya Private Limited",
+        trade_name="", entity_type="private_limited",
+        pan="AAICL5527R", state_code="27", cin="U15400MH2018PTC312764", inc_date=(6, 4, 2018),
+        address="Gat No. 42, MIDC Nagapur", city="Ahmednagar", state="Maharashtra", pincode="414111",
+        contact_name="Sandeep Gaikwad", contact_email="accounts@loksevapashukhadya.in", contact_phone="+91 98221 40576",
+        owner_name="Sandeep Gaikwad", website="loksevapashukhadya.in", category="Cattle feed & mineral mixture",
+        ifsc="HDFC0000103", bank="HDFC BANK", branch="PUNE - FERGUSSON COLLEGE ROAD",
+        account="50200077315842", cheque_name="LOKSEVA PASHUKHADYA PVT LTD", micr="411240003",
+        udyam="UDYAM-MH-01-0063318", msme_declared="Small", msme_cert="Small",
+    ),
 }
 VENDORS["shreeji"].update(udyam="UDYAM-MH-26-0012345", msme_declared="Micro", msme_cert="Micro")
 
@@ -789,6 +802,30 @@ def main():
                       summary="Vendor emails documents; VendorIQ builds the application, asks for the missing cheque, vendor replies with it.",
                       expected="Awaiting vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
                       files={}, email_files=em_files, resubmission={"reply": reply}))
+
+    v = VENDORS["lokseva"]
+    lk_dir = os.path.join(PUBLIC, "email-lokseva")
+    os.makedirs(os.path.join(lk_dir, "reply"), exist_ok=True)
+    lk_files = [
+        write(lk_dir, "Lokseva_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        write(lk_dir, "Lokseva_GST_Certificate.pdf", gst_pdf(v), truth_gst(v)),
+        write(lk_dir, "Lokseva_PAN.png", pan_card_png(v), truth_pan(v)),
+        write(lk_dir, "Lokseva_Udyam.pdf", udyam_pdf(v), truth_udyam(v)),
+    ]
+    lk_reply = "reply/" + write(os.path.join(lk_dir, "reply"), "Lokseva_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v))
+    with open(os.path.join(lk_dir, "EMAIL.txt"), "w", encoding="utf8") as fh:
+        fh.write(
+            "To: the onboarding inbox\n"
+            "Subject: Vendor registration - Lokseva Pashukhadya\n\n"
+            "Hello Acme team,\n\nWe manufacture cattle feed and mineral mixture and would like to register as your supplier.\n"
+            "Our company documents are attached. We are a registered MSME (Small).\n\n"
+            "Regards,\nSandeep Gaikwad\nLokseva Pashukhadya Pvt Ltd\n+91 98221 40576\n\n"
+            f"ATTACH (first email): {', '.join(lk_files)}\n"
+            f"Then REPLY to VendorIQ's request email and attach: {lk_reply}\n")
+    index.append(dict(id="email-lokseva", group="email", title="Email intake: Lokseva Pashukhadya", vendor=v["form_name"],
+                      summary="Vendor emails its documents (no cheque); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
+                      expected="Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
+                      files={}, email_files=lk_files, resubmission={"reply": lk_reply}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

@@ -567,5 +567,48 @@
     "resubmission": {
       "reply": "reply/Sahyadri_Cancelled_Cheque.png"
     }
+  },
+  {
+    "id": "email-lokseva",
+    "group": "email",
+    "title": "Email intake: Lokseva Pashukhadya",
+    "vendor": "Lokseva Pashukhadya Private Limited",
+    "summary": "Vendor emails its documents (no cheque); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
+    "expected": "Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved",
+    "form": {
+      "legal_name": "Lokseva Pashukhadya Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAICL5527R",
+      "gstin": "27AAICL5527R1ZQ",
+      "cin": "U15400MH2018PTC312764",
+      "owner_name": "Sandeep Gaikwad",
+      "address": "Gat No. 42, MIDC Nagapur",
+      "city": "Ahmednagar",
+      "state": "Maharashtra",
+      "pincode": "414111",
+      "contact_name": "Sandeep Gaikwad",
+      "contact_email": "accounts@loksevapashukhadya.in",
+      "contact_phone": "+91 98221 40576",
+      "website": "loksevapashukhadya.in",
+      "category": "Cattle feed & mineral mixture",
+      "bank_account_holder": "Lokseva Pashukhadya Pvt Ltd",
+      "bank_account_number": "50200077315842",
+      "bank_ifsc": "HDFC0000103",
+      "bank_name": "Hdfc Bank",
+      "msme_registered": "yes",
+      "udyam_number": "UDYAM-MH-01-0063318",
+      "msme_category": "Small"
+    },
+    "files": {},
+    "email_files": [
+      "Lokseva_Certificate_of_Incorporation.pdf",
+      "Lokseva_GST_Certificate.pdf",
+      "Lokseva_PAN.png",
+      "Lokseva_Udyam.pdf"
+    ],
+    "resubmission": {
+      "reply": "reply/Lokseva_Cancelled_Cheque.png"
+    }
   }
 ]

@@ -1,5 +1,5 @@
 {
- "5a71f5bbf50275ba39c2c821d6a3a44d6dc21cd5dfd807bedb8a95390e59fc34": {
+ "a562038bb058119d8ffd411f7ef172793b5014415edaea21747d188f87218e15": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -43,7 +43,7 @@
   ],
   "notes": ""
  },
- "1554b8a10ee12f617a96d30a4b044c41767e5f2c8d5d827be91ba2b34004c1fa": {
+ "72dae49a785ad58d09985f3672727f8495a6185a7573715c3a0e290e6f4b5187": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -151,7 +151,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "e6a466e066e1c34aaf77e32b44a3d6d8e3d39a21d8f189d1f0f39b907b05ef64": {
+ "75892af32f6b56e0146e8f30b82583cee20eef6cfc929c1db32a866edfe05ec4": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -183,7 +183,7 @@
   ],
   "notes": ""
  },
- "3d6afa9032a8d04530a2819a118a61a303d220b86c5de61869e409fea796f904": {
+ "e0a18ca579deba9cc67cafcbdaf2ff15edc394d38457e365809bf11070c1afea": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -227,7 +227,7 @@
   ],
   "notes": ""
  },
- "4cb03266506648bfb45397532622b0926464d3c97724b524c38624cf1888d2c1": {
+ "58a3b6d0f16a6826382c2752758a2a0aa54e58f1538ac088dd12e2d5a17c3af8": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -297,7 +297,7 @@
   ],
   "notes": ""
  },
- "8d80422814a7872f34897a58204681d13a98bbe8bc92e1ffb72feca3782fdd4c": {
+ "09bdf32a59e002c190c69defc9a49049f202b21baea0ba6df88ccef6d1f70b01": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -379,7 +379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8c7916fbe7fdc50d4c044752664fc2843579531f42a6a5167efaca8ccf8d050c": {
+ "287b2efdc048a6c94960d32b680ea06c223e56fc06f2f21fd4f2181fa19569b6": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -423,7 +423,7 @@
   ],
   "notes": ""
  },
- "9bea626a97edce43d0e1493debafb90a32a63024b66ef684a29be7650a296435": {
+ "4621d6fdbc67a02a5703367dd92cb20966ae13764af5d00c15a339aa7a2fd455": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -531,7 +531,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8716540e95c920b6929924aa3c6392440edf2e1c5f7d3533b88d224ab9609b8f": {
+ "2ad4526c7679879b7b298b431237fd19d9eaf965208b29d36d68cf493ed9e203": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -575,7 +575,7 @@
   ],
   "notes": ""
  },
- "35adcfd28a7efae5eb36724d282f81ec40273b6b80b48791d38a3e85eda8b0aa": {
+ "c4c191623b77acc4a54e0786212854e585de4d88157483a4435ee7b1a4d407c7": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -683,7 +683,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "940b44dbd5190d0f6242f8c8064ddb4c8e97951cc5cca716b3b79250ffc07b37": {
+ "3d74528b0acee40db4e62f2ffa06f9b51b1591e478a4417af84a5944cc82c4de": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -727,7 +727,7 @@
   ],
   "notes": ""
  },
- "1bf01980b160f874067c78fc1f5dff66a9b99887545958d65d002803b516b4eb": {
+ "e7508592f2dc592e6cbbdcdbdd376558894f7020623f69732ee56ed1ca091885": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -835,7 +835,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "34698d4ffb9de18cafd9a14a057d02372c6f8bb81f02bf751978156cb55e0617": {
+ "230bec83a90692a2a9cf5c3500d0cb2c98ed36b531c9f85e49ff988c2a300178": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "degraded",
@@ -911,7 +911,7 @@
   ],
   "notes": ""
  },
- "897e7ad5c9c9f5d8c13088f03265dd51e347364884ec6be0aa07a67ce5e32ddf": {
+ "4df8551ea02f69361b17d144a21c5b0907875c7169b9e1fbf898d8e1830de68b": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "degraded",
@@ -949,7 +949,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "ba9e8bfba4ad140f0a53572681530b18f3818438eb1ba05552f523337f4b53aa": {
+ "1d8699d15541734c5bb491f325bf0edbf2790c800429cb2104f7a5d6fa91f48b": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -993,7 +993,7 @@
   ],
   "notes": ""
  },
- "c890f4b775d84c0159167a980c72cb6223a436da71b8ca447d63b408a53af58f": {
+ "e0da0b6b69c66a28b4f7027de0927ea8cc7e28ea4acc682791a1093c93f3ecf0": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1075,7 +1075,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "006412ef900c39a3d342febe53dba013179822e99af48244e737a590cffdf5a1": {
+ "f6b891539df53813643e5ff7256fc1fdc3270b348118ddad501958a32b84d027": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1119,7 +1119,7 @@
   ],
   "notes": ""
  },
- "1c6d52f74589e83aa631e915e7af385d3145836053515b0e48d56bf685cdbc20": {
+ "9a5ed99fa7ab9ecdbf07ac65d00de8e261ba013eae9e1677801875da8e4a54c8": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1227,7 +1227,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "98593d976a56cf6b9189b1f5e16da9c86123e11dc96042c7a2ec0208ac915a97": {
+ "427c11043c31ccc4fba1402fd2022b045c9d799b513f0a2a212596cf2cc98b5b": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1271,7 +1271,7 @@
   ],
   "notes": ""
  },
- "a5e24865a7bab47a3cb209a079c405fa71d6129f45d7e2ad2f85ad9b0b067017": {
+ "12c90b21cb5c67f07d78c93116fbb52106e64e5ce4916b17201f548f324eb627": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1379,7 +1379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "fb887e3e0264b820db7ddc140cf2575a8af1d7a48b951d57566e0af622a89285": {
+ "ebcc50217c581757d3799bafada8e854ab9bbe2391fc2f9fc2b89180cbbeb065": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1411,7 +1411,7 @@
   ],
   "notes": ""
  },
- "8422ccab6241a8339bdbdc812de2d425a268583cddcda08a0925d96b50dad237": {
+ "a47683cd6a2f8f6f691fd5c19a3fbedd68edd7a94a51163fe26ea168a24c4e02": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1455,7 +1455,7 @@
   ],
   "notes": ""
  },
- "b7afc4d4fa1eb73ea899f03dd31460b656bd8a70f2d09538e5fdfeef40393f23": {
+ "b6b87c13643a7111ea742d08f7fcdfce9583003b9d569d0c153e684c0b554056": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1563,7 +1563,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "5d2348dfb269323f482f96097997deabfabaa1682101da751924b025ec1bdda4": {
+ "9ca57bfad8f1dec8b67147fb5285386e7db4c127530cbdf879d9e6c5ccc0c752": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1607,7 +1607,7 @@
   ],
   "notes": ""
  },
- "95019237a7007689686f4b6f8a147a02cc9f03a102a9792bbd0059c03c756648": {
+ "ddbaea8d06ab86b72badb77af2ba6d124c888b2e7392614c6c86940c98eb3125": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1715,7 +1715,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "3f151b13ef3c87b704f2db220bdbfb563d9114c8e8225384683249b711c971a2": {
+ "422e6233a11ef3250de6c7b29966a1f80650268a9e34b060538a8f269a2a4608": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1759,7 +1759,7 @@
   ],
   "notes": ""
  },
- "c2a821b4c4fd5de23f17e4750a828707a055861120a5a0cc1622ee3578830e7d": {
+ "1336a5c73f718b29ac9c066637e5a0753351d970263672ab01940dcef84fe3a8": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1867,7 +1867,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "b05b4864be381700ba77759a91a28ce251371e4882c3e3940476ccad8cf085f3": {
+ "c0e0d29f3572fc30ffd9b72e54cfc0298cf29127e9f1d166bef1c1a06cd542b7": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1911,7 +1911,7 @@
   ],
   "notes": ""
  },
- "89e2d4b8c16a5e47b5c593e755aaa7cd6a5c00da553d7cb8933051bb69e0afff": {
+ "6422a19163ae8dcf318206794d03d0a5594862705e5e77931807387a4cf36226": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2019,7 +2019,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "66b19efcd96207b975117e3ff53bde8cd9c3539ac3598042d202d4bd4607c3e0": {
+ "969a654c95fceadacbfd7a37d6f6fc82d7da8a4ffa44af829a5c3d6c4fb922a5": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2063,7 +2063,7 @@
   ],
   "notes": ""
  },
- "ba1c7d820f590b1b08b5631b40094748276b158f274a6cb7be9c238f85d62321": {
+ "040fe9026462b3afd5d8f84173c3d879fd814981ae8ea2dbe2dbe1920c281bb0": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2133,7 +2133,7 @@
   ],
   "notes": ""
  },
- "978ec75610ab5e8997db4d7c450c78851906541ef18bff4be0959acb7e9f39d9": {
+ "99dea87c5c826f55d1be33b3383bf1dc3614a25ff6e2811452bd581d9169d4f7": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2198,6 +2198,190 @@
     "key": "branch",
     "value": "PUNE",
     "source_quote": "PUNE",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "6f37d55b3d429bb2b2f3b296bb0cf5c7bfe307ed0d6c39a9c31ff1e5c28df1d6": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "source_quote": "I hereby certify that LOKSEVA PASHUKHADYA PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U15400MH2018PTC312764",
+    "source_quote": "Corporate Identity Number of the company is U15400MH2018PTC312764",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAICL5527R",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAICL5527R",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-04-06",
+    "source_quote": "2018-04-06",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat No. 42, MIDC Nagapur, Ahmednagar, Maharashtra, India - 414111",
+    "source_quote": "Gat No. 42, MIDC Nagapur, Ahmednagar, Maharashtra, India - 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "44596af99a8b297daae88798071e0cfadf5c4ad735cf043a67bd98ce1a7791d3": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAICL5527R1ZQ",
+    "source_quote": "Registration Number : 27AAICL5527R1ZQ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "source_quote": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "source_quote": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat No. 42, MIDC Nagapur, Ahmednagar, Maharashtra, 414111",
+    "source_quote": "Gat No. 42, MIDC Nagapur, Ahmednagar, Maharashtra, 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "ae378807e9e58335bdbaceb16b6feeb2747576b884932c66a05a7f1013698342": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAICL5527R",
+    "source_quote": "AAICL5527R",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "source_quote": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-04-06",
+    "source_quote": "2018-04-06",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "9442eaf0cc608da9484a785d880378ce1c840ea149d11683cff767947457ed6a": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-MH-01-0063318",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-MH-01-0063318",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE LOKSEVA PASHUKHADYA PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Small",
+    "source_quote": "TYPE OF ENTERPRISE Small",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "f686d1dc4f93c99cc1be5082e7c96857d7b374e20f63203ebc55e54516a75863": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "LOKSEVA PASHUKHADYA PVT LTD",
+    "source_quote": "For LOKSEVA PASHUKHADYA PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200077315842",
+    "source_quote": "50200077315842",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000103",
+    "source_quote": "IFSC: HDFC0000103",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "PUNE - FERGUSSON COLLEGE ROAD",
+    "source_quote": "PUNE - FERGUSSON COLLEGE ROAD",
     "confidence": 0.97
    }
   ],
