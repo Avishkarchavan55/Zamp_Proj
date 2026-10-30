@@ -22,6 +22,8 @@ export interface IntakeResult {
   runId: string | null;
   mode: "new" | "resubmission" | "ignored";
   note?: string;
+  /** Set when a new email had nothing usable: the sender should be told what to attach. */
+  help?: { ignored: string[] };
 }
 
 // ---- portal & Google Form: the vendor typed the details ---------------------------------------------
@@ -194,9 +196,11 @@ export async function intakeEmail(mail: InboundEmail): Promise<IntakeResult> {
   }
 
   // New vendor by email. Mail without any attachment is not an application — ignore it.
-  if (!mail.attachments.length) return { id: "", runId: null, mode: "ignored", note: "No attachments and not a reply" };
+  if (!mail.attachments.length) return { id: "", runId: null, mode: "ignored", note: "No attachments and not a reply", help: { ignored: [] } };
   const { bySlot, ignored } = await classifyAttachments(mail.attachments);
-  if (!bySlot.size) return { id: "", runId: null, mode: "ignored", note: `No registration documents among the attachments (${ignored.map((i) => i.name).join(", ")})` };
+  if (!bySlot.size) {
+    return { id: "", runId: null, mode: "ignored", note: `No registration documents among the attachments (${ignored.map((i) => i.name).join(", ")})`, help: { ignored: ignored.map((i) => i.name) } };
+  }
   const { form, sources } = draftFromDocuments((slot) => bySlot.get(slot)?.read.extraction);
 
   // Vendors often send documents in several emails ("PFA GST cert", later "PFA cheque") without our [VEN-…]

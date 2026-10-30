@@ -139,6 +139,39 @@ async function sendSmtp(to: string, subject: string, html: string, text: string)
   return info.messageId as string;
 }
 
+/** Automated mail (bounces, newsletters, out-of-office, no-reply senders) never gets an automatic answer. */
+export function isAutomatedEmail(from: string, subject: string) {
+  return /(no-?reply|mailer-daemon|postmaster|notifications?@|bounce)/i.test(from)
+    || /(delivery status notification|undeliverable|returned mail|auto(matic)?[- ]?reply|out of (the )?office)/i.test(subject);
+}
+
+/**
+ * A vendor emailed the onboarding inbox but nothing usable was attached: tell them what to send instead of
+ * staying silent. Sent directly over SMTP (there is no application to attach it to yet).
+ */
+export async function sendDocumentsHelp(to: string, originalSubject: string, ignored: string[], portalUrl: string) {
+  if (!smtpConfigured()) return false;
+  const subject = /^re:/i.test(originalSubject) ? originalSubject : `Re: ${originalSubject || "Supplier registration"}`;
+  const docs = ["GST registration certificate", "PAN card of the business", "Cancelled cheque or bank letter",
+    "Certificate of Incorporation (companies and LLPs only)", "Udyam certificate (only if you are a registered MSME)"];
+  const got = ignored.length
+    ? `<p>We received ${ignored.map((n) => `<strong>${esc(n)}</strong>`).join(", ")}, but ${ignored.length === 1 ? "it does not look like" : "they do not look like"} a registration document.</p>`
+    : `<p>We could not find any documents attached to your email.</p>`;
+  const html = shell("Please attach your registration documents",
+    `<p>Hello,</p><p>Thank you for writing to ${esc(BUYER.name)} about supplier registration.</p>${got}
+     <p>Please reply to this email with these documents <strong>attached as files</strong> (PDF, PNG or JPG — not links):</p>
+     <ul>${docs.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>
+     <p>Prefer a form? You can also register online:</p>${button(portalUrl, "Register online")}`);
+  const text = [
+    `Thank you for writing to ${BUYER.name} about supplier registration.`,
+    ignored.length ? `We received ${ignored.join(", ")}, but it does not look like a registration document.` : "We could not find any documents attached to your email.",
+    `Please reply with these documents attached as files:\n- ${docs.join("\n- ")}`,
+    `Or register online: ${portalUrl}`,
+  ].join("\n\n");
+  await sendSmtp(to, subject, html, text);
+  return true;
+}
+
 export async function smtpFallback(id: string, reason: string) {
   const c = await one<Communication>("select * from communications where id=$1", [id]);
   if (!c) return;

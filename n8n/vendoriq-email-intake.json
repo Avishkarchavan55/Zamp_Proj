@@ -3,119 +3,85 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## Vendor emails → VendorIQ\nVendors can simply email their documents to the onboarding inbox.\n\n1. Email Trigger (IMAP) watches the inbox and downloads attachments (marks them read)\n2. Code node packages sender, subject, body, SPF/DKIM and attachments; skips unrelated mail\n3. VendorIQ sorts the attachments with document AI and builds a draft — or, if the subject carries `[VEN-…]`, treats it as a reply to an existing application\n\nUses an IMAP credential with the Gmail App Password (no Google Cloud OAuth needed).",
-        "height": 360,
-        "width": 420,
+        "content": "## Vendor emails → VendorIQ\nVendors can simply email their documents to the onboarding inbox.\n\n1. **Gmail Trigger** checks the inbox every minute through the Gmail API (no long-lived connection that can silently drop; after a restart it catches up from the last check)\n2. **Package email** collects sender, subject, body, SPF/DKIM result and attachments, and flags automated mail\n3. **Send to VendorIQ** — the app sorts the attachments with document AI and builds a draft, treats `[VEN-…]` subjects as replies, and answers people who sent nothing usable\n4. **Mark as read** once VendorIQ has it\n\nUses the same Gmail OAuth credential as W1.",
+        "height": 380,
+        "width": 440,
         "color": 5
       },
       "id": "c2e7b9a1-0000-4000-8000-000000000001",
       "name": "About",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [
-        -120,
-        -420
-      ]
+      "position": [-120, -440]
     },
     {
       "parameters": {
-        "mailbox": "INBOX",
-        "postProcessAction": "read",
-        "format": "resolved",
-        "dataPropertyAttachmentsPrefixName": "attachment_",
+        "pollTimes": { "item": [{ "mode": "everyMinute" }] },
+        "simple": false,
+        "filters": {
+          "q": "in:inbox -from:me -category:promotions -category:social",
+          "readStatus": "unread"
+        },
         "options": {
-          "customEmailConfig": "[\"UNSEEN\"]",
-          "allowUnauthorizedCerts": false
+          "downloadAttachments": true,
+          "dataPropertyAttachmentsPrefixName": "attachment_"
         }
       },
       "id": "c2e7b9a1-0000-4000-8000-000000000002",
       "name": "New vendor email",
-      "type": "n8n-nodes-base.emailReadImap",
-      "typeVersion": 2,
-      "position": [
-        0,
-        0
-      ],
-      "credentials": {
-        "imap": {
-          "id": "__IMAP_ID__",
-          "name": "VendorIQ Gmail IMAP"
-        }
-      }
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0],
+      "credentials": { "gmailOAuth2": { "id": "__GMAIL_ID__", "name": "Gmail account" } }
     },
     {
       "parameters": {
-        "jsCode": "// Package each email for VendorIQ: sender, subject, plain text, SPF/DKIM result and attachments (base64).\nconst items = $input.all();\nconst out = [];\nfor (let i = 0; i < items.length; i++) {\n  const item = items[i];\n  const j = item.json;\n  const attachments = [];\n  for (const key of Object.keys(item.binary || {})) {\n    const meta = item.binary[key];\n    const buf = await this.helpers.getBinaryDataBuffer(i, key);\n    attachments.push({ name: meta.fileName || key, mime: meta.mimeType, b64: buf.toString('base64') });\n  }\n  const headers = j.headers || {};\n  out.push({ json: {\n    gmail_id: j.id,\n    from: (j.from && (j.from.text || (j.from.value && j.from.value[0] && j.from.value[0].address))) || '',\n    subject: j.subject || '',\n    text: j.text || '',\n    message_id: j.messageId || j.id,\n    auth: headers['authentication-results'] || '',\n    attachments,\n  }});\n}\nreturn out;",
-        "jsonCode": "// Package each email for VendorIQ: sender, subject, text, SPF/DKIM result and attachments (base64).\n// Skips mail that is neither a vendor application (has attachments) nor a reply to one of our requests.\nconst own = ($env.SMTP_FROM_ADDRESS || '').toLowerCase();\nconst out = [];\nconst items = $input.all();\nfor (let i = 0; i < items.length; i++) {\n  const item = items[i];\n  const j = item.json;\n  const fromText = (j.from && (j.from.text || (j.from.value && j.from.value[0] && j.from.value[0].address))) || '';\n  const subject = j.subject || '';\n  const attachments = [];\n  for (const key of Object.keys(item.binary || {})) {\n    const meta = item.binary[key];\n    const buf = await this.helpers.getBinaryDataBuffer(i, key);\n    attachments.push({ name: meta.fileName || key, mime: meta.mimeType, b64: buf.toString('base64') });\n  }\n  const isReply = /\\[VEN-\\d{4}-\\d{5}\\]/.test(subject);\n  if (own && fromText.toLowerCase().includes(own)) continue;\n  if (!attachments.length && !isReply) continue;\n  const h = j.headers || {};\n  const auth = h['authentication-results'] || (typeof h.get === 'function' ? h.get('authentication-results') : '') || '';\n  out.push({ json: { from: fromText, subject, text: j.text || '', message_id: j.messageId || '', auth: String(auth), attachments } });\n}\nreturn out;"
+        "jsCode": "// Package each email for VendorIQ: sender, subject, text, SPF/DKIM result, attachments (base64) and an\n// 'automated' flag (newsletters, bounces, auto-replies) so the app never answers machines.\nconst out = [];\nconst items = $input.all();\nfor (let i = 0; i < items.length; i++) {\n  const item = items[i];\n  const j = item.json;\n  const attachments = [];\n  for (const key of Object.keys(item.binary || {})) {\n    const meta = item.binary[key];\n    const buf = await this.helpers.getBinaryDataBuffer(i, key);\n    attachments.push({ name: meta.fileName || key, mime: meta.mimeType, b64: buf.toString('base64') });\n  }\n  const h = j.headers || {};\n  const header = (k) => String(h[k] || '').replace(new RegExp('^' + k + ':\\\\s*', 'i'), '');\n  const automated = !!header('list-unsubscribe') || /^(auto-generated|auto-replied)/i.test(header('auto-submitted')) || /bulk|list|junk/i.test(header('precedence'));\n  const from = (j.from && (j.from.text || (j.from.value && j.from.value[0] && j.from.value[0].address))) || '';\n  out.push({ json: { gmail_id: j.id, from, subject: j.subject || '', text: j.text || '', message_id: j.messageId || j.id, auth: header('authentication-results'), automated, attachments } });\n}\nreturn out;"
       },
       "id": "c2e7b9a1-0000-4000-8000-000000000003",
       "name": "Package email",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        240,
-        0
-      ]
+      "position": [240, 0]
     },
     {
       "parameters": {
         "method": "POST",
         "url": "REPLACE_WITH_APP_URL/api/intake/email",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "x-vendoriq-secret",
-              "value": "REPLACE_WITH_SHARED_SECRET"
-            }
-          ]
-        },
+        "headerParameters": { "parameters": [{ "name": "x-vendoriq-secret", "value": "REPLACE_WITH_SHARED_SECRET" }] },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ from: $json.from, subject: $json.subject, text: $json.text, message_id: $json.message_id, auth: $json.auth, attachments: $json.attachments }) }}",
-        "options": {
-          "timeout": 120000
-        }
+        "jsonBody": "={{ JSON.stringify({ from: $json.from, subject: $json.subject, text: $json.text, message_id: $json.message_id, auth: $json.auth, automated: $json.automated, attachments: $json.attachments }) }}",
+        "options": { "timeout": 120000 }
       },
       "id": "c2e7b9a1-0000-4000-8000-000000000004",
       "name": "Send to VendorIQ",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        480,
-        0
-      ],
+      "position": [480, 0],
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Package email').item.json.gmail_id }}"
+      },
+      "id": "c2e7b9a1-0000-4000-8000-000000000005",
+      "name": "Mark as read",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [720, 0],
+      "credentials": { "gmailOAuth2": { "id": "__GMAIL_ID__", "name": "Gmail account" } }
     }
   ],
   "connections": {
-    "New vendor email": {
-      "main": [
-        [
-          {
-            "node": "Package email",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Package email": {
-      "main": [
-        [
-          {
-            "node": "Send to VendorIQ",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
+    "New vendor email": { "main": [[{ "node": "Package email", "type": "main", "index": 0 }]] },
+    "Package email": { "main": [[{ "node": "Send to VendorIQ", "type": "main", "index": 0 }]] },
+    "Send to VendorIQ": { "main": [[{ "node": "Mark as read", "type": "main", "index": 0 }]] }
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
+  "settings": { "executionOrder": "v1" },
   "pinData": {}
 }
