@@ -676,14 +676,22 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
   const ifsc = clean(app.bank_ifsc);
   const pan = clean(app.pan);
 
-  const sameAccount = await query<{ id: string; legal_name: string; pan: string; status: string }>(
+  // Without an account number and IFSC there is nothing to compare (blank would "match" other blanks).
+  const sameAccount = account && ifsc ? await query<{ id: string; legal_name: string; pan: string; status: string }>(
     `select id, legal_name, pan, status from applications
       where id <> $1 and regexp_replace(coalesce(bank_account_number,''), '\\D', '', 'g') = $2
         and upper(bank_ifsc) = $3 and status in ('approved','in_review','awaiting_vendor')`,
     [app.id, account, ifsc],
-  );
+  ) : [];
   const otherEntity = sameAccount.filter((r) => clean(r.pan) !== pan);
-  out.push({
+  if (!account || !ifsc) out.push({
+    code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
+    status: "skipped", severity: "info", route: "none",
+    message: "No bank details yet — checked once the vendor provides them.",
+    evidence: {},
+    rule: "One bank account may belong to only one legal entity. Sharing an account with another vendor is a hallmark of payment-diversion fraud.",
+  });
+  else out.push({
     code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
     status: otherEntity.length ? "failed" : "passed", severity: "critical", route: otherEntity.length ? "reject" : "none",
     message: otherEntity.length
@@ -695,7 +703,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
 
   const existing = await query<{ id: string; legal_name: string; status: string }>(
     `select id, legal_name, status from applications
-      where id <> $1 and status = 'approved' and (upper(pan) = $2 or upper(gstin) = $3)`,
+      where id <> $1 and status = 'approved' and ((upper(pan) = $2 and $2 <> '') or (upper(gstin) = $3 and $3 <> ''))`,
     [app.id, pan, clean(app.gstin)],
   );
   out.push({

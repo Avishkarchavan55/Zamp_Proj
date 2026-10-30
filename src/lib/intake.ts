@@ -66,6 +66,18 @@ interface Classified {
   slot: DocSlot | null;
 }
 
+/** When the model calls a document "other", its fields still tell us what it is (a GSTIN → GST certificate, …). */
+function slotFromFields(read: ReadResult): DocSlot | null {
+  if (read.failed) return null;
+  const has = new Set(read.extraction.fields.map((f) => f.key));
+  if (has.has("udyam_number")) return "udyam";
+  if (has.has("gstin")) return "gst";
+  if (has.has("cin")) return "incorporation";
+  if (has.has("account_number") && has.has("ifsc")) return "bank_proof";
+  if (has.has("pan") && (has.has("father_name") || has.has("date_of_birth"))) return "pan";
+  return null;
+}
+
 /** Reads every attachment once; tiny images (logos, signatures) are ignored. */
 async function classifyAttachments(files: IncomingFile[]) {
   const usable = files.filter((f) => /pdf|png|jpe?g|webp/i.test(f.type || f.name) && !(f.bytes.length < 15_000 && !/pdf/i.test(f.type)));
@@ -74,7 +86,7 @@ async function classifyAttachments(files: IncomingFile[]) {
       const read = await extractDocument(null, {
         mime: file.type, data_b64: file.bytes.toString("base64"), sha256: createHash("sha256").update(file.bytes).digest("hex"),
       });
-      return { file, read, slot: SLOT_FOR[read.extraction.detected_type] ?? null };
+      return { file, read, slot: SLOT_FOR[read.extraction.detected_type] ?? slotFromFields(read) };
     }),
   );
   // One document per slot: keep the most confident reading.

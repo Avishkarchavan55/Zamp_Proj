@@ -26,8 +26,23 @@ export const FieldSchema = z.object({
   box_2d: Box.optional().nullable(),
 });
 
+/** Models sometimes paraphrase the type ("GST certificate", "gst_reg_cert"); map those onto the real names. */
+function looseDocType(v: unknown): unknown {
+  if (typeof v !== "string") return v;
+  const t = v.toLowerCase().replace(/[^a-z]+/g, " ");
+  if ((DOC_TYPES as readonly string[]).includes(v)) return v;
+  if (/\bgst\b|reg 06|goods and services/.test(t)) return "gst_registration_certificate";
+  if (/incorporat/.test(t)) return "certificate_of_incorporation";
+  if (/udyam|msme/.test(t)) return "udyam_certificate";
+  if (/cheque|check/.test(t)) return "cancelled_cheque";
+  if (/statement/.test(t)) return "bank_statement";
+  if (/bank/.test(t)) return "bank_letter";
+  if (/\bpan\b|permanent account/.test(t)) return "pan_card";
+  return v;
+}
+
 export const ExtractionSchema = z.object({
-  detected_type: z.enum(DOC_TYPES).catch("other"),
+  detected_type: z.preprocess(looseDocType, z.enum(DOC_TYPES).catch("other")),
   type_confidence: z.coerce.number().min(0).max(1),
   legibility: z.enum(["clear", "degraded", "illegible"]).catch("degraded"),
   fields: z.array(z.unknown()).transform((items) =>
