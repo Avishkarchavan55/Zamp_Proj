@@ -5,7 +5,7 @@ import { SESSION_COOKIE, type Role, type Session, verifySession } from "./sessio
 
 /** Demo staff account (one-click login). Seeded into app_users on first use. */
 export const DEMO_USERS: { id: string; name: string; email: string; role: Role }[] = [
-  { id: "usr-reviewer", name: process.env.DEMO_REVIEWER_NAME ?? "Priya Nair", email: "procurement@acme-demo.in", role: "reviewer" },
+  { id: "usr-reviewer", name: process.env.DEMO_REVIEWER_NAME ?? "Gaurav Ahuja", email: "procurement@acme-demo.in", role: "reviewer" },
 ];
 
 export async function ensureDemoUsers() {
@@ -30,5 +30,5 @@ export async function requireStaff(check?: (role: Role) => boolean): Promise<Ses
   const user = await one<{ active: boolean }>("select active from app_users where id=$1", [s.sub]);
   if (user && !user.active) return Response.json({ error: "Account disabled" }, { status: 403 });
   if (check && !check(s.role)) return Response.json({ error: "Your role is not allowed to do this" }, { status: 403 });
-  return s;
+  return { ...s, name: DEMO_USERS.find((u) => u.id === s.sub)?.name ?? s.name };
 }

@@ -1,4 +1,5 @@
 import { Factory, Lock } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function VendorLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +13,10 @@ export default function VendorLayout({ children }: { children: React.ReactNode }
               <div className="text-xs text-ink-3">Supplier registration portal</div>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-ink-3"><Lock className="h-3.5 w-3.5" /> Secure submission</div>
+          <div className="flex items-center gap-3">
+            <span className="hidden items-center gap-1.5 text-xs text-ink-3 sm:flex"><Lock className="h-3.5 w-3.5" /> Secure submission</span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">{children}</main>

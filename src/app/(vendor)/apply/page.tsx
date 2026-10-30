@@ -268,11 +268,33 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
   );
 }
 
+/** The other two ways in, shown at the top so vendors who'd rather email or use Google Forms see them first. */
 function OtherChannels() {
+  const [ch, setCh] = useState<{ intake_email: string | null; google_form_url: string | null } | null>(null);
+  useEffect(() => {
+    fetch("/api/channels").then((r) => r.json()).then(setCh).catch(() => {});
+  }, []);
+  const email = ch?.intake_email ?? INTAKE_EMAIL ?? null;
+  const form = ch?.google_form_url ?? GOOGLE_FORM_URL ?? null;
   return (
-    <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[14px] text-ink-2">
-      <span className="flex items-center gap-1.5"><Mail className="h-4 w-4 text-ink-3" />Prefer email? Send your documents to {INTAKE_EMAIL ? <a className="font-medium text-brand" href={`mailto:${INTAKE_EMAIL}`}>{INTAKE_EMAIL}</a> : "our onboarding inbox"}.</span>
-      {GOOGLE_FORM_URL && <span className="flex items-center gap-1.5"><FileSpreadsheet className="h-4 w-4 text-ink-3" /><a className="font-medium text-brand" href={GOOGLE_FORM_URL} target="_blank">Or use our Google Form</a></span>}
-    </p>
+    <Card className="p-4">
+      <div className="text-[13px] font-semibold text-ink">Prefer another way? Use whichever is easiest — all three get the same checks.</div>
+      <div className="mt-3 grid gap-2 sm:grid-cols-3">
+        <div className="flex items-center gap-2.5 rounded-lg border border-brand/40 bg-brand-soft/50 px-3 py-2.5">
+          <Building2 className="h-4 w-4 shrink-0 text-brand" />
+          <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">This online form</div><div className="text-[12px] text-ink-3">You&apos;re here</div></div>
+        </div>
+        <a href={email ? `mailto:${email}?subject=Supplier registration` : undefined} className="flex items-center gap-2.5 rounded-lg border border-line px-3 py-2.5 hover:bg-line-2">
+          <Mail className="h-4 w-4 shrink-0 text-ink-3" />
+          <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">Email your documents</div><div className="truncate text-[12px] text-ink-3">{email ?? "Onboarding inbox"}</div></div>
+        </a>
+        {form ? (
+          <a href={form} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 rounded-lg border border-line px-3 py-2.5 hover:bg-line-2">
+            <FileSpreadsheet className="h-4 w-4 shrink-0 text-ink-3" />
+            <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">Use our Google Form</div><div className="text-[12px] text-ink-3">Needs a Google account</div></div>
+          </a>
+        ) : <div />}
+      </div>
+    </Card>
   );
 }

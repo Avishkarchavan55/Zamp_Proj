@@ -102,7 +102,7 @@ export function CheckRowView({ c, defaultOpen = false }: { c: CheckRow; defaultO
   const expandable = !!(c.evidence || c.rule);
   const notPassed = c.status !== "passed" && c.status !== "skipped";
   return (
-    <div className={cx("animate-rise border-b border-line-2 last:border-0", notPassed && "bg-[#fffdfa]")}>
+    <div className={cx("animate-rise border-b border-line-2 last:border-0", notPassed && "bg-warn-soft/25")}>
       <button
         type="button"
         onClick={() => expandable && setOpen((o) => !o)}

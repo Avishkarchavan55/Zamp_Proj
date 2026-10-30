@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Loader2, ShieldCheck } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { useToast } from "@/components/toast";
@@ -47,7 +48,8 @@ function Login() {
         <div className="text-sm text-white/50">Acme Manufacturing · Procurement</div>
       </div>
 
-      <div className="flex items-center justify-center px-6 py-12">
+      <div className="relative flex items-center justify-center px-6 py-12">
+        <ThemeToggle className="absolute right-5 top-5" />
         <div className="w-full max-w-sm">
           <div className="mb-8 lg:hidden">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-white"><ShieldCheck className="h-5 w-5" /></div>
@@ -59,9 +61,9 @@ function Login() {
             disabled={busy}
             className="mt-8 flex w-full items-center gap-3 rounded-xl border border-line bg-surface p-4 text-left transition-colors duration-150 hover:border-brand hover:bg-brand-soft/40 disabled:opacity-60"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-[13px] font-semibold text-white">PN</div>
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-[13px] font-semibold text-white">GA</div>
             <div className="flex-1">
-              <div className="font-medium text-ink">Continue as Priya Nair</div>
+              <div className="font-medium text-ink">Continue as Gaurav Ahuja</div>
               <div className="text-[13px] text-ink-3">Procurement team · demo account</div>
             </div>
             {busy ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <ArrowRight className="h-4 w-4 text-ink-3" />}

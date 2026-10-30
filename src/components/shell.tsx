@@ -1,11 +1,12 @@
 "use client";
 
-import { ExternalLink, FileStack, Inbox, LayoutDashboard, LogOut, Menu, ScaleIcon, Search, ShieldCheck, UsersRound, X } from "lucide-react";
+import { ExternalLink, FileStack, Inbox, LayoutDashboard, LogOut, Menu, QrCode, ScaleIcon, Search, ShieldCheck, UsersRound, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { CommandPalette } from "./command-palette";
+import { ThemeToggle } from "./theme-toggle";
 import { cx } from "./ui";
 
 export interface Me {
@@ -91,6 +92,10 @@ function Sidebar({ onNavigate, onSearch }: { onNavigate?: () => void; onSearch: 
           <ExternalLink className="h-[18px] w-[18px]" />
           <span className="flex-1">Supplier portal</span>
         </Link>
+        <Link href="/supplier" target="_blank" className="flex min-h-10 items-center gap-3 rounded-lg px-3 text-[14px] text-white/70 transition-colors duration-150 hover:bg-white/6 hover:text-white">
+          <QrCode className="h-[18px] w-[18px]" />
+          <span className="flex-1">Become a supplier page</span>
+        </Link>
       </nav>
 
       <div className="flex items-center gap-2.5 rounded-xl bg-white/6 p-2.5">
@@ -101,6 +106,7 @@ function Sidebar({ onNavigate, onSearch }: { onNavigate?: () => void; onSearch: 
           <div className="truncate text-[13.5px] font-medium text-white">{me?.name ?? "…"}</div>
           <div className="truncate text-[11.5px] text-white/55">{me?.role_label}</div>
         </div>
+        <ThemeToggle tone="navy" />
         <button onClick={signOut} aria-label="Sign out" title="Sign out" className="flex h-9 w-9 items-center justify-center rounded-md text-white/60 hover:bg-white/10 hover:text-white">
           <LogOut className="h-4 w-4" />
         </button>
@@ -130,6 +136,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-30 flex items-center justify-between bg-navy px-4 py-3 lg:hidden">
         <Logo />
         <div className="flex items-center gap-1">
+          <ThemeToggle tone="navy" />
           <button className="flex h-10 w-10 items-center justify-center rounded-lg text-white/80 hover:bg-white/10" aria-label="Search" onClick={() => setPalette(true)}><Search className="h-5 w-5" /></button>
           <button className="flex h-10 w-10 items-center justify-center rounded-lg text-white/80 hover:bg-white/10" aria-label="Open menu" onClick={() => setOpen(true)}><Menu className="h-5 w-5" /></button>
         </div>

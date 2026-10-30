@@ -152,7 +152,10 @@ function Channels({ sources, inbox }: { sources: Stats["sources"] | undefined; i
   return (
     <section>
       <h2 className="mb-1 text-[13px] font-semibold uppercase tracking-wide text-ink-3">How vendors apply</h2>
-      <p className="mb-3 text-[14px] text-ink-2">Three ways in, one process: every application gets the same checks, decision rules and audit trail.</p>
+      <p className="mb-3 flex flex-wrap items-center gap-x-3 text-[14px] text-ink-2">
+        Three ways in, one process: every application gets the same checks, decision rules and audit trail.
+        <a href="/supplier" target="_blank" className="flex items-center gap-1 font-medium text-brand hover:text-brand-2">Share the &ldquo;Become a supplier&rdquo; page (with QR codes) <ExternalLink className="h-3.5 w-3.5" /></a>
+      </p>
       <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
         {ways.map((w) => {
           const ch = CHANNELS.find((c) => c.key === w.key)!;

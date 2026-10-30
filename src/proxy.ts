@@ -6,8 +6,8 @@ import { SESSION_COOKIE, verifySession } from "./lib/session";
  * those authenticates itself (resubmission token, shared secret, Turnstile).
  */
 const PUBLIC_PREFIXES = [
-  "/login", "/apply", "/vendor/", "/demo/",
-  "/api/auth/", "/api/vendor/", "/api/intake/", "/api/n8n/", "/api/health",
+  "/login", "/apply", "/supplier", "/vendor/", "/demo/", "/test-cases/",
+  "/api/auth/", "/api/vendor/", "/api/intake/", "/api/n8n/", "/api/health", "/api/channels",
 ];
 
 export async function proxy(req: NextRequest) {

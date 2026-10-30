@@ -55,6 +55,59 @@
   --shadow-pop: 0 12px 32px rgba(15, 23, 42, 0.14);
 }
 
+/* Dark theme: the same tokens, re-stepped for a dark surface. Set by the theme toggle (data-theme on <html>). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #0b1220;
+  --color-surface: #111a2b;
+  --color-ink: #e6ebf2;
+  --color-ink-2: #aab4c4;
+  --color-ink-3: #8592a6;
+  --color-line: #253247;
+  --color-line-2: #1a2537;
+
+  --color-navy: #0d1829;
+  --color-navy-2: #091221;
+  --color-navy-soft: #1a2740;
+  --color-brand: #3b82f6;
+  --color-brand-2: #7cb0ff;
+  --color-brand-soft: #16264a;
+
+  --color-good: #22c55e;
+  --color-good-ink: #4ade80;
+  --color-good-soft: #10291c;
+  --color-warn: #f59e0b;
+  --color-warn-ink: #fbbf24;
+  --color-warn-soft: #2b2009;
+  --color-serious: #f97316;
+  --color-serious-ink: #fb923c;
+  --color-serious-soft: #2d1b0c;
+  --color-critical: #ef4444;
+  --color-critical-ink: #f87171;
+  --color-critical-soft: #2d1416;
+  --color-info: #38bdf8;
+  --color-info-ink: #7dd3fc;
+  --color-info-soft: #0c2434;
+
+  --color-ch-portal: #3987e5;
+  --color-ch-email: #d95926;
+  --color-ch-form: #199e70;
+
+  --color-seq: #3b82f6;
+  --color-seq-soft: #1c2f52;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="dark"] ::selection {
+  background: #1e3a8a;
+}
+
+:root[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
 html,
 body {
   background: var(--color-canvas);
