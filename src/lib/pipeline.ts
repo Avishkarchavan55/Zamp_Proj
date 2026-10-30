@@ -143,6 +143,8 @@ export async function runPipeline(runId: string, appUrl: string) {
                   d.application_id, d.id as document_id
              from extractions e join documents d on d.id = e.document_id
             where d.sha256 = $1 and e.cached = false and coalesce(e.provider,'') not in ('none', 'pdf-text-regex')
+              -- a weak reading (e.g. a fallback model that could not tell what the document is) is read again
+              and e.detected_type <> 'other' and e.type_confidence >= 0.6 and e.legibility <> 'illegible'
               and ($3 or coalesce(e.provider,'') <> 'fixture')
             order by (e.document_id = $2) desc, e.created_at desc limit 1`,
           [d.sha256, d.id, extractorMode() === "fixture"],
