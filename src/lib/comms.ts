@@ -196,11 +196,20 @@ export async function dispatch(opts: {
           status_url: `${opts.appUrl}/api/n8n/status/${id}`,
           callback_url: `${opts.appUrl}/api/n8n/callback`,
         }),
-        signal: AbortSignal.timeout(10_000),
+        signal: AbortSignal.timeout(30_000),
       });
       if (!res.ok) throw new Error(`n8n responded ${res.status}`);
     } catch (err) {
-      await smtpFallback(id, `n8n handoff failed: ${(err as Error).message}`);
+      const e = err as Error;
+      if (e.name === "TimeoutError") {
+        // n8n may still deliver it (a free instance can be slow). Sending now could duplicate the email,
+        // so leave it queued: the watchdog sends it over SMTP if n8n never confirms delivery.
+        await query(`update communications set meta = coalesce(meta,'{}'::jsonb) || $2::jsonb where id=$1`, [
+          id, json({ handoff: "n8n slow to acknowledge — watchdog will use SMTP if delivery is not confirmed" }),
+        ]);
+      } else {
+        await smtpFallback(id, `n8n handoff failed: ${e.message}`);
+      }
     }
   }
   return (await one<Communication>("select * from communications where id=$1", [id]))!;
@@ -210,7 +219,7 @@ export async function dispatch(opts: {
  * Watchdog: n8n accepted a message but never reported delivery. Called from /api/health (pinged every
  * few minutes) so stuck messages go out over SMTP instead of silently waiting.
  */
-export async function sweepUndelivered(maxAgeMinutes = 2) {
+export async function sweepUndelivered(maxAgeMinutes = 3) {
   const stuck = await query<{ id: string }>(
     `select id from communications where status='queued' and channel='n8n' and created_at < now() - ($1 || ' minutes')::interval`,
     [String(maxAgeMinutes)],
