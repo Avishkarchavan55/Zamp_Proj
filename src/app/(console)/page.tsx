@@ -2,7 +2,7 @@
 
 import {
   ArrowRight, Ban, CheckCircle2, ChevronRight, Clock3, ExternalLink, FileSpreadsheet, Globe, Inbox,
-  Loader2, Mail, Plus, QrCode, ScanSearch, TriangleAlert,
+  Loader2, Mail, Plus, QrCode, ScanSearch, TimerReset, TriangleAlert, Zap,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -43,8 +43,11 @@ export default function Overview() {
           <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-ink">Good {hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening"}{me ? `, ${me.name.split(" ")[0]}` : ""}</h1>
           <p className="mt-1.5 text-[15px] text-ink-2">
             {review.length ? <><span className="font-medium text-ink">{review.length} vendor{review.length === 1 ? "" : "s"} need your decision.</span> Everything else is handled automatically.</> : "Nothing needs your decision right now — everything is handled automatically."}
-            {decided.length > 0 && <> <span className="text-ink-3">· {autoPct}% of vendors were decided without anyone stepping in.</span></>}
           </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <StatPill icon={Zap} value={apps ? `${autoPct}%` : "…"} label="decided automatically" />
+            <StatPill icon={TimerReset} value={stats ? `${(stats.runs.avg_ms / 1000).toFixed(1)}s` : "…"} label="average time to a decision · ~35 min by hand" />
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           <Link href="/share"><Button variant="secondary"><QrCode className="h-4 w-4" />Invite a supplier</Button></Link>
@@ -307,6 +310,15 @@ function FlowStep({ icon: Icon, title, value, hint, href, tone = "neutral", high
       {value === undefined ? <Skeleton className="mt-3 h-8 w-12" /> : <span className="mt-2 text-[30px] font-semibold leading-none tabular-nums text-ink">{value}</span>}
       {hint && <span className="mt-auto pt-2 text-[12.5px] leading-snug text-ink-3">{hint}</span>}
     </Link>
+  );
+}
+
+function StatPill({ icon: Icon, value, label }: { icon: React.ElementType; value: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-[13px] text-ink-2">
+      <Icon className="h-3.5 w-3.5 text-brand" />
+      <span className="font-semibold text-ink">{value}</span> {label}
+    </span>
   );
 }
 

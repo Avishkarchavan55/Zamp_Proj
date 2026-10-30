@@ -1,6 +1,5 @@
 // Tidies the live demo without starting from zero:
-//   1. keeps the original history vendors (Apex, Sai Krupa, Deccan, Orion, Vertex, Murugan — the first
-//      application of each) and deletes every other application with its documents, runs, emails,
+//   1. keeps the history vendors (the first application of each) and deletes every other application with its documents, runs, emails,
 //      audit entries and stored files (test runs of the test-case vendors, so they can be run fresh)
 //   2. imports the extra history vendors quietly (checked and decided, but nobody is emailed),
 //      skipping any already present
@@ -16,6 +15,8 @@ import { createClient } from "@supabase/supabase-js";
 
 const KEEP_SCENARIOS = ["apex", "saikrupa", "deccan", "orion", "vertex", "murugan"];
 const ADD_HISTORY = ["kalpataru", "suryodaya", "bharat", "venkateswara", "coastal", "patil", "ganga"];
+// How each imported vendor originally applied, so the dashboard shows a realistic mix of channels.
+const CHANNEL = { kalpataru: "email", bharat: "email", patil: "email", ganga: "email", suryodaya: "google_form", venkateswara: "google_form", coastal: "google_form" };
 
 const BASE = process.env.BASE_URL ?? "https://zamp-prep.vercel.app";
 const url = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
@@ -24,7 +25,7 @@ const sql = postgres(url, { prepare: false, max: 1 });
 
 const apps = await sql`select id, scenario, legal_name, status from applications order by created_at`;
 const keep = new Set();
-for (const s of KEEP_SCENARIOS) {
+for (const s of [...KEEP_SCENARIOS, ...ADD_HISTORY]) {
   const first = apps.find((a) => a.scenario === s);
   if (first) keep.add(first.id);
 }
@@ -63,4 +64,13 @@ if (toAdd.length) {
   });
   if (r.status !== 0) console.log("Import finished with errors (see above).");
 }
+await setChannels();
 console.log("\nDone.");
+
+async function setChannels() {
+  const db = postgres(url, { prepare: false, max: 1 });
+  for (const [scenario, source] of Object.entries(CHANNEL)) {
+    await db`update applications set source = ${source} where scenario = ${scenario} and source = 'portal'`;
+  }
+  await db.end();
+}
