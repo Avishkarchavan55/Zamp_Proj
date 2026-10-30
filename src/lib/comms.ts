@@ -123,7 +123,7 @@ async function sendSmtp(to: string, subject: string, html: string, text: string)
   return info.messageId as string;
 }
 
-async function smtpFallback(id: string, reason: string) {
+export async function smtpFallback(id: string, reason: string) {
   const c = await one<Communication>("select * from communications where id=$1", [id]);
   if (!c) return;
   const to = (c.meta?.delivered_to as string) || c.to_email;

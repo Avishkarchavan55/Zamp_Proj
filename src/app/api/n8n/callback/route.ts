@@ -3,6 +3,7 @@ import type { Communication } from "@/lib/comms";
 import { json, one, query } from "@/lib/db";
 import { appUrl, bad, n8nAuthorised } from "@/lib/http";
 import { COMMS } from "@/lib/policy";
+import { smtpFallback } from "@/lib/comms";
 import { audit } from "@/lib/repo";
 
 /**
@@ -61,10 +62,9 @@ export async function POST(req: Request) {
       await audit(comm.application_id, "n8n", "escalated", { communication_id: comm.id, reason: "No response after all reminders" });
       break;
     case "failed":
-      await query(`update communications set status='failed', meta = coalesce(meta,'{}'::jsonb) || $2::jsonb where id=$1`, [
-        comm.id, json({ error: body.error ?? "unknown" }),
-      ]);
+      // n8n could not deliver it: send it ourselves so the vendor is never left without the email.
       await audit(comm.application_id, "n8n", "email_failed", { communication_id: comm.id, error: body.error });
+      await smtpFallback(comm.id, `n8n could not send it: ${body.error ?? "unknown error"}`);
       break;
     default:
       return bad("Unknown event");
