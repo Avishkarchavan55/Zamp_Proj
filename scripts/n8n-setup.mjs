@@ -47,15 +47,20 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace
 const existing = (await api("GET", "/workflows?limit=100")).data ?? [];
 
 for (const file of ["vendoriq-communications.json", "vendoriq-email-intake.json"]) {
-  let raw = fs.readFileSync(path.join(root, "n8n", file), "utf8");
-  raw = raw
-    .replaceAll("REPLACE_WITH_SHARED_SECRET", process.env.N8N_SHARED_SECRET)
-    .replaceAll("REPLACE_WITH_APP_URL", APP)
-    .replaceAll("__SMTP_ID__", smtp.id)
-    .replaceAll("__IMAP_ID__", imap.id)
-    .replaceAll("{{ $env.SMTP_FROM_ADDRESS || 'REPLACE_WITH_SENDER' }}", sender)
-    .replaceAll("($env.SMTP_FROM_ADDRESS || '')", JSON.stringify(sender));
-  const wf = JSON.parse(raw);
+  // Substitute inside parsed strings so values never break the JSON.
+  const fill = (v) =>
+    typeof v === "string"
+      ? v
+          .replaceAll("REPLACE_WITH_SHARED_SECRET", process.env.N8N_SHARED_SECRET)
+          .replaceAll("REPLACE_WITH_APP_URL", APP)
+          .replaceAll("__SMTP_ID__", smtp.id)
+          .replaceAll("__IMAP_ID__", imap.id)
+          .replaceAll("{{ $env.SMTP_FROM_ADDRESS || 'REPLACE_WITH_SENDER' }}", sender)
+          .replaceAll("($env.SMTP_FROM_ADDRESS || '')", `'${sender}'`)
+      : Array.isArray(v) ? v.map(fill)
+      : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, fill(x)]))
+      : v;
+  const wf = fill(JSON.parse(fs.readFileSync(path.join(root, "n8n", file), "utf8")));
   const body = { name: wf.name, nodes: wf.nodes, connections: wf.connections, settings: { executionOrder: "v1" } };
   const found = existing.find((w) => w.name === wf.name);
   const saved = found ? await api("PUT", `/workflows/${found.id}`, body) : await api("POST", "/workflows", body);
