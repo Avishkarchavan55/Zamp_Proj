@@ -1,5 +1,6 @@
 // Sets up n8n for VendorIQ through the n8n public API:
-//   1. creates SMTP + IMAP credentials for the onboarding Gmail (App Password — no Google OAuth)
+//   1. creates IMAP (inbox) credentials for the onboarding Gmail (App Password); sending uses a Gmail OAuth2
+//      credential connected once in the n8n UI (N8N_GMAIL_CRED_ID), because free hosts block SMTP ports
 //   2. imports W1 (vendor communications & reminders) and W2 (inbound vendor email) with real values
 //   3. activates both and prints the webhook URL to put in N8N_WEBHOOK_URL
 //
@@ -31,12 +32,13 @@ async function api(method, p, body) {
   return text ? JSON.parse(text) : {};
 }
 
-const smtp = await api("POST", "/credentials", {
+// Reuse existing credentials when their IDs are given (re-runs shouldn't create duplicates).
+const smtp = process.env.N8N_SMTP_CRED_ID ? { id: process.env.N8N_SMTP_CRED_ID } : await api("POST", "/credentials", {
   name: "VendorIQ Gmail SMTP",
   type: "smtp",
   data: { user: sender, password: pass, host: "smtp.gmail.com", port: 465, secure: true, disableStartTls: false },
 });
-const imap = await api("POST", "/credentials", {
+const imap = process.env.N8N_IMAP_CRED_ID ? { id: process.env.N8N_IMAP_CRED_ID } : await api("POST", "/credentials", {
   name: "VendorIQ Gmail IMAP",
   type: "imap",
   data: { user: sender, password: pass, host: "imap.gmail.com", port: 993, secure: true, allowUnauthorizedCerts: false },
@@ -55,6 +57,7 @@ for (const file of ["vendoriq-communications.json", "vendoriq-email-intake.json"
           .replaceAll("REPLACE_WITH_APP_URL", APP)
           .replaceAll("__SMTP_ID__", smtp.id)
           .replaceAll("__IMAP_ID__", imap.id)
+          .replaceAll("__GMAIL_ID__", process.env.N8N_GMAIL_CRED_ID ?? "__GMAIL_ID__")
           .replaceAll("{{ $env.SMTP_FROM_ADDRESS || 'REPLACE_WITH_SENDER' }}", sender)
           .replaceAll("($env.SMTP_FROM_ADDRESS || '')", `'${sender}'`)
       : Array.isArray(v) ? v.map(fill)

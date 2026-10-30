@@ -3,7 +3,7 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## VendorIQ → n8n\nVendorIQ decides **what** to ask the vendor. This workflow owns **delivery, waiting, chasing and escalation**.\n\n1. Webhook receives the composed email + reminder policy\n2. Gmail sends it; delivery reported back\n3. Wait N minutes → ask VendorIQ \"still waiting?\"\n4. Remind (fresh content each time) until the vendor resubmits\n5. Out of reminders → escalate\n\nThe loop is stateless: every callback response tells the workflow its next step.\n\nEmail is sent through Gmail SMTP with an App Password (no Google Cloud OAuth needed).\n\n**Setup:** create an SMTP credential for the onboarding Gmail and replace `REPLACE_WITH_SHARED_SECRET` with the app's `N8N_SHARED_SECRET`.",
+        "content": "## VendorIQ → n8n\nVendorIQ decides **what** to ask the vendor. This workflow owns **delivery, waiting, chasing and escalation**.\n\n1. Webhook receives the composed email + reminder policy\n2. Gmail sends it; delivery reported back\n3. Wait N minutes → ask VendorIQ \"still waiting?\"\n4. Remind (fresh content each time) until the vendor resubmits\n5. Out of reminders → escalate\n\nThe loop is stateless: every callback response tells the workflow its next step.\n\nEmail is sent with the Gmail API (OAuth, over HTTPS — SMTP ports are blocked on free hosts).\n\n**Setup:** connect a Gmail OAuth2 credential for the onboarding inbox and replace `REPLACE_WITH_SHARED_SECRET` with the app's `N8N_SHARED_SECRET`.",
         "height": 380,
         "width": 420,
         "color": 5
@@ -68,18 +68,19 @@
     },
     {
       "parameters": {
-        "fromEmail": "=Acme Vendor Onboarding <{{ $env.SMTP_FROM_ADDRESS || 'REPLACE_WITH_SENDER' }}>",
-        "toEmail": "={{ $json.body.to }}",
+        "operation": "send",
+        "sendTo": "={{ $json.body.to }}",
         "subject": "={{ $json.body.subject }}",
-        "emailFormat": "html",
-        "html": "={{ $json.body.html }}",
+        "emailType": "html",
+        "message": "={{ $json.body.html }}",
         "options": {
-          "appendAttribution": false
+          "appendAttribution": false,
+          "senderName": "Acme Vendor Onboarding"
         }
       },
       "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000004",
       "name": "Send email (Gmail)",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
         460,
@@ -87,9 +88,9 @@
       ],
       "onError": "continueErrorOutput",
       "credentials": {
-        "smtp": {
-          "id": "__SMTP_ID__",
-          "name": "VendorIQ Gmail SMTP"
+        "gmailOAuth2": {
+          "id": "__GMAIL_ID__",
+          "name": "VendorIQ Gmail OAuth"
         }
       }
     },
@@ -108,7 +109,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ communication_id: $('Webhook').first().json.body.communication_id, event: 'sent', message_id: $json.messageId }) }}",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $('Webhook').first().json.body.communication_id, event: 'sent', message_id: $json.id }) }}",
         "options": {}
       },
       "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000005",
@@ -308,27 +309,28 @@
     },
     {
       "parameters": {
-        "fromEmail": "=Acme Vendor Onboarding <{{ $env.SMTP_FROM_ADDRESS || 'REPLACE_WITH_SENDER' }}>",
-        "toEmail": "={{ $json.to }}",
+        "operation": "send",
+        "sendTo": "={{ $json.to }}",
         "subject": "={{ $json.reminder.subject }}",
-        "emailFormat": "html",
-        "html": "={{ $json.reminder.html }}",
+        "emailType": "html",
+        "message": "={{ $json.reminder.html }}",
         "options": {
-          "appendAttribution": false
+          "appendAttribution": false,
+          "senderName": "Acme Vendor Onboarding"
         }
       },
       "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000014",
       "name": "Send reminder (Gmail)",
-      "type": "n8n-nodes-base.emailSend",
+      "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
         2100,
         -320
       ],
       "credentials": {
-        "smtp": {
-          "id": "__SMTP_ID__",
-          "name": "VendorIQ Gmail SMTP"
+        "gmailOAuth2": {
+          "id": "__GMAIL_ID__",
+          "name": "VendorIQ Gmail OAuth"
         }
       }
     },
@@ -347,7 +349,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ communication_id: $('Still waiting on vendor?').item.json.communication_id, event: 'reminder_sent', reminder_no: $('Still waiting on vendor?').item.json.reminder_no, subject: $('Still waiting on vendor?').item.json.reminder.subject, html: $('Still waiting on vendor?').item.json.reminder.html, to: $('Still waiting on vendor?').item.json.to, message_id: $json.messageId }) }}",
+        "jsonBody": "={{ JSON.stringify({ communication_id: $('Still waiting on vendor?').item.json.communication_id, event: 'reminder_sent', reminder_no: $('Still waiting on vendor?').item.json.reminder_no, subject: $('Still waiting on vendor?').item.json.reminder.subject, html: $('Still waiting on vendor?').item.json.reminder.html, to: $('Still waiting on vendor?').item.json.to, message_id: $json.id }) }}",
         "options": {}
       },
       "id": "b1d6a8f2-0c11-4a1e-9b7a-000000000015",
