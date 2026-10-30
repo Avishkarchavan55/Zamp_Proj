@@ -110,5 +110,21 @@
     "status": "Active",
     "state_code": "27",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAJFR4417Q1ZQ",
+    "legal_name": "RIVERSIDE TRADERS",
+    "trade_name": "RIVERSIDE TRADERS",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Partnership"
+  },
+  {
+    "gstin": "29CQKPR6623M1ZZ",
+    "legal_name": "ANJALI RAO",
+    "trade_name": "ANJALI PRINT SOLUTIONS",
+    "status": "Active",
+    "state_code": "29",
+    "constitution": "Proprietorship"
   }
 ]

@@ -3,7 +3,7 @@ import { SLOTS, appUrl, bad, validateFile } from "@/lib/http";
 import { intakeStructured } from "@/lib/intake";
 import { runPipeline } from "@/lib/pipeline";
 import { listApplications, toIncoming, type IncomingFile } from "@/lib/repo";
-import { verifyHuman } from "@/lib/turnstile";
+import { verifyHuman, trustedCaller } from "@/lib/turnstile";
 import type { DocSlot, EntityType } from "@/lib/types";
 
 export const maxDuration = 300;
@@ -40,7 +40,11 @@ export async function POST(req: Request) {
     }
   }
 
-  const result = await intakeStructured({ source: "portal", form, files, scenario: (data.get("scenario") as string) || null });
+  // Importing historical vendors (trusted scripts only): recorded and checked, but nobody is emailed.
+  const quiet = data.get("quiet") === "true" && trustedCaller(req);
+  const result = await intakeStructured({
+    source: "portal", form, files, scenario: (data.get("scenario") as string) || null, meta: quiet ? { quiet: true } : undefined,
+  });
   const base = appUrl(req);
   after(() => runPipeline(result.runId!, base));
   return Response.json({ id: result.id, runId: result.runId }, { status: 201 });

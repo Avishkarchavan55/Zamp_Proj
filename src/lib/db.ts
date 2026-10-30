@@ -69,11 +69,12 @@ async function init(): Promise<Driver> {
 }
 
 async function seedGstRegistry(driver: Driver) {
-  const [{ n }] = await driver.query<{ n: number }>("select count(*)::int as n from gst_registry");
-  if (n > 0) return;
   const file = path.join(process.cwd(), "fixtures", "gst_registry.json");
   if (!fs.existsSync(file)) return;
   const records = JSON.parse(fs.readFileSync(file, "utf8")) as Array<Record<string, string>>;
+  // Top up when the sandbox file gained vendors since the table was first filled.
+  const [{ n }] = await driver.query<{ n: number }>("select count(*)::int as n from gst_registry");
+  if (n >= records.length) return;
   for (const r of records) {
     await driver.query(
       `insert into gst_registry (gstin, legal_name, trade_name, status, state_code, constitution)

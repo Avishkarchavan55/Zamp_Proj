@@ -256,6 +256,29 @@ VENDORS = {
         account="50200077315842", cheque_name="LOKSEVA PASHUKHADYA PVT LTD", micr="411240003",
         udyam="UDYAM-MH-01-0063318", msme_declared="Small", msme_cert="Small",
     ),
+    # Example: partnership firm, applies through the Google Form. Clean -> Approved.
+    "riverside": dict(
+        legal_name="RIVERSIDE TRADERS", form_name="Riverside Traders",
+        trade_name="", entity_type="partnership",
+        pan="AAJFR4417Q", state_code="24", cin="", inc_date=(3, 5, 2015),
+        address="12, Ashram Road, Navrangpura", city="Ahmedabad", state="Gujarat", pincode="380009",
+        contact_name="Kunal Shah", contact_email="kunal@riversidetraders.in", contact_phone="+91 98250 31184",
+        owner_name="Kunal Shah", website="riversidetraders.in", category="Industrial packaging material",
+        ifsc="UTIB0000004", bank="AXIS BANK", branch="MUMBAI BRANCH",
+        account="915020034418827", cheque_name="RIVERSIDE TRADERS", micr="400211002",
+    ),
+    # Example: proprietorship with clear digital documents, applies on the portal. Clean -> Approved.
+    "anjali": dict(
+        legal_name="ANJALI RAO", form_name="Anjali Print Solutions",
+        trade_name="ANJALI PRINT SOLUTIONS", entity_type="proprietorship",
+        pan="CQKPR6623M", state_code="29", cin="", inc_date=None,
+        address="88, 5th Block, Koramangala", city="Bengaluru", state="Karnataka", pincode="560034",
+        contact_name="Anjali Rao", contact_email="anjali@anjaliprint.in", contact_phone="+91 99860 47213",
+        owner_name="Anjali Rao", website="anjaliprint.in", category="Printing and labels",
+        ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+        account="50100388215407", cheque_name="ANJALI PRINT SOLUTIONS", micr="560240004",
+        dob="09/03/1988", father="VENKATESH RAO",
+    ),
 }
 VENDORS["shreeji"].update(udyam="UDYAM-MH-26-0012345", msme_declared="Micro", msme_cert="Micro")
 
@@ -264,6 +287,9 @@ for v in VENDORS.values():
     v.setdefault("gst_legal_name", v["legal_name"])
 
 # --------------------------------------------------------------------------------------------
+CONSTITUTION = {"proprietorship": "Proprietorship", "partnership": "Partnership", "llp": "Limited Liability Partnership",
+                "public_limited": "Public Limited Company", "private_limited": "Private Limited Company"}
+
 # Document renderers
 # --------------------------------------------------------------------------------------------
 
@@ -359,7 +385,7 @@ def gst_pdf(v) -> bytes:
     c.setFont("Helvetica-Bold", 11)
     c.drawString(20 * mm, h - 56 * mm, f"Registration Number : {v['gstin']}")
 
-    constitution = "Proprietorship" if v["entity_type"] == "proprietorship" else "Private Limited Company"
+    constitution = CONSTITUTION[v["entity_type"]]
     liability = v["inc_date"] or (1, 7, 2017)
     d, m, y = liability
     liab_year = max(y, 2017)
@@ -578,7 +604,7 @@ def pdf_to_scanned(pdf_renderer, v) -> bytes:
     rows = [
         ("Legal Name", v["gst_legal_name"]),
         ("Trade Name, if any", v["trade_name"] or v["gst_legal_name"]),
-        ("Constitution of Business", "Proprietorship" if v["entity_type"] == "proprietorship" else "Private Limited Company"),
+        ("Constitution of Business", CONSTITUTION[v["entity_type"]]),
         ("Address of Principal Place of Business", f"{v['address']}, {v['city']},"),
         ("", f"{v['state']}, {v['pincode']}"),
         ("Date of Liability", "01/07/2017"),
@@ -619,7 +645,7 @@ def truth_incorporation(v):
 
 def truth_gst(v, scanned=False):
     c = 0.86 if scanned else 0.98
-    constitution = "Proprietorship" if v["entity_type"] == "proprietorship" else "Private Limited Company"
+    constitution = CONSTITUTION[v["entity_type"]]
     return dict(detected_type="gst_registration_certificate", type_confidence=0.97, legibility="degraded" if scanned else "clear",
                 fields=[
                     _f("gstin", v["gstin"], f"Registration Number : {v['gstin']}", c),
@@ -711,6 +737,12 @@ SCENARIOS = [
     dict(id="pragati", vendor="pragati", group="extra", title="MSME category mismatch",
          summary="Declares Micro enterprise (45-day payment protection) but the Udyam certificate says Medium.",
          expected="Needs review - MSME category conflict affects payment terms"),
+    dict(id="riverside", vendor="riverside", group="example", title="Partnership firm (Google Form)",
+         summary="A partnership firm with GST, PAN and cheque - no incorporation certificate needed. Best tried through the Google Form.",
+         expected="Approved (bank ownership condition before first payment)"),
+    dict(id="anjali", vendor="anjali", group="example", title="Proprietorship, clear documents",
+         summary="A sole proprietor: the GST legal name is the owner, the trade name is the business. Clean digital documents.",
+         expected="Approved (bank ownership condition before first payment)"),
     dict(id="apex", vendor="apex", group="history", title="Existing vendor (history)", summary="", expected="Approved"),
     dict(id="saikrupa", vendor="saikrupa", group="history", title="History", summary="", expected="Approved"),
     dict(id="orion", vendor="orion", group="history", title="Cancelled GST registration", summary="", expected="Rejected"),
@@ -745,7 +777,7 @@ def main():
         slug = s["id"].capitalize()
         form = form_for(v)
 
-        if v["entity_type"] != "proprietorship":
+        if v["entity_type"] in ("private_limited", "public_limited", "llp"):
             files["incorporation"] = write(scn_dir, f"{slug}_Certificate_of_Incorporation.pdf",
                                            incorporation_pdf(v), truth_incorporation(v))
         if s["id"] == "murugan":
@@ -840,7 +872,7 @@ def main():
                              trade_name=v["trade_name"] or v["gst_legal_name"],
                              status="Cancelled" if key == "orion" else "Active",
                              state_code=v["state_code"],
-                             constitution="Proprietorship" if v["entity_type"] == "proprietorship" else "Private Limited Company"))
+                             constitution=CONSTITUTION[v["entity_type"]]))
     with open(os.path.join(FIXTURES, "gst_registry.json"), "w") as fh:
         json.dump(registry, fh, indent=2)
 

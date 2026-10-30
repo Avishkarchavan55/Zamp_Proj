@@ -180,7 +180,12 @@ export async function dispatch(opts: {
     [id, opts.app.id, opts.runId, opts.kind, opts.to, opts.content.subject, opts.content.html, json(meta)],
   );
 
-  if (!n8nConfigured()) {
+  if ((opts.app.intake_meta as { quiet?: boolean } | null)?.quiet) {
+    // Imported history: keep the record of what would have been sent, but do not email anyone.
+    await query(`update communications set status='not_configured', meta = coalesce(meta,'{}'::jsonb) || $2::jsonb where id=$1`, [
+      id, json({ suppressed: "Imported vendor history — not emailed" }),
+    ]);
+  } else if (!n8nConfigured()) {
     await smtpFallback(id, "n8n not configured");
   } else {
     try {

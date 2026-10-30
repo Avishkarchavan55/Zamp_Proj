@@ -11,7 +11,9 @@ const BASE = process.env.BASE_URL ?? "http://localhost:3000";
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, "$1")), "..");
 const scenarios = JSON.parse(fs.readFileSync(path.join(root, "public/demo/scenarios.json"), "utf8"));
 
-const wanted = process.argv.slice(2);
+// --quiet: import as history (checked and decided, but no emails). The default history set is always quiet.
+const quiet = process.argv.includes("--quiet");
+const wanted = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const list = wanted.length
   ? wanted.map((id) => scenarios.find((s) => s.id === id) ?? (console.error(`unknown scenario ${id}`), process.exit(1)))
   : ["apex", "saikrupa", "deccan", "orion", "vertex", "murugan"].map((id) => scenarios.find((s) => s.id === id));
@@ -40,6 +42,7 @@ for (const s of list) {
   const fd = new FormData();
   fd.set("form", JSON.stringify(s.form));
   fd.set("scenario", s.id);
+  if (quiet || !wanted.length) fd.set("quiet", "true");
   for (const [slot, file] of Object.entries(s.files)) {
     const buf = fs.readFileSync(path.join(root, "public/demo", s.id, file));
     fd.set(slot, new Blob([buf], { type: mime(file) }), path.basename(file));

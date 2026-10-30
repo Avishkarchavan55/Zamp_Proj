@@ -12,7 +12,7 @@ import type { ApplicationForm, DocSlot, EntityType } from "@/lib/types";
 
 interface Scenario {
   id: string;
-  group: "demo" | "extra" | "history";
+  group: "demo" | "extra" | "example" | "history";
   title: string;
   vendor: string;
   summary: string;
@@ -231,7 +231,7 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
     setLoading(null);
   }
 
-  const shown = list.filter((s) => s.group === "demo" || s.group === "extra");
+  const shown = list.filter((s) => s.group === "demo" || s.group === "extra" || s.group === "example");
   return (
     <div className="rounded-xl border border-dashed border-line bg-surface/60">
       <button onClick={() => setOpen((o) => !o)} className="flex min-h-11 w-full items-center justify-between px-4 text-left">
