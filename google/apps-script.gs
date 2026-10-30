@@ -115,6 +115,15 @@ function createVendorForm() {
   text("Udyam registration number", false, "^UDYAM-[A-Za-z]{2}-[0-9]{2}-[0-9]{7}$", "Format UDYAM-XX-00-0000000");
   form.addListItem().setTitle("MSME category").setChoiceValues(["Micro", "Small", "Medium", "Not applicable"]);
   ScriptApp.newTrigger("onFormSubmit").forForm(form).onFormSubmit().create();
+  PropertiesService.getScriptProperties().setProperty("FORM_ID", form.getId());
   console.log("Form created: " + form.getEditUrl());
   console.log("Now add these file-upload questions by hand: " + Object.keys(FILE_MAP).join(" | "));
+}
+
+/** Testing aid: sends the form's most recent response to VendorIQ again (no need to refill the form). */
+function resendLatestResponse() {
+  const form = FormApp.openById(PropertiesService.getScriptProperties().getProperty("FORM_ID"));
+  const responses = form.getResponses();
+  if (!responses.length) return console.log("No responses yet");
+  onFormSubmit({ response: responses[responses.length - 1] });
 }
