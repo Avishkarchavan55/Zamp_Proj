@@ -4,7 +4,7 @@ Each folder holds the documents for one vendor and a **HOW-TO-TEST.md** with the
 All companies, IDs and account numbers are fictional; IFSC and PIN codes are real so the live lookups work.
 
 **Before you start**
-- Every vendor email goes to the demo inbox set in `EMAIL_OVERRIDE_TO`, so you receive all requests and reminders yourself.
+- **Use your own email address as the contact email** (on the portal: *Send the vendor emails to*, in the Google Form: *Contact email*; for email cases you send from your own account anyway). Emails go to the address on the application, and the fictional addresses in these files may belong to real domains.
 - Run each vendor **once**. Submitting the same vendor again is caught as *May already be a vendor* — a valid test of duplicate detection, but not the result described here.
 - Reminders come every 2 minutes (demo timing; 1–2 days in real use).
 
