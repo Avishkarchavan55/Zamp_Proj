@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FileSlot, fetchAsFile } from "@/components/file-slot";
 import { useToast } from "@/components/toast";
 import { useLocalStorage } from "@/components/use-local";
+import { useIsStaff } from "@/components/use-staff";
 import { Button, Card, cx } from "@/components/ui";
 import { ENTITY_LABELS, STATES } from "@/lib/india";
 import { DOC_SLOTS, REQUIRED_DOCS } from "@/lib/policy";
@@ -53,6 +54,7 @@ export default function ApplyPage() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState<{ id: string; runId: string } | null>(null);
   const toast = useToast();
+  const isStaff = useIsStaff();
   const required = REQUIRED_DOCS[form.entity_type];
   const set = (k: keyof ApplicationForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -96,14 +98,14 @@ export default function ApplyPage() {
 
       <OtherChannels />
 
-      <DemoLoader
+      {isStaff && <DemoLoader
         active={scenario}
         onLoad={(s, f, email) => {
           setForm({ ...s.form, contact_email: email || s.form.contact_email });
           setFiles(f);
           setScenario(s.id);
         }}
-      />
+      />}
 
       <form onSubmit={submit} className="space-y-6">
         <Section icon={Building2} title="Business details">
@@ -235,7 +237,7 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
   return (
     <div className="rounded-xl border border-dashed border-line bg-surface/60">
       <button onClick={() => setOpen((o) => !o)} className="flex min-h-11 w-full items-center justify-between px-4 text-left">
-        <span className="flex items-center gap-2 text-[13.5px] font-medium text-ink-2"><FlaskConical className="h-4 w-4 text-ink-3" /> Demo: fill this form with a test vendor</span>
+        <span className="flex items-center gap-2 text-[13.5px] font-medium text-ink-2"><FlaskConical className="h-4 w-4 text-ink-3" /> Staff tool: fill this form with a sample vendor <span className="font-normal text-ink-3">(only you can see this)</span></span>
         <span className="text-[13px] text-brand">{open ? "Hide" : "Show"}</span>
       </button>
       {open && (
@@ -260,7 +262,7 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
           </div>
           <label className="flex flex-wrap items-center gap-2 text-[13px] text-ink-3">
             <Mail className="h-3.5 w-3.5" /> Send the vendor emails to
-            <input value={inbox} onChange={(e) => setInbox(e.target.value)} placeholder="your inbox (optional)" className="input min-w-0 flex-1 py-1.5" />
+            <input value={inbox} onChange={(e) => setInbox(e.target.value)} placeholder="an inbox (optional)" className="input min-w-0 flex-1 py-1.5" />
           </label>
         </div>
       )}

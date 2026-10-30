@@ -9,7 +9,7 @@ import { Badge, Card, CardHeader, Empty, PageHeader, Skeleton, cx, dateTime } fr
 
 const KIND: Record<string, string> = {
   information_request: "Information request", reminder: "Reminder", approval_notice: "Approval notice",
-  review_alert: "Reviewer alert", reviewer_request: "Clarification request",
+  review_alert: "Reviewer alert", reviewer_request: "Clarification request", manual_message: "Message from the team",
 };
 const STATUS: Record<string, { label: string; tone: "good" | "info" | "critical" | "warn" }> = {
   sent: { label: "Delivered", tone: "good" }, queued: { label: "Handed to n8n", tone: "info" },
@@ -32,7 +32,7 @@ export default function Outbox() {
           {[
             { icon: Webhook, t: "Request written", d: "VendorIQ writes the email listing exactly what is missing" },
             { icon: Send, t: "Sent from Gmail", d: "Goes out from the onboarding inbox; delivery is confirmed back" },
-            { icon: Hourglass, t: `Wait ${sys?.reminders.reminderAfterMinutes ?? "N"} min`, d: "Demo timing — 1 to 2 days in real use" },
+            { icon: Hourglass, t: `Wait ${sys?.reminders.reminderAfterMinutes ?? "N"} min`, d: "Then a reminder if there is no reply (usually 1–2 days)" },
             { icon: Bell, t: "Vendor replied?", d: "If they replied or uploaded, reminders stop and checks re-run" },
             { icon: CheckCircle2, t: `Up to ${sys?.reminders.maxReminders ?? "N"} reminders`, d: "Still silent? The vendor is flagged “No reply” for your team" },
           ].map((s, i) => (

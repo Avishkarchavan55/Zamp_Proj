@@ -69,5 +69,5 @@ export async function lookupPincode(pincode: string): Promise<{ state: string; d
 }
 
 export const PINCODE_SOURCE = "India Post pincode directory (live)";
-export const GST_REGISTRY_SOURCE = "GST registry (sandbox dataset)";
+export const GST_REGISTRY_SOURCE = "GST registry (internal dataset)";
 export const IFSC_SOURCE = "Razorpay IFSC API (live)";

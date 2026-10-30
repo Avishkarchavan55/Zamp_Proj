@@ -25,7 +25,7 @@ const CHECKS = [
   { icon: FileCheck2, title: "Document AI", who: "AI", items: ["Classifies every upload — catches the wrong document in the wrong slot, and sorts email attachments", "Extracts fields with a verbatim quote, confidence and location on the page", "IDs read from digital PDFs must literally appear in the PDF's text layer", "Low-confidence key fields get a second model's opinion; disagreement → human"] },
   { icon: Calculator, title: "Identifier rules", who: "Code", items: ["PAN structure, holder type (4th character) and name initial (5th character)", "GSTIN structure and mod-36 checksum — typos caught, correct value suggested from the certificate", "IFSC, CIN (type and year), Udyam number, phone formats"] },
   { icon: Scale, title: "Cross-reference", who: "Code", items: ["GSTIN must embed the vendor's own PAN; its state code must match the address", "Every identifier on the form compared character-for-character with the documents", "Names normalised (Pvt. Ltd. = Private Limited) — near-matches go to review", "GST registration cannot pre-date incorporation; Udyam category must match the certificate"] },
-  { icon: Landmark, title: "External sources", who: "APIs", items: ["IFSC resolved live in the national bank directory; the cheque's bank must own it", "PIN code resolved live in India Post's directory; must lie in the stated state", "GST registration Active and in the vendor's name (sandbox registry)", "Bank ownership stays Unverified until a penny-drop connector is added"] },
+  { icon: Landmark, title: "External sources", who: "APIs", items: ["IFSC resolved live in the national bank directory; the cheque's bank must own it", "PIN code resolved live in India Post's directory; must lie in the stated state", "GST registration Active and in the vendor's name (internal registry dataset)", "Bank ownership stays Unverified until a penny-drop connector is added"] },
   { icon: Building, title: "Risk & duplicates", who: "Code", items: ["Bank account registered to another legal entity → disqualifying", "Same PAN/GSTIN as an approved vendor → review (duplicate or change request)", "Bank/ID documents produced in image-editing software → review", "Emailed applications must pass SPF/DKIM sender authentication"] },
 ];
 
@@ -135,7 +135,7 @@ export default function PolicyPage() {
               ["Email & Google Form intake", "n8n Gmail trigger · Apps Script", true],
               ["Bank directory", "Razorpay IFSC API (live)", true],
               ["PIN code directory", "India Post API (live)", true],
-              ["GST registry", "Sandbox dataset — production: GSP API", false],
+              ["GST registry", "Internal dataset — production: live GSP API", false],
               ["Bank account ownership", "Not connected — production: penny-drop API", false],
               ["Data", sys ? `${sys.database === "postgres" ? "Supabase Postgres" : "Embedded Postgres (local)"} · files in ${sys.storage === "supabase" ? "Supabase Storage" : "database"}` : "…", true],
               ["Live run updates", sys?.realtime ? "Supabase Realtime" : "Polling", true],

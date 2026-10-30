@@ -1,5 +1,5 @@
 {
- "ff32fb0390ec74b1f9fba921b430fe8e1830621507f95f5817ef5b15c8adddea": {
+ "c724869605264ea980aa62701f3825c6682ba8b08a6ef228e7dc094895240a07": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -43,7 +43,7 @@
   ],
   "notes": ""
  },
- "1257bd4491ddc22d7ba333d20eab5fe8ac64f39895f13efd82b491027fa9a99c": {
+ "1fceec53e1ce24c39af5e0c9341032bb284fab9f9c1e71a013f9e9bb168f5cad": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -151,7 +151,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "671645f8268afcedde9d7a31a363cf81cf7208a10ac0ee46919c0a16bf4faaaa": {
+ "4bea5c347531b2f470055128c2bf2d761739c9c3cf67ece70803f9ffb8478366": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -183,7 +183,7 @@
   ],
   "notes": ""
  },
- "553b06692514bbc52633f1ebb26fda105c57f9cff4074ec358d73525ebd90342": {
+ "16bc6d3374065cfc7ca0c2c4bae1ca64c685ef30729d047ac87887fac6ed6a7e": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -227,7 +227,7 @@
   ],
   "notes": ""
  },
- "d5402f9233f3ddd9393e7bdd1f61134f65e95de0635e2025228fa5f36bb86340": {
+ "2726b740c5054ee8087c412754df3581af063e2b6a4253f17a65842a0de63086": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -297,7 +297,7 @@
   ],
   "notes": ""
  },
- "9b9ec14876667bc6b5c78f7c820bf9c9f5aa468f03ec296e2c4c9cdc46bb179c": {
+ "19f827b08688586c4303917e2a477e5c76ce278fcce358d520e6d8c96e1f7127": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -379,7 +379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "b0518de3008c955f08b47d9409ff10665209de2a6c44a9048f8c3aed8c28eee3": {
+ "a311383c21d04ecdfaa5c6e7e61cde7cfc6456e3d8f77470996e9bf4533d58d2": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -423,7 +423,7 @@
   ],
   "notes": ""
  },
- "7db46aae2a7f91037938fc96b1f26b094cbf9c45c5c06dc2f402cb40c3511f5e": {
+ "a99dfa8314e1b0d27ff7510b2b9d8842cdd6605011b1e79d64dab0284547d7db": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -531,7 +531,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8efe561e865ee2b807a90f1a848e7cefc5a8d8e3b35f6b178f0264117fa679d7": {
+ "f13b2971df03219c13398b8b30c64fa6349a61cf6e98f2bb81ccc8c28bf76f4e": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -575,7 +575,7 @@
   ],
   "notes": ""
  },
- "82424f0b70651da48bd6c568cbf3297ab0683df17b46c47179fe888a931100f1": {
+ "83ceb9ec4e039aef41f0f0c2855dae1fd0a838210641d41500d193d698ef1ef4": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -683,7 +683,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "2cbebf747fe8bbc60d1c1496c8b967f8de4585fbbc1545a92b220666677e8621": {
+ "39db95667348f2b74af8e03a0ff70e7c31a966153fd44e036eee29beeb3c7017": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -727,7 +727,7 @@
   ],
   "notes": ""
  },
- "d5727a0b6a6a94aa0c51bdb238d84b53c132d285d86e3fd04b6533ebdd73d2d7": {
+ "c93fbe88f0925b53767f9df0e85e0a0a049f8086e147c473c697ebdb6df68227": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -835,7 +835,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "2560d109125d414b5e02d3a48b84963a471555b8664a79b9891b98abf1186acb": {
+ "bdac06ad2543d28c0055e45c4b252b73980ff7e0fb4bf51b5d80c1df03b00361": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "degraded",
@@ -911,7 +911,7 @@
   ],
   "notes": ""
  },
- "147b1e59c8dc8610aba4fcd8f3f43b691d00c396a9f6e37c3e432b34453d2b48": {
+ "d1aa570a1a8a01ee6f5726c3c17b43799a16b889cef69f3d234459d17f41750a": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "degraded",
@@ -949,7 +949,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "660de55d61d69feb5a290d23352d7da46b480ad4fb68fc26c82041d848ed13a4": {
+ "72049a9d92a521c7b7805f2442fa0bbbb267c67b48c09777e20879054249d403": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -993,7 +993,7 @@
   ],
   "notes": ""
  },
- "ca65f96acf195ca8f44ad1f2bbcc5090c8a01d728fdac2fe6b8b51b3db60d28b": {
+ "e0a6ee1b28c3adfb1b5e8f5f2ce98f8dd9cbf1a8f9b60ae2497c4734e1175e15": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1075,7 +1075,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "df333d0ba962f120308363f6444c58c61824b29bcf61b9bb910ba1453ad5ff0d": {
+ "d9dc0df6b9f1a5b4cecb95810d705409288bf3e7bba1afb22b25318e7136292e": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1119,7 +1119,7 @@
   ],
   "notes": ""
  },
- "6a8d404c9356634c7eec1b0e57651fac4cd67a92cbaae4de6229c220733d36e4": {
+ "aebafadcb7225476be553c554fa12a7813a5d1be220c5551222881ba73f6dc60": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1227,7 +1227,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "9e03c7772a12db20ce0103d1d9befd2dfced2e72c2596045bdca4021cacdeacd": {
+ "6ee0a600bd20a253c52c2aa536c2772acc2e1b6097afd82ebeaf3a0fdc2e6de2": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1271,7 +1271,7 @@
   ],
   "notes": ""
  },
- "5a0c70bb0167433dce580bc6dd749fa99741861db567659683710a623ed2f2bf": {
+ "19641138c3f2e426c4c0e9c5673429e846312bcd2e73e1819e7c7c4054320ca5": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1379,7 +1379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "0bb8e196be73e674e34e50fc4451b5c20dd6f25c5c53d89754c651a4e23dc818": {
+ "289753396b73f2f314d604f76ef94f39504b1799bf6b630f1b99bfec6b1ae0f1": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1411,7 +1411,7 @@
   ],
   "notes": ""
  },
- "07ef3184438b87c1518f16f4cd18883ea508705c2ac39da7547729f155860574": {
+ "e95d18c9aa5bb0be3122d8f382bf667272eaaefa9e3729d48f4f437a1b9ea077": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1519,7 +1519,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "6ff7901f3e6e00c8d5d91d9afcc98806848e4ab8607a6e21514f93b381fd8ce3": {
+ "549569787ec3c0887e00e97d6f94c9190e35724510b0f136187172d37da1f5ae": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1633,7 +1633,1027 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8f9a694cf638ca2cda28482be703cdcb2db2e78201e957c1eb0b011e63526894": {
+ "8c2da6d798383238b716da4d0c17520d8113d6911ec0d42de6b603fa1efc06b9": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that KALPATARU STEEL TRADERS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U51420MH2014PTC255310",
+    "source_quote": "Corporate Identity Number of the company is U51420MH2014PTC255310",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAKCK6631D",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAKCK6631D",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2014-08-11",
+    "source_quote": "2014-08-11",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 7, MIDC Chakan Phase 1, Pune, Maharashtra, India - 410501",
+    "source_quote": "Plot 7, MIDC Chakan Phase 1, Pune, Maharashtra, India - 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "f444c1b7932a60022b16fdf6b48c18cd4c68b048203085b3515bb55246027a85": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAKCK6631D1ZJ",
+    "source_quote": "Registration Number : 27AAKCK6631D1ZJ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "source_quote": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "source_quote": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Plot 7, MIDC Chakan Phase 1, Pune, Maharashtra, 410501",
+    "source_quote": "Plot 7, MIDC Chakan Phase 1, Pune, Maharashtra, 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "d782e7c206acd1d85a4b71b1f4559d77d886431239ad50db59d5aea00dc71cca": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKCK6631D",
+    "source_quote": "AAKCK6631D",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "source_quote": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2014-08-11",
+    "source_quote": "2014-08-11",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "0e25177d7ffb813857906e0fd8287be176b33b319e99419e85ebf4fc0ed345a5": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "KALPATARU STEEL TRADERS PVT LTD",
+    "source_quote": "For KALPATARU STEEL TRADERS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200061234871",
+    "source_quote": "50200061234871",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000001",
+    "source_quote": "IFSC: HDFC0000001",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "TULSIANI CHMBRS - NARIMAN PT",
+    "source_quote": "TULSIANI CHMBRS - NARIMAN PT",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "5307a7aed8dfd4e1da85c9330190ace4f4882a690f525d644d4a6d1c1e93f59d": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U40106GJ2018PTC101442",
+    "source_quote": "Corporate Identity Number of the company is U40106GJ2018PTC101442",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAMCS4410K",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAMCS4410K",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-02-02",
+    "source_quote": "2018-02-02",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "44, Satellite Road, Ahmedabad, Gujarat, India - 380015",
+    "source_quote": "44, Satellite Road, Ahmedabad, Gujarat, India - 380015",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "89cb2b2f0774a7570d977551f2a7a4d1743eaffe3c78f06bbdd8e555288f30b5": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAMCS4410K1ZB",
+    "source_quote": "Registration Number : 24AAMCS4410K1ZB",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "source_quote": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "source_quote": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "44, Satellite Road, Ahmedabad, Gujarat, 380015",
+    "source_quote": "44, Satellite Road, Ahmedabad, Gujarat, 380015",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1dc9aa7678e4d4c51c46b4d6fa1ed7c92486670baeaccb26abf46a30f52dbd2c": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAMCS4410K",
+    "source_quote": "AAMCS4410K",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "source_quote": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2018-02-02",
+    "source_quote": "2018-02-02",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "9a38b6d7cf89128a72c0eadec0788237843ce7661453363c51ccb3b5915b3a76": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PVT LTD",
+    "source_quote": "For SURYODAYA SOLAR SYSTEMS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "918020045512309",
+    "source_quote": "918020045512309",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000004",
+    "source_quote": "IFSC: UTIB0000004",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MUMBAI BRANCH",
+    "source_quote": "MUMBAI BRANCH",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "edc0decc8ad06b9fd853aca75eb7ebf8513cdd3383c8e16d6228afacb89e58ed": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-GJ-01-0034471",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-GJ-01-0034471",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Small",
+    "source_quote": "TYPE OF ENTERPRISE Small",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "df9769edd66fd54ce2be41ea48b96ef8b7598f682e3d93e051bdf0a90894c52e": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "33BJKPR7712L1ZR",
+    "source_quote": "Registration Number : 33BJKPR7712L1ZR",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KARTHIK RAJAN",
+    "source_quote": "KARTHIK RAJAN",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "BHARAT FASTENERS",
+    "source_quote": "BHARAT FASTENERS",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Proprietorship",
+    "source_quote": "Proprietorship",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "22, Usman Road, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "source_quote": "22, Usman Road, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "c77e0e192b77332f79350bfb507c6214c8a6f8160259b45950a8178066fc7604": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "BJKPR7712L",
+    "source_quote": "BJKPR7712L",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KARTHIK RAJAN",
+    "source_quote": "KARTHIK RAJAN",
+    "confidence": 0.98
+   },
+   {
+    "key": "father_name",
+    "value": "RAJAN SUBRAMANIAM",
+    "source_quote": "RAJAN SUBRAMANIAM",
+    "confidence": 0.98
+   },
+   {
+    "key": "date_of_birth",
+    "value": "21/11/1984",
+    "source_quote": "21/11/1984",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "63496afba56bc5fea823dc3644495bbd8d00e7bef3a164a26b64394a80d7598e": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "BHARAT FASTENERS",
+    "source_quote": "For BHARAT FASTENERS",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "000401552871",
+    "source_quote": "000401552871",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000001",
+    "source_quote": "IFSC: ICIC0000001",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "ICICI BANK",
+    "source_quote": "ICICI BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "CHENNAICENOTAPH ROAD",
+    "source_quote": "CHENNAICENOTAPH ROAD",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "b9ba3b1bf4380b68318221fa9c6e83dae544edca81b0ba7b9685625b14dbc64b": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "29AAKFS2290M1ZJ",
+    "source_quote": "Registration Number : 29AAKFS2290M1ZJ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SRI VENKATESWARA HYDRAULICS",
+    "source_quote": "SRI VENKATESWARA HYDRAULICS",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SRI VENKATESWARA HYDRAULICS",
+    "source_quote": "SRI VENKATESWARA HYDRAULICS",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Partnership",
+    "source_quote": "Partnership",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "17, 3rd Main, Peenya Industrial Estate, Bengaluru, Karnataka, 560058",
+    "source_quote": "17, 3rd Main, Peenya Industrial Estate, Bengaluru, Karnataka, 560058",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "41917e56550195f86067eceef91491c5ebee54ea81f2375347d693f2909f3f22": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKFS2290M",
+    "source_quote": "AAKFS2290M",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SRI VENKATESWARA HYDRAULICS",
+    "source_quote": "SRI VENKATESWARA HYDRAULICS",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2012-06-15",
+    "source_quote": "2012-06-15",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "751a05df7a70ed7c3ace1272f3775fcc3edd64abe1310fbc54612c59470e5d1a": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SRI VENKATESWARA HYDRAULICS",
+    "source_quote": "For SRI VENKATESWARA HYDRAULICS",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200099120344",
+    "source_quote": "50200099120344",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000053",
+    "source_quote": "IFSC: HDFC0000053",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "BANGALORE - KORAMANGALAM",
+    "source_quote": "BANGALORE - KORAMANGALAM",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "c1ab8e3dd7fcc43ae926c36d286bfaaf95e627e8c96bd67cd158b6c84bece796": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that COASTAL CHEM INDUSTRIES PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U24299GJ2019PTC109876",
+    "source_quote": "Corporate Identity Number of the company is U24299GJ2019PTC109876",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAJCC8854P",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAJCC8854P",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-09-20",
+    "source_quote": "2019-09-20",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "9, Ashram Road, Navrangpura, Ahmedabad, Gujarat, India - 380009",
+    "source_quote": "9, Ashram Road, Navrangpura, Ahmedabad, Gujarat, India - 380009",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "8cfaa6da20bddcec75e0cc4f3932215a9f3b7684ff7bebba2ecb60e4f67a4afd": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAJCC8854P1ZW",
+    "source_quote": "Registration Number : 24AAJCC8854P1ZW",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "source_quote": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "source_quote": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "9, Ashram Road, Navrangpura, Ahmedabad, Gujarat, 380009",
+    "source_quote": "9, Ashram Road, Navrangpura, Ahmedabad, Gujarat, 380009",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "cd7447904731c00d9177d5dce1f3bab0079cf72117fb8500c461b720f917c560": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAJCC8854P",
+    "source_quote": "AAJCC8854P",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "source_quote": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-09-20",
+    "source_quote": "2019-09-20",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1ad1316a9034fb313cc67b018e5b0e379af2c5371fd7564ab54ac7c3bc258d79": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "COASTAL CHEM INDUSTRIES PVT LTD",
+    "source_quote": "For COASTAL CHEM INDUSTRIES PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "38771234560",
+    "source_quote": "38771234560",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "SBIN0000001",
+    "source_quote": "IFSC: SBIN0000001",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "KOLKATA MAIN",
+    "source_quote": "KOLKATA MAIN",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "cd684d5bee7ef7c1190c1ae1e82848ade1fa133ab851eb91ce92ca255ae5276a": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-GJ-01-0051288",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-GJ-01-0051288",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Micro",
+    "source_quote": "TYPE OF ENTERPRISE Micro",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "7cd45039cb501d8ba6c9b6f6dd3e2d38c50027959bc7a5c668437e8174bbf0ff": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "PATIL LOGISTICS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that PATIL LOGISTICS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U63090MH2017PTC291104",
+    "source_quote": "Corporate Identity Number of the company is U63090MH2017PTC291104",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAOCP5521R",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAOCP5521R",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-01-05",
+    "source_quote": "2017-01-05",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Survey 88, Nagar-Manmad Road, Ahmednagar, Maharashtra, India - 414111",
+    "source_quote": "Survey 88, Nagar-Manmad Road, Ahmednagar, Maharashtra, India - 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "4fbada461ec19f6a7b8bfcc525998438e93e057ac20a3bdc017e3df103a28a61": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAOCP5521R1ZM",
+    "source_quote": "Registration Number : 27AAOCP5521R1ZM",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "source_quote": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "source_quote": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Survey 88, Nagar-Manmad Road, Ahmednagar, Maharashtra, 414111",
+    "source_quote": "Survey 88, Nagar-Manmad Road, Ahmednagar, Maharashtra, 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "9dee5f3742a2d611d3a6bba162d8f69d2c1603a718ac7d19920005943d536c34": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAOCP5521R",
+    "source_quote": "AAOCP5521R",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "PATIL LOGISTICS PRIVATE LIMITED",
+    "source_quote": "PATIL LOGISTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-01-05",
+    "source_quote": "2017-01-05",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "3075e4f363232c6a2d09ac90d3d05c8fe216f172059387b383b219d3f41f7f38": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "PATIL LOGISTICS PVT LTD",
+    "source_quote": "For PATIL LOGISTICS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "39102284471",
+    "source_quote": "39102284471",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "SBIN0003403",
+    "source_quote": "IFSC: SBIN0003403",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "AMBEJOGAI",
+    "source_quote": "AMBEJOGAI",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "1450ede86c8c9892d6978c63243571d1759300c0b22f33053a6b59b7be70292c": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "GANGA PACKAGING PRIVATE LIMITED",
+    "source_quote": "I hereby certify that GANGA PACKAGING PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U21012MH2015PTC264489",
+    "source_quote": "Corporate Identity Number of the company is U21012MH2015PTC264489",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAGCG3317H",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAGCG3317H",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2015-04-08",
+    "source_quote": "2015-04-08",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat 112, Chakan Talegaon Road, Pune, Maharashtra, India - 410501",
+    "source_quote": "Gat 112, Chakan Talegaon Road, Pune, Maharashtra, India - 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "973b1c29baacd4405b99aaa5af7f1ddc071dacec292db7781e6c5db3308eb623": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAGCG3317H1ZQ",
+    "source_quote": "Registration Number : 27AAGCG3317H1ZQ",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "GANGA PACKAGING PRIVATE LIMITED",
+    "source_quote": "GANGA PACKAGING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "GANGA PACKAGING PRIVATE LIMITED",
+    "source_quote": "GANGA PACKAGING PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat 112, Chakan Talegaon Road, Pune, Maharashtra, 410501",
+    "source_quote": "Gat 112, Chakan Talegaon Road, Pune, Maharashtra, 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "735e1de9462c6efadb9f0dc70f2d7a67a12e8b093fbfb9ce9205d4ee344c052c": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "GANGA PACKAGING PVT LTD",
+    "source_quote": "For GANGA PACKAGING PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "917020011873316",
+    "source_quote": "917020011873316",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000004",
+    "source_quote": "IFSC: UTIB0000004",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MUMBAI BRANCH",
+    "source_quote": "MUMBAI BRANCH",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "ba5fc0daa522cca63ab0f6e662af2369989d03ab9c0c7f08d32f1ea1680c74d4": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1677,7 +2697,7 @@
   ],
   "notes": ""
  },
- "3363c2ce854a4055b7339b9a2f19604dccc6325e01b081ddd77a27a3485829c9": {
+ "3295f1343b1b4ff81266468177ea84f333cd7940a05c1378134cb5b1d4cb375a": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1747,7 +2767,7 @@
   ],
   "notes": ""
  },
- "d5c4007f5aed58fec648aede1f522fc4395d1e42625ddea91ffee24d7cb5ab7a": {
+ "4c897dfb023917412f61a2ec7c1a00002f5dc644d4492c509993b7e5548fdf4d": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -1785,7 +2805,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a4301b47d2d6388482717d00e0ea6907ab0ee326d61aeedc6900da381cf5145d": {
+ "cb871056d31c5e52e4b6a4c9a5ef0ad92e498ca444ddbe1a1ce2cba5427221b7": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1829,7 +2849,7 @@
   ],
   "notes": ""
  },
- "55661a2f5db2863c80cee8ad65d50143d16602215354c81aafa7ab93f627acbb": {
+ "72bf6f7f506db140663bf1d81caf838f30a42c14b9d807270511c441efefdfbd": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1899,7 +2919,7 @@
   ],
   "notes": ""
  },
- "e80f54a94e0109a5ddd81ce65b8d9968133da1415e39da4bae71e9dc13ef0de7": {
+ "3ce471a28e73f79f3604c5d9ed1f4cb9b30035795339b85ac333a161ff668d5c": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -1937,7 +2957,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "99e7a325f5a6481caaa0c74aea23492c7de1ba22c3ca17236ebe242441452b15": {
+ "579b83282afe0bb11ad84b6a06f81a6c727e55a135dc07e84a532d9042ec2a5d": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1981,7 +3001,7 @@
   ],
   "notes": ""
  },
- "973b1553a803b31889af417ffc83d6875e1b17bed3f32601d4f364ec30d10f6f": {
+ "1e307b3cb22475f5a58a4cba265618d208ddd8c40c0cf6b372d0359dab16b9bb": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2051,7 +3071,7 @@
   ],
   "notes": ""
  },
- "f78548946c4f7895910d4e1ec1db144794d435f9fd036fdad74055abe552a951": {
+ "e1c2400ca8a328c680049baacb6c81e17a51375faf021a4121bb11bb7ecd7655": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -2089,7 +3109,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "089754d587384518bdde85c7a48dd190a3e5f19cd73c2b3f0930463a9bc5bffb": {
+ "97436614089ba64151de9f35cb82512224fda6302bf949c8eb2a14e4f8950939": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2133,7 +3153,7 @@
   ],
   "notes": ""
  },
- "d8be1daf5f74ef13728fb47ab262ae810bb7e101d5133c6f58d56e8229ef28f7": {
+ "c6d583b97f9c7b3b202d869935a1fe4b36737eed7ee7c5941518a41821646421": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2203,7 +3223,7 @@
   ],
   "notes": ""
  },
- "ef197c223fa392ae515be252a5181de300173bdc76fa343569d642e1e31d3c32": {
+ "45e8eee7ebaf222f821867e3a2892041b8b3d2478087b357352cd8de2318a0cd": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -2241,7 +3261,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a9e74646278ebfbb835577c8032a1788e3fd903a4c962bb10789fb5c3b1778cd": {
+ "5d2290225186523a0fd62901867fd94fd24367372e502fcf9aec43e2fa86bf65": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2285,7 +3305,7 @@
   ],
   "notes": ""
  },
- "d8c055a48fddd599a3deaeac0ed9d625c5430529314bf62565b98f631ead3069": {
+ "7bcdfe993f8d248792c6a21c073e4c02495ed7e6f43fa1a8e4ca281e6a179392": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2355,7 +3375,7 @@
   ],
   "notes": ""
  },
- "98734ef176838d6283ea4a16a101a25cb4961dcd9c3df95c2815bc188667cc52": {
+ "ec3f2d41b387a492ce5ca63f4845c548a9b3d0d4de148ec7b742f98b6e01ff16": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2387,7 +3407,7 @@
   ],
   "notes": ""
  },
- "cf62bdadf6c73c415f440d09e634ca9f8411a1a15593328eb061c9e969a0c88a": {
+ "011bc7f0683fd578009b802faea0b89009ac68022b02e590e36d3c5438ed7f15": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -2425,7 +3445,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "600f3b06c6ee3166eed31cb39460fc65bb4faa98f250b966bb8ceb7e6906ee1e": {
+ "703be8b95df50aca8b9f1af34010c9bfb7ab1216ee34c390c6233e453452f04a": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2469,7 +3489,7 @@
   ],
   "notes": ""
  },
- "cc5744c8184e9de1582e410c9ffff2ff8ac4f0974deef9e6e1d2e786758d6090": {
+ "4997ecea037001bf47d949f97048884f661cc270f64075fa8c3de23e7345e083": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2539,7 +3559,7 @@
   ],
   "notes": ""
  },
- "693da0ecf539922a81cf8c38f265d436b8f66950362914106bfa37488510f656": {
+ "8091d5b4fa751a422cc750318b8792548b78f6357243ecf0a85f8f2604ab09ec": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2571,7 +3591,7 @@
   ],
   "notes": ""
  },
- "0d5ca7a69e48f636cf28bebe84e53565bcee8dc9b75321933aa5ee7ed1e1e873": {
+ "8fcf15efb08f2c936244f5ae32fbc6b15044ee137af2218b7b1cdb59fa2179db": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",

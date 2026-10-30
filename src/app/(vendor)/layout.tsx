@@ -1,4 +1,5 @@
 import { Factory, Lock } from "lucide-react";
+import { ScrollToTop } from "@/components/page-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function VendorLayout({ children }: { children: React.ReactNode }) {
@@ -21,6 +22,7 @@ export default function VendorLayout({ children }: { children: React.ReactNode }
       </header>
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">{children}</main>
       <footer className="pb-8 text-center text-xs text-ink-3">Verification powered by VendorIQ</footer>
+      <ScrollToTop />
     </div>
   );
 }

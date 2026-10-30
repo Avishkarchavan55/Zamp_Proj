@@ -6,6 +6,7 @@ import { useState } from "react";
 import useSWR from "swr";
 import { FileSlot, fetchAsFile } from "@/components/file-slot";
 import { useToast } from "@/components/toast";
+import { useIsStaff } from "@/components/use-staff";
 import { Button, Card, Skeleton, cx } from "@/components/ui";
 import { ENTITY_LABELS, STATES } from "@/lib/india";
 import { DOC_SLOTS } from "@/lib/policy";
@@ -51,6 +52,7 @@ export default function ResubmitPage() {
   const [fields, setFields] = useState<Partial<Record<keyof ApplicationForm, string>>>({});
   const [busy, setBusy] = useState(false);
   const toast = useToast();
+  const isStaff = useIsStaff();
 
   if (error) return <Card className="p-8 text-center text-sm text-ink-2"><AlertCircle className="mx-auto mb-2 h-6 w-6 text-critical" />{error.message}</Card>;
   if (!data) return <Skeleton className="h-80" />;
@@ -143,9 +145,9 @@ export default function ResubmitPage() {
         </p>
       </div>
 
-      {data.scenario && (
+      {data.scenario && isStaff && (
         <button onClick={loadDemoPack} className="flex w-full items-center gap-2 rounded-xl border border-dashed border-brand/40 bg-brand-soft/40 px-4 py-2.5 text-left text-[13px] font-medium text-brand-2">
-          <FlaskConical className="h-4 w-4" /> Demo: attach this vendor&apos;s corrected documents / values
+          <FlaskConical className="h-4 w-4" /> Staff tool: attach the sample corrected documents / values <span className="font-normal">(only you can see this)</span>
         </button>
       )}
 

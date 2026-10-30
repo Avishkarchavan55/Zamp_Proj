@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  ArrowRight, Ban, CheckCircle2, ChevronRight, Clock3, ExternalLink, FileSpreadsheet, Globe, Hourglass, Inbox,
-  Loader2, Mail, Plus, ScanSearch, TimerReset, TriangleAlert, Zap,
+  ArrowRight, Ban, CheckCircle2, ChevronRight, Clock3, ExternalLink, FileSpreadsheet, Globe, Inbox,
+  Loader2, Mail, Plus, QrCode, ScanSearch, TriangleAlert,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -39,12 +39,17 @@ export default function Overview() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-[26px] font-semibold tracking-tight text-ink">Good {hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening"}{me ? `, ${me.name.split(" ")[0]}` : ""}</h1>
+          <div className="text-[13px] font-medium text-ink-3">{new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" })}</div>
+          <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-ink">Good {hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening"}{me ? `, ${me.name.split(" ")[0]}` : ""}</h1>
           <p className="mt-1.5 text-[15px] text-ink-2">
             {review.length ? <><span className="font-medium text-ink">{review.length} vendor{review.length === 1 ? "" : "s"} need your decision.</span> Everything else is handled automatically.</> : "Nothing needs your decision right now — everything is handled automatically."}
+            {decided.length > 0 && <> <span className="text-ink-3">· {autoPct}% of vendors were decided without anyone stepping in.</span></>}
           </p>
         </div>
-        <Link href="/apply" target="_blank"><Button><Plus className="h-4 w-4" />New vendor application</Button></Link>
+        <div className="flex flex-wrap gap-2">
+          <Link href="/share"><Button variant="secondary"><QrCode className="h-4 w-4" />Invite a supplier</Button></Link>
+          <Link href="/apply" target="_blank"><Button><Plus className="h-4 w-4" />New vendor application</Button></Link>
+        </div>
       </div>
 
       {/* The process, with live counts — explains the system at a glance. */}
@@ -58,13 +63,6 @@ export default function Overview() {
           <FlowStep icon={CheckCircle2} tone="good" title="Approved" value={apps ? count("approved") : undefined} hint="Ready for the ERP" href="/applications?status=approved" />
           <FlowStep icon={Ban} tone="critical" title="Rejected" value={apps ? count("rejected") : undefined} hint="No payments" href="/applications?status=rejected" last />
         </div>
-      </section>
-
-      <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Kpi icon={Zap} label="Decided without a person" value={apps ? `${autoPct}%` : null} />
-        <Kpi icon={TimerReset} label="Time to decision" value={stats ? `${(stats.runs.avg_ms / 1000).toFixed(1)}s` : null} sub="vs ~35 min by hand" />
-        <Kpi icon={Hourglass} label="Manual work saved" value={stats ? `${(stats.timeSaved.saved_minutes / 60).toFixed(1)} h` : null} sub={stats ? `at ${stats.timeSaved.assumptions.reviewPerApplication} min per manual review` : undefined} />
-        <Kpi icon={Mail} label="Vendor emails sent for you" value={stats ? String(stats.comms.total) : null} sub={stats?.comms.reminders ? `${stats.comms.reminders} reminders` : undefined} />
       </section>
 
       {/* At a glance: where applications come from, how they end, what goes wrong. */}
@@ -154,7 +152,7 @@ function Channels({ sources, inbox }: { sources: Stats["sources"] | undefined; i
       <h2 className="mb-1 text-[13px] font-semibold uppercase tracking-wide text-ink-3">How vendors apply</h2>
       <p className="mb-3 flex flex-wrap items-center gap-x-3 text-[14px] text-ink-2">
         Three ways in, one process: every application gets the same checks, decision rules and audit trail.
-        <a href="/supplier" target="_blank" className="flex items-center gap-1 font-medium text-brand hover:text-brand-2">Share the &ldquo;Become a supplier&rdquo; page (with QR codes) <ExternalLink className="h-3.5 w-3.5" /></a>
+        <Link href="/share" className="flex items-center gap-1 font-medium text-brand hover:text-brand-2">Share the &ldquo;Become a supplier&rdquo; page (with QR codes) <ArrowRight className="h-3.5 w-3.5" /></Link>
       </p>
       <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
         {ways.map((w) => {
@@ -309,16 +307,6 @@ function FlowStep({ icon: Icon, title, value, hint, href, tone = "neutral", high
       {value === undefined ? <Skeleton className="mt-3 h-8 w-12" /> : <span className="mt-2 text-[30px] font-semibold leading-none tabular-nums text-ink">{value}</span>}
       {hint && <span className="mt-auto pt-2 text-[12.5px] leading-snug text-ink-3">{hint}</span>}
     </Link>
-  );
-}
-
-function Kpi({ icon: Icon, label, value, sub }: { icon: React.ElementType; label: string; value: string | null; sub?: string }) {
-  return (
-    <div className="rounded-xl border border-line bg-surface px-4 py-4">
-      <div className="flex items-center gap-2 text-[13.5px] text-ink-2"><Icon className="h-4 w-4 text-ink-3" />{label}</div>
-      {value == null ? <Skeleton className="mt-2 h-8 w-16" /> : <div className="mt-1.5 text-[26px] font-semibold tabular-nums text-ink">{value}</div>}
-      {sub && <div className="text-[12.5px] text-ink-3">{sub}</div>}
-    </div>
   );
 }
 

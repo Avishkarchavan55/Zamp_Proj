@@ -1,11 +1,13 @@
 "use client";
 
 import {
-  Activity, ArrowLeft, Building2, CheckCircle2, ChevronDown, Database, Download, Eye, EyeOff, FileSearch, FileText,
+  Activity, Building2, CheckCircle2, ChevronDown, Database, Download, Eye, EyeOff, FileSearch, FileText,
   Gavel, History, Landmark, Loader2, Mail, MessageSquareWarning, Plus, RotateCw, Send, ShieldX, Sparkles, Trash2,
   TriangleAlert, UserRound, XCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { BackButton } from "@/components/page-nav";
+import { EmailVendor } from "@/components/email-vendor";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import useSWR from "swr";
@@ -53,9 +55,7 @@ export default function ApplicationPage() {
 
   return (
     <div className="space-y-6">
-      <Link href="/applications" className="inline-flex items-center gap-1.5 text-[13.5px] text-ink-2 hover:text-ink">
-        <ArrowLeft className="h-4 w-4" /> All vendors
-      </Link>
+      <BackButton fallback="/applications" />
       <PageHeader
         eyebrow={<span><Mono>{app.id}</Mono> · {ENTITY_LABELS[app.entity_type]} · {app.city}, {app.state} · {app.category || "—"}</span>}
         title={<span className="flex flex-wrap items-center gap-3">{app.legal_name}<StatusPill status={app.status} size="lg" /></span>}
@@ -69,6 +69,7 @@ export default function ApplicationPage() {
         right={
           <>
             {latestRun && <Link href={`/runs/${latestRun.run.id}`}><Button variant={processing ? "primary" : "secondary"}><Activity className="h-4 w-4" />{processing ? "Watch it live" : "See how it was checked"}</Button></Link>}
+            <EmailVendor app={app} onSent={() => mutate()} />
             <Button variant="ghost" onClick={rerun} loading={rerunning} disabled={processing} title="Run all checks again"><RotateCw className="h-4 w-4" />Re-check</Button>
           </>
         }
@@ -465,7 +466,7 @@ function Details({ app }: { app: Application }) {
 
 const COMM_KIND: Record<string, string> = {
   information_request: "Information request", reminder: "Reminder", approval_notice: "Approval notice",
-  review_alert: "Reviewer alert", reviewer_request: "Clarification request",
+  review_alert: "Reviewer alert", reviewer_request: "Clarification request", manual_message: "Message from the team",
 };
 const COMM_STATUS: Record<string, { label: string; tone: "good" | "warn" | "critical" | "info" | "neutral" }> = {
   sent: { label: "Delivered", tone: "good" }, queued: { label: "Handed to n8n", tone: "info" },

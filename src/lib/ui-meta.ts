@@ -54,6 +54,7 @@ export const ACTION_LABEL: Record<string, string> = {
   run_failed: "Run failed",
   details_confirmed: "Vendor confirmed details",
   email_reply: "Vendor replied by email",
+  message_sent: "Message sent to vendor",
   details_filled_from_documents: "Details filled in from documents",
   erp_exported: "Exported to ERP",
 };

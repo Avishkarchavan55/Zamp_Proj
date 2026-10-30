@@ -64,7 +64,7 @@ function Login() {
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-[13px] font-semibold text-white">GA</div>
             <div className="flex-1">
               <div className="font-medium text-ink">Continue as Gaurav Ahuja</div>
-              <div className="text-[13px] text-ink-3">Procurement team · demo account</div>
+              <div className="text-[13px] text-ink-3">Procurement team</div>
             </div>
             {busy ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <ArrowRight className="h-4 w-4 text-ink-3" />}
           </button>

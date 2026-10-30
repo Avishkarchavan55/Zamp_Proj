@@ -279,6 +279,84 @@ VENDORS = {
         account="50100388215407", cheque_name="ANJALI PRINT SOLUTIONS", micr="560240004",
         dob="09/03/1988", father="VENKATESH RAO",
     ),
+    # ---- History: realistic past applications loaded quietly so the dashboard has a believable mix.
+    "kalpataru": dict(
+        legal_name="KALPATARU STEEL TRADERS PRIVATE LIMITED", form_name="Kalpataru Steel Traders Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAKCK6631D", state_code="27", cin="U51420MH2014PTC255310", inc_date=(11, 8, 2014),
+        address="Plot 7, MIDC Chakan Phase 1", city="Pune", state="Maharashtra", pincode="410501",
+        contact_name="Rohit Kulkarni", contact_email="rohit@kalpatarusteel.in", contact_phone="+91 98230 55107",
+        owner_name="Rohit Kulkarni", website="kalpatarusteel.in", category="Steel sheets and coils",
+        ifsc="HDFC0000001", bank="HDFC BANK", branch="TULSIANI CHMBRS - NARIMAN PT",
+        account="50200061234871", cheque_name="KALPATARU STEEL TRADERS PVT LTD", micr="400240003",
+    ),
+    "suryodaya": dict(
+        legal_name="SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED", form_name="Suryodaya Solar Systems Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAMCS4410K", state_code="24", cin="U40106GJ2018PTC101442", inc_date=(2, 2, 2018),
+        address="44, Satellite Road", city="Ahmedabad", state="Gujarat", pincode="380015",
+        contact_name="Nirali Desai", contact_email="nirali@suryodayasolar.in", contact_phone="+91 99250 18842",
+        owner_name="Nirali Desai", website="suryodayasolar.in", category="Rooftop solar installation",
+        ifsc="UTIB0000004", bank="AXIS BANK", branch="MUMBAI BRANCH",
+        account="918020045512309", cheque_name="SURYODAYA SOLAR SYSTEMS PVT LTD", micr="400211002",
+        udyam="UDYAM-GJ-01-0034471", msme_declared="Small", msme_cert="Small",
+    ),
+    "bharat": dict(
+        legal_name="KARTHIK RAJAN", form_name="Bharat Fasteners",
+        trade_name="BHARAT FASTENERS", entity_type="proprietorship",
+        pan="BJKPR7712L", state_code="33", cin="", inc_date=None,
+        address="22, Usman Road, T. Nagar", city="Chennai", state="Tamil Nadu", pincode="600017",
+        contact_name="Karthik Rajan", contact_email="bharatfasteners@gmail.com", contact_phone="+91 94441 30987",
+        owner_name="Karthik Rajan", website="", category="Industrial fasteners",
+        ifsc="ICIC0000001", bank="ICICI BANK", branch="CHENNAICENOTAPH ROAD",
+        account="000401552871", cheque_name="BHARAT FASTENERS", micr="600229002",
+        dob="21/11/1984", father="RAJAN SUBRAMANIAM",
+    ),
+    "venkateswara": dict(
+        legal_name="SRI VENKATESWARA HYDRAULICS", form_name="Sri Venkateswara Hydraulics",
+        trade_name="", entity_type="partnership",
+        pan="AAKFS2290M", state_code="29", cin="", inc_date=(15, 6, 2012),
+        address="17, 3rd Main, Peenya Industrial Estate", city="Bengaluru", state="Karnataka", pincode="560058",
+        contact_name="Srinivas Reddy", contact_email="accounts@svhydraulics.in", contact_phone="+91 98450 62210",
+        owner_name="Srinivas Reddy", website="svhydraulics.in", category="Hydraulic cylinders and repair",
+        ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+        account="50200099120344", cheque_name="SRI VENKATESWARA HYDRAULICS", micr="560240004",
+    ),
+    "coastal": dict(
+        legal_name="COASTAL CHEM INDUSTRIES PRIVATE LIMITED", form_name="Coastal Chem Industries Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAJCC8854P", state_code="24", cin="U24299GJ2019PTC109876", inc_date=(20, 9, 2019),
+        address="9, Ashram Road, Navrangpura", city="Ahmedabad", state="Gujarat", pincode="380009",
+        contact_name="Harsh Mehta", contact_email="harsh@coastalchem.in", contact_phone="+91 97240 88315",
+        owner_name="Harsh Mehta", website="coastalchem.in", category="Industrial cleaning chemicals",
+        ifsc="SBIN0000001", bank="STATE BANK OF INDIA", branch="KOLKATA MAIN",
+        account="38771234560", cheque_name="COASTAL CHEM INDUSTRIES PVT LTD", micr="700002021",
+        udyam="UDYAM-GJ-01-0051288", msme_declared="Micro", msme_cert="Micro",
+    ),
+    # History, needs a decision: the GST certificate carries a longer company name.
+    "patil": dict(
+        legal_name="PATIL LOGISTICS PRIVATE LIMITED", form_name="Patil Logistics Pvt Ltd",
+        gst_legal_name="PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+        trade_name="", entity_type="private_limited",
+        pan="AAOCP5521R", state_code="27", cin="U63090MH2017PTC291104", inc_date=(5, 1, 2017),
+        address="Survey 88, Nagar-Manmad Road", city="Ahmednagar", state="Maharashtra", pincode="414111",
+        contact_name="Vikas Patil", contact_email="vikas@patillogistics.in", contact_phone="+91 98600 41228",
+        owner_name="Vikas Patil", website="patillogistics.in", category="Road freight and warehousing",
+        ifsc="SBIN0003403", bank="STATE BANK OF INDIA", branch="AMBEJOGAI",
+        account="39102284471", cheque_name="PATIL LOGISTICS PVT LTD", micr="431002834",
+    ),
+    # History, waiting on the vendor: PAN card not uploaded.
+    "ganga": dict(
+        legal_name="GANGA PACKAGING PRIVATE LIMITED", form_name="Ganga Packaging Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAGCG3317H", state_code="27", cin="U21012MH2015PTC264489", inc_date=(8, 4, 2015),
+        address="Gat 112, Chakan Talegaon Road", city="Pune", state="Maharashtra", pincode="410501",
+        contact_name="Sunita Ganguly", contact_email="sunita@gangapackaging.in", contact_phone="+91 98810 23574",
+        owner_name="Sunita Ganguly", website="gangapackaging.in", category="Corrugated boxes",
+        ifsc="UTIB0000004", bank="AXIS BANK", branch="MUMBAI BRANCH",
+        account="917020011873316", cheque_name="GANGA PACKAGING PVT LTD", micr="400211002",
+        skip_pan=True,
+    ),
 }
 VENDORS["shreeji"].update(udyam="UDYAM-MH-26-0012345", msme_declared="Micro", msme_cert="Micro")
 
@@ -743,6 +821,13 @@ SCENARIOS = [
     dict(id="anjali", vendor="anjali", group="example", title="Proprietorship, clear documents",
          summary="A sole proprietor: the GST legal name is the owner, the trade name is the business. Clean digital documents.",
          expected="Approved (bank ownership condition before first payment)"),
+    dict(id="kalpataru", vendor="kalpataru", group="history", title="History", summary="", expected="Approved"),
+    dict(id="suryodaya", vendor="suryodaya", group="history", title="History (MSME Small)", summary="", expected="Approved"),
+    dict(id="bharat", vendor="bharat", group="history", title="History (proprietor)", summary="", expected="Approved"),
+    dict(id="venkateswara", vendor="venkateswara", group="history", title="History (partnership)", summary="", expected="Approved"),
+    dict(id="coastal", vendor="coastal", group="history", title="History (MSME Micro)", summary="", expected="Approved"),
+    dict(id="patil", vendor="patil", group="history", title="History (name differs on GST)", summary="", expected="Needs review"),
+    dict(id="ganga", vendor="ganga", group="history", title="History (PAN missing)", summary="", expected="Awaiting vendor"),
     dict(id="apex", vendor="apex", group="history", title="Existing vendor (history)", summary="", expected="Approved"),
     dict(id="saikrupa", vendor="saikrupa", group="history", title="History", summary="", expected="Approved"),
     dict(id="orion", vendor="orion", group="history", title="Cancelled GST registration", summary="", expected="Rejected"),
@@ -785,7 +870,7 @@ def main():
                                  truth_gst(v, scanned=True))
         else:
             files["gst"] = write(scn_dir, f"{slug}_GST_REG-06.pdf", gst_pdf(v), truth_gst(v))
-        if s["id"] != "bluewave":
+        if s["id"] != "bluewave" and not v.get("skip_pan"):
             files["pan"] = write(scn_dir, f"{slug}_PAN_Card.png", pan_card_png(v), truth_pan(v))
         cheque = cheque_png(v)
         if s["id"] == "kaveri":

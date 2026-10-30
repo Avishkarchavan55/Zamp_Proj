@@ -12,7 +12,7 @@ import type { Application, Decision, RequestedItem } from "./types";
  * the message is sent directly over SMTP so a vendor is never left without an answer.
  */
 
-export type CommKind = "information_request" | "reminder" | "approval_notice" | "review_alert" | "reviewer_request" | "intake_ack";
+export type CommKind = "information_request" | "reminder" | "approval_notice" | "review_alert" | "reviewer_request" | "intake_ack" | "manual_message";
 
 export interface Communication {
   id: string;
@@ -62,7 +62,7 @@ function itemsHtml(items: RequestedItem[]) {
 }
 
 const button = (url: string, label: string) =>
-  `<p style="margin:22px 0"><a href="${url}" style="background:#4f46e5;color:#fff;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:600">${esc(label)}</a></p>`;
+  `<p style="margin:22px 0"><a href="${url}" style="background:#2563eb;color:#fff;padding:11px 20px;border-radius:8px;text-decoration:none;font-weight:600">${esc(label)}</a></p>`;
 
 export async function composeInformationRequest(app: Application, items: RequestedItem[], appUrl: string, reminderNo = 0) {
   const link = `${appUrl}/vendor/${app.resubmit_token}`;
@@ -82,6 +82,20 @@ export async function composeInformationRequest(app: Application, items: Request
   );
   const text = `${subject}\n\n${items.map((i, n) => `${n + 1}. ${i.title}: ${i.instruction}`).join("\n")}\n\nUpdate your application: ${link}`;
   return { subject, html, text, link, ai_worded: !!ai };
+}
+
+/** A message written by a person on the team. Their words are sent as typed (escaped), signed with their name. */
+export function composeManualMessage(app: Application, opts: { subject: string; message: string; includeLink: boolean; sender: string }, appUrl: string) {
+  const subject = REF_RE.test(opts.subject) ? opts.subject : `${opts.subject.trim()} ${ref(app.id)}`;
+  const link = `${appUrl}/vendor/${app.resubmit_token}`;
+  const paragraphs = opts.message.trim().split(/\n{2,}/).map((p) => `<p>${esc(p).replace(/\n/g, "<br/>")}</p>`).join("");
+  const html = shell(
+    `Message about your registration`,
+    `<p>Hello ${esc(app.contact_name || "there")},</p>${paragraphs}${opts.includeLink ? button(link, "Open my application") : ""}<p>Regards,<br/>${esc(opts.sender)}<br/><span style="color:#64748b">${esc(BUYER.team)}, ${esc(BUYER.name)}</span></p><p style="color:#475569">Your application reference is <strong>${app.id}</strong>.</p>`,
+  );
+  const text = [`Hello ${app.contact_name || "there"},`, opts.message.trim(), opts.includeLink ? `Open your application: ${link}` : "", `Regards,\n${opts.sender}\n${BUYER.team}, ${BUYER.name}`]
+    .filter(Boolean).join("\n\n");
+  return { subject, html, text, ai_worded: false };
 }
 
 export function composeApproval(app: Application, decision: Decision) {

@@ -20,8 +20,8 @@ function subscribe(onChange: () => void) {
 }
 const current = () => (document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
 
-/** Light / dark switch. `tone="navy"` for the dark sidebar, default for light surfaces. */
-export function ThemeToggle({ tone = "surface", className }: { tone?: "surface" | "navy"; className?: string }) {
+/** Light / dark switch. `tone="side"` inside the sidebar, default on page surfaces. */
+export function ThemeToggle({ tone = "surface", className }: { tone?: "surface" | "side"; className?: string }) {
   const theme = useSyncExternalStore(subscribe, current, () => null);
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -41,7 +41,7 @@ export function ThemeToggle({ tone = "surface", className }: { tone?: "surface" 
       title={label}
       className={cx(
         "flex h-9 w-9 items-center justify-center rounded-md transition-colors duration-150",
-        tone === "navy" ? "text-white/60 hover:bg-white/10 hover:text-white" : "border border-line text-ink-2 hover:bg-line-2 hover:text-ink",
+        tone === "side" ? "text-side-ink-2 hover:bg-side-hover hover:text-side-ink" : "border border-line text-ink-2 hover:bg-line-2 hover:text-ink",
         className,
       )}
     >

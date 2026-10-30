@@ -47,6 +47,15 @@
   --color-ch-email: #eb6834;
   --color-ch-form: #1baf7a;
 
+  /* Sidebar: soft blue panel in light mode, deep navy in dark mode. */
+  --color-side: #eaf1fb;
+  --color-side-ink: #16304f;
+  --color-side-ink-2: #4b6585;
+  --color-side-hover: #dde8f7;
+  --color-side-active: #cfe0f8;
+  --color-side-line: #d3e0f1;
+  --color-side-field: #ffffff;
+
   /* Single-hue magnitude ramp for charts. */
   --color-seq: #2563eb;
   --color-seq-soft: #dbeafe;
@@ -95,6 +104,14 @@
 
   --color-seq: #3b82f6;
   --color-seq-soft: #1c2f52;
+
+  --color-side: #0d1829;
+  --color-side-ink: #e6ebf2;
+  --color-side-ink-2: #93a4bd;
+  --color-side-hover: #16243a;
+  --color-side-active: #1d2f4d;
+  --color-side-line: #1f2e47;
+  --color-side-field: #142238;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.5);

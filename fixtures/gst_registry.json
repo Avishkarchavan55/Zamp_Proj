@@ -126,5 +126,61 @@
     "status": "Active",
     "state_code": "29",
     "constitution": "Proprietorship"
+  },
+  {
+    "gstin": "27AAKCK6631D1ZJ",
+    "legal_name": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "trade_name": "KALPATARU STEEL TRADERS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAMCS4410K1ZB",
+    "legal_name": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "trade_name": "SURYODAYA SOLAR SYSTEMS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "33BJKPR7712L1ZR",
+    "legal_name": "KARTHIK RAJAN",
+    "trade_name": "BHARAT FASTENERS",
+    "status": "Active",
+    "state_code": "33",
+    "constitution": "Proprietorship"
+  },
+  {
+    "gstin": "29AAKFS2290M1ZJ",
+    "legal_name": "SRI VENKATESWARA HYDRAULICS",
+    "trade_name": "SRI VENKATESWARA HYDRAULICS",
+    "status": "Active",
+    "state_code": "29",
+    "constitution": "Partnership"
+  },
+  {
+    "gstin": "24AAJCC8854P1ZW",
+    "legal_name": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "trade_name": "COASTAL CHEM INDUSTRIES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "27AAOCP5521R1ZM",
+    "legal_name": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "trade_name": "PATIL LOGISTICS AND WAREHOUSING PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "27AAGCG3317H1ZQ",
+    "legal_name": "GANGA PACKAGING PRIVATE LIMITED",
+    "trade_name": "GANGA PACKAGING PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
   }
 ]

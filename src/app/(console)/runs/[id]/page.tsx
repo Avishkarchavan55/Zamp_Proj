@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  AlertTriangle, ArrowLeft, Bot, CheckCircle2, Circle, Cpu, FileText, Image as ImageIcon, Loader2, Recycle, Terminal, XCircle,
+  AlertTriangle, Bot, CheckCircle2, Circle, Cpu, FileText, Image as ImageIcon, Loader2, Recycle, Terminal, XCircle,
 } from "lucide-react";
-import Link from "next/link";
+import { BackButton } from "@/components/page-nav";
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
@@ -41,9 +41,7 @@ export default function RunPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href={`/applications/${run.application_id}`} className="mb-3 inline-flex items-center gap-1.5 text-[13px] text-ink-2 hover:text-ink">
-          <ArrowLeft className="h-3.5 w-3.5" /> {run.application_id}
-        </Link>
+        <BackButton fallback={`/applications/${run.application_id}`} className="mb-3" />
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="mb-1 flex flex-wrap items-center gap-2 text-xs text-ink-3">
