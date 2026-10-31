@@ -9,7 +9,7 @@ The vendor declares *Micro* enterprise (which legally requires payment within 45
 ## How to run it
 **Submit on the vendor portal** (`/apply`).
 
-- **Quick way:** open *Demo: fill this form with a test vendor* → pick **MSME category mismatch**. It fills every field and attaches the documents. Then press **Submit application**.
+- **Quick way:** open *Staff tool: fill this form with a sample vendor* (visible only when signed in to the Company portal) → pick **MSME category mismatch**. It fills every field and attaches the documents. Then press **Submit application**.
 - **By hand:** type the values below and attach the files in this folder.
 
 ## Expected result

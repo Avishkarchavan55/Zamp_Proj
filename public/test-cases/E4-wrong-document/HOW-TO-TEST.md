@@ -9,7 +9,7 @@ The vendor put their GST certificate in the bank-proof slot. AI recognises the d
 ## How to run it
 **Submit on the vendor portal** (`/apply`).
 
-- **Quick way:** open *Demo: fill this form with a test vendor* → pick **Wrong document uploaded**. It fills every field and attaches the documents. Then press **Submit application**.
+- **Quick way:** open *Staff tool: fill this form with a sample vendor* (visible only when signed in to the Company portal) → pick **Wrong document uploaded**. It fills every field and attaches the documents. Then press **Submit application**.
 - **By hand:** type the values below and attach the files in this folder.
 
 **Then:** After the run, open the link in the request email (or the vendor's page) and upload `resubmission/Kaveri_Cancelled_Cheque.png` from this folder as the bank proof.

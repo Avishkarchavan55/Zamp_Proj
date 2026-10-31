@@ -9,7 +9,7 @@ Tampering: the cheque prints HDFC Bank, but its IFSC belongs to ICICI Bank, and 
 ## How to run it
 **Submit on the vendor portal** (`/apply`).
 
-- **Quick way:** open *Demo: fill this form with a test vendor* → pick **Doctored cheque**. It fills every field and attaches the documents. Then press **Submit application**.
+- **Quick way:** open *Staff tool: fill this form with a sample vendor* (visible only when signed in to the Company portal) → pick **Doctored cheque**. It fills every field and attaches the documents. Then press **Submit application**.
 - **By hand:** type the values below and attach the files in this folder.
 
 ## Expected result

@@ -25,7 +25,7 @@ FIELDS = [("legal_name", "Legal name of business"), ("entity_type", "Entity type
           ("msme_registered", "MSME (Udyam) registered?"), ("udyam_number", "Udyam number"), ("msme_category", "MSME category")]
 
 PORTAL = ("**Submit on the vendor portal** (`/apply`).\n\n"
-          "- **Quick way:** open *Demo: fill this form with a test vendor* → pick **{title}**. It fills every field and attaches the documents. Then press **Submit application**.\n"
+          "- **Quick way:** open *Staff tool: fill this form with a sample vendor* → pick **{title}**. It fills every field and attaches the documents. Then press **Submit application**.\n"
           "- **By hand:** type the values below and attach the files in this folder.")
 
 # (folder, scenario id, kind, channel, what it proves, what to do, expected, what to look at)
