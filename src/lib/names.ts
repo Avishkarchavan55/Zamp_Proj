@@ -79,7 +79,7 @@ export function compareNames(left: string | null | undefined, right: string | nu
     return { ...base, match: "equivalent", explanation: "Same name once legal-form abbreviations and punctuation are normalised." };
   if (cl === cr)
     return { ...base, match: "core_match", explanation: "Same business name; one side omits the legal-form suffix." };
-  const words = `${diff.left.join(" ") || "—"} ↔ ${diff.right.join(" ") || "—"}`;
+  const words = `${diff.left.join(" ") || "-"} ↔ ${diff.right.join(" ") || "-"}`;
   if (sim >= 0.75)
     return { ...base, match: "similar", explanation: `Names are similar (${Math.round(sim * 100)}%) but differ in: ${words}. Similar names can belong to different legal entities.` };
   return { ...base, match: "different", explanation: `Names refer to different entities (similarity ${Math.round(sim * 100)}%).` };

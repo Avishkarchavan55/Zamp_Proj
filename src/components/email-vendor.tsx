@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Send, X } from "lucide-react";
+import { Mail, Send, X } from "@/components/icons";
 import { useEffect, useState } from "react";
 import { useToast } from "./toast";
 import { Button, cx } from "./ui";
@@ -16,7 +16,7 @@ interface Target {
 /** Starting points; the person edits them freely before sending. */
 const TEMPLATES = [
   { key: "question", label: "Ask a question", subject: "A question about your registration", body: "We are reviewing your registration and have a question:\n\n[your question]\n\nYou can simply reply to this email." },
-  { key: "document", label: "Request a document", subject: "One more document needed", body: "To complete your registration, please send us [document] — for example [why it is needed].\n\nYou can upload it using the button below, or reply to this email with it attached.", link: true },
+  { key: "document", label: "Request a document", subject: "One more document needed", body: "To complete your registration, please send us [document] - for example [why it is needed].\n\nYou can upload it using the button below, or reply to this email with it attached.", link: true },
   { key: "update", label: "Status update", subject: "Update on your registration", body: "Thank you for your patience. Your registration is with our team and we expect to complete it by [date].\n\nWe will email you as soon as it is done." },
   { key: "blank", label: "Blank", subject: "", body: "" },
 ] as const;
@@ -71,7 +71,7 @@ function Composer({ app, onClose, onSent }: { app: Target; onClose: () => void; 
   const placeholders = /\[[^\]]+\]/.test(message);
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4 sm:p-10" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div role="dialog" aria-modal="true" aria-labelledby="email-vendor-title" className="animate-rise w-full max-w-2xl rounded-xl border border-line bg-surface shadow-pop">
+      <div role="dialog" aria-modal="true" aria-labelledby="email-vendor-title" className="animate-rise w-full max-w-2xl rounded-md border border-line bg-surface shadow-pop">
         <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-4">
           <div>
             <h2 id="email-vendor-title" className="text-[16px] font-semibold text-ink">Email {app.legal_name}</h2>
@@ -97,7 +97,7 @@ function Composer({ app, onClose, onSent }: { app: Target; onClose: () => void; 
           <label className="block">
             <span className="label">Message</span>
             <textarea className="input min-h-[180px] w-full resize-y leading-relaxed" value={message} maxLength={5000} onChange={(e) => setMessage(e.target.value)} placeholder="Write your message…" />
-            <span className="mt-1 block text-[12px] text-ink-3">Starts with &ldquo;Hello {app.contact_name || "there"},&rdquo; and ends with your name and team — no need to add them.</span>
+            <span className="mt-1 block text-[12px] text-ink-3">Starts with &ldquo;Hello {app.contact_name || "there"},&rdquo; and ends with your name and team - no need to add them.</span>
           </label>
           <label className="flex items-center gap-2.5 text-[14px] text-ink-2">
             <input type="checkbox" className="h-4 w-4 accent-[var(--color-brand)]" checked={includeLink} onChange={(e) => setIncludeLink(e.target.checked)} />

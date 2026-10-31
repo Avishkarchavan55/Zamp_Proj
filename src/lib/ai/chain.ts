@@ -171,7 +171,7 @@ export async function readDocument(slot: DocSlot | null, input: Input): Promise<
       continue;
     }
     if (p.needsTextLayer && !pdf?.hasTextLayer) {
-      attempts.push({ provider: p.id, ok: false, ms: 0, skipped: true, error: isPdf ? "scanned PDF has no text layer" : "image — no text layer" });
+      attempts.push({ provider: p.id, ok: false, ms: 0, skipped: true, error: isPdf ? "scanned PDF has no text layer" : "image - no text layer" });
       continue;
     }
     if (isOpen(p.id)) {

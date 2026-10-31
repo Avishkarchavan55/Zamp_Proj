@@ -133,7 +133,7 @@ export async function runPipeline(runId: string, appUrl: string) {
 
     // 2. Document intelligence ---------------------------------------------------------------------
     await enter("extraction");
-    await emit("extraction", "info", `Reading ${docs.length} document(s) — ${extractorLabel()}`);
+    await emit("extraction", "info", `Reading ${docs.length} document(s) - ${extractorLabel()}`);
     const docChecks: Check[] = [];
     await Promise.all(
       docs.map(async (d) => {
@@ -162,8 +162,8 @@ export async function runPipeline(runId: string, appUrl: string) {
             prior.run_id === runId
               ? `${d.filename}: read by ${providerLabel(prior.provider ?? "")} while sorting the email's attachments`
               : prior.document_id === d.id
-              ? `${d.filename}: unchanged since last run — reusing previous reading`
-              : `${d.filename}: identical file already read for ${prior.application_id} — reusing (no AI call)`,
+              ? `${d.filename}: unchanged since last run - reusing previous reading`
+              : `${d.filename}: identical file already read for ${prior.application_id} - reusing (no AI call)`,
             { slot: d.slot });
         } else {
           await emit("extraction", "info", `${d.filename}: classifying and extracting…`, { slot: d.slot });
@@ -191,7 +191,7 @@ export async function runPipeline(runId: string, appUrl: string) {
         const checks = documentChecks(d.slot, ex);
         docChecks.push(...checks);
         if (result.failed) {
-          await emit("extraction", "error", `${d.filename}: no AI provider or fallback could read it — routed to a human`, { slot: d.slot, detected_type: "other", attempts: result.attempts });
+          await emit("extraction", "error", `${d.filename}: no AI provider or fallback could read it - routed to a human`, { slot: d.slot, detected_type: "other", attempts: result.attempts });
           return;
         }
         const wrong = !DOC_SLOTS[d.slot].expects.includes(ex.detected_type);
@@ -273,7 +273,7 @@ export async function runPipeline(runId: string, appUrl: string) {
     // A newer run started meanwhile (the vendor sent more while this one was checking): it decides, not us.
     const latest = await one<{ latest_run_id: string }>(`select latest_run_id from applications where id=$1`, [appId]);
     if (latest && latest.latest_run_id !== runId) {
-      await emit("decision", "info", `Superseded by newer run ${latest.latest_run_id} — that run makes the decision.`);
+      await emit("decision", "info", `Superseded by newer run ${latest.latest_run_id} - that run makes the decision.`);
       await query(`update runs set status='completed', current_stage='done', finished_at=now(), duration_ms=$2, outcome=$3, decision=$4::jsonb where id=$1`, [
         runId, Date.now() - started, decision.outcome, json(decision),
       ]);
@@ -305,7 +305,7 @@ export async function runPipeline(runId: string, appUrl: string) {
         const c = await dispatch({ app: fresh, runId, kind: "review_alert", to: reviewer, content: composeReviewAlert(fresh, decision, appUrl), appUrl, reminders: false });
         await emit("communication", "info", `Reviewer alert ${describeDelivery(c, reviewer).text}`, { communication_id: c.id });
       } else {
-        await emit("communication", "info", "Added to the review queue. No vendor email — a reviewer decides what to ask for.");
+        await emit("communication", "info", "Added to the review queue. No vendor email - a reviewer decides what to ask for.");
       }
     } else {
       await emit("communication", "info", "No automatic email: by policy, rejections are communicated by a person after escalation.");

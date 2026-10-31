@@ -42,3 +42,7 @@ next-env.d.ts
 .data/
 !.env.example
 .data-old-*/
+
+# Design skills (third-party / house material, not part of the product)
+/.claude/skills/
+/01-core-frontend/

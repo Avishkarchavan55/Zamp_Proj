@@ -49,7 +49,7 @@ export const ACTION_LABEL: Record<string, string> = {
   clarification_requested: "Clarification requested",
   email_sent: "Email delivered",
   reminder_sent: "Automatic reminder sent",
-  escalated: "Escalated — vendor unresponsive",
+  escalated: "Escalated - vendor unresponsive",
   email_failed: "Email failed",
   run_failed: "Run failed",
   details_confirmed: "Vendor confirmed details",
@@ -122,7 +122,7 @@ export type RejectionKind = "fraud" | "ineligible" | "reviewer" | "policy";
 
 /**
  * Why a vendor was rejected, as a category a person recognises: fraud risk, not eligible, or a reviewer's
- * call — plus one sentence on why it matters.
+ * call - plus one sentence on why it matters.
  */
 export function rejectionReason(d: { reasons?: { code: string; text: string }[] | null; decided_by?: string | null; summary?: string | null }) {
   const reasons = d.reasons ?? [];
@@ -131,7 +131,7 @@ export function rejectionReason(d: { reasons?: { code: string; text: string }[] 
   if (bank) {
     return {
       kind: "fraud" as RejectionKind, label: "Fraud risk", title: "Bank account belongs to another company",
-      explain: "This bank account is already registered to a different company. Paying it could send money to the wrong party — a common payment-diversion fraud pattern.",
+      explain: "This bank account is already registered to a different company. Paying it could send money to the wrong party - a common payment-diversion fraud pattern.",
     };
   }
   const gst = has(/^ext\.gst_registry$/);

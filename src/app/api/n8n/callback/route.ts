@@ -8,10 +8,10 @@ import { audit } from "@/lib/repo";
 
 /**
  * Events reported back by the n8n workflow so the audit trail reflects what was actually delivered.
- *   sent           — Gmail accepted the original message
- *   reminder_sent  — a reminder went out (logged as its own communication)
- *   escalated      — reminders exhausted; vendor unresponsive
- *   failed         — sending failed
+ *   sent           - Gmail accepted the original message
+ *   reminder_sent  - a reminder went out (logged as its own communication)
+ *   escalated      - reminders exhausted; vendor unresponsive
+ *   failed         - sending failed
  *
  * The response tells n8n what to do next (`next`), so the workflow stays stateless: VendorIQ owns the
  * reminder count and policy, n8n owns waiting and delivery.

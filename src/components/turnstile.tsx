@@ -1,6 +1,6 @@
 "use client";
 
-import { RotateCw, ShieldAlert } from "lucide-react";
+import { RotateCw, ShieldAlert } from "@/components/icons";
 import { useEffect, useRef, useState } from "react";
 
 interface TurnstileApi {
@@ -71,13 +71,12 @@ export function Turnstile({ siteKey, fallbackEmail }: { siteKey: string; fallbac
 
   return (
     <div>
-      {/* The page is rendered at 96%; the challenge frame is shown at its natural size. */}
-      <div ref={ref} style={{ zoom: "calc(1 / var(--ui-zoom))" }} />
+      <div ref={ref} />
       {failed && (
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-lg border border-warn/40 bg-warn-soft px-3 py-2.5 text-[13px] text-ink-2">
           <ShieldAlert className="h-4 w-4 shrink-0 text-warn-ink" />
           <span className="min-w-0 flex-1">
-            The security check couldn&apos;t load — usually an ad blocker, VPN or office firewall blocking Cloudflare.
+            The security check couldn&apos;t load - usually an ad blocker, VPN or office firewall blocking Cloudflare.
             {fallbackEmail && <> You can also email your documents to <a className="font-medium text-brand" href={`mailto:${fallbackEmail}`}>{fallbackEmail}</a>.</>}
           </span>
           <button type="button" onClick={() => { setFailed(false); setAttempt((a) => a + 1); }} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1 font-medium text-ink hover:bg-line-2">

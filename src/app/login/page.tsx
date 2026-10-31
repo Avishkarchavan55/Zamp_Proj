@@ -1,10 +1,12 @@
 "use client";
 
-import { ArrowRight, Loader2, ShieldCheck } from "lucide-react";
+import { ArrowRight, Loader2, ShieldCheck } from "@/components/icons";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { useToast } from "@/components/toast";
+import { StatusPill } from "@/components/ui";
+import type { AppStatus } from "@/lib/types";
 
 export default function LoginPage() {
   return (
@@ -13,6 +15,14 @@ export default function LoginPage() {
     </Suspense>
   );
 }
+
+/** The four ways an application can end, in the same tags the console uses. */
+const OUTCOMES: { status: AppStatus; text: string }[] = [
+  { status: "approved", text: "Every check passed. An ERP vendor record is ready." },
+  { status: "awaiting_vendor", text: "Something is missing. The vendor is emailed and reminded until it arrives." },
+  { status: "in_review", text: "The documents disagree. A person decides, with the evidence laid out." },
+  { status: "rejected", text: "A hard stop, such as a bank account that belongs to another company." },
+];
 
 function Login() {
   const router = useRouter();
@@ -25,50 +35,52 @@ function Login() {
     const res = await fetch("/api/auth/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ as: "reviewer" }) });
     if (!res.ok) {
       setBusy(false);
-      return toast("error", "Could not sign in");
+      return toast("error", "Could not sign in. Please try again.");
     }
     router.replace(next.startsWith("/") ? next : "/");
   }
 
   return (
-    <div className="grid min-h-viewport lg:grid-cols-2">
+    <div className="grid min-h-viewport lg:grid-cols-[minmax(0,5fr)_minmax(0,4fr)]">
       <div className="hidden flex-col justify-between bg-navy p-12 text-white lg:flex">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand"><ShieldCheck className="h-5 w-5" /></div>
-          <span className="text-lg font-semibold">VendorIQ</span>
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-action"><ShieldCheck className="h-4 w-4" /></span>
+          <span className="text-[14px] font-semibold">VendorIQ</span>
         </div>
-        <div className="max-w-md">
-          <h2 className="text-3xl font-semibold leading-tight">Every new vendor checked, explained and decided — in under a minute.</h2>
-          <ul className="mt-8 space-y-3 text-[15px] text-white/80">
-            <li>Documents read by AI, verified by rules</li>
-            <li>Live checks against bank and PIN-code directories</li>
-            <li>Vendors chased automatically until complete</li>
+        <div className="max-w-lg">
+          <h2 className="text-[28px] font-semibold leading-9 tracking-[-0.01em]">Vendor onboarding, from submission to decision.</h2>
+          <p className="mt-3 max-w-md text-[14px] leading-5 text-white/70">Documents are read by AI and checked by written rules. Every application ends in one of four outcomes, with the reason shown.</p>
+          <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
+            {OUTCOMES.map((o) => (
+              <li key={o.status} className="grid grid-cols-[168px_1fr] items-center gap-4 py-3">
+                <span><StatusPill status={o.status} /></span>
+                <span className="text-[13px] leading-5 text-white/75">{o.text}</span>
+              </li>
+            ))}
           </ul>
         </div>
-        <div className="text-sm text-white/50">Acme Manufacturing · Procurement</div>
+        <div className="text-[13px] text-white/55">Acme Manufacturing, Procurement</div>
       </div>
 
       <div className="relative flex items-center justify-center px-6 py-12">
-        <ThemeToggle className="absolute right-5 top-5" />
+        <ThemeToggle className="absolute right-4 top-4" />
         <div className="w-full max-w-sm">
-          <div className="mb-8 lg:hidden">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-white"><ShieldCheck className="h-5 w-5" /></div>
-          </div>
-          <h1 className="text-2xl font-semibold tracking-tight text-ink">Sign in</h1>
-          <p className="mt-1.5 text-[15px] text-ink-2">Procurement console for Acme Manufacturing.</p>
+          <span className="mb-6 flex h-8 w-8 items-center justify-center rounded-md bg-action text-white lg:hidden"><ShieldCheck className="h-4 w-4" /></span>
+          <h1 className="text-[20px] font-semibold leading-7 tracking-[-0.01em] text-ink">Sign in to VendorIQ</h1>
+          <p className="mt-1 text-[14px] text-ink-2">Procurement console for Acme Manufacturing.</p>
           <button
             onClick={signIn}
             disabled={busy}
-            className="mt-8 flex w-full items-center gap-3 rounded-xl border border-line bg-surface p-4 text-left transition-colors duration-150 hover:border-brand hover:bg-brand-soft/40 disabled:opacity-60"
+            className="btn mt-6 flex w-full items-center gap-3 rounded-md border border-line-strong bg-surface p-3 text-left transition-colors duration-150 hover:bg-line-2 disabled:opacity-60"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-[13px] font-semibold text-white">GA</div>
-            <div className="flex-1">
-              <div className="font-medium text-ink">Continue as Gaurav Ahuja</div>
-              <div className="text-[13px] text-ink-3">Procurement team</div>
-            </div>
+            <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-line text-[13px] font-semibold text-ink-2">GA</span>
+            <span className="flex-1 leading-tight">
+              <span className="block text-[14px] font-medium text-ink">Continue as Gaurav Ahuja</span>
+              <span className="block text-[12px] text-ink-3">Procurement team</span>
+            </span>
             {busy ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <ArrowRight className="h-4 w-4 text-ink-3" />}
           </button>
-          <p className="mt-8 text-[13px] text-ink-3">
+          <p className="mt-6 text-[13px] text-ink-3">
             Are you a supplier? <a href="/apply" className="font-medium text-brand hover:underline">Register on the supplier portal</a>
           </p>
         </div>

@@ -23,7 +23,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/applications/[i
     note?: string;
     items?: { title: string; instruction: string; kind?: "document" | "field"; slot?: RequestedItem["slot"] }[];
   };
-  // Identity comes from the signed session — never from the request body.
+  // Identity comes from the signed session - never from the request body.
   const reviewer = `${staff.name} (${ROLE_LABEL[staff.role]})`;
   const note = body.note?.trim() ?? "";
   if (!note) return bad("A note explaining the decision is required");
@@ -72,7 +72,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/applications/[i
     if (!items.length) return bad("Add at least one item to request");
     const decision: Decision = {
       ...base, outcome: "awaiting_vendor",
-      headline: `Awaiting vendor — clarification requested by ${reviewer}`,
+      headline: `Awaiting vendor - clarification requested by ${reviewer}`,
       summary: note, requested_items: items, decided_by: reviewer,
       next_actions: ["Vendor has been emailed with a resubmission link.", "Application re-runs automatically on resubmission."],
     };

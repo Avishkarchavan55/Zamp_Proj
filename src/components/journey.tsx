@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X } from "lucide-react";
+import { Check, X } from "@/components/icons";
 import type { AppStatus } from "@/lib/types";
 import { CHANNEL_LABEL } from "@/lib/ui-meta";
 import type { AuditRow } from "./api-types";
@@ -50,14 +50,14 @@ export function Journey({ status, source, audit }: { status: AppStatus; source: 
   ];
 
   return (
-    <ol className="grid grid-cols-2 gap-3 rounded-xl border border-line bg-surface p-4 sm:grid-cols-5 sm:gap-0 sm:p-5">
+    <ol className="grid grid-cols-2 gap-3 rounded-md border border-line bg-surface p-4 sm:grid-cols-5 sm:gap-0 sm:p-5">
       {steps.map((s, i) => (
         <li key={s.title} className="relative flex gap-3 sm:flex-col sm:gap-2 sm:pr-3">
           {i < steps.length - 1 && <span className={cx("absolute left-4 right-0 top-4 hidden h-0.5 sm:block", s.state === "done" ? "bg-good/50" : "bg-line")} style={{ left: "2.25rem" }} />}
           <Dot state={s.state} />
           <div className="min-w-0">
             <div className={cx("text-[14px] font-medium", s.state === "skipped" || s.state === "todo" ? "text-ink-3" : "text-ink")}>{s.title}</div>
-            <div className={cx("text-[12.5px]", s.state === "active" ? "font-medium text-brand" : "text-ink-3")}>{s.detail}</div>
+            <div className={cx("text-[12px]", s.state === "active" ? "font-medium text-brand" : "text-ink-3")}>{s.detail}</div>
           </div>
         </li>
       ))}

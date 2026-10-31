@@ -8,7 +8,7 @@ const plex = IBM_Plex_Sans({ variable: "--font-plex", subsets: ["latin"], weight
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: "VendorIQ — Vendor onboarding",
+  title: "VendorIQ - Vendor onboarding",
   description: "Vendor onboarding from submission to decision: document AI, rule-based verification, explainable decisions.",
 };
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
       </head>
-      <body className="min-h-viewport font-sans text-[15px] leading-normal">
+      <body className="min-h-viewport font-sans text-[14px] leading-normal">
         <Providers>{children}</Providers>
       </body>
     </html>

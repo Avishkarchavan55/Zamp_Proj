@@ -5,7 +5,7 @@ import { geminiJson } from "./gemini";
 
 /**
  * Reviewer brief: a plain-English explanation of a "Needs review" case for a non-technical reviewer.
- * Built only from the check results (never the raw documents) and stored beside the decision —
+ * Built only from the check results (never the raw documents) and stored beside the decision -
  * it cannot change the outcome. Returns null when no model is available.
  */
 
@@ -44,9 +44,9 @@ Automated checks flagged these issues (JSON):
 ${JSON.stringify(issues, null, 1)}
 
 Write for a busy, non-technical reviewer. Use only the facts above; do not invent documents, names or numbers.
-- summary: 2 sentences — what does not add up, in plain words.
-- likely_benign: 1 sentence — the most plausible innocent explanation.
-- likely_risk: 1 sentence — what could go wrong (fraud, tax or payment risk) if it is not innocent.
+- summary: 2 sentences - what does not add up, in plain words.
+- likely_benign: 1 sentence - the most plausible innocent explanation.
+- likely_risk: 1 sentence - what could go wrong (fraud, tax or payment risk) if it is not innocent.
 - ask_vendor: 1–3 specific things to ask the vendor for that would resolve it (title + one-sentence instruction addressed to the vendor).`;
   for (const model of [process.env.GEMINI_MODEL ?? "gemini-3.5-flash-lite", process.env.GEMINI_FALLBACK_MODEL ?? "gemini-3.5-flash"]) {
     try {

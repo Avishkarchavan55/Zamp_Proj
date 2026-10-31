@@ -10,7 +10,7 @@ export const maxDuration = 300;
 
 /**
  * Google Form submissions, posted by the Apps Script in google/apps-script.gs. The script runs inside
- * Google as the form owner, so it reads the uploaded files from Drive itself — no Drive access is
+ * Google as the form owner, so it reads the uploaded files from Drive itself - no Drive access is
  * needed here.
  */
 export async function POST(req: Request) {

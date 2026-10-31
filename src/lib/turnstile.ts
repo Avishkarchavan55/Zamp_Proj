@@ -19,7 +19,7 @@ export async function verifyHuman(req: Request, token: string | null): Promise<s
   try {
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body, signal: AbortSignal.timeout(6000) });
     const data = (await res.json()) as { success: boolean };
-    return data.success ? null : "Human verification failed — please try again.";
+    return data.success ? null : "Human verification failed - please try again.";
   } catch {
     // Fail open on Cloudflare outages: submissions are still verified by the pipeline.
     return null;

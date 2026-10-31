@@ -1,128 +1,156 @@
 @import "tailwindcss";
 
 /*
- * Design system — from ui-ux-pro-max (product types: Banking / Document Workflow / B2B Service):
- * Swiss-minimal + accessible, trust navy + action blue, status green/amber/red, IBM Plex ("Financial Trust"),
- * flat surfaces, 150–200 ms transitions. Avoid: purple/pink "AI" gradients, heavy shadows, decoration.
+ * VendorIQ design system. See DESIGN.md for the decisions behind it.
+ *
+ * Direction: an operations console, so scanability and density beat expression.
+ *   Primary reference : IBM Carbon (flat, square, hairline-separated gray layers, one blue accent, IBM Plex)
+ *   Borrowed, narrowly: Linear's dense list rows as the container for queues (no card per item);
+ *                       Stripe's tabular figures wherever numbers are compared
+ *   Refused           : soft rounded cards with shadow, hero-metric tiles, uppercase eyebrow labels,
+ *                       coloured side stripes, ring/donut charts, entrance animation on every panel
  */
 @theme {
   --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
-  --color-canvas: #f6f8fb;
+  /* Layers: the page is the lowest gray, panels sit on it in white. */
+  --color-canvas: #f4f4f4;
   --color-surface: #ffffff;
-  --color-ink: #0f172a;
-  --color-ink-2: #475569;
-  --color-ink-3: #64748b;
-  --color-line: #e2e8f0;
-  --color-line-2: #f1f5f9;
+  --color-field: #f4f4f4;
+  --color-ink: #161616;
+  --color-ink-2: #525252;
+  --color-ink-3: #6f6f6f;
+  --color-line: #e0e0e0;
+  --color-line-strong: #8d8d8d;
+  --color-line-2: #f4f4f4;
 
-  /* Trust navy (structure) and action blue (interactive). */
-  --color-navy: #1e3a5f;
-  --color-navy-2: #132a47;
-  --color-navy-soft: #e9eef5;
-  --color-brand: #2563eb;
-  --color-brand-2: #1d4ed8;
-  --color-brand-soft: #eff6ff;
+  /* Legacy "navy" names now resolve to near-black (the product has no navy any more). */
+  --color-navy: #161616;
+  --color-navy-2: #262626;
+  --color-navy-soft: #e8e8e8;
 
-  /* Status — always paired with an icon + label, never colour alone. */
-  --color-good: #16a34a;
-  --color-good-ink: #15803d;
-  --color-good-soft: #f0fdf4;
-  --color-warn: #d97706;
-  --color-warn-ink: #b45309;
-  --color-warn-soft: #fffbeb;
-  --color-serious: #ea580c;
-  --color-serious-ink: #c2410c;
-  --color-serious-soft: #fff7ed;
-  --color-critical: #dc2626;
-  --color-critical-ink: #b91c1c;
-  --color-critical-soft: #fef2f2;
-  --color-info: #0369a1;
-  --color-info-ink: #075985;
-  --color-info-soft: #f0f9ff;
+  /* One accent. `action` fills buttons (white text, 5.3:1); `brand` colours links and selection. */
+  --color-action: #0f62fe;
+  --color-action-2: #0050e6;
+  --color-brand: #0f62fe;
+  --color-brand-2: #0043ce;
+  --color-brand-soft: #edf5ff;
 
-  /* Intake channels: categorical slots 1–3, validated together (CVD ΔE ≥ 9.2, normal-vision ≥ 24). */
-  --color-ch-portal: #2a78d6;
-  --color-ch-email: #eb6834;
-  --color-ch-form: #1baf7a;
+  /* Status: always an icon or label as well, never colour alone. Soft = tag fill, ink = tag text. */
+  --color-good: #198038;
+  --color-good-ink: #0e6027;
+  --color-good-soft: #defbe6;
+  --color-warn: #b28600;
+  --color-warn-ink: #684e00;
+  --color-warn-soft: #fcf4d6;
+  --color-serious: #ba4e00;
+  --color-serious-ink: #8a3800;
+  --color-serious-soft: #fff2e8;
+  --color-critical: #da1e28;
+  --color-critical-ink: #a2191f;
+  --color-critical-soft: #fff1f1;
+  --color-info: #0f62fe;
+  --color-info-ink: #0043ce;
+  --color-info-soft: #edf5ff;
 
-  /* Sidebar: soft blue panel in light mode, deep navy in dark mode. */
-  --color-side: #eaf1fb;
-  --color-side-ink: #16304f;
-  --color-side-ink-2: #4b6585;
-  --color-side-hover: #dde8f7;
-  --color-side-active: #cfe0f8;
-  --color-side-line: #d3e0f1;
+  /* Intake channels: validated together (colour-blind separation, 3:1 against the surface). */
+  --color-ch-portal: #0f62fe;
+  --color-ch-email: #c45a00;
+  --color-ch-form: #00907f;
+
+  --color-seq: #0f62fe;
+  --color-seq-soft: #d0e2ff;
+
+  /* Filled buttons for destructive and confirming actions: the same fill in both themes (white text, 5:1). */
+  --color-danger: #da1e28;
+  --color-danger-2: #b81921;
+  --color-success: #198038;
+  --color-success-2: #0e6027;
+
+  /* Sidebar: a soft blue-gray layer in light mode, near-black in dark mode. */
+  --color-side: #edf2f9;
+  --color-side-ink: #161616;
+  --color-side-ink-2: #525c6b;
+  --color-side-hover: #e1e9f4;
+  --color-side-active: #ffffff;
+  --color-side-line: #d5dfec;
   --color-side-field: #ffffff;
 
-  /* Single-hue magnitude ramp for charts. */
-  --color-seq: #2563eb;
-  --color-seq-soft: #dbeafe;
+  /* One square scale. Pills (rounded-full) are for tags and avatars only. */
+  --radius-xs: 0px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
+  --radius-3xl: 2px;
 
-  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-pop: 0 12px 32px rgba(15, 23, 42, 0.14);
+  /* Depth is a border. The only shadow is for things that float above the page. */
+  --shadow-card: none;
+  --shadow-pop: 0 2px 8px rgba(22, 22, 22, 0.2);
 }
 
-/* Dark theme: the same tokens, re-stepped for a dark surface. Set by the theme toggle (data-theme on <html>). */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Dark theme: Carbon "Gray 100" layers. `brand` is lighter so links stay readable; `action` stays put. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-canvas: #0b1220;
-  --color-surface: #111a2b;
-  --color-ink: #e6ebf2;
-  --color-ink-2: #aab4c4;
-  --color-ink-3: #8592a6;
-  --color-line: #253247;
-  --color-line-2: #1a2537;
+  --color-canvas: #161616;
+  --color-surface: #1e1e1e;
+  --color-field: #262626;
+  --color-ink: #f4f4f4;
+  --color-ink-2: #c6c6c6;
+  --color-ink-3: #a8a8a8;
+  --color-line: #393939;
+  --color-line-strong: #6f6f6f;
+  --color-line-2: #262626;
 
-  --color-navy: #0d1829;
-  --color-navy-2: #091221;
-  --color-navy-soft: #1a2740;
-  --color-brand: #3b82f6;
-  --color-brand-2: #7cb0ff;
-  --color-brand-soft: #16264a;
+  --color-navy: #0d0d0d;
+  --color-navy-2: #1a1a1a;
+  --color-navy-soft: #262626;
 
-  --color-good: #22c55e;
-  --color-good-ink: #4ade80;
-  --color-good-soft: #10291c;
-  --color-warn: #f59e0b;
-  --color-warn-ink: #fbbf24;
-  --color-warn-soft: #2b2009;
-  --color-serious: #f97316;
-  --color-serious-ink: #fb923c;
-  --color-serious-soft: #2d1b0c;
-  --color-critical: #ef4444;
-  --color-critical-ink: #f87171;
-  --color-critical-soft: #2d1416;
-  --color-info: #38bdf8;
-  --color-info-ink: #7dd3fc;
-  --color-info-soft: #0c2434;
+  --color-action: #0f62fe;
+  --color-action-2: #0353e9;
+  --color-brand: #78a9ff;
+  --color-brand-2: #a6c8ff;
+  --color-brand-soft: #1a2740;
 
-  --color-ch-portal: #3987e5;
-  --color-ch-email: #d95926;
-  --color-ch-form: #199e70;
+  --color-good: #42be65;
+  --color-good-ink: #6fdc8c;
+  --color-good-soft: #112a1a;
+  --color-warn: #f1c21b;
+  --color-warn-ink: #f1c21b;
+  --color-warn-soft: #2b2408;
+  --color-serious: #ff832b;
+  --color-serious-ink: #ffb784;
+  --color-serious-soft: #2f1c0d;
+  --color-critical: #fa4d56;
+  --color-critical-ink: #ff8389;
+  --color-critical-soft: #2d1316;
+  --color-info: #78a9ff;
+  --color-info-ink: #a6c8ff;
+  --color-info-soft: #1a2740;
 
-  --color-seq: #3b82f6;
-  --color-seq-soft: #1c2f52;
+  --color-ch-portal: #4589ff;
+  --color-ch-email: #e0701c;
+  --color-ch-form: #10a08c;
 
-  --color-side: #0d1829;
-  --color-side-ink: #e6ebf2;
-  --color-side-ink-2: #93a4bd;
-  --color-side-hover: #16243a;
-  --color-side-active: #1d2f4d;
-  --color-side-line: #1f2e47;
-  --color-side-field: #142238;
+  --color-seq: #4589ff;
+  --color-seq-soft: #1f3257;
 
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.5);
-}
+  --color-side: #121212;
+  --color-side-ink: #f4f4f4;
+  --color-side-ink-2: #a8a8a8;
+  --color-side-hover: #1c1c1c;
+  --color-side-active: #262626;
+  --color-side-line: #2a2a2a;
+  --color-side-field: #1e1e1e;
 
-:root[data-theme="dark"] ::selection {
-  background: #1e3a8a;
-}
-
-:root[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #334155;
+  --shadow-pop: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 html,
@@ -131,23 +159,48 @@ body {
   color: var(--color-ink);
 }
 
-/* The whole UI renders at 96% — denser, closer to a typical console. Full-height containers use
-   .min-h-viewport, which divides the zoom back out so they still reach the bottom of the window. */
-html {
-  --ui-zoom: 0.96;
-  zoom: var(--ui-zoom);
+/* Product type: 14px, with the slight positive tracking Carbon uses at small sizes. */
+body {
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.01em;
+  caret-color: var(--color-brand);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+/* Numbers that are compared sit in columns: fixed-width digits. */
+table,
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 .min-h-viewport {
-  min-height: calc(100dvh / var(--ui-zoom));
+  min-height: 100dvh;
 }
 
-body {
-  font-feature-settings: "ss02";
-}
-
+/* Browser surfaces carry the design too: selection, scrollbars, placeholders, focus. */
 ::selection {
-  background: #bfdbfe;
+  background: color-mix(in srgb, var(--color-brand) 28%, transparent);
+}
+
+::placeholder {
+  color: var(--color-ink-3);
+  opacity: 1;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
 }
 
 :focus-visible {
@@ -155,30 +208,34 @@ body {
   outline-offset: 2px;
 }
 
-@keyframes rise {
+/* Press feedback: instant and slight, only on real buttons that can be pressed. */
+.btn:not(:disabled):active {
+  transform: scale(0.985);
+}
+
+/* Motion: state changes only. One short fade for things that appear (dialogs, toasts, menus). */
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(4px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 .animate-rise {
-  animation: rise 0.2s ease-out both;
+  animation: fade-in 140ms var(--ease-out) both;
 }
 
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand) 40%, transparent);
   }
   100% {
-    box-shadow: 0 0 0 9px rgba(37, 99, 235, 0);
+    box-shadow: 0 0 0 8px transparent;
   }
 }
 .animate-pulse-ring {
-  animation: pulse-ring 1.4s ease-out infinite;
+  animation: pulse-ring 1.4s var(--ease-out) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -188,22 +245,38 @@ body {
   .animate-pulse {
     animation: none !important;
   }
+  .btn:not(:disabled):active {
+    transform: none;
+  }
 }
 
 .scrollbar-thin::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 8px;
-}
 
 @layer components {
+  /*
+   * Carbon-style field: filled, with only a bottom border; focus is a 2px inset ring.
+   * Taller than a button row so a form reads as a form.
+   */
   .input {
-    @apply rounded-lg border border-line bg-surface px-3 py-2.5 text-[14px] text-ink transition-colors duration-150 placeholder:text-ink-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/15;
+    @apply min-h-10 border-0 border-b border-line-strong bg-field px-3 py-2 text-[14px] text-ink transition-colors duration-150;
+    border-radius: 0;
+  }
+  .input:hover {
+    background: color-mix(in srgb, var(--color-field) 92%, var(--color-ink));
+  }
+  .input:focus {
+    outline: 2px solid var(--color-brand);
+    outline-offset: -2px;
+    border-bottom-color: transparent;
+  }
+  .input:disabled {
+    @apply cursor-not-allowed text-ink-3;
   }
   .label {
-    @apply mb-1.5 block text-[13px] font-medium text-ink-2;
+    @apply mb-1 block text-[12px] font-normal text-ink-2;
+    letter-spacing: 0.02em;
   }
 }

@@ -1,4 +1,5 @@
 import { after } from "next/server";
+import { tidyJson } from "@/lib/tidy";
 import { SLOTS, appUrl, bad, validateFile } from "@/lib/http";
 import { intakeStructured } from "@/lib/intake";
 import { runPipeline } from "@/lib/pipeline";
@@ -11,7 +12,7 @@ export const maxDuration = 300;
 const ENTITY_TYPES: EntityType[] = ["private_limited", "public_limited", "llp", "partnership", "proprietorship"];
 
 export async function GET() {
-  return Response.json(await listApplications());
+  return Response.json(tidyJson(await listApplications()));
 }
 
 /** Vendor portal submission. */

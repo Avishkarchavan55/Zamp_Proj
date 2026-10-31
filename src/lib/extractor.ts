@@ -9,7 +9,7 @@ import type { DocSlot, Extraction } from "./types";
  * Document intelligence entry point. Two modes:
  *  - "chain"   (default when any AI key is configured): the provider fallback chain in ./ai/chain.ts
  *  - "fixture" (offline test mode): returns the generator's ground truth for known demo files.
- *              Never used silently — runs and the UI are labelled when it is on.
+ *              Never used silently - runs and the UI are labelled when it is on.
  * Never throws: if nothing can read a document it comes back as "illegible" and a human takes over.
  */
 
@@ -57,7 +57,7 @@ export async function extractDocument(
         type_confidence: 0,
         legibility: "illegible",
         fields: [],
-        notes: "No AI provider or fallback could read this document automatically — a reviewer must read it.",
+        notes: "No AI provider or fallback could read this document automatically - a reviewer must read it.",
       },
       provider: "none",
       attempts: e.attempts ?? [],

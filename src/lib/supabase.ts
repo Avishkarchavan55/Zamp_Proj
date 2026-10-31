@@ -19,7 +19,7 @@ export const DOCUMENT_BUCKET = process.env.SUPABASE_BUCKET ?? "vendor-documents"
 
 /**
  * Pushes a tiny "something changed" signal to browsers watching a run. No data travels over the
- * public channel — the page refetches through the authenticated API.
+ * public channel - the page refetches through the authenticated API.
  */
 export async function broadcast(topic: string, payload: Record<string, unknown> = {}) {
   const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;

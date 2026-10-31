@@ -20,7 +20,7 @@ export async function GET(req: Request, ctx: RouteContext<"/api/n8n/status/[id]"
     `select count(*)::int as n from audit_log where application_id=$1 and action in ('resubmitted','details_confirmed') and ts > $2`,
     [app.id, comm.created_at],
   );
-  // A newer request to the same vendor carries its own reminders — this older loop stops.
+  // A newer request to the same vendor carries its own reminders - this older loop stops.
   const newer = await one<{ n: number }>(
     `select count(*)::int as n from communications where application_id=$1 and kind=$2 and created_at > $3`,
     [app.id, comm.kind, comm.created_at],

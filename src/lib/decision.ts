@@ -43,7 +43,7 @@ export function decide(checks: Check[], vendorName: string): Decision {
     case "R1":
       return {
         outcome: "rejected",
-        headline: "Rejected — this vendor cannot be onboarded",
+        headline: "Rejected - this vendor cannot be onboarded",
         summary: `${vendorName} cannot be onboarded: ${rejectHits.map((c) => c.message).join(" ")}`,
         reasons: reasons(rejectHits),
         next_actions: [
@@ -63,14 +63,14 @@ export function decide(checks: Check[], vendorName: string): Decision {
         next_actions: [
           "A specific request with a secure resubmission link has been sent to the vendor.",
           "Automatic reminders go out if the vendor does not respond; unresponsive vendors are escalated.",
-          "Only the affected checks change on resubmission — unchanged documents are not re-read.",
+          "Only the affected checks change on resubmission - unchanged documents are not re-read.",
         ],
         conditions: conditionTexts, requested_items: requested, rule_trace, counts, decided_by: "policy_engine",
       };
     case "R3":
       return {
         outcome: "in_review",
-        headline: `Needs your decision — ${reviewHits.length === 1 ? "one thing doesn't" : `${reviewHits.length} things don't`} add up`,
+        headline: `Needs your decision - ${reviewHits.length === 1 ? "one thing doesn't" : `${reviewHits.length} things don't`} add up`,
         summary: `The documents do not tell one consistent story. ${reviewHits[0].message}`,
         reasons: reasons(reviewHits),
         next_actions: [
@@ -83,7 +83,7 @@ export function decide(checks: Check[], vendorName: string): Decision {
       return {
         outcome: "approved",
         headline: conditions.length
-          ? `Approved — ${conditions.length === 1 ? "one thing" : `${conditions.length} things`} to clear before the first payment`
+          ? `Approved - ${conditions.length === 1 ? "one thing" : `${conditions.length} things`} to clear before the first payment`
           : "Approved",
         summary: `All ${counts.passed} blocking checks passed for ${vendorName}.` +
           (conditions.length ? ` ${conditions.length} item(s) could not be independently verified and are carried as conditions.` : ""),

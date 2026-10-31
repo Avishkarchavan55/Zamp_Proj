@@ -83,7 +83,7 @@ export const GEMINI_RESPONSE_SCHEMA = {
 
 export function extractionPrompt(slot: DocSlot | null, withJsonShape: boolean) {
   const where = slot
-    ? `The vendor uploaded this file in the "${DOC_SLOTS[slot].label}" slot. Do not assume it is that document — look at it.`
+    ? `The vendor uploaded this file in the "${DOC_SLOTS[slot].label}" slot. Do not assume it is that document - look at it.`
     : "The vendor sent this file as an email attachment without saying what it is.";
   return `You are a document analyst on a vendor-onboarding team at an Indian company.
 ${where}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowUp } from "lucide-react";
+import { ArrowLeft, ArrowUp } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useSyncExternalStore } from "react";
 import { cx } from "./ui";
@@ -18,7 +18,7 @@ export function BackButton({ fallback, label = "Back", className }: { fallback: 
     <button
       type="button"
       onClick={() => (canGoBack ? router.back() : router.push(fallback))}
-      className={cx("inline-flex items-center gap-1.5 rounded-md text-[13.5px] font-medium text-ink-2 transition-colors duration-150 hover:text-ink", className)}
+      className={cx("inline-flex items-center gap-1.5 rounded-md text-[13px] font-medium text-ink-2 transition-colors duration-150 hover:text-ink", className)}
     >
       <ArrowLeft className="h-4 w-4" /> {label}
     </button>
@@ -40,7 +40,7 @@ export function ScrollToTop({ after = 700 }: { after?: number }) {
       title="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
       className={cx(
-        "fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-ink-2 shadow-pop transition-all duration-200 hover:text-brand",
+        "fixed bottom-6 right-6 z-30 flex h-10 w-10 items-center justify-center rounded-md border border-line-strong bg-surface text-ink-2 shadow-pop transition-all duration-200 hover:text-brand",
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0",
       )}
     >

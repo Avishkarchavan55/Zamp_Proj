@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CornerDownLeft, FileStack, Inbox, LayoutDashboard, Plus, ScaleIcon, Search, UsersRound } from "lucide-react";
+import { ArrowRight, CornerDownLeft, FileStack, Inbox, LayoutDashboard, Plus, ScaleIcon, Search, UsersRound } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
@@ -19,11 +19,11 @@ interface Item {
 
 const PAGES: Item[] = [
   { id: "p-overview", label: "Overview", icon: LayoutDashboard, href: "/" },
-  { id: "p-apps", label: "Applications", icon: FileStack, href: "/applications" },
-  { id: "p-review", label: "Review queue", icon: UsersRound, href: "/review" },
-  { id: "p-comms", label: "Vendor communications", icon: Inbox, href: "/outbox" },
-  { id: "p-policy", label: "Policy & rules", icon: ScaleIcon, href: "/policy" },
-  { id: "p-new", label: "New vendor application (supplier portal)", icon: Plus, href: "/apply", external: true },
+  { id: "p-apps", label: "All vendors", icon: FileStack, href: "/applications" },
+  { id: "p-review", label: "Needs your decision", icon: UsersRound, href: "/review" },
+  { id: "p-comms", label: "Emails to vendors", icon: Inbox, href: "/outbox" },
+  { id: "p-policy", label: "How decisions are made", icon: ScaleIcon, href: "/policy" },
+  { id: "p-new", label: "New vendor application", hint: "Opens the supplier portal", icon: Plus, href: "/apply", external: true },
 ];
 
 export function CommandPalette({ onClose }: { onClose: () => void }) {
@@ -53,8 +53,8 @@ export function CommandPalette({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 px-4 pt-[12vh] backdrop-blur-[2px]" onMouseDown={onClose}>
-      <div className="animate-rise w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-surface shadow-pop" onMouseDown={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 px-4 pt-[12vh]" onMouseDown={onClose}>
+      <div className="animate-rise w-full max-w-xl overflow-hidden rounded-md border border-line bg-surface shadow-pop" onMouseDown={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-line px-4">
           <Search className="h-4 w-4 text-ink-3" />
           <input
@@ -67,10 +67,10 @@ export function CommandPalette({ onClose }: { onClose: () => void }) {
               if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
               if (e.key === "Enter") go(items[active]);
             }}
-            placeholder="Search vendors by name, ID or city — or jump to a page"
+            placeholder="Search vendors by name, ID or city - or jump to a page"
             className="h-12 flex-1 bg-transparent text-[14px] text-ink placeholder:text-ink-3 focus:outline-none"
           />
-          <kbd className="rounded border border-line px-1.5 font-mono text-[10.5px] text-ink-3">esc</kbd>
+          <kbd className="rounded border border-line px-1.5 font-mono text-[12px] text-ink-3">esc</kbd>
         </div>
         <ul className="max-h-[50vh] overflow-y-auto p-2">
           {items.length === 0 && <li className="px-3 py-6 text-center text-sm text-ink-3">No matches</li>}
@@ -83,8 +83,8 @@ export function CommandPalette({ onClose }: { onClose: () => void }) {
               >
                 {it.icon ? <it.icon className="h-4 w-4 text-ink-3" /> : <FileStack className="h-4 w-4 text-ink-3" />}
                 <div className="min-w-0 flex-1">
-                  <div className="truncate text-[13.5px] font-medium text-ink">{it.label}</div>
-                  {it.hint && <div className="truncate font-mono text-[11px] text-ink-3">{it.hint}</div>}
+                  <div className="truncate text-[13px] font-medium text-ink">{it.label}</div>
+                  {it.hint && <div className="truncate font-mono text-[12px] text-ink-3">{it.hint}</div>}
                 </div>
                 {it.app && <StatusPill status={it.app.status} />}
                 {i === active ? <CornerDownLeft className="h-3.5 w-3.5 text-brand" /> : <ArrowRight className="h-3.5 w-3.5 text-transparent" />}

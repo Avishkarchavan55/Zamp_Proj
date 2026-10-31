@@ -4,7 +4,7 @@ import {
   Activity, Building2, CheckCircle2, ChevronDown, Database, Download, Eye, EyeOff, FileSearch, FileText,
   Gavel, History, Landmark, Loader2, Mail, MessageSquareWarning, Plus, RotateCw, Send, ShieldX, Sparkles, Trash2,
   TriangleAlert, UserRound, XCircle,
-} from "lucide-react";
+} from "@/components/icons";
 import Link from "next/link";
 import { BackButton } from "@/components/page-nav";
 import { EmailVendor } from "@/components/email-vendor";
@@ -30,7 +30,7 @@ const TABS = [
   { id: "timeline", label: "History", icon: History },
 ] as const;
 
-const mask = (acct?: string | null) => (acct ? `•••• ${acct.slice(-4)}` : "—");
+const mask = (acct?: string | null) => (acct ? `•••• ${acct.slice(-4)}` : "-");
 
 export default function ApplicationPage() {
   const { id } = useParams<{ id: string }>();
@@ -57,13 +57,13 @@ export default function ApplicationPage() {
     <div className="space-y-6">
       <BackButton fallback="/applications" />
       <PageHeader
-        eyebrow={<span><Mono>{app.id}</Mono> · {ENTITY_LABELS[app.entity_type]} · {app.city}, {app.state} · {app.category || "—"}</span>}
+        eyebrow={<span><Mono>{app.id}</Mono> · {ENTITY_LABELS[app.entity_type]} · {app.city}, {app.state} · {app.category || "-"}</span>}
         title={<span className="flex flex-wrap items-center gap-3">{app.legal_name}<StatusPill status={app.status} size="lg" /></span>}
         subtitle={
           app.flags?.includes("vendor_unresponsive") ? (
-            <span className="inline-flex items-center gap-1.5 font-medium text-critical-ink"><TriangleAlert className="h-4 w-4" />The vendor did not respond to reminders — escalated to you.</span>
+            <span className="inline-flex items-center gap-1.5 font-medium text-critical-ink"><TriangleAlert className="h-4 w-4" />The vendor did not respond to reminders - escalated to you.</span>
           ) : app.needs_confirmation ? (
-            "Sent by email — details were read from the documents and the vendor must confirm them."
+            "Sent by email - details were read from the documents and the vendor must confirm them."
           ) : undefined
         }
         right={
@@ -78,10 +78,10 @@ export default function ApplicationPage() {
       <Journey status={app.status} source={app.source} audit={data.audit} />
 
       {processing && latestRun && (
-        <Link href={`/runs/${latestRun.run.id}`} className="flex items-center gap-3 rounded-xl border border-brand/30 bg-brand-soft px-5 py-4 text-[14.5px] hover:border-brand">
+        <Link href={`/runs/${latestRun.run.id}`} className="flex items-center gap-3 rounded-md border border-brand/30 bg-brand-soft px-5 py-4 text-[14px] hover:border-brand">
           <Loader2 className="h-5 w-5 animate-spin text-brand" />
           <span className="font-medium text-ink">Checking this vendor right now</span>
-          <span className="text-ink-2">— watch it live</span>
+          <span className="text-ink-2">- watch it live</span>
         </Link>
       )}
 
@@ -102,7 +102,7 @@ export default function ApplicationPage() {
             >
               <t.icon className="h-4 w-4" />
               {t.label}
-              {t.id === "comms" && data.communications.length > 0 && <span className="rounded-full bg-line-2 px-1.5 text-[11px] text-ink-2">{data.communications.length}</span>}
+              {t.id === "comms" && data.communications.length > 0 && <span className="rounded-full bg-line-2 px-1.5 text-[12px] text-ink-2">{data.communications.length}</span>}
             </button>
           ))}
         </div>
@@ -138,7 +138,7 @@ function ErpCard({ id }: { id: string }) {
       <CardHeader
         icon={Database}
         title="ERP vendor master record"
-        subtitle="What finance loads into the ERP — the process ends with a usable record, not just an approval"
+        subtitle="What finance loads into the ERP - the process ends with a usable record, not just an approval"
         right={<a href={`/api/applications/${id}/erp?format=csv`}><Button variant="secondary" size="sm"><Download className="h-4 w-4" />Download CSV</Button></a>}
       />
       <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -150,7 +150,7 @@ function ErpCard({ id }: { id: string }) {
       <button onClick={() => setJson((j) => !j)} className="flex w-full items-center gap-1.5 px-5 py-2 text-[12px] text-ink-3 hover:text-ink">
         <ChevronDown className={cx("h-3.5 w-3.5 transition-transform", json && "rotate-180")} /> {json ? "Hide" : "Show"} full JSON record
       </button>
-      {json && <pre className="scrollbar-thin mx-5 mb-4 max-h-72 overflow-auto rounded-lg bg-[#0b1020] p-4 font-mono text-[11.5px] text-slate-200">{JSON.stringify({ ...data, bank: { ...data.bank, account_number: mask(data.bank.account_number) } }, null, 2)}</pre>}
+      {json && <pre className="scrollbar-thin mx-5 mb-4 max-h-72 overflow-auto rounded-lg bg-[#161616] p-4 font-mono text-[12px] text-slate-200">{JSON.stringify({ ...data, bank: { ...data.bank, account_number: mask(data.bank.account_number) } }, null, 2)}</pre>}
     </Card>
   );
 }
@@ -158,14 +158,14 @@ function ErpCard({ id }: { id: string }) {
 function Kv({ k, v }: { k: string; v: React.ReactNode }) {
   return (
     <div className="bg-surface px-5 py-3">
-      <div className="text-[11px] font-medium uppercase tracking-wide text-ink-3">{k}</div>
-      <div className="mt-0.5 text-[13.5px] text-ink">{v}</div>
+      <div className="text-[12px] font-medium text-ink-3">{k}</div>
+      <div className="mt-0.5 text-[13px] text-ink">{v}</div>
     </div>
   );
 }
 
 // ------------------------------------------------------------------------------------------------
-// Reviewer actions — identity and permissions come from the signed-in session
+// Reviewer actions - identity and permissions come from the signed-in session
 // ------------------------------------------------------------------------------------------------
 
 function ReviewPanel({ app, onDone }: { app: Application; onDone: () => void }) {
@@ -209,7 +209,7 @@ function ReviewPanel({ app, onDone }: { app: Application; onDone: () => void }) 
         <div className="flex items-center gap-2.5">
           <Gavel className={cx("h-4 w-4", needsHuman ? "text-serious-ink" : "text-ink-3")} />
           <div>
-            <div className="text-[15px] font-semibold text-ink">{needsHuman ? "Make your decision" : "Override or follow up"}</div>
+            <div className="text-[14px] font-semibold text-ink">{needsHuman ? "Make your decision" : "Override or follow up"}</div>
             <div className="text-[13px] text-ink-3">Recorded under your name in the history.</div>
           </div>
         </div>
@@ -248,7 +248,7 @@ function ReviewPanel({ app, onDone }: { app: Application; onDone: () => void }) 
                       <button aria-label="Remove item" onClick={() => setItems((c) => c.filter((_, j) => j !== i))} className="rounded-lg p-2 text-ink-3 hover:bg-line-2"><Trash2 className="h-4 w-4" /></button>
                     </div>
                   ))}
-                  <button onClick={() => setItems((c) => [...c, { title: "", instruction: "" }])} className="flex items-center gap-1 text-[12.5px] font-medium text-brand-2"><Plus className="h-3.5 w-3.5" />Add item</button>
+                  <button onClick={() => setItems((c) => [...c, { title: "", instruction: "" }])} className="flex items-center gap-1 text-[12px] font-medium text-brand-2"><Plus className="h-3.5 w-3.5" />Add item</button>
                 </div>
               )}
               <textarea
@@ -307,7 +307,7 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
           const wrong = e && !DOC_SLOTS[d.slot].expects.includes(e.detected_type as DocType);
           return (
             <button key={d.id} onClick={() => setSel(d.id)} className={cx("mb-1 w-full rounded-lg px-3 py-2 text-left", sel === d.id ? "bg-brand-soft" : "hover:bg-line-2", d.superseded && "opacity-60")}>
-              <div className="text-[11px] font-medium uppercase tracking-wide text-ink-3">{DOC_SLOTS[d.slot].label}{d.version > 1 && ` · v${d.version}`}</div>
+              <div className="text-[12px] font-medium text-ink-3">{DOC_SLOTS[d.slot].label}{d.version > 1 && ` · v${d.version}`}</div>
               <div className="truncate text-[13px] font-medium text-ink">{d.filename}</div>
               <div className="mt-1 flex flex-wrap gap-1">
                 {d.superseded && <Badge tone="neutral">replaced</Badge>}
@@ -330,7 +330,7 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
                 return (
                   <div
                     key={f.key}
-                    className={cx("pointer-events-none absolute rounded-sm border-2 transition-all", hover === f.key ? "border-brand bg-brand/15" : "border-brand/40 bg-transparent")}
+                    className={cx("pointer-events-none absolute rounded-sm border-2 transition-colors duration-150", hover === f.key ? "border-brand bg-brand/15" : "border-brand/40 bg-transparent")}
                     style={{ top: `${y1 / 10}%`, left: `${x1 / 10}%`, height: `${(y2 - y1) / 10}%`, width: `${(x2 - x1) / 10}%` }}
                   />
                 );
@@ -340,7 +340,7 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
               <span>{doc.filename} · {(doc.size / 1024).toFixed(0)} KB · {dateTime(doc.uploaded_at)}</span>
               <a href={`/api/documents/${doc.id}`} target="_blank" className="text-brand-2 hover:underline">Open original</a>
             </div>
-            {boxes.length > 0 && <div className="mt-1 text-[11.5px] text-ink-3">Hover a field to see where it was read on the page.</div>}
+            {boxes.length > 0 && <div className="mt-1 text-[12px] text-ink-3">Hover a field to see where it was read on the page.</div>}
           </div>
           <div className="min-w-0 p-4">
             {!ex ? (
@@ -355,10 +355,10 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
                   {ex.latency_ms > 0 && <span className="text-xs text-ink-3">{secs(ex.latency_ms)}</span>}
                 </div>
                 {(ex.attempts?.length ?? 0) > 1 && <AttemptTrail attempts={ex.attempts!} />}
-                {ex.notes && <p className="mb-3 rounded-lg bg-line-2 px-3 py-2 text-[12.5px] text-ink-2">{ex.notes}</p>}
+                {ex.notes && <p className="mb-3 rounded-lg bg-line-2 px-3 py-2 text-[12px] text-ink-2">{ex.notes}</p>}
                 <div className="overflow-hidden rounded-lg border border-line">
-                  <table className="w-full text-[12.5px]">
-                    <thead className="bg-line-2/70 text-left text-[11px] uppercase tracking-wide text-ink-3">
+                  <table className="w-full text-[12px]">
+                    <thead className="bg-line-2/70 text-left text-[12px] text-ink-3">
                       <tr><th className="px-3 py-2 font-medium">Field</th><th className="px-3 py-2 font-medium">Read from document</th><th className="px-3 py-2 font-medium">Confidence</th></tr>
                     </thead>
                     <tbody>
@@ -375,11 +375,11 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
                                 {isAcct && !reveal ? mask(f.value) : f.value}
                                 {isAcct && <button aria-label="Reveal account number" onClick={() => setReveal((r) => !r)} className="text-ink-3 hover:text-ink">{reveal ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}</button>}
                               </div>
-                              {f.source_quote && f.source_quote !== f.value && !isAcct && <div className="mt-0.5 text-[11.5px] italic text-ink-3">“{f.source_quote}”</div>}
+                              {f.source_quote && f.source_quote !== f.value && !isAcct && <div className="mt-0.5 text-[12px] italic text-ink-3">“{f.source_quote}”</div>}
                               <div className="mt-1 flex flex-wrap gap-1">
                                 {f.verified_by?.includes("text_layer") && <Badge tone="good">✓ found in PDF text</Badge>}
                                 {f.second_opinion && <Badge tone={f.second_opinion.agrees ? "good" : "serious"}>{f.second_opinion.agrees ? "✓ second model agrees" : `second model read "${f.second_opinion.value}"`}</Badge>}
-                                {formVal && <span className={cx("text-[11.5px]", same ? "text-good-ink" : "text-ink-3")}>{same ? "✓ matches form" : `form: ${isAcct && !reveal ? mask(formVal) : formVal}`}</span>}
+                                {formVal && <span className={cx("text-[12px]", same ? "text-good-ink" : "text-ink-3")}>{same ? "✓ matches form" : `form: ${isAcct && !reveal ? mask(formVal) : formVal}`}</span>}
                               </div>
                             </td>
                             <td className="px-3 py-2"><ConfidenceBar value={f.confidence} /></td>
@@ -401,8 +401,8 @@ function DocumentInspector({ app, documents, extractions }: { app: Application; 
 function AttemptTrail({ attempts }: { attempts: NonNullable<ExtractionRow["attempts"]> }) {
   return (
     <div className="mb-3 rounded-lg border border-line px-3 py-2">
-      <div className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-ink-3">Fallback chain</div>
-      <ol className="flex flex-wrap items-center gap-1.5 text-[11.5px]">
+      <div className="mb-1.5 text-[12px] font-medium text-ink-3">Fallback chain</div>
+      <ol className="flex flex-wrap items-center gap-1.5 text-[12px]">
         {attempts.map((a, i) => (
           <li key={i} className="flex items-center gap-1.5" title={a.error ?? ""}>
             <span className={cx("rounded-md px-1.5 py-0.5", a.ok ? "bg-good-soft text-good-ink" : a.skipped ? "bg-line-2 text-ink-3 line-through" : "bg-critical-soft text-critical-ink")}>
@@ -423,7 +423,7 @@ function ConfidenceBar({ value }: { value: number }) {
       <div className="h-1.5 w-14 overflow-hidden rounded-full bg-line-2">
         <div className={cx("h-full rounded-full", value >= 0.9 ? "bg-good" : value >= 0.75 ? "bg-warn" : "bg-critical")} style={{ width: `${pct}%` }} />
       </div>
-      <span className="font-mono text-[11px] text-ink-2">{pct}%</span>
+      <span className="font-mono text-[12px] text-ink-2">{pct}%</span>
     </div>
   );
 }
@@ -443,18 +443,18 @@ function Details({ app }: { app: Application }) {
         ["IFSC", app.bank_ifsc], ["Bank", app.bank_name],
       ],
     },
-    { title: "MSME (Udyam)", icon: Gavel, rows: [["Registered", app.msme_registered === "yes" ? "Yes" : app.msme_registered === "no" ? "No" : "—"], ["Udyam number", app.udyam_number], ["Category (declared)", app.msme_category]] },
+    { title: "MSME (Udyam)", icon: Gavel, rows: [["Registered", app.msme_registered === "yes" ? "Yes" : app.msme_registered === "no" ? "No" : "-"], ["Udyam number", app.udyam_number], ["Category (declared)", app.msme_category]] },
   ];
   return (
     <div className="grid gap-px bg-line md:grid-cols-2">
       {groups.map((g) => (
         <div key={g.title} className="bg-surface p-5">
-          <div className="mb-3 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-ink-3"><g.icon className="h-3.5 w-3.5" />{g.title}</div>
+          <div className="mb-3 flex items-center gap-2 text-[12px] font-semibold text-ink-3"><g.icon className="h-3.5 w-3.5" />{g.title}</div>
           <dl className="space-y-2">
             {g.rows.map(([k, v]) => (
               <div key={k} className="grid grid-cols-[150px_1fr] gap-3 text-[13px]">
                 <dt className="text-ink-3">{k}</dt>
-                <dd className={cx("break-words text-ink", /PAN|GSTIN|CIN|IFSC|Account number|Udyam/.test(k) && "font-mono text-[12.5px]")}>{v || <span className="text-ink-3">—</span>}</dd>
+                <dd className={cx("break-words text-ink", /PAN|GSTIN|CIN|IFSC|Account number|Udyam/.test(k) && "font-mono text-[12px]")}>{v || <span className="text-ink-3">-</span>}</dd>
               </div>
             ))}
           </dl>
@@ -470,7 +470,7 @@ const COMM_KIND: Record<string, string> = {
 };
 const COMM_STATUS: Record<string, { label: string; tone: "good" | "warn" | "critical" | "info" | "neutral" }> = {
   sent: { label: "Delivered", tone: "good" }, queued: { label: "Handed to n8n", tone: "info" },
-  failed: { label: "Failed", tone: "critical" }, not_configured: { label: "Drafted — email not configured", tone: "warn" },
+  failed: { label: "Failed", tone: "critical" }, not_configured: { label: "Drafted - email not configured", tone: "warn" },
 };
 
 function Communications({ comms }: { comms: CommRow[] }) {
@@ -519,18 +519,18 @@ function Timeline({ audit, runs }: { audit: AuditRow[]; runs: ApplicationDetail[
             <div className="min-w-0">
               <div className="text-[13px] text-ink"><span className="font-medium">{ACTION_LABEL[a.action] ?? a.action}</span> <span className="text-ink-3">by {a.actor === "policy_engine" ? "policy engine" : a.actor}</span></div>
               <AuditDetail a={a} />
-              <div className="text-[11.5px] text-ink-3">{dateTime(a.ts)}</div>
+              <div className="text-[12px] text-ink-3">{dateTime(a.ts)}</div>
             </div>
           </li>
         ))}
       </ol>
       <div className="border-t border-line p-5 lg:border-l lg:border-t-0">
-        <div className="mb-2 text-[11.5px] font-semibold uppercase tracking-wider text-ink-3">Verification runs</div>
+        <div className="mb-2 text-[12px] font-semibold text-ink-3">Verification runs</div>
         {runs.map((r) => (
           <Link key={r.id} href={`/runs/${r.id}`} className="mb-1.5 block rounded-lg border border-line px-3 py-2 hover:bg-line-2/60">
-            <div className="flex items-center justify-between"><Mono>{r.id}</Mono><span className="text-[11.5px] text-ink-3">{secs(r.duration_ms)}</span></div>
+            <div className="flex items-center justify-between"><Mono>{r.id}</Mono><span className="text-[12px] text-ink-3">{secs(r.duration_ms)}</span></div>
             <div className="text-[12px] text-ink-2">{r.trigger.replace("_", " ")} · {r.outcome?.replace("_", " ") ?? r.status}</div>
-            <div className="text-[11px] text-ink-3">{dateTime(r.started_at)}</div>
+            <div className="text-[12px] text-ink-3">{dateTime(r.started_at)}</div>
           </Link>
         ))}
       </div>
@@ -546,11 +546,11 @@ function AuditDetail({ a }: { a: AuditRow }) {
   else if (a.action === "resubmitted" || a.action === "details_confirmed") {
     const docs = (d.documents as { slot: string; filename: string }[] | undefined) ?? [];
     const fields = Object.entries((d.fields as Record<string, { from: string; to: string }>) ?? {});
-    text = [d.channel === "email" ? "by email reply" : "", ...docs.map((x) => `uploaded ${x.filename}`), ...fields.map(([k, v]) => `${k}: ${v.from || "—"} → ${v.to}`)].filter(Boolean).join(" · ");
+    text = [d.channel === "email" ? "by email reply" : "", ...docs.map((x) => `uploaded ${x.filename}`), ...fields.map(([k, v]) => `${k}: ${v.from || "-"} → ${v.to}`)].filter(Boolean).join(" · ");
   } else if (a.action === "submitted") text = d.channel ? `via ${CHANNEL_LABEL[String(d.channel)] ?? d.channel}` : "";
   else if (a.action === "vendor_contacted") text = ((d.items as string[]) ?? []).join(" · ");
   else if (a.action === "email_sent" || a.action === "reminder_sent") text = [String(d.subject ?? (d.reminder_no ? `Reminder #${d.reminder_no}` : "")), d.channel === "smtp" ? `(SMTP backup: ${String(d.reason ?? "")})` : ""].join(" ");
   else if (a.action === "erp_exported") text = `${String(d.vendor_code)} · ${String(d.format)}`;
   if (!text) return null;
-  return <div className="mt-0.5 text-[12.5px] text-ink-2">{text}</div>;
+  return <div className="mt-0.5 text-[12px] text-ink-2">{text}</div>;
 }

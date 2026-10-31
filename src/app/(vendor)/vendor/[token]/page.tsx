@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, CheckCircle2, Clock3, FlaskConical, Loader2, Mail, ShieldCheck, Sparkles } from "lucide-react";
+import { AlertCircle, CheckCircle2, Clock3, FlaskConical, Loader2, Mail, ShieldCheck, Sparkles } from "@/components/icons";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import useSWR from "swr";
@@ -103,7 +103,7 @@ export default function ResubmitPage() {
         {state === "processing" ? (
           <>
             <Loader2 className="mx-auto mb-3 h-8 w-8 animate-spin text-brand" />
-            <h1 className="text-lg font-semibold">Thanks — we&apos;re re-checking your application</h1>
+            <h1 className="text-lg font-semibold">Thanks - we&apos;re re-checking your application</h1>
             <p className="mt-1 text-sm text-ink-2">This usually takes under a minute. You can close this page.</p>
           </>
         ) : state === "approved" ? (
@@ -122,7 +122,7 @@ export default function ResubmitPage() {
         ) : (
           <>
             <Clock3 className="mx-auto mb-3 h-8 w-8 text-ink-3" />
-            <h1 className="text-lg font-semibold">Thank you — your application is with our team</h1>
+            <h1 className="text-lg font-semibold">Thank you - your application is with our team</h1>
             <p className="mt-1 text-sm text-ink-2">A member of the onboarding team will contact you if anything else is needed. Reference {data.id}.</p>
           </>
         )}
@@ -141,23 +141,23 @@ export default function ResubmitPage() {
             : `Hello ${data.contact_name || "there"}, we need ${outstanding === 1 ? "one thing" : `${outstanding} things`} to finish verifying ${data.legal_name}`}
         </h1>
         <p className="mt-1 text-sm text-ink-2">
-          {confirming ? "We pre-filled everything from the documents you emailed. Correct anything that's wrong, add what's missing, then confirm." : "Everything else you submitted has been kept — only update what's listed below."}
+          {confirming ? "We pre-filled everything from the documents you emailed. Correct anything that's wrong, add what's missing, then confirm." : "Everything else you submitted has been kept - only update what's listed below."}
         </p>
       </div>
 
       {data.scenario && isStaff && (
-        <button onClick={loadDemoPack} className="flex w-full items-center gap-2 rounded-xl border border-dashed border-brand/40 bg-brand-soft/40 px-4 py-2.5 text-left text-[13px] font-medium text-brand-2">
+        <button onClick={loadDemoPack} className="flex w-full items-center gap-2 rounded-md border border-dashed border-brand/40 bg-brand-soft/40 px-4 py-2.5 text-left text-[13px] font-medium text-brand-2">
           <FlaskConical className="h-4 w-4" /> Staff tool: attach the sample corrected documents / values <span className="font-normal">(only you can see this)</span>
         </button>
       )}
 
       {confirming && (
         <Card className="p-5">
-          <div className="mb-4 flex items-center gap-2 text-[13px] text-ink-2"><Mail className="h-4 w-4 text-ink-3" /> Read automatically from your email attachments — please check carefully.</div>
+          <div className="mb-4 flex items-center gap-2 text-[13px] text-ink-2"><Mail className="h-4 w-4 text-ink-3" /> Read automatically from your email attachments - please check carefully.</div>
           <div className="space-y-5">
             {CONFIRM_GROUPS.map((g) => (
               <div key={g.title}>
-                <div className="mb-2 text-[11.5px] font-semibold uppercase tracking-wider text-ink-3">{g.title}</div>
+                <div className="mb-2 text-[12px] font-semibold text-ink-3">{g.title}</div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {g.fields.map(([k, label, kind]) => (
                     <label key={k} className="block">
@@ -193,7 +193,7 @@ export default function ResubmitPage() {
         <Card className="space-y-3 p-5">
           {docItems.map((i) => (
             <div key={i.code}>
-              <div className="mb-1.5 text-[13.5px] font-semibold text-ink">{i.title}</div>
+              <div className="mb-1.5 text-[13px] font-semibold text-ink">{i.title}</div>
               <p className="mb-2 text-[13px] text-ink-2">{i.instruction}</p>
               <FileSlot label={DOC_SLOTS[i.slot!].label} hint={DOC_SLOTS[i.slot!].hint} required highlight file={files[i.slot!] ?? null} onChange={(f) => setFiles((x) => ({ ...x, [i.slot!]: f }))} />
             </div>
@@ -205,13 +205,13 @@ export default function ResubmitPage() {
         <Card className="space-y-4 p-5">
           {fieldItems.map((i) => (
             <div key={i.code}>
-              <div className="text-[13.5px] font-semibold text-ink">{i.title}</div>
+              <div className="text-[13px] font-semibold text-ink">{i.title}</div>
               <p className="mb-2 text-[13px] text-ink-2">{i.instruction}</p>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs text-ink-3">{FIELD_LABEL[i.field!] ?? i.field}</span>
                 <input className={cx("input min-w-0 flex-1", ID_FIELDS.has(i.field!) && "font-mono uppercase")} value={value(i.field!)} onChange={(e) => setFields((f) => ({ ...f, [i.field!]: e.target.value }))} />
                 {i.suggested_value && (
-                  <button onClick={() => setFields((f) => ({ ...f, [i.field!]: i.suggested_value }))} className="flex items-center gap-1 rounded-lg border border-brand/30 px-2.5 py-1.5 text-[12.5px] font-medium text-brand-2 hover:bg-brand-soft">
+                  <button onClick={() => setFields((f) => ({ ...f, [i.field!]: i.suggested_value }))} className="flex items-center gap-1 rounded-lg border border-brand/30 px-2.5 py-1.5 text-[12px] font-medium text-brand-2 hover:bg-brand-soft">
                     <Sparkles className="h-3.5 w-3.5" /> Use {i.suggested_value}
                   </button>
                 )}
@@ -225,7 +225,7 @@ export default function ResubmitPage() {
         <Card className="space-y-4 p-5">
           {freeItems.map((i) => (
             <div key={i.code}>
-              <div className="text-[13.5px] font-semibold text-ink">{i.title}</div>
+              <div className="text-[13px] font-semibold text-ink">{i.title}</div>
               <p className="text-[13px] text-ink-2">{i.instruction}</p>
             </div>
           ))}

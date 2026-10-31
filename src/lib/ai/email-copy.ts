@@ -6,7 +6,7 @@ import { geminiJson } from "./gemini";
 /**
  * AI-worded opening paragraph for vendor emails. The list of requested items is always rendered by
  * code; the model only writes the friendly framing. Output is rejected (and the template used) if it
- * introduces numbers, links or is the wrong length — the model must not invent facts.
+ * introduces numbers, links or is the wrong length - the model must not invent facts.
  */
 
 const Out = z.object({ intro: z.string() });

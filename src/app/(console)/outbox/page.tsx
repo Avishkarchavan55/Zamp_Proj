@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, CheckCircle2, GitBranch, Hourglass, Mail, Send, Webhook } from "lucide-react";
+import { Bell, CheckCircle2, GitBranch, Hourglass, Mail, Send, Webhook } from "@/components/icons";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
@@ -27,7 +27,7 @@ export default function Outbox() {
       <PageHeader title="Emails to vendors" subtitle="Every request, reminder and approval sent on your behalf." />
 
       <Card>
-        <CardHeader title="How vendor follow-ups work" subtitle="When something is missing, emails and reminders go out automatically — nobody has to chase." icon={GitBranch} right={<Badge tone={sys?.n8n ? "good" : "warn"}>{sys?.n8n ? "Email automation on" : "Email automation off"}</Badge>} />
+        <CardHeader title="How vendor follow-ups work" subtitle="When something is missing, emails and reminders go out automatically - nobody has to chase." icon={GitBranch} right={<Badge tone={sys?.n8n ? "good" : "warn"}>{sys?.n8n ? "Email automation on" : "Email automation off"}</Badge>} />
         <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
           {[
             { icon: Webhook, t: "Request written", d: "VendorIQ writes the email listing exactly what is missing" },
@@ -37,12 +37,12 @@ export default function Outbox() {
             { icon: CheckCircle2, t: `Up to ${sys?.reminders.maxReminders ?? "N"} reminders`, d: "Still silent? The vendor is flagged “No reply” for your team" },
           ].map((s, i) => (
             <div key={s.t} className="bg-surface p-4">
-              <div className="flex items-center gap-2 text-[12px] font-semibold text-ink"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft text-[11px] text-brand-2">{i + 1}</span>{s.t}</div>
+              <div className="flex items-center gap-2 text-[12px] font-semibold text-ink"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft text-[12px] text-brand-2">{i + 1}</span>{s.t}</div>
               <p className="mt-1 text-[12px] text-ink-3">{s.d}</p>
             </div>
           ))}
         </div>
-        <p className="border-t border-line px-4 py-2.5 text-[12.5px] text-ink-3">Runs on n8n. If n8n is ever down, VendorIQ sends the email itself through Gmail, so no vendor is missed.</p>
+        <p className="border-t border-line px-4 py-2.5 text-[12px] text-ink-3">Runs on n8n. If n8n is ever down, VendorIQ sends the email itself through Gmail, so no vendor is missed.</p>
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-5">
@@ -61,8 +61,8 @@ export default function Outbox() {
                       <span className="truncate text-[13px] font-medium text-ink">{c.legal_name}</span>
                       <Badge tone={STATUS[c.status]?.tone ?? "info"}>{STATUS[c.status]?.label ?? c.status}</Badge>
                     </div>
-                    <div className="mt-0.5 truncate text-[12.5px] text-ink-2">{c.subject}</div>
-                    <div className="mt-0.5 text-[11.5px] text-ink-3">{KIND[c.kind] ?? c.kind} · {c.channel === "smtp" ? "SMTP backup" : "n8n"}{c.meta?.ai_worded ? " · AI-worded" : ""} · {dateTime(c.sent_at ?? c.created_at)}</div>
+                    <div className="mt-0.5 truncate text-[12px] text-ink-2">{c.subject}</div>
+                    <div className="mt-0.5 text-[12px] text-ink-3">{KIND[c.kind] ?? c.kind} · {c.channel === "smtp" ? "SMTP backup" : "n8n"}{c.meta?.ai_worded ? " · AI-worded" : ""} · {dateTime(c.sent_at ?? c.created_at)}</div>
                   </button>
                 </li>
               ))}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BadgeIndianRupee, Building2, CheckCircle2, FileSpreadsheet, FlaskConical, Landmark, Loader2, Mail, Paperclip, UserRound } from "lucide-react";
+import { ArrowRight, BadgeIndianRupee, Building2, CheckCircle2, FileSpreadsheet, FlaskConical, Landmark, Loader2, Mail, Paperclip, UserRound } from "@/components/icons";
 import { useEffect, useState } from "react";
 import { FileSlot, fetchAsFile } from "@/components/file-slot";
 import { useToast } from "@/components/toast";
@@ -63,14 +63,23 @@ export default function ApplyPage() {
 
   if (done) {
     return (
-      <Card className="animate-rise mx-auto max-w-xl p-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-good-soft"><CheckCircle2 className="h-6 w-6 text-good-ink" /></div>
-        <h1 className="text-xl font-semibold">Application received</h1>
-        <p className="mt-2 text-sm text-ink-2">Your reference is <span className="font-mono font-semibold text-ink">{done.id}</span>. We&apos;re verifying your documents now and will email <span className="font-medium text-ink">{form.contact_email}</span> if we need anything else.</p>
-        <div className="mt-6 flex flex-col items-center gap-2 border-t border-line pt-5">
-          <div className="text-xs text-ink-3">Procurement view</div>
-          <a href={`/runs/${done.runId}`} className="inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-2">Watch verification live <ArrowRight className="h-4 w-4" /></a>
-          <button onClick={() => { setDone(null); setForm(EMPTY); setFiles({}); setScenario(null); }} className="mt-1 text-[13px] text-ink-2 hover:text-ink">Submit another application</button>
+      <Card className="mx-auto max-w-xl p-6">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-good" />
+          <div className="min-w-0">
+            <h1 className="text-[20px] font-semibold leading-7 tracking-[-0.01em] text-ink">Application received</h1>
+            <p className="mt-1 text-[14px] leading-5 text-ink-2">
+              Your reference is <span className="font-mono font-semibold text-ink">{done.id}</span>. We are verifying your documents now and will email <span className="font-medium text-ink">{form.contact_email}</span> if we need anything else.
+            </p>
+          </div>
+        </div>
+        <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-line pt-4">
+          {isStaff && (
+            <a href={`/runs/${done.runId}`} className="btn inline-flex h-10 items-center gap-2 rounded-md bg-action px-4 text-[14px] font-medium text-white transition-colors duration-150 hover:bg-action-2">
+              Watch the checks run <ArrowRight className="h-4 w-4" />
+            </a>
+          )}
+          <button onClick={() => { setDone(null); setForm(EMPTY); setFiles({}); setScenario(null); }} className="text-[13px] font-medium text-brand hover:underline">Submit another application</button>
         </div>
       </Card>
     );
@@ -79,8 +88,8 @@ export default function ApplyPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Register as a supplier</h1>
-        <p className="mt-1 text-sm text-ink-2">Tell us about your business and upload your registration documents. Most applications are verified within a minute.</p>
+        <h1 className="text-[20px] font-semibold leading-7 tracking-[-0.01em] text-ink">Register as a supplier</h1>
+        <p className="mt-1 text-[14px] text-ink-2">Tell us about your business and upload your registration documents. Most applications are verified within a minute.</p>
       </div>
 
       <OtherChannels />
@@ -140,7 +149,7 @@ export default function ApplyPage() {
           </div>
         </Section>
 
-        <Section icon={BadgeIndianRupee} title="MSME (Udyam) registration" subtitle="Registered micro and small enterprises are paid within 45 days under the MSMED Act — tell us so we set the right payment terms.">
+        <Section icon={BadgeIndianRupee} title="MSME (Udyam) registration" subtitle="Registered micro and small enterprises are paid within 45 days under the MSMED Act - tell us so we set the right payment terms.">
           <div className="flex flex-wrap gap-2">
             {[["yes", "Yes, we are Udyam registered"], ["no", "No / not applicable"]].map(([v, l]) => (
               <button type="button" key={v} onClick={() => setForm((f) => ({ ...f, msme_registered: v }))}
@@ -162,7 +171,7 @@ export default function ApplyPage() {
           )}
         </Section>
 
-        <Section icon={Paperclip} title="Documents" subtitle={`Required for a ${ENTITY_LABELS[form.entity_type]}. PDF, PNG or JPG up to 4 MB — scans are fine.`}>
+        <Section icon={Paperclip} title="Documents" subtitle={`Required for a ${ENTITY_LABELS[form.entity_type]}. PDF, PNG or JPG up to 4 MB - scans are fine.`}>
           <div className="grid gap-3 sm:grid-cols-2">
             {(Object.keys(DOC_SLOTS) as DocSlot[]).filter((s) => required.includes(s) || (s === "udyam" && form.msme_registered === "yes")).map((slot) => (
               <FileSlot key={slot} label={DOC_SLOTS[slot].label} hint={DOC_SLOTS[slot].hint} required file={files[slot] ?? null} onChange={(f) => setFiles((x) => ({ ...x, [slot]: f }))} />
@@ -173,7 +182,7 @@ export default function ApplyPage() {
         {TURNSTILE_KEY && !isStaff && <Turnstile siteKey={TURNSTILE_KEY} fallbackEmail={INTAKE_EMAIL} />}
 
         <div className="flex flex-col-reverse items-stretch justify-between gap-3 sm:flex-row sm:items-center">
-          <p className="text-xs text-ink-3">By submitting you confirm the information is accurate. Incomplete applications are not rejected — we&apos;ll tell you exactly what&apos;s missing.</p>
+          <p className="text-xs text-ink-3">By submitting you confirm the information is accurate. Incomplete applications are not rejected - we&apos;ll tell you exactly what&apos;s missing.</p>
           <Button type="submit" loading={submitting} className="px-6">{submitting ? "Uploading…" : "Submit application"}</Button>
         </div>
       </form>
@@ -181,12 +190,12 @@ export default function ApplyPage() {
   );
 }
 
-function Section({ icon: Icon, title, subtitle, children }: { icon: React.ElementType; title: string; subtitle?: string; children: React.ReactNode }) {
+function Section({ title, subtitle, children }: { icon?: React.ElementType; title: string; subtitle?: string; children: React.ReactNode }) {
   return (
-    <Card className="p-5 sm:p-6">
-      <div className="mb-4">
-        <h2 className="flex items-center gap-2 text-[15px] font-semibold"><Icon className="h-4 w-4 text-ink-3" />{title}</h2>
-        {subtitle && <p className="mt-0.5 text-xs text-ink-3">{subtitle}</p>}
+    <Card className="p-5">
+      <div className="mb-4 border-b border-line pb-3">
+        <h2 className="text-[14px] font-semibold leading-5 text-ink">{title}</h2>
+        {subtitle && <p className="mt-0.5 text-[12px] leading-4 text-ink-3">{subtitle}</p>}
       </div>
       {children}
     </Card>
@@ -222,9 +231,9 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
 
   const shown = list.filter((s) => s.group === "demo" || s.group === "extra" || s.group === "example");
   return (
-    <div className="rounded-xl border border-dashed border-line bg-surface/60">
+    <div className="rounded-md border border-dashed border-line bg-surface/60">
       <button onClick={() => setOpen((o) => !o)} className="flex min-h-11 w-full items-center justify-between px-4 text-left">
-        <span className="flex items-center gap-2 text-[13.5px] font-medium text-ink-2"><FlaskConical className="h-4 w-4 text-ink-3" /> Staff tool: fill this form with a sample vendor <span className="font-normal text-ink-3">(only you can see this)</span></span>
+        <span className="flex items-center gap-2 text-[13px] font-medium text-ink-2"><FlaskConical className="h-4 w-4 text-ink-3" /> Staff tool: fill this form with a sample vendor <span className="font-normal text-ink-3">(only you can see this)</span></span>
         <span className="text-[13px] text-brand">{open ? "Hide" : "Show"}</span>
       </button>
       {open && (
@@ -234,11 +243,11 @@ function DemoLoader({ active, onLoad }: { active: string | null; onLoad: (s: Sce
               <button
                 key={s.id}
                 type="button"
-                title={`${s.vendor} — ${s.summary}`}
+                title={`${s.vendor} - ${s.summary}`}
                 onClick={() => load(s)}
                 disabled={!!loading}
                 className={cx(
-                  "inline-flex min-h-9 items-center gap-1.5 rounded-lg border px-3 text-[13.5px] transition-colors duration-150",
+                  "inline-flex min-h-9 items-center gap-1.5 rounded-lg border px-3 text-[13px] transition-colors duration-150",
                   active === s.id ? "border-brand bg-brand-soft text-brand-2" : "border-line bg-surface text-ink hover:border-brand/50",
                 )}
               >
@@ -267,20 +276,20 @@ function OtherChannels() {
   const form = ch?.google_form_url ?? GOOGLE_FORM_URL ?? null;
   return (
     <Card className="p-4">
-      <div className="text-[13px] font-semibold text-ink">Prefer another way? Use whichever is easiest — all three get the same checks.</div>
+      <div className="text-[13px] font-semibold text-ink">Prefer another way? Use whichever is easiest - all three get the same checks.</div>
       <div className="mt-3 grid gap-2 sm:grid-cols-3">
         <div className="flex items-center gap-2.5 rounded-lg border border-brand/40 bg-brand-soft/50 px-3 py-2.5">
           <Building2 className="h-4 w-4 shrink-0 text-brand" />
-          <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">This online form</div><div className="text-[12px] text-ink-3">You&apos;re here</div></div>
+          <div className="min-w-0 leading-tight"><div className="text-[13px] font-medium text-ink">This online form</div><div className="text-[12px] text-ink-3">You&apos;re here</div></div>
         </div>
         <a href={email ? `mailto:${email}?subject=Supplier registration` : undefined} className="flex items-center gap-2.5 rounded-lg border border-line px-3 py-2.5 hover:bg-line-2">
           <Mail className="h-4 w-4 shrink-0 text-ink-3" />
-          <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">Email your documents</div><div className="truncate text-[12px] text-ink-3">{email ?? "Onboarding inbox"}</div></div>
+          <div className="min-w-0 leading-tight"><div className="text-[13px] font-medium text-ink">Email your documents</div><div className="truncate text-[12px] text-ink-3">{email ?? "Onboarding inbox"}</div></div>
         </a>
         {form ? (
           <a href={form} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 rounded-lg border border-line px-3 py-2.5 hover:bg-line-2">
             <FileSpreadsheet className="h-4 w-4 shrink-0 text-ink-3" />
-            <div className="min-w-0 leading-tight"><div className="text-[13.5px] font-medium text-ink">Use our Google Form</div><div className="text-[12px] text-ink-3">Needs a Google account</div></div>
+            <div className="min-w-0 leading-tight"><div className="text-[13px] font-medium text-ink">Use our Google Form</div><div className="text-[12px] text-ink-3">Needs a Google account</div></div>
           </a>
         ) : <div />}
       </div>

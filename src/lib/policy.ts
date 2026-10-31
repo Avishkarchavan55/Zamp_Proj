@@ -34,7 +34,7 @@ export const DOC_SLOTS: Record<DocSlot, { label: string; expects: DocType[]; hin
   udyam: {
     label: "Udyam (MSME) Certificate",
     expects: ["udyam_certificate"],
-    hint: "Udyam Registration Certificate — only if you are a registered MSME",
+    hint: "Udyam Registration Certificate - only if you are a registered MSME",
   },
 };
 
@@ -123,7 +123,7 @@ export const DECISION_RULES = [
     outcome: "in_review" as const,
     title: "Needs human judgement",
     description:
-      "Send to a reviewer when documents disagree with each other (names, PAN/GSTIN link, state), extraction confidence is low, or the vendor may already exist. Discrepancies are never auto-rejected — they can have legitimate explanations.",
+      "Send to a reviewer when documents disagree with each other (names, PAN/GSTIN link, state), extraction confidence is low, or the vendor may already exist. Discrepancies are never auto-rejected - they can have legitimate explanations.",
   },
   {
     id: "R4",
@@ -136,7 +136,7 @@ export const DECISION_RULES = [
 
 export const POLICY_PRINCIPLES = [
   "The AI reads documents; it never makes the decision. Decisions come from the rules on this page.",
-  "Identifiers (PAN, GSTIN, IFSC, account numbers) are compared exactly, by code — never by a model.",
+  "Identifiers (PAN, GSTIN, IFSC, account numbers) are compared exactly, by code - never by a model.",
   "A check that could not be verified is shown as Unverified, never as Passed.",
   "Missing or wrong documents lead to a specific request to the vendor, not a rejection.",
   "Mismatches go to a human with the evidence side by side.",

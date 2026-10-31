@@ -2,7 +2,7 @@
 
 import {
   AlertTriangle, Bot, CheckCircle2, Circle, Cpu, FileText, Image as ImageIcon, Loader2, Recycle, Terminal, XCircle,
-} from "lucide-react";
+} from "@/components/icons";
 import { BackButton } from "@/components/page-nav";
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -75,7 +75,7 @@ export default function RunPage() {
             <Card className="flex items-center gap-3 border-brand/30 bg-brand-soft/40 px-5 py-4">
               <Loader2 className="h-5 w-5 animate-spin text-brand" />
               <div>
-                <div className="text-sm font-semibold text-ink">Verifying — {STAGES.find((s) => s.id === run.current_stage)?.label ?? "starting"}</div>
+                <div className="text-sm font-semibold text-ink">Verifying - {STAGES.find((s) => s.id === run.current_stage)?.label ?? "starting"}</div>
                 <div className="text-xs text-ink-2">{STAGES.find((s) => s.id === run.current_stage)?.description}</div>
               </div>
             </Card>
@@ -103,8 +103,8 @@ function RunClock({ run }: { run: RunDetail["run"] }) {
   }, [run.status]);
   const ms = run.duration_ms ?? Math.max(0, now - new Date(run.started_at).getTime());
   return (
-    <div className="rounded-xl border border-line bg-surface px-4 py-2.5 text-right shadow-card">
-      <div className="text-[11px] font-medium uppercase tracking-wide text-ink-3">{run.status === "running" ? "Elapsed" : "Total time"}</div>
+    <div className="rounded-md border border-line bg-surface px-4 py-2.5 text-right ">
+      <div className="text-[12px] font-medium text-ink-3">{run.status === "running" ? "Elapsed" : "Total time"}</div>
       <div className="font-mono text-xl font-semibold tabular-nums text-ink">{(ms / 1000).toFixed(1)}s</div>
     </div>
   );
@@ -138,7 +138,7 @@ function Pipeline({ run, events }: { run: RunDetail["run"]; events: RunEvent[] }
   const states = useMemo(() => stageStates(run, events), [run, events]);
   return (
     <Card className="lg:sticky lg:top-6">
-      <CardHeader title="Verification steps" subtitle="AI is used only to read documents — rules decide" icon={Bot} />
+      <CardHeader title="Verification steps" subtitle="AI is used only to read documents - rules decide" icon={Bot} />
       <ol className="px-5 py-4">
         {states.map((s, i) => (
           <li key={s.id} className="relative flex gap-3.5 pb-5 last:pb-0">
@@ -148,9 +148,9 @@ function Pipeline({ run, events }: { run: RunDetail["run"]; events: RunEvent[] }
             <StageDot state={s.state} />
             <div className="min-w-0 flex-1 pt-0.5">
               <div className="flex items-center justify-between gap-2">
-                <span className={cx("text-[13.5px] font-semibold", s.state === "pending" ? "text-ink-3" : "text-ink")}>{s.label}</span>
+                <span className={cx("text-[13px] font-semibold", s.state === "pending" ? "text-ink-3" : "text-ink")}>{s.label}</span>
                 {s.duration != null && s.state !== "pending" && s.state !== "active" && (
-                  <span className="font-mono text-[11px] text-ink-3">{secs(s.duration)}</span>
+                  <span className="font-mono text-[12px] text-ink-3">{secs(s.duration)}</span>
                 )}
               </div>
               <div className={cx("text-[12px] leading-snug", s.state === "active" ? "text-brand-2" : "text-ink-3")}>
@@ -166,7 +166,7 @@ function Pipeline({ run, events }: { run: RunDetail["run"]; events: RunEvent[] }
 
 function StageDot({ state }: { state: StageState }) {
   const base = "relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full";
-  if (state === "active") return <span className={cx(base, "animate-pulse-ring bg-brand text-white")}><Loader2 className="h-3.5 w-3.5 animate-spin" /></span>;
+  if (state === "active") return <span className={cx(base, "animate-pulse-ring bg-action text-white")}><Loader2 className="h-3.5 w-3.5 animate-spin" /></span>;
   if (state === "success") return <span className={cx(base, "bg-good-soft text-good-ink ring-1 ring-good/30")}><CheckCircle2 className="h-4 w-4" /></span>;
   if (state === "warning") return <span className={cx(base, "bg-serious-soft text-serious-ink ring-1 ring-serious/30")}><AlertTriangle className="h-4 w-4" /></span>;
   if (state === "error") return <span className={cx(base, "bg-critical-soft text-critical-ink ring-1 ring-critical/30")}><XCircle className="h-4 w-4" /></span>;
@@ -181,7 +181,7 @@ function Documents({ events, extractions }: { events: RunEvent[]; extractions: R
   if (!slots.length) return null;
   return (
     <Card>
-      <CardHeader title="Documents" subtitle="Classified and read by the document AI — wrong documents are caught here" icon={FileText} />
+      <CardHeader title="Documents" subtitle="Classified and read by the document AI - wrong documents are caught here" icon={FileText} />
       <div className="grid gap-3 p-4 sm:grid-cols-2">
         {slots.map((slot) => {
           const ex = extractions.find((x) => x.slot === slot);
@@ -195,11 +195,11 @@ function Documents({ events, extractions }: { events: RunEvent[]; extractions: R
               <div className="flex items-start gap-2.5">
                 <div className="rounded-md bg-line-2 p-1.5">{isImg ? <ImageIcon className="h-4 w-4 text-ink-2" /> : <FileText className="h-4 w-4 text-ink-2" />}</div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] font-medium uppercase tracking-wide text-ink-3">{meta.label} slot</div>
+                  <div className="text-[12px] font-medium text-ink-3">{meta.label} slot</div>
                   <div className="truncate text-[13px] font-medium text-ink" title={filename}>{filename}</div>
                 </div>
               </div>
-              <div className="mt-2.5 text-[12.5px]">
+              <div className="mt-2.5 text-[12px]">
                 {!ex ? (
                   <span className="flex items-center gap-1.5 text-brand-2"><Loader2 className="h-3.5 w-3.5 animate-spin" /> Reading document…</span>
                 ) : (
@@ -207,7 +207,7 @@ function Documents({ events, extractions }: { events: RunEvent[]; extractions: R
                     <div className="flex flex-wrap items-center gap-1.5">
                       <Badge tone={wrong ? "critical" : "good"}>{wrong ? "Wrong document: " : ""}{DOC_TYPE_LABELS[ex.detected_type as DocType]}</Badge>
                       <Badge tone={ex.legibility === "clear" ? "neutral" : "warn"}>{ex.legibility}</Badge>
-                      {ex.cached && <Badge tone="info"><Recycle className="h-3 w-3" />unchanged — reused</Badge>}
+                      {ex.cached && <Badge tone="info"><Recycle className="h-3 w-3" />unchanged - reused</Badge>}
                     </div>
                     <div className="text-ink-3">
                       {ex.fields.length} fields · {Math.round(ex.type_confidence * 100)}% type confidence{ex.latency_ms ? ` · ${secs(ex.latency_ms)}` : ""}
@@ -232,10 +232,10 @@ function LiveLog({ events, running }: { events: RunEvent[]; running: boolean }) 
     if (ref.current) ref.current.scrollTop = ref.current.scrollHeight;
   }, [events.length]);
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-800 bg-[#0b1020] shadow-card">
-      <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2.5">
-        <div className="flex items-center gap-2 text-[12.5px] font-medium text-slate-200"><Terminal className="h-4 w-4 text-slate-400" /> Execution log</div>
-        <div className="flex items-center gap-1.5 text-[11.5px] text-slate-400">
+    <div className="overflow-hidden rounded-md border border-[#393939] bg-[#161616] ">
+      <div className="flex items-center justify-between border-b border-[#393939] px-4 py-2.5">
+        <div className="flex items-center gap-2 text-[12px] font-medium text-slate-200"><Terminal className="h-4 w-4 text-slate-400" /> Execution log</div>
+        <div className="flex items-center gap-1.5 text-[12px] text-slate-400">
           <span className={cx("h-1.5 w-1.5 rounded-full", running ? "animate-pulse bg-emerald-400" : "bg-slate-500")} />
           {running ? "live" : `${events.length} events`}
         </div>
@@ -244,7 +244,7 @@ function LiveLog({ events, running }: { events: RunEvent[]; running: boolean }) 
         {events.map((e) => (
           <div key={e.id} className="animate-rise flex gap-3">
             <span className="shrink-0 text-slate-500">{clock(e.ts)}</span>
-            <span className="w-[86px] shrink-0 truncate text-indigo-300">{STAGES.find((s) => s.id === e.stage)?.label ?? e.stage}</span>
+            <span className="w-[86px] shrink-0 truncate text-[#78a9ff]">{STAGES.find((s) => s.id === e.stage)?.label ?? e.stage}</span>
             <span className={cx("shrink-0", LEVEL_COLOR[e.level])}>{LEVEL_MARK[e.level]}</span>
             <span className={cx("min-w-0 break-words", e.level === "info" ? "text-slate-300" : LEVEL_COLOR[e.level])}>{e.message}</span>
           </div>

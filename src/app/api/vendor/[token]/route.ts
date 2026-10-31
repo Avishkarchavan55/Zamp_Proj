@@ -8,7 +8,7 @@ import type { ApplicationForm } from "@/lib/types";
 
 export const maxDuration = 300;
 
-/** Vendor-facing view: only what the vendor needs to see — never internal check details. */
+/** Vendor-facing view: only what the vendor needs to see - never internal check details. */
 export async function GET(_req: Request, ctx: RouteContext<"/api/vendor/[token]">) {
   const { token } = await ctx.params;
   const app = await getApplicationByToken(token);

@@ -1,4 +1,4 @@
-import { Factory, Lock } from "lucide-react";
+import { Factory, Lock } from "@/components/icons";
 import { ScrollToTop } from "@/components/page-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -10,7 +10,7 @@ export default function VendorLayout({ children }: { children: React.ReactNode }
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy text-white"><Factory className="h-5 w-5" /></div>
             <div className="leading-tight">
-              <div className="text-[15px] font-semibold text-ink">Acme Manufacturing</div>
+              <div className="text-[14px] font-semibold text-ink">Acme Manufacturing</div>
               <div className="text-xs text-ink-3">Supplier registration portal</div>
             </div>
           </div>

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   return Response.json({ ok: true, user: { name: user.name, role: user.role } });
 }
 
-/** Link form of the demo login, e.g. /api/auth/login?as=reviewer&next=/review — handy to share with evaluators. */
+/** Link form of the demo login, e.g. /api/auth/login?as=reviewer&next=/review - handy to share with evaluators. */
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const user = DEMO_USERS.find((u) => u.role === url.searchParams.get("as")) ?? DEMO_USERS[0];

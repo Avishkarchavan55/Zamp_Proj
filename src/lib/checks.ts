@@ -55,7 +55,7 @@ function docRequest(slot: DocSlot, instruction: string): RequestedItem {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 1 — Intake
+// Stage 1 - Intake
 // ------------------------------------------------------------------------------------------------
 
 export function intakeChecks(ctx: CheckContext): Check[] {
@@ -91,7 +91,7 @@ export function intakeChecks(ctx: CheckContext): Check[] {
       code: "intake.doc.udyam", category: "intake", label: "Udyam certificate received",
       status: ok ? "passed" : "failed", severity: "medium", route: ok ? "none" : "vendor",
       message: ok ? "File received." : "Vendor declared MSME registration but did not upload the Udyam certificate.",
-      rule: "A declared MSME status must be backed by the Udyam Registration Certificate — it changes our legal payment terms.",
+      rule: "A declared MSME status must be backed by the Udyam Registration Certificate - it changes our legal payment terms.",
       request: ok ? undefined : docRequest("udyam", "You told us you are a registered MSME. Please upload your Udyam Registration Certificate so we can apply MSME payment terms."),
     });
   }
@@ -111,7 +111,7 @@ export function intakeChecks(ctx: CheckContext): Check[] {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 2 — Document intelligence (per document)
+// Stage 2 - Document intelligence (per document)
 // ------------------------------------------------------------------------------------------------
 
 export function documentChecks(slot: DocSlot, ex: Extraction): Check[] {
@@ -186,7 +186,7 @@ export function documentChecks(slot: DocSlot, ex: Extraction): Check[] {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 3 — Identifier validation (deterministic)
+// Stage 3 - Identifier validation (deterministic)
 // ------------------------------------------------------------------------------------------------
 
 export function validationChecks(ctx: CheckContext): Check[] {
@@ -226,7 +226,7 @@ export function validationChecks(ctx: CheckContext): Check[] {
       status: "failed", severity: "high", route: "vendor",
       message: !g.formatValid
         ? `"${app.gstin}" does not follow the GSTIN structure.`
-        : `"${g.value}" fails the GSTIN checksum (last character should be "${g.expectedCheck}") — most likely a typo.` +
+        : `"${g.value}" fails the GSTIN checksum (last character should be "${g.expectedCheck}") - most likely a typo.` +
           (suggestion ? ` The GST certificate shows ${suggestion}.` : ""),
       evidence: { form: app.gstin, document: docGstin ?? null, document_slot: "gst", expected: suggestion ?? null },
       rule: "GSTIN = 2-digit state code + PAN + entity number + 'Z' + checksum character (mod-36).",
@@ -263,7 +263,7 @@ export function validationChecks(ctx: CheckContext): Check[] {
     out.push({
       code: "fmt.cin", category: "validation", label: "LLPIN provided & valid",
       status: !llpin ? "warning" : ok ? "passed" : "failed", severity: "low", route: !llpin || ok ? "none" : "vendor",
-      message: !llpin ? "No LLPIN given — it is on the LLP's Certificate of Incorporation." : ok ? `${llpin}: valid LLP Identification Number format.` : `"${app.cin}" is not a valid LLPIN (format AAA-1234).`,
+      message: !llpin ? "No LLPIN given - it is on the LLP's Certificate of Incorporation." : ok ? `${llpin}: valid LLP Identification Number format.` : `"${app.cin}" is not a valid LLPIN (format AAA-1234).`,
       evidence: { form: app.cin },
       rule: "LLPIN = three letters + four digits, issued by the Registrar under the LLP Act, 2008.",
       request: !llpin || ok ? undefined : fieldRequest("cin", "The LLPIN entered is invalid. Please copy it from your LLP's Certificate of Incorporation (format AAA-1234)."),
@@ -338,18 +338,18 @@ export function validationChecks(ctx: CheckContext): Check[] {
       request: u.valid ? undefined : fieldRequest("udyam_number", "Please enter your Udyam Registration Number exactly as printed on your certificate (UDYAM-XX-00-0000000)."),
     });
   }
-  // An empty field is a "missing details" problem (intake), not a format error — don't ask twice.
+  // An empty field is a "missing details" problem (intake), not a format error - don't ask twice.
   const values: Record<string, string | undefined> = { "fmt.pan": app.pan, "fmt.gstin": app.gstin, "fmt.ifsc": app.bank_ifsc };
   for (const c of out) {
     if (c.code in values && !String(values[c.code] ?? "").trim()) {
-      Object.assign(c, { status: "skipped", route: "none", severity: "info", message: "Not provided yet — covered by the missing-details request.", request: undefined });
+      Object.assign(c, { status: "skipped", route: "none", severity: "info", message: "Not provided yet - covered by the missing-details request.", request: undefined });
     }
   }
   return out;
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 4 — Cross-reference (form vs documents vs each other)
+// Stage 4 - Cross-reference (form vs documents vs each other)
 // ------------------------------------------------------------------------------------------------
 
 function nameCheck(
@@ -367,7 +367,7 @@ function nameCheck(
       form: cmp.left, document: cmp.right, document_slot: slot, source_quote: quote ?? null,
       match: cmp.match, similarity: cmp.similarity, diff: cmp.diff,
     },
-    rule: "Names must match after normalising legal-form abbreviations (Pvt. Ltd. = Private Limited, & = and). Near-matches go to a reviewer — similar names can be different companies.",
+    rule: "Names must match after normalising legal-form abbreviations (Pvt. Ltd. = Private Limited, & = and). Near-matches go to a reviewer - similar names can be different companies.",
   };
 }
 
@@ -469,7 +469,7 @@ export function crossReferenceChecks(ctx: CheckContext): Check[] {
     const best = vsOwner && namesAgree(vsOwner) ? vsOwner : vsLegal;
     const c = nameCheck("xref.name_bank", "Bank account holder is the vendor", best, proprietor && best === vsOwner ? "Proprietor" : "Vendor name", "account holder on bank proof", "bank_proof", holder.source_quote, "critical");
     if (proprietor) c.rule = "For proprietorships the account may be in the business name or the proprietor's own name.";
-    else c.rule = "For companies the account must be in the company's own name — payments to a third-party account are a primary fraud vector.";
+    else c.rule = "For companies the account must be in the company's own name - payments to a third-party account are a primary fraud vector.";
     out.push(c);
   }
 
@@ -553,7 +553,7 @@ export function crossReferenceChecks(ctx: CheckContext): Check[] {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 5 — External verification
+// Stage 5 - External verification
 // ------------------------------------------------------------------------------------------------
 
 export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
@@ -639,7 +639,7 @@ export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
         status: ok ? "passed" : "failed", severity: ok ? "high" : "critical", route: ok ? "none" : "review",
         message: ok
           ? `Active. Registered to ${rec.legal_name} (${rec.constitution}).`
-          : `Active, but registered to "${rec.legal_name}" — not to the applying vendor.`,
+          : `Active, but registered to "${rec.legal_name}" - not to the applying vendor.`,
         evidence: { form: app.legal_name, document: rec.legal_name, source: GST_REGISTRY_SOURCE, actual: rec.status, diff: cmp.diff },
         rule: "GST registration must be Active and registered to the applying entity.",
       });
@@ -656,7 +656,7 @@ export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
         route: !rec ? "vendor" : ok ? "none" : "review",
         message: !rec
           ? `PIN code ${app.pincode} does not exist in the India Post directory.`
-          : ok ? `${app.pincode} → ${rec.district}, ${rec.state}.` : `PIN code ${app.pincode} is in ${rec.district}, ${rec.state} — but the address says ${app.state}.`,
+          : ok ? `${app.pincode} → ${rec.district}, ${rec.state}.` : `PIN code ${app.pincode} is in ${rec.district}, ${rec.state} - but the address says ${app.state}.`,
         evidence: { form: `${app.pincode} / ${app.state}`, actual: rec ? `${rec.district}, ${rec.state}` : "not found", source: PINCODE_SOURCE },
         rule: "The address PIN code must exist and lie in the declared state.",
         request: rec ? undefined : fieldRequest("pincode", `The PIN code ${app.pincode} does not exist. Please check your registered address.`),
@@ -674,7 +674,7 @@ export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
   out.push({
     code: "ext.bank_ownership", category: "external", label: "Bank account ownership verified",
     status: "unverified", severity: "high", route: "condition",
-    message: "No penny-drop / account-validation connector is configured. The account holder name was read from the bank proof, which shows what the document says — not what the bank says.",
+    message: "No penny-drop / account-validation connector is configured. The account holder name was read from the bank proof, which shows what the document says - not what the bank says.",
     evidence: { source: "Penny-drop connector (not configured)" },
     rule: "Account ownership must be confirmed with the bank (₹1 penny-drop or call-back) before the first payment.",
   });
@@ -682,7 +682,7 @@ export async function externalChecks(ctx: CheckContext): Promise<Check[]> {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Stage 6 — Risk & duplicates
+// Stage 6 - Risk & duplicates
 // ------------------------------------------------------------------------------------------------
 
 export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
@@ -700,21 +700,21 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
     [app.id, account, ifsc],
   ) : [];
   // Reject only when both sides carry a valid, different PAN. A blank or mistyped PAN on either side
-  // (e.g. an email draft not yet confirmed) can't prove "different company" — a human looks instead.
+  // (e.g. an email draft not yet confirmed) can't prove "different company" - a human looks instead.
   const panOk = (p: string) => validatePan(p).valid;
   const otherEntity = sameAccount.filter((r) => panOk(pan) && panOk(clean(r.pan)) && clean(r.pan) !== pan);
   const unclear = sameAccount.filter((r) => !(panOk(pan) && panOk(clean(r.pan))));
   if (account && ifsc && !otherEntity.length && unclear.length) out.push({
     code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
     status: "warning", severity: "high", route: "review",
-    message: `Account ${account} at ${ifsc} also appears on ${unclear.map((r) => `${r.legal_name} (${r.id}, ${r.status.replace("_", " ")})`).join(", ")}. A PAN is missing or invalid, so it is unclear whether this is the same business — please check.`,
+    message: `Account ${account} at ${ifsc} also appears on ${unclear.map((r) => `${r.legal_name} (${r.id}, ${r.status.replace("_", " ")})`).join(", ")}. A PAN is missing or invalid, so it is unclear whether this is the same business - please check.`,
     evidence: { form: `${account} / ${ifsc}`, matches: unclear },
     rule: "One bank account may belong to only one legal entity. Sharing an account with another vendor is a hallmark of payment-diversion fraud.",
   });
   else if (!account || !ifsc) out.push({
     code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
     status: "skipped", severity: "info", route: "none",
-    message: "No bank details yet — checked once the vendor provides them.",
+    message: "No bank details yet - checked once the vendor provides them.",
     evidence: {},
     rule: "One bank account may belong to only one legal entity. Sharing an account with another vendor is a hallmark of payment-diversion fraud.",
   });
@@ -722,7 +722,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
     code: "risk.duplicate_bank", category: "risk", label: "Bank account not used by another vendor",
     status: otherEntity.length ? "failed" : "passed", severity: "critical", route: otherEntity.length ? "reject" : "none",
     message: otherEntity.length
-      ? `Account ${account} at ${ifsc} is already registered to ${otherEntity.map((r) => `${r.legal_name} (${r.id}, ${r.status.replace("_", " ")})`).join(", ")} — a different legal entity (PAN ${otherEntity[0].pan}).`
+      ? `Account ${account} at ${ifsc} is already registered to ${otherEntity.map((r) => `${r.legal_name} (${r.id}, ${r.status.replace("_", " ")})`).join(", ")} - a different legal entity (PAN ${otherEntity[0].pan}).`
       : "This account is not registered to any other vendor.",
     evidence: { form: `${account} / ${ifsc}`, matches: otherEntity },
     rule: "One bank account may belong to only one legal entity. Sharing an account with another vendor is a hallmark of payment-diversion fraud.",
@@ -750,7 +750,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
     status: free && app.entity_type !== "proprietorship" ? "warning" : "passed", severity: "low", route: "none",
     message: free
       ? app.entity_type === "proprietorship"
-        ? `Uses a personal mailbox (${domain}) — common for proprietorships.`
+        ? `Uses a personal mailbox (${domain}) - common for proprietorships.`
         : `A registered company is using a free mailbox (${domain}). Not disqualifying, but noted for the reviewer.`
       : `Corporate domain ${domain}.`,
     evidence: { form: app.contact_email },
@@ -776,7 +776,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
       out.push({
         code: `risk.doc_metadata.${slot}`, category: "risk", label: `${DOC_SLOTS[slot].label}: file origin`,
         status: "warning", severity: "high", route: "review",
-        message: `${meta.filename} carries metadata from "${meta.tool}". Genuine bank and registration documents are not produced in image-editing software — the file may have been altered.`,
+        message: `${meta.filename} carries metadata from "${meta.tool}". Genuine bank and registration documents are not produced in image-editing software - the file may have been altered.`,
         evidence: { document: meta.tool, document_slot: slot },
         rule: "Files produced or saved by image editors are flagged for a person to compare against the original. This is a hint, never a rejection on its own.",
       });
@@ -797,7 +797,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
       status: failed ? "warning" : spf === "pass" || dkim === "pass" ? "passed" : "unverified",
       severity: failed ? "high" : "low", route: failed ? "review" : "none",
       message: failed
-        ? `The email from ${im.from} failed sender authentication (SPF ${spf}, DKIM ${dkim}) — it may be spoofed.`
+        ? `The email from ${im.from} failed sender authentication (SPF ${spf}, DKIM ${dkim}) - it may be spoofed.`
         : `SPF ${spf}, DKIM ${dkim} for ${fromDomain || "unknown sender"}${site && fromDomain && !fromDomain.endsWith(site) && !FREE_EMAIL_DOMAINS.includes(fromDomain) ? ` (note: sender domain differs from website ${site})` : ""}.`,
       evidence: { form: im.from ?? null, source: "Gmail Authentication-Results header" },
       rule: "Emailed applications must pass SPF/DKIM; a failure means the sender address may be forged.",
@@ -811,7 +811,7 @@ export async function riskChecks(ctx: CheckContext): Promise<Check[]> {
       code: "msme.payment_terms", category: "risk", label: "MSME payment terms",
       status: "passed", severity: "info", route: "condition",
       message: `${cat.includes("micro") ? "Micro" : "Small"} enterprise: payment must be made within 45 days of acceptance.`,
-      rule: `MSME (${cat.includes("micro") ? "Micro" : "Small"}): set payment terms to ≤45 days in the ERP — MSMED Act s.15/16 (interest at 3× RBI rate on delay) and Income Tax s.43B(h) (deduction only when paid in time).`,
+      rule: `MSME (${cat.includes("micro") ? "Micro" : "Small"}): set payment terms to ≤45 days in the ERP - MSMED Act s.15/16 (interest at 3× RBI rate on delay) and Income Tax s.43B(h) (deduction only when paid in time).`,
     });
   }
   return out;

@@ -52,7 +52,7 @@ export interface ApplicationForm {
   bank_account_number: string;
   bank_ifsc: string;
   bank_name?: string;
-  /** "yes" | "no" | "" — whether the vendor declares Udyam (MSME) registration. */
+  /** "yes" | "no" | "" - whether the vendor declares Udyam (MSME) registration. */
   msme_registered?: string;
   udyam_number?: string;
   msme_category?: string;

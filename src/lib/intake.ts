@@ -116,7 +116,7 @@ const BodySchema = z.object({
   msme_registered: z.enum(["yes", "no", ""]).catch(""),
 });
 
-/** A6 — reads the email body for what documents cannot tell us. Falls back to simple patterns. */
+/** A6 - reads the email body for what documents cannot tell us. Falls back to simple patterns. */
 async function readEmailBody(from: string, text: string) {
   const display = from.match(/^\s*"?([^"<]+?)"?\s*</)?.[1]?.trim() ?? "";
   const phone = text.match(/(?:\+91[\s-]?)?[6-9]\d{4}[\s-]?\d{5}/)?.[0] ?? "";
@@ -186,16 +186,16 @@ export async function intakeEmail(mail: InboundEmail): Promise<IntakeResult> {
   if (refId) {
     const app = await getApplication(refId);
     if (!app) return { id: refId, runId: null, mode: "ignored", note: "Unknown application reference" };
-    // Only an application waiting on the vendor (or mid-check) takes new documents — a late reply must not reopen a decision.
+    // Only an application waiting on the vendor (or mid-check) takes new documents - a late reply must not reopen a decision.
     if (app.status !== "awaiting_vendor" && app.status !== "processing") {
-      await audit(app.id, "vendor", "email_reply", { from: fromAddr, subject: mail.subject, note: `Reply received while the application is ${app.status} — not re-checked` });
+      await audit(app.id, "vendor", "email_reply", { from: fromAddr, subject: mail.subject, note: `Reply received while the application is ${app.status} - not re-checked` });
       return { id: app.id, runId: null, mode: "ignored", note: `Application is ${app.status}` };
     }
     const { bySlot, ignored } = await classifyAttachments(mail.attachments);
     return addToApplication(app.id, bySlot, ignored, fromAddr, mail.subject);
   }
 
-  // New vendor by email. Mail without any attachment is not an application — ignore it.
+  // New vendor by email. Mail without any attachment is not an application - ignore it.
   if (!mail.attachments.length) return { id: "", runId: null, mode: "ignored", note: "No attachments and not a reply", help: { ignored: [] } };
   const { bySlot, ignored } = await classifyAttachments(mail.attachments);
   if (!bySlot.size) {
