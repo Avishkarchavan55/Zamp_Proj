@@ -5,7 +5,7 @@ import { SESSION_COOKIE, type Role, type Session, verifySession } from "./sessio
 
 /** Demo staff account (one-click login). Seeded into app_users on first use. */
 export const DEMO_USERS: { id: string; name: string; email: string; role: Role }[] = [
-  { id: "usr-reviewer", name: process.env.DEMO_REVIEWER_NAME ?? "Gaurav Ahuja", email: "procurement@acme-demo.in", role: "reviewer" },
+  { id: "usr-reviewer", name: process.env.DEMO_REVIEWER_NAME ?? "Avishkar Chavan", email: "procurement@acme-demo.in", role: "reviewer" },
 ];
 
 export async function ensureDemoUsers() {

@@ -146,9 +146,9 @@ function Login() {
                 disabled={busy}
                 className="btn flex w-full items-center gap-3 rounded-md border border-line-strong bg-surface p-3 text-left transition-colors duration-150 hover:bg-line-2 disabled:opacity-60"
               >
-                <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-line text-[13px] font-semibold text-ink-2">GA</span>
+                <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-line text-[13px] font-semibold text-ink-2">AC</span>
                 <span className="flex-1 leading-tight">
-                  <span className="block text-[14px] font-medium text-ink">Continue as Gaurav Ahuja</span>
+                  <span className="block text-[14px] font-medium text-ink">Continue as Avishkar Chavan</span>
                   <span className="block text-[12px] text-ink-3">Procurement team</span>
                 </span>
                 {busy ? <Loader2 className="h-4 w-4 animate-spin text-brand" /> : <ArrowRight className="h-4 w-4 text-ink-3" />}

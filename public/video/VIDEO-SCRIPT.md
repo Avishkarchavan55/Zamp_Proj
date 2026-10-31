@@ -33,7 +33,7 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 
 **"There are two portals. The company portal is for Acme's procurement team."**
 
-[Click Continue as Gaurav Ahuja. Land on Overview. 8 seconds.]
+[Click Continue as Avishkar Chavan. Land on Overview. 8 seconds.]
 **"The overview shows how many applications came in, how many wait on a vendor, how many need a person, and which channel they came from."** [Point at the donut.]
 
 [Click All vendors. Then the Activity log tab. 8 seconds.]
@@ -43,7 +43,7 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 **"Needs attention is the team's task list. It only holds work for a person, and it shrinks as they act."**
 
 [Click Emails to vendors. Click How follow-ups work (pop-up), then Compose email. 10 seconds.]
-**"Every email the system sends is here. Follow-ups and reminders go out automatically, and Gaurav can also write, edit and send his own."**
+**"Every email the system sends is here. Follow-ups and reminders go out automatically, and you can also write, edit and send his own."**
 
 [Click How to use. Scroll once. 4 seconds.]
 **"And the rules are written down in plain words."**
