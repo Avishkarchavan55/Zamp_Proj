@@ -45,7 +45,7 @@ type Item = { r: ActivityRow; n: NonNullable<ReturnType<typeof staffNotice>> };
  * Deliberately separate from "Needs attention": that is a task list that shrinks to zero; this is a feed.
  */
 export function NotificationBell() {
-  const { data } = useSWR<ActivityRow[]>("/api/activity?limit=80", { refreshInterval: 15000 });
+  const { data } = useSWR<ActivityRow[]>("/api/activity?limit=200", { refreshInterval: 8000 });
   const seen = useSyncExternalStore(subscribe, readSeen, () => null);
   const [open, setOpen] = useState(false);
   const [snapshot, setSnapshot] = useState<string | null>(null);

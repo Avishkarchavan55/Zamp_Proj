@@ -47,6 +47,9 @@ export function auditDetailText(action: string, d: Record<string, unknown> | nul
   return "";
 }
 
+/** "Avishkar Chavan (Procurement team)" becomes "Avishkar Chavan". */
+const person = (actor: string) => actorLabel(actor).replace(/\s*\(.*\)$/, "");
+
 export type NoticeTone = "info" | "good" | "serious" | "critical" | "warn";
 
 /** What the company-side bell says about an event, or null when it is not worth interrupting for. */
@@ -62,10 +65,24 @@ export function staffNotice(a: ActivityRow): { title: string; detail?: string; t
     case "decision":
       switch (d.outcome) {
         case "approved": return { title: `${name} approved`, detail: "Decided automatically", tone: "good" };
-        case "in_review": return { title: `${name} needs your decision`, tone: "serious" };
+        case "in_review": return { title: `${name} needs attention`, tone: "serious" };
         case "rejected": return { title: `${name} rejected`, tone: "critical" };
         default: return null;
       }
+    case "review_approved":
+      return { title: `${name} approved`, detail: `By ${person(a.actor)}${d.note ? `: ${String(d.note)}` : ""}`, tone: "good" };
+    case "review_rejected":
+      return { title: `${name} rejected`, detail: `By ${person(a.actor)}${d.note ? `: ${String(d.note)}` : ""}`, tone: "critical" };
+    case "clarification_requested":
+      return { title: `Clarification requested from ${name}`, detail: auditDetailText(a.action, a.detail) || undefined, tone: "info" };
+    case "message_sent":
+      return { title: `Email sent to ${name}`, detail: auditDetailText(a.action, a.detail) || undefined, tone: "info" };
+    case "vendor_contacted":
+      return { title: `Request emailed to ${name}`, detail: auditDetailText(a.action, a.detail) || undefined, tone: "info" };
+    case "reminder_sent":
+      return { title: `Reminder sent to ${name}`, detail: auditDetailText(a.action, a.detail) || undefined, tone: "warn" };
+    case "email_reply":
+      return { title: `${name} replied by email`, tone: "info" };
     case "escalated":
       return { title: `${name} has not replied`, detail: "All reminders were sent", tone: "warn" };
     case "email_failed":
