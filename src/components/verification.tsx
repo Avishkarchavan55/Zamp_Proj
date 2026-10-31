@@ -2,12 +2,12 @@
 
 import {
   ArrowRight, Ban, BookOpenCheck, ChevronDown, ClipboardList, Clock3, FileWarning, Gavel, Quote,
-  ShieldCheck, Sparkles, TriangleAlert,
+  ShieldAlert, ShieldCheck, Sparkles, TriangleAlert, UserX,
 } from "lucide-react";
 import { useState } from "react";
 import { DOC_SLOTS } from "@/lib/policy";
 import type { Decision, Evidence } from "@/lib/types";
-import { ROUTE_LABEL, STAGES } from "@/lib/ui-meta";
+import { ROUTE_LABEL, STAGES, rejectionReason } from "@/lib/ui-meta";
 import type { CheckRow } from "./api-types";
 import { Badge, CheckIcon, cx } from "./ui";
 
@@ -201,6 +201,23 @@ const NEXT_STEP = {
   rejected: "Do not create this vendor or release any payment. A person informs the vendor.",
 } as const;
 
+const REJECTION_ICON = { fraud: ShieldAlert, ineligible: Ban, reviewer: UserX, policy: Ban } as const;
+
+/** For rejected vendors: what kind of rejection it is (fraud vs not eligible vs a reviewer's call) and why it matters. */
+function RejectionCallout({ decision }: { decision: Decision }) {
+  const r = rejectionReason(decision);
+  const Icon = REJECTION_ICON[r.kind];
+  return (
+    <div className="mt-5 rounded-lg border border-critical/25 bg-critical-soft px-4 py-3.5">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-md bg-critical px-2 py-0.5 text-[12.5px] font-semibold text-white"><Icon className="h-3.5 w-3.5" />{r.label}</span>
+        <span className="text-[15px] font-semibold text-ink">{r.title}</span>
+      </div>
+      <p className="mt-1.5 text-[14px] leading-relaxed text-ink-2">{r.explain}</p>
+    </div>
+  );
+}
+
 export function DecisionPanel({ decision }: { decision: Decision; compact?: boolean }) {
   const [more, setMore] = useState(false);
   const s = OUTCOME_STYLE[decision.outcome];
@@ -217,6 +234,8 @@ export function DecisionPanel({ decision }: { decision: Decision; compact?: bool
             <p className="mt-1 text-[14.5px] leading-relaxed text-ink-2">{NEXT_STEP[decision.outcome]}</p>
           </div>
         </div>
+
+        {decision.outcome === "rejected" && <RejectionCallout decision={decision} />}
 
         {decision.ai_brief && (
           <div className="mt-5 rounded-lg bg-brand-soft px-4 py-3.5">

@@ -357,6 +357,75 @@ VENDORS = {
         account="917020011873316", cheque_name="GANGA PACKAGING PVT LTD", micr="400211002",
         skip_pan=True,
     ),
+    # ---- History, rejected: GST registration suspended (not eligible).
+    "shivshakti": dict(
+        legal_name="SHIVSHAKTI METAL WORKS PRIVATE LIMITED", form_name="Shivshakti Metal Works Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAPCS6620B", state_code="27", cin="U27100MH2016PTC284410", inc_date=(14, 3, 2016),
+        address="Gat 41, Chakan Industrial Area", city="Pune", state="Maharashtra", pincode="410501",
+        contact_name="Amol Shinde", contact_email="amol@shivshaktimetal.in", contact_phone="+91 98230 77410",
+        owner_name="Amol Shinde", website="shivshaktimetal.in", category="Sheet metal fabrication",
+        ifsc="SBIN0003403", bank="STATE BANK OF INDIA", branch="AMBEJOGAI",
+        account="39188812047", cheque_name="SHIVSHAKTI METAL WORKS PVT LTD", micr="431002834",
+        gst_status="Suspended",
+    ),
+    # History, rejected: the bank account belongs to Kalpataru Steel Traders (different PAN) - fraud pattern.
+    "navkar": dict(
+        legal_name="NAVKAR ENTERPRISES PRIVATE LIMITED", form_name="Navkar Enterprises Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAMCN2219J", state_code="27", cin="U51909MH2020PTC339871", inc_date=(9, 7, 2020),
+        address="Shop 3, Station Road", city="Ahmednagar", state="Maharashtra", pincode="414111",
+        contact_name="Paresh Jain", contact_email="paresh@navkarenterprises.in", contact_phone="+91 98901 33025",
+        owner_name="Paresh Jain", website="navkarenterprises.in", category="Steel trading",
+        ifsc="HDFC0000001", bank="HDFC BANK", branch="TULSIANI CHMBRS - NARIMAN PT",
+        account="50200061234871", cheque_name="NAVKAR ENTERPRISES PVT LTD", micr="400240003",
+    ),
+    # History, rejected: the bank account belongs to Suryodaya Solar Systems (different PAN) - fraud pattern.
+    "greenfield": dict(
+        legal_name="GREENFIELD AGRI EXPORTS PRIVATE LIMITED", form_name="Greenfield Agri Exports Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAKCG5562M", state_code="24", cin="U01400GJ2021PTC120334", inc_date=(12, 1, 2021),
+        address="21, Satellite Road", city="Ahmedabad", state="Gujarat", pincode="380015",
+        contact_name="Kavya Shah", contact_email="kavya@greenfieldagri.in", contact_phone="+91 99250 61873",
+        owner_name="Kavya Shah", website="greenfieldagri.in", category="Agricultural produce",
+        ifsc="UTIB0000004", bank="AXIS BANK", branch="MUMBAI BRANCH",
+        account="918020045512309", cheque_name="GREENFIELD AGRI EXPORTS PVT LTD", micr="400211002",
+    ),
+    # History, needs a decision: the GSTIN belongs to a sister company (different PAN, similar name).
+    "mahalaxmi": dict(
+        legal_name="MAHALAXMI PLASTICS PRIVATE LIMITED", form_name="Mahalaxmi Plastics Pvt Ltd",
+        gst_legal_name="MAHALAXMI POLYMERS PRIVATE LIMITED", gst_pan="AAJCM4402L",
+        trade_name="", entity_type="private_limited",
+        pan="AAHCM7781K", state_code="24", cin="U25200GJ2015PTC085512", inc_date=(6, 10, 2015),
+        address="5, Ashram Road, Navrangpura", city="Ahmedabad", state="Gujarat", pincode="380009",
+        contact_name="Hiral Patel", contact_email="hiral@mahalaxmiplastics.in", contact_phone="+91 97250 40981",
+        owner_name="Hiral Patel", website="mahalaxmiplastics.in", category="Plastic moulded parts",
+        ifsc="UTIB0000004", bank="AXIS BANK", branch="MUMBAI BRANCH",
+        account="918020077120458", cheque_name="MAHALAXMI PLASTICS PVT LTD", micr="400211002",
+    ),
+    # History, needs a decision: the cheque prints State Bank of India but the IFSC belongs to HDFC Bank.
+    "triveni": dict(
+        legal_name="TRIVENI ELECTRICALS PRIVATE LIMITED", form_name="Triveni Electricals Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAICT3390F", state_code="29", cin="U31900KA2017PTC104211", inc_date=(19, 2, 2017),
+        address="61, 4th Block, Koramangala", city="Bengaluru", state="Karnataka", pincode="560034",
+        contact_name="Prakash Hegde", contact_email="prakash@trivenielectricals.in", contact_phone="+91 98450 27716",
+        owner_name="Prakash Hegde", website="trivenielectricals.in", category="Switchgear and panels",
+        ifsc="HDFC0000053", bank="STATE BANK OF INDIA", branch="KORAMANGALA",
+        account="50200034551289", cheque_name="TRIVENI ELECTRICALS PVT LTD", micr="560240004",
+    ),
+    # History, needs a decision: declares a Small enterprise, the Udyam certificate says Medium.
+    "krishna": dict(
+        legal_name="KRISHNA FOOD PRODUCTS PRIVATE LIMITED", form_name="Krishna Food Products Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAJCK8836D", state_code="33", cin="U15400TN2019PTC128843", inc_date=(25, 4, 2019),
+        address="18, Usman Road, T. Nagar", city="Chennai", state="Tamil Nadu", pincode="600017",
+        contact_name="Lakshmi Narayanan", contact_email="lakshmi@krishnafoods.in", contact_phone="+91 94440 72281",
+        owner_name="Lakshmi Narayanan", website="krishnafoods.in", category="Packaged snacks",
+        ifsc="ICIC0000001", bank="ICICI BANK", branch="CHENNAICENOTAPH ROAD",
+        account="000401998812", cheque_name="KRISHNA FOOD PRODUCTS PVT LTD", micr="600229002",
+        udyam="UDYAM-TN-02-0019934", msme_declared="Small", msme_cert="Medium",
+    ),
 }
 VENDORS["shreeji"].update(udyam="UDYAM-MH-26-0012345", msme_declared="Micro", msme_cert="Micro")
 
@@ -828,6 +897,12 @@ SCENARIOS = [
     dict(id="coastal", vendor="coastal", group="history", title="History (MSME Micro)", summary="", expected="Approved"),
     dict(id="patil", vendor="patil", group="history", title="History (name differs on GST)", summary="", expected="Needs review"),
     dict(id="ganga", vendor="ganga", group="history", title="History (PAN missing)", summary="", expected="Awaiting vendor"),
+    dict(id="shivshakti", vendor="shivshakti", group="history", title="History (GST suspended)", summary="", expected="Rejected"),
+    dict(id="navkar", vendor="navkar", group="history", title="History (bank account of another company)", summary="", expected="Rejected"),
+    dict(id="greenfield", vendor="greenfield", group="history", title="History (bank account of another company)", summary="", expected="Rejected"),
+    dict(id="mahalaxmi", vendor="mahalaxmi", group="history", title="History (GSTIN of a sister company)", summary="", expected="Needs review"),
+    dict(id="triveni", vendor="triveni", group="history", title="History (cheque bank differs from IFSC)", summary="", expected="Needs review"),
+    dict(id="krishna", vendor="krishna", group="history", title="History (MSME category mismatch)", summary="", expected="Needs review"),
     dict(id="apex", vendor="apex", group="history", title="Existing vendor (history)", summary="", expected="Approved"),
     dict(id="saikrupa", vendor="saikrupa", group="history", title="History", summary="", expected="Approved"),
     dict(id="orion", vendor="orion", group="history", title="Cancelled GST registration", summary="", expected="Rejected"),
@@ -955,7 +1030,7 @@ def main():
             continue  # not in sandbox registry -> "unverified"
         registry.append(dict(gstin=v["gstin"], legal_name=v["gst_legal_name"],
                              trade_name=v["trade_name"] or v["gst_legal_name"],
-                             status="Cancelled" if key == "orion" else "Active",
+                             status="Cancelled" if key == "orion" else v.get("gst_status", "Active"),
                              state_code=v["state_code"],
                              constitution=CONSTITUTION[v["entity_type"]]))
     with open(os.path.join(FIXTURES, "gst_registry.json"), "w") as fh:

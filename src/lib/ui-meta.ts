@@ -117,3 +117,40 @@ const ISSUE_TITLES: [RegExp, string][] = [
 export function issueTitle(code: string, fallback?: string) {
   return ISSUE_TITLES.find(([re]) => re.test(code))?.[1] ?? fallback ?? code;
 }
+
+export type RejectionKind = "fraud" | "ineligible" | "reviewer" | "policy";
+
+/**
+ * Why a vendor was rejected, as a category a person recognises: fraud risk, not eligible, or a reviewer's
+ * call — plus one sentence on why it matters.
+ */
+export function rejectionReason(d: { reasons?: { code: string; text: string }[] | null; decided_by?: string | null; summary?: string | null }) {
+  const reasons = d.reasons ?? [];
+  const has = (re: RegExp) => reasons.find((r) => re.test(r.code));
+  const bank = has(/^risk\.duplicate_bank$/);
+  if (bank) {
+    return {
+      kind: "fraud" as RejectionKind, label: "Fraud risk", title: "Bank account belongs to another company",
+      explain: "This bank account is already registered to a different company. Paying it could send money to the wrong party — a common payment-diversion fraud pattern.",
+    };
+  }
+  const gst = has(/^ext\.gst_registry$/);
+  if (gst) {
+    const status = gst.text.match(/is (CANCELLED|SUSPENDED|INACTIVE)/i)?.[1]?.toLowerCase() ?? "not active";
+    return {
+      kind: "ineligible" as RejectionKind, label: "Not eligible", title: `GST registration ${status}`,
+      explain: `The vendor's GST registration is ${status}. Invoices from it cannot be used to claim input tax credit, so the vendor cannot be onboarded until it is restored.`,
+    };
+  }
+  if (d.decided_by && d.decided_by !== "policy_engine") {
+    return {
+      kind: "reviewer" as RejectionKind, label: "Rejected by reviewer", title: d.summary?.trim() || "Rejected after review",
+      explain: `${d.decided_by} reviewed the evidence and rejected this vendor.`,
+    };
+  }
+  const first = reasons[0];
+  return {
+    kind: "policy" as RejectionKind, label: "Policy", title: first ? issueTitle(first.code) : "Did not meet onboarding policy",
+    explain: first?.text.split(": ").slice(1).join(": ") || "The application failed a check that disqualifies a vendor.",
+  };
+}

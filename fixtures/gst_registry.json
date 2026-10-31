@@ -182,5 +182,53 @@
     "status": "Active",
     "state_code": "27",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "27AAPCS6620B1ZD",
+    "legal_name": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "trade_name": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "status": "Suspended",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "27AAMCN2219J1Z9",
+    "legal_name": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "trade_name": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAKCG5562M1Z6",
+    "legal_name": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "trade_name": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAJCM4402L1ZI",
+    "legal_name": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "trade_name": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "29AAICT3390F1Z2",
+    "legal_name": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "trade_name": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "29",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "33AAJCK8836D1ZG",
+    "legal_name": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "trade_name": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "33",
+    "constitution": "Private Limited Company"
   }
 ]

@@ -8,7 +8,7 @@ import useSWR from "swr";
 import type { AppListRow } from "@/components/api-types";
 import { Badge, Button, Card, Empty, PageHeader, Skeleton, StatusPill, ago, cx } from "@/components/ui";
 import type { AppStatus } from "@/lib/types";
-import { ENTITY_SHORT, STATUS_META } from "@/lib/ui-meta";
+import { ENTITY_SHORT, STATUS_META, rejectionReason } from "@/lib/ui-meta";
 
 const FILTERS: ("all" | AppStatus)[] = ["all", "in_review", "awaiting_vendor", "approved", "rejected", "processing"];
 
@@ -88,7 +88,15 @@ function Applications() {
                     <td className="px-3 py-3 text-ink-2">{ENTITY_SHORT[a.entity_type]} · {a.city}</td>
                     <td className="px-3 py-3"><StatusPill status={a.status} /></td>
                     <td className="max-w-[280px] px-3 py-3">
-                      <div className="truncate text-[12.5px] text-ink-2" title={a.headline ?? ""}>{a.status === "approved" ? "—" : a.headline}</div>
+                      {a.status === "rejected" ? (() => {
+                        const r = rejectionReason(a);
+                        return (
+                          <div className="flex min-w-0 items-center gap-1.5" title={r.explain}>
+                            <span className="shrink-0 rounded-md bg-critical-soft px-1.5 py-0.5 text-[11.5px] font-semibold text-critical-ink">{r.label}</span>
+                            <span className="truncate text-[12.5px] text-ink-2">{r.title}</span>
+                          </div>
+                        );
+                      })() : <div className="truncate text-[12.5px] text-ink-2" title={a.headline ?? ""}>{a.status === "approved" ? "—" : a.headline}</div>}
                       {a.flags?.includes("vendor_unresponsive") && <Badge tone="critical" className="mt-1">vendor unresponsive</Badge>}
                     </td>
                     <td className="px-3 py-3 text-ink-3">{a.duration_ms ? `${(a.duration_ms / 1000).toFixed(1)}s` : "—"}</td>

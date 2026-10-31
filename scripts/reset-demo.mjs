@@ -14,9 +14,10 @@ import postgres from "postgres";
 import { createClient } from "@supabase/supabase-js";
 
 const KEEP_SCENARIOS = ["apex", "saikrupa", "deccan", "orion", "vertex", "murugan"];
-const ADD_HISTORY = ["kalpataru", "suryodaya", "bharat", "venkateswara", "coastal", "patil", "ganga"];
+const ADD_HISTORY = ["kalpataru", "suryodaya", "bharat", "venkateswara", "coastal", "patil", "ganga", "shivshakti", "navkar", "greenfield", "mahalaxmi", "triveni", "krishna"];
 // How each imported vendor originally applied, so the dashboard shows a realistic mix of channels.
-const CHANNEL = { kalpataru: "email", bharat: "email", patil: "email", ganga: "email", suryodaya: "google_form", venkateswara: "google_form", coastal: "google_form" };
+const CHANNEL = { kalpataru: "email", bharat: "email", patil: "email", ganga: "email", suryodaya: "google_form", venkateswara: "google_form", coastal: "google_form",
+  navkar: "email", mahalaxmi: "email", triveni: "google_form", krishna: "google_form" };
 
 const BASE = process.env.BASE_URL ?? "https://zamp-prep.vercel.app";
 const url = process.env.DIRECT_URL ?? process.env.DATABASE_URL;

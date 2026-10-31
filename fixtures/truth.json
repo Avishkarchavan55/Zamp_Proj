@@ -1,5 +1,5 @@
 {
- "c724869605264ea980aa62701f3825c6682ba8b08a6ef228e7dc094895240a07": {
+ "780e1f2bbf1d5665f9a4cede962cc5bf9e3d88a2df57f725cf85057e6b3c1c7a": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -43,7 +43,7 @@
   ],
   "notes": ""
  },
- "1fceec53e1ce24c39af5e0c9341032bb284fab9f9c1e71a013f9e9bb168f5cad": {
+ "13faeda0cc45dc8e342c9f4b8499c1a1d0807bc8e6d8f0d1568443a37abc0b09": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -151,7 +151,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "4bea5c347531b2f470055128c2bf2d761739c9c3cf67ece70803f9ffb8478366": {
+ "a69409b98fec2be7541584a949388dee341575690e0fcceac6631b5ea0b56002": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -183,7 +183,7 @@
   ],
   "notes": ""
  },
- "16bc6d3374065cfc7ca0c2c4bae1ca64c685ef30729d047ac87887fac6ed6a7e": {
+ "38eddbdee6853613d0d5df399199c6e61e841aca26229064866957f2ebcb215f": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -227,7 +227,7 @@
   ],
   "notes": ""
  },
- "2726b740c5054ee8087c412754df3581af063e2b6a4253f17a65842a0de63086": {
+ "85fb7a6146f72d70f4af39f5c7459e3cfea6dc82c1ccb15d1e477a66f779beb1": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -297,7 +297,7 @@
   ],
   "notes": ""
  },
- "19f827b08688586c4303917e2a477e5c76ce278fcce358d520e6d8c96e1f7127": {
+ "a7a228ba13f6d0b8687771e8d486e571afa40f8a2e37cda78824c3d3f2faa6da": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -379,7 +379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a311383c21d04ecdfaa5c6e7e61cde7cfc6456e3d8f77470996e9bf4533d58d2": {
+ "d17b1656a8534bfd9ba96fe55a018a54bf1c8c728ca2e79b657b8fe60027eb27": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -423,7 +423,7 @@
   ],
   "notes": ""
  },
- "a99dfa8314e1b0d27ff7510b2b9d8842cdd6605011b1e79d64dab0284547d7db": {
+ "23627910c80d3cce1f987494e27f58b276f05069bf17301cf8cbb5e863e4fdf6": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -531,7 +531,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "f13b2971df03219c13398b8b30c64fa6349a61cf6e98f2bb81ccc8c28bf76f4e": {
+ "3bbb1d9c5b19c54b5a4afe2c3b225a40ff46af64bfeee18105f4e93bfe59f328": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -575,7 +575,7 @@
   ],
   "notes": ""
  },
- "83ceb9ec4e039aef41f0f0c2855dae1fd0a838210641d41500d193d698ef1ef4": {
+ "6f02cf1f0ef145dfcc2c1cdadea91b2e3259caffb3b879625b46f176cc167712": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -683,7 +683,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "39db95667348f2b74af8e03a0ff70e7c31a966153fd44e036eee29beeb3c7017": {
+ "cdee9bb1d796f2ca456891c5bf205c7a0b653cf353e368d5194c93644571594a": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -727,7 +727,7 @@
   ],
   "notes": ""
  },
- "c93fbe88f0925b53767f9df0e85e0a0a049f8086e147c473c697ebdb6df68227": {
+ "9a494efd709863714690eec196f2cee67cb7090bd8a94e68b41abf8ac222cd55": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -835,7 +835,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "bdac06ad2543d28c0055e45c4b252b73980ff7e0fb4bf51b5d80c1df03b00361": {
+ "a4e1cfea23e5dc2470503091ab7e17baf920f5f1af5e0a84cc91f1d5256fc831": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "degraded",
@@ -911,7 +911,7 @@
   ],
   "notes": ""
  },
- "d1aa570a1a8a01ee6f5726c3c17b43799a16b889cef69f3d234459d17f41750a": {
+ "d04b570c55983d6f1265afca25bdc39aaa49cc8c6def333be19fb2289af2745a": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "degraded",
@@ -949,7 +949,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "72049a9d92a521c7b7805f2442fa0bbbb267c67b48c09777e20879054249d403": {
+ "a148b35e2e46c7898f8a211c41fa86b2684d1e9b7b86148c077b9c78584a5834": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -993,7 +993,7 @@
   ],
   "notes": ""
  },
- "e0a6ee1b28c3adfb1b5e8f5f2ce98f8dd9cbf1a8f9b60ae2497c4734e1175e15": {
+ "4572093faa451930ffc03cb0cec005825fdf27cb6c72223c418f17f44f9d3e2c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1075,7 +1075,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "d9dc0df6b9f1a5b4cecb95810d705409288bf3e7bba1afb22b25318e7136292e": {
+ "a40be64a34220a7a0e5611723d7723f2f8535549822e7fd8f53558dbee9a6801": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1119,7 +1119,7 @@
   ],
   "notes": ""
  },
- "aebafadcb7225476be553c554fa12a7813a5d1be220c5551222881ba73f6dc60": {
+ "aa0ceeca8922d2652ab3545ef16a592d2cb6cdf63f036e798bbfdd745562de29": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1227,7 +1227,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "6ee0a600bd20a253c52c2aa536c2772acc2e1b6097afd82ebeaf3a0fdc2e6de2": {
+ "4ff0c6af88d29d9296ef39348c61dca5b3d710fa27789eca9ea01158f5626a3b": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1271,7 +1271,7 @@
   ],
   "notes": ""
  },
- "19641138c3f2e426c4c0e9c5673429e846312bcd2e73e1819e7c7c4054320ca5": {
+ "665db774c64c77d40d92c14d6806211172064f4821606cb7b8ec9128bd8c1604": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1379,7 +1379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "289753396b73f2f314d604f76ef94f39504b1799bf6b630f1b99bfec6b1ae0f1": {
+ "620a0fd12a3b17fc57f5964fb421fb4d2420daed875568a2f2adcc09b3bd3031": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1411,7 +1411,7 @@
   ],
   "notes": ""
  },
- "e95d18c9aa5bb0be3122d8f382bf667272eaaefa9e3729d48f4f437a1b9ea077": {
+ "397a7f016c445bea7951523b1dd02a806fd954d8c65df745f7032b522f84f77b": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1519,7 +1519,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "549569787ec3c0887e00e97d6f94c9190e35724510b0f136187172d37da1f5ae": {
+ "937a2bb3998af9e6e42302642fa76b29659f510fe2669b142214715892ea9211": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1633,7 +1633,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8c2da6d798383238b716da4d0c17520d8113d6911ec0d42de6b603fa1efc06b9": {
+ "94fb0bb85a605b35502ed72f3b89cc681f9add85d35a759b21799efc56044de0": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1677,7 +1677,7 @@
   ],
   "notes": ""
  },
- "f444c1b7932a60022b16fdf6b48c18cd4c68b048203085b3515bb55246027a85": {
+ "a26be28e97738dba65628a81afd804d6ec62dd80432ceeda40d40ed669b2c60b": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1785,7 +1785,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "5307a7aed8dfd4e1da85c9330190ace4f4882a690f525d644d4a6d1c1e93f59d": {
+ "6009c97c0c2095858ea6965c021f6b92def2dfec78e9f064b4e4c84886d52d58": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1829,7 +1829,7 @@
   ],
   "notes": ""
  },
- "89cb2b2f0774a7570d977551f2a7a4d1743eaffe3c78f06bbdd8e555288f30b5": {
+ "9cb8ebbecd5cf5b8d902042f7f9fb352bc7c2d64b0a8747d6f0be167d649ba82": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1937,7 +1937,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "edc0decc8ad06b9fd853aca75eb7ebf8513cdd3383c8e16d6228afacb89e58ed": {
+ "332a8a8b758ff335297e0585ffa10f9af08cb4311d901166fd4dffd580033af8": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1969,7 +1969,7 @@
   ],
   "notes": ""
  },
- "df9769edd66fd54ce2be41ea48b96ef8b7598f682e3d93e051bdf0a90894c52e": {
+ "fbd009d1821e5ee822212d14382e6aeaa3d0cd3e6617fb14e7592431091d3cd4": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2083,7 +2083,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "b9ba3b1bf4380b68318221fa9c6e83dae544edca81b0ba7b9685625b14dbc64b": {
+ "657e073f7f3a26327264499d83d3f0c36bf19759b73ff9f1c3ac31c865be7dc1": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2191,7 +2191,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "c1ab8e3dd7fcc43ae926c36d286bfaaf95e627e8c96bd67cd158b6c84bece796": {
+ "b42312c88c230e2f4c660fd6c9feef4f7855cb64527e5a051db637c0ba0bc5d0": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2235,7 +2235,7 @@
   ],
   "notes": ""
  },
- "8cfaa6da20bddcec75e0cc4f3932215a9f3b7684ff7bebba2ecb60e4f67a4afd": {
+ "42b7b5543cd1f52047ddebf8f4672f87b71c017e483bbce0588cf9a9e623359f": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2343,7 +2343,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "cd684d5bee7ef7c1190c1ae1e82848ade1fa133ab851eb91ce92ca255ae5276a": {
+ "d34be9573270edf7b26f46d62565d7b41ec1709120d864e68c4a631a08722a45": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2375,7 +2375,7 @@
   ],
   "notes": ""
  },
- "7cd45039cb501d8ba6c9b6f6dd3e2d38c50027959bc7a5c668437e8174bbf0ff": {
+ "5915d95cffc604bf6131b388a95a652a8667c10d448f6add2e4b9ef8e4150b66": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2419,7 +2419,7 @@
   ],
   "notes": ""
  },
- "4fbada461ec19f6a7b8bfcc525998438e93e057ac20a3bdc017e3df103a28a61": {
+ "d6c2cbcea110371464c21b5d67c2e10efaed2b3a9cf7b1ebdbddafd894bb123c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2527,7 +2527,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "1450ede86c8c9892d6978c63243571d1759300c0b22f33053a6b59b7be70292c": {
+ "52d70c554553f114bafeffcc64d2cc0b1734a053ddceeb4d72b0478ca02fc0f8": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2571,7 +2571,7 @@
   ],
   "notes": ""
  },
- "973b1c29baacd4405b99aaa5af7f1ddc071dacec292db7781e6c5db3308eb623": {
+ "e1911a885a1f938c6efea2ecbfd829a65b2048309c663dcf2af82e616ee0d493": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2653,7 +2653,951 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "ba5fc0daa522cca63ab0f6e662af2369989d03ab9c0c7f08d32f1ea1680c74d4": {
+ "aced678307a796b0da81e13b856aec68ccf6099a1709c6f8e5d1cab80ab640a1": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that SHIVSHAKTI METAL WORKS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U27100MH2016PTC284410",
+    "source_quote": "Corporate Identity Number of the company is U27100MH2016PTC284410",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAPCS6620B",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAPCS6620B",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-03-14",
+    "source_quote": "2016-03-14",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat 41, Chakan Industrial Area, Pune, Maharashtra, India - 410501",
+    "source_quote": "Gat 41, Chakan Industrial Area, Pune, Maharashtra, India - 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "db5dc413af38a4421380efc9fd7610bea3b264f6d7929251fc5c4a4c5906e471": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAPCS6620B1ZD",
+    "source_quote": "Registration Number : 27AAPCS6620B1ZD",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "source_quote": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "source_quote": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Gat 41, Chakan Industrial Area, Pune, Maharashtra, 410501",
+    "source_quote": "Gat 41, Chakan Industrial Area, Pune, Maharashtra, 410501",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "b89d2f3909c75df5649b1c70f491f5afa9cf0a6df86ff9934e852915336746ce": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAPCS6620B",
+    "source_quote": "AAPCS6620B",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "source_quote": "SHIVSHAKTI METAL WORKS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2016-03-14",
+    "source_quote": "2016-03-14",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "c74f642484b1ae97251f410b5b5c1012d7c1443d782092ec7e7aeec5cfae54e4": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "SHIVSHAKTI METAL WORKS PVT LTD",
+    "source_quote": "For SHIVSHAKTI METAL WORKS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "39188812047",
+    "source_quote": "39188812047",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "SBIN0003403",
+    "source_quote": "IFSC: SBIN0003403",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "AMBEJOGAI",
+    "source_quote": "AMBEJOGAI",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "6210fa1f0d8da4436abcc337ff206fe32684476db596d76a88d9aaee3d0ce583": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that NAVKAR ENTERPRISES PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U51909MH2020PTC339871",
+    "source_quote": "Corporate Identity Number of the company is U51909MH2020PTC339871",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAMCN2219J",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAMCN2219J",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2020-07-09",
+    "source_quote": "2020-07-09",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Shop 3, Station Road, Ahmednagar, Maharashtra, India - 414111",
+    "source_quote": "Shop 3, Station Road, Ahmednagar, Maharashtra, India - 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "28467f01e24f4cc6c9ab5e49d8e52b18a4e1dd839966448ef5fbb2b0ed8f02c1": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "27AAMCN2219J1Z9",
+    "source_quote": "Registration Number : 27AAMCN2219J1Z9",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "source_quote": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "source_quote": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "Shop 3, Station Road, Ahmednagar, Maharashtra, 414111",
+    "source_quote": "Shop 3, Station Road, Ahmednagar, Maharashtra, 414111",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Maharashtra",
+    "source_quote": "Maharashtra",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "13e1b5ac3a70ee9b522de6c3183c8fb7bfe3b4b9a9979ce499fa804fc57f8f7c": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAMCN2219J",
+    "source_quote": "AAMCN2219J",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "source_quote": "NAVKAR ENTERPRISES PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2020-07-09",
+    "source_quote": "2020-07-09",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "334ff67af5832efb91f357f6d044b9a0d184cea960bad110c7d064cd49e8d44d": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "NAVKAR ENTERPRISES PVT LTD",
+    "source_quote": "For NAVKAR ENTERPRISES PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200061234871",
+    "source_quote": "50200061234871",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000001",
+    "source_quote": "IFSC: HDFC0000001",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "HDFC BANK",
+    "source_quote": "HDFC BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "TULSIANI CHMBRS - NARIMAN PT",
+    "source_quote": "TULSIANI CHMBRS - NARIMAN PT",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "4f08d8bd1fe0939fad6fb50900b0480a73d07e45f637423035dbe1682e2779d3": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that GREENFIELD AGRI EXPORTS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U01400GJ2021PTC120334",
+    "source_quote": "Corporate Identity Number of the company is U01400GJ2021PTC120334",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAKCG5562M",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAKCG5562M",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2021-01-12",
+    "source_quote": "2021-01-12",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "21, Satellite Road, Ahmedabad, Gujarat, India - 380015",
+    "source_quote": "21, Satellite Road, Ahmedabad, Gujarat, India - 380015",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "af77eeb23f2d042f36ad93c6b35fa36909aee00a6d589201615862a3b574f10c": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAKCG5562M1Z6",
+    "source_quote": "Registration Number : 24AAKCG5562M1Z6",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "source_quote": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "source_quote": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "21, Satellite Road, Ahmedabad, Gujarat, 380015",
+    "source_quote": "21, Satellite Road, Ahmedabad, Gujarat, 380015",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "00bb4dece535f21e090a65b6d7abc2dab4ca757343f0a3dc372382bf3a7c0be6": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAKCG5562M",
+    "source_quote": "AAKCG5562M",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "source_quote": "GREENFIELD AGRI EXPORTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2021-01-12",
+    "source_quote": "2021-01-12",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "d5bfd3c467a6c443313c305c79b44056c2abcf170a90b748eeb4a5cf7f5e148a": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "GREENFIELD AGRI EXPORTS PVT LTD",
+    "source_quote": "For GREENFIELD AGRI EXPORTS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "918020045512309",
+    "source_quote": "918020045512309",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000004",
+    "source_quote": "IFSC: UTIB0000004",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MUMBAI BRANCH",
+    "source_quote": "MUMBAI BRANCH",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "c1a23b801c64ee9d51574cc6f4d225c39cccf4bc611d7b1ea6927a129c613b65": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "MAHALAXMI PLASTICS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that MAHALAXMI PLASTICS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U25200GJ2015PTC085512",
+    "source_quote": "Corporate Identity Number of the company is U25200GJ2015PTC085512",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAHCM7781K",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAHCM7781K",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2015-10-06",
+    "source_quote": "2015-10-06",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "5, Ashram Road, Navrangpura, Ahmedabad, Gujarat, India - 380009",
+    "source_quote": "5, Ashram Road, Navrangpura, Ahmedabad, Gujarat, India - 380009",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "2f05f05d9dee879fe834b0fb3f8e98edc6dd1309501d70f4f4e9bd639e515d70": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "24AAJCM4402L1ZI",
+    "source_quote": "Registration Number : 24AAJCM4402L1ZI",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "source_quote": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "source_quote": "MAHALAXMI POLYMERS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "5, Ashram Road, Navrangpura, Ahmedabad, Gujarat, 380009",
+    "source_quote": "5, Ashram Road, Navrangpura, Ahmedabad, Gujarat, 380009",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Gujarat",
+    "source_quote": "Gujarat",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "b77991e40575ff25fc886be338027b8e4eab3a4992ffc6e2a06acbeeb806cbf9": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAHCM7781K",
+    "source_quote": "AAHCM7781K",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "MAHALAXMI PLASTICS PRIVATE LIMITED",
+    "source_quote": "MAHALAXMI PLASTICS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2015-10-06",
+    "source_quote": "2015-10-06",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "fa5a9ae559934475ab7bd2273cd7eb152a4abd971eeea1fd1d636f452dfc2247": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "MAHALAXMI PLASTICS PVT LTD",
+    "source_quote": "For MAHALAXMI PLASTICS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "918020077120458",
+    "source_quote": "918020077120458",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "UTIB0000004",
+    "source_quote": "IFSC: UTIB0000004",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "MUMBAI BRANCH",
+    "source_quote": "MUMBAI BRANCH",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "0dcbb61939392340b833972ff5fb1f13fa29f7736ad19fc3a10a9dc918981f51": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that TRIVENI ELECTRICALS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U31900KA2017PTC104211",
+    "source_quote": "Corporate Identity Number of the company is U31900KA2017PTC104211",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAICT3390F",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAICT3390F",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-02-19",
+    "source_quote": "2017-02-19",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "61, 4th Block, Koramangala, Bengaluru, Karnataka, India - 560034",
+    "source_quote": "61, 4th Block, Koramangala, Bengaluru, Karnataka, India - 560034",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "0bce88087ea2279fa4a7eda6524c785b59b4001e273c21e3987917042615bea8": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "29AAICT3390F1Z2",
+    "source_quote": "Registration Number : 29AAICT3390F1Z2",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "source_quote": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "source_quote": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "61, 4th Block, Koramangala, Bengaluru, Karnataka, 560034",
+    "source_quote": "61, 4th Block, Koramangala, Bengaluru, Karnataka, 560034",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Karnataka",
+    "source_quote": "Karnataka",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "706507663b990f792d200361a1eff3e3bf1a9f84b9d628269267e5baaba3aa59": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAICT3390F",
+    "source_quote": "AAICT3390F",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "source_quote": "TRIVENI ELECTRICALS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2017-02-19",
+    "source_quote": "2017-02-19",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "d99e36315c7fb4ab1e36c91899d09c97ed720f74e915bb1a357b3c68cc3d66ab": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "TRIVENI ELECTRICALS PVT LTD",
+    "source_quote": "For TRIVENI ELECTRICALS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "50200034551289",
+    "source_quote": "50200034551289",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "HDFC0000053",
+    "source_quote": "IFSC: HDFC0000053",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "STATE BANK OF INDIA",
+    "source_quote": "STATE BANK OF INDIA",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "KORAMANGALA",
+    "source_quote": "KORAMANGALA",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "0a57a0dca9cc74a77eda0522e309221240dff2b26f14d09b9b8b9c05100044a7": {
+  "detected_type": "certificate_of_incorporation",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "legal_name",
+    "value": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that KRISHNA FOOD PRODUCTS PRIVATE LIMITED is incorporated",
+    "confidence": 0.98
+   },
+   {
+    "key": "cin",
+    "value": "U15400TN2019PTC128843",
+    "source_quote": "Corporate Identity Number of the company is U15400TN2019PTC128843",
+    "confidence": 0.98
+   },
+   {
+    "key": "pan",
+    "value": "AAJCK8836D",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAJCK8836D",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-04-25",
+    "source_quote": "2019-04-25",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "18, Usman Road, T. Nagar, Chennai, Tamil Nadu, India - 600017",
+    "source_quote": "18, Usman Road, T. Nagar, Chennai, Tamil Nadu, India - 600017",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "1116f928159c2e6f9eb49ce19eb2d3af26fbbf799d35ea51817d3ab582df9b72": {
+  "detected_type": "gst_registration_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "gstin",
+    "value": "33AAJCK8836D1ZG",
+    "source_quote": "Registration Number : 33AAJCK8836D1ZG",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "source_quote": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "trade_name",
+    "value": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "source_quote": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "constitution_of_business",
+    "value": "Private Limited Company",
+    "source_quote": "Private Limited Company",
+    "confidence": 0.98
+   },
+   {
+    "key": "address",
+    "value": "18, Usman Road, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "source_quote": "18, Usman Road, T. Nagar, Chennai, Tamil Nadu, 600017",
+    "confidence": 0.98
+   },
+   {
+    "key": "state",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "846d40f273a3d344474c94cd7e95ff77af7b058b55f61513414cd08c7362f8fa": {
+  "detected_type": "pan_card",
+  "type_confidence": 0.99,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "pan",
+    "value": "AAJCK8836D",
+    "source_quote": "AAJCK8836D",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "source_quote": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "registration_date",
+    "value": "2019-04-25",
+    "source_quote": "2019-04-25",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "8e547875599a9bce6b6f4db12a6f9ead06a9bb7af8b0aeea4e905de321ce99ec": {
+  "detected_type": "cancelled_cheque",
+  "type_confidence": 0.98,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "account_holder_name",
+    "value": "KRISHNA FOOD PRODUCTS PVT LTD",
+    "source_quote": "For KRISHNA FOOD PRODUCTS PVT LTD",
+    "confidence": 0.97
+   },
+   {
+    "key": "account_number",
+    "value": "000401998812",
+    "source_quote": "000401998812",
+    "confidence": 0.97
+   },
+   {
+    "key": "ifsc",
+    "value": "ICIC0000001",
+    "source_quote": "IFSC: ICIC0000001",
+    "confidence": 0.97
+   },
+   {
+    "key": "bank_name",
+    "value": "ICICI BANK",
+    "source_quote": "ICICI BANK",
+    "confidence": 0.97
+   },
+   {
+    "key": "branch",
+    "value": "CHENNAICENOTAPH ROAD",
+    "source_quote": "CHENNAICENOTAPH ROAD",
+    "confidence": 0.97
+   }
+  ],
+  "notes": "Document is crossed and marked CANCELLED."
+ },
+ "5c9b202b65b360be387c6976ae361863c37714c541db67674b2fda8ba3f2e72a": {
+  "detected_type": "udyam_certificate",
+  "type_confidence": 0.97,
+  "legibility": "clear",
+  "fields": [
+   {
+    "key": "udyam_number",
+    "value": "UDYAM-TN-02-0019934",
+    "source_quote": "UDYAM REGISTRATION NUMBER UDYAM-TN-02-0019934",
+    "confidence": 0.98
+   },
+   {
+    "key": "legal_name",
+    "value": "KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "source_quote": "NAME OF ENTERPRISE KRISHNA FOOD PRODUCTS PRIVATE LIMITED",
+    "confidence": 0.98
+   },
+   {
+    "key": "msme_category",
+    "value": "Medium",
+    "source_quote": "TYPE OF ENTERPRISE Medium",
+    "confidence": 0.98
+   },
+   {
+    "key": "major_activity",
+    "value": "Manufacturing",
+    "source_quote": "Manufacturing",
+    "confidence": 0.98
+   }
+  ],
+  "notes": ""
+ },
+ "a8caaf73c057fa13f2194aa86fdb8dd7050e8ac8c1f6d2b015edb86311af275a": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2697,7 +3641,7 @@
   ],
   "notes": ""
  },
- "3295f1343b1b4ff81266468177ea84f333cd7940a05c1378134cb5b1d4cb375a": {
+ "715cd1f58fbf9d295eca2f6a3be21eccb39189de02b615e620ba5f8f0ac6e05e": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2767,7 +3711,7 @@
   ],
   "notes": ""
  },
- "4c897dfb023917412f61a2ec7c1a00002f5dc644d4492c509993b7e5548fdf4d": {
+ "d63594ac39d07c6541da7958c9b2d384b635b6057adcbc4776ba6abf2cb75d3f": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -2805,7 +3749,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "cb871056d31c5e52e4b6a4c9a5ef0ad92e498ca444ddbe1a1ce2cba5427221b7": {
+ "bc2538fa39db506baea19ae22e9d1c495a80ab1acb0fcb37ad94a58e85c61d8f": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2849,7 +3793,7 @@
   ],
   "notes": ""
  },
- "72bf6f7f506db140663bf1d81caf838f30a42c14b9d807270511c441efefdfbd": {
+ "c0266eea3354a19da6b05c54b51ec9a7194802350ec4c87bbaa6c5bea726e3e9": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2919,7 +3863,7 @@
   ],
   "notes": ""
  },
- "3ce471a28e73f79f3604c5d9ed1f4cb9b30035795339b85ac333a161ff668d5c": {
+ "77413cb88a28cbabd643c14fadb4fb3627614ded5c0a078339f0476b6672d471": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -2957,7 +3901,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "579b83282afe0bb11ad84b6a06f81a6c727e55a135dc07e84a532d9042ec2a5d": {
+ "66e168863320fe031ce7a47cc6e3cfa3676d8039f980246f8b88c1a82ba48fd3": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3001,7 +3945,7 @@
   ],
   "notes": ""
  },
- "1e307b3cb22475f5a58a4cba265618d208ddd8c40c0cf6b372d0359dab16b9bb": {
+ "6b63e798daefb3854c755316e3c2c33ac191eb4581736503ecd42a48fa4a5aac": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3071,7 +4015,7 @@
   ],
   "notes": ""
  },
- "e1c2400ca8a328c680049baacb6c81e17a51375faf021a4121bb11bb7ecd7655": {
+ "8436c6cb5f621cb636440fc0b8819ef452d5e8f5625c40b86572fb537e08ebc1": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -3109,7 +4053,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "97436614089ba64151de9f35cb82512224fda6302bf949c8eb2a14e4f8950939": {
+ "f40e1aac24f086fc029317004b3b65b0dca70b78d3afd3d85cbd739dc0862290": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3153,7 +4097,7 @@
   ],
   "notes": ""
  },
- "c6d583b97f9c7b3b202d869935a1fe4b36737eed7ee7c5941518a41821646421": {
+ "5536e9fbbc057cd286d7d7ca5793213ff212e25ba42220e4d2d80d43345bad5e": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3223,7 +4167,7 @@
   ],
   "notes": ""
  },
- "45e8eee7ebaf222f821867e3a2892041b8b3d2478087b357352cd8de2318a0cd": {
+ "82163ed2a153574ddeb2d81868cf3ddecb2870473b633639df33bb724ef5d89c": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -3261,7 +4205,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "5d2290225186523a0fd62901867fd94fd24367372e502fcf9aec43e2fa86bf65": {
+ "d477239aafaa33439e958fd31e7ebb01dcace23fafc1dc32824692e7f9f5a4d6": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3305,7 +4249,7 @@
   ],
   "notes": ""
  },
- "7bcdfe993f8d248792c6a21c073e4c02495ed7e6f43fa1a8e4ca281e6a179392": {
+ "25e8df0cc611b5dc09536098d980ede40801b79cf22266390a6b4ffd9896534a": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3375,7 +4319,7 @@
   ],
   "notes": ""
  },
- "ec3f2d41b387a492ce5ca63f4845c548a9b3d0d4de148ec7b742f98b6e01ff16": {
+ "de8dae2cce7c13681fa8f9b3f303300a364085d0b5d20d5994423ae36eabc01b": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3407,7 +4351,7 @@
   ],
   "notes": ""
  },
- "011bc7f0683fd578009b802faea0b89009ac68022b02e590e36d3c5438ed7f15": {
+ "e582912148c0ab3b86540b4c3bd547bd9dd2c202eed8093bb953029ba2398f84": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
@@ -3445,7 +4389,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "703be8b95df50aca8b9f1af34010c9bfb7ab1216ee34c390c6233e453452f04a": {
+ "21a7074152cf09176b1c65729a66dd94d3b983765b7c2fec623ffc7cffc4d116": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3489,7 +4433,7 @@
   ],
   "notes": ""
  },
- "4997ecea037001bf47d949f97048884f661cc270f64075fa8c3de23e7345e083": {
+ "3884929161cb84ef9bcc7898697ea1ee13fbe2c01da8660a947d5336ac2940fc": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3559,7 +4503,7 @@
   ],
   "notes": ""
  },
- "8091d5b4fa751a422cc750318b8792548b78f6357243ecf0a85f8f2604ab09ec": {
+ "6d4f7ed15ea4a3a48e399f32301193554a5af1ea9bebef7aa0d17ad4fe70182a": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3591,7 +4535,7 @@
   ],
   "notes": ""
  },
- "8fcf15efb08f2c936244f5ae32fbc6b15044ee137af2218b7b1cdb59fa2179db": {
+ "7de572fe894bc1e5438122df22d1fba7b8cc1ae0a0978d84e5f89c73b11378ff": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",

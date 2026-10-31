@@ -22,8 +22,8 @@ type AppRow = { status: string };
 
 const NAV = [
   { href: "/", label: "Overview", icon: LayoutDashboard },
-  { href: "/review", label: "Needs your decision", icon: UsersRound, badge: true },
   { href: "/applications", label: "All vendors", icon: FileStack },
+  { href: "/review", label: "Needs your decision", icon: UsersRound, badge: true },
   { href: "/outbox", label: "Emails to vendors", icon: Inbox },
   { href: "/policy", label: "How decisions are made", icon: ScaleIcon },
 ];
