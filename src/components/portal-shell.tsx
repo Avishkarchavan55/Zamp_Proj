@@ -1,26 +1,63 @@
 "use client";
 
-import { ShieldCheck } from "@/components/icons";
+import { Bell, FileStack, LogOut, Menu, QrCode, ShieldCheck, X } from "@/components/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import useSWR from "swr";
 import { ThemeToggle } from "./theme-toggle";
 import { ScrollToTop } from "./page-nav";
 import { cx } from "./ui";
 
 const NAV = [
-  { href: "/portal", label: "Supplier portal", exact: true },
-  { href: "/portal/become-a-supplier", label: "Become a supplier" },
-  { href: "/portal/notifications", label: "Notifications", badge: true },
+  { href: "/portal", label: "Supplier portal", icon: FileStack, exact: true },
+  { href: "/portal/become-a-supplier", label: "Become a supplier", icon: QrCode },
+  { href: "/portal/notifications", label: "Notifications", icon: Bell, badge: true },
 ];
 
-/**
- * The supplier-facing frame: a top bar rather than the company sidebar, so the two portals are
- * recognisably different places. Suppliers see their own applications and notifications, nothing else.
- */
-export function PortalShell({ email, children }: { email: string; children: React.ReactNode }) {
+function Logo() {
+  return (
+    <Link href="/portal" className="flex items-center gap-2.5">
+      <span className="flex h-7 w-7 items-center justify-center rounded-md bg-action text-white"><ShieldCheck className="h-4 w-4" /></span>
+      <span className="leading-tight">
+        <span className="block text-[14px] font-semibold text-side-ink">VendorIQ</span>
+        <span className="block text-[12px] text-side-ink-2">Supplier portal</span>
+      </span>
+    </Link>
+  );
+}
+
+function Sidebar({ unread, onNavigate }: { unread?: number; onNavigate?: () => void }) {
   const pathname = usePathname();
+  return (
+    <div className="flex h-full flex-col border-r border-side-line bg-side">
+      <div className="flex h-12 shrink-0 items-center border-b border-side-line px-4"><Logo /></div>
+      <nav className="flex flex-1 flex-col gap-0.5 p-3" aria-label="Supplier portal">
+        {NAV.map((n) => {
+          const active = n.exact ? pathname === n.href : pathname.startsWith(n.href);
+          return (
+            <Link
+              key={n.href} href={n.href} onClick={onNavigate} aria-current={active ? "page" : undefined}
+              className={cx(
+                "flex h-9 items-center gap-3 rounded-md border px-3 text-[14px] transition-colors duration-150",
+                active ? "border-side-line bg-side-active font-semibold text-side-ink" : "border-transparent text-side-ink-2 hover:bg-side-hover hover:text-side-ink",
+              )}
+            >
+              <n.icon className={cx("h-4 w-4 shrink-0", active && "text-brand")} />
+              <span className="min-w-0 flex-1 truncate">{n.label}</span>
+              {n.badge && unread ? <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-action px-1.5 text-[12px] font-semibold tabular-nums text-white">{unread > 9 ? "9+" : unread}</span> : null}
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+/** The supplier-facing frame: the same sidebar layout as the company portal, with only the supplier's own pages. */
+export function PortalShell({ email, children }: { email: string; children: React.ReactNode }) {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
   const { data } = useSWR<{ unread: number }>("/api/supplier/portal", { refreshInterval: 15000 });
 
   async function signOut() {
@@ -29,46 +66,41 @@ export function PortalShell({ email, children }: { email: string; children: Reac
   }
 
   return (
-    <div className="min-h-viewport">
-      <header className="border-b border-line bg-surface">
-        <div className="mx-auto flex h-12 max-w-5xl items-center gap-4 px-4 sm:px-6">
-          <Link href="/portal" className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-action text-white"><ShieldCheck className="h-4 w-4" /></span>
-            <span className="leading-tight">
-              <span className="block text-[14px] font-semibold text-ink">Acme Manufacturing</span>
-              <span className="hidden text-[12px] text-ink-3 sm:block">Supplier portal</span>
-            </span>
+    <div className="min-h-viewport lg:pl-64">
+      <aside className="fixed inset-y-0 left-0 hidden w-64 lg:block"><Sidebar unread={data?.unread} /></aside>
+
+      <header className="sticky top-0 z-30 flex h-12 items-center gap-3 border-b border-line bg-surface px-4 lg:px-8">
+        <button className="flex h-8 w-8 items-center justify-center rounded-md text-ink-2 hover:bg-line-2 lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}>
+          <Menu className="h-5 w-5" />
+        </button>
+        <span className="lg:hidden"><Logo /></span>
+        <div className="ml-auto flex items-center gap-2">
+          <Link href="/portal/notifications" aria-label="Notifications" title="Notifications" className="relative flex h-8 w-8 items-center justify-center rounded-md text-ink-2 transition-colors duration-150 hover:bg-line-2 hover:text-ink">
+            <Bell className="h-4 w-4" />
+            {data?.unread ? <span className="absolute -right-0.5 -top-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-action px-1 text-[11px] font-semibold leading-none text-white">{data.unread > 9 ? "9+" : data.unread}</span> : null}
           </Link>
-          <nav aria-label="Supplier portal" className="ml-4 hidden h-full items-stretch gap-5 md:flex">
-            {NAV.map((n) => <NavItem key={n.href} {...n} pathname={pathname} unread={n.badge ? data?.unread : undefined} />)}
-          </nav>
-          <div className="ml-auto flex items-center gap-2">
-            <ThemeToggle />
-            <span className="hidden max-w-[200px] truncate text-[13px] text-ink-2 sm:block" title={email}>{email}</span>
-            <button onClick={signOut} className="h-8 rounded-md border border-line-strong px-3 text-[13px] font-medium text-ink transition-colors duration-150 hover:bg-line-2">Sign out</button>
-          </div>
+          <ThemeToggle />
+          <span className="mx-1 hidden h-5 w-px bg-line sm:block" />
+          <span className="hidden max-w-[220px] truncate text-[13px] text-ink-2 sm:block" title={email}>{email}</span>
+          <button onClick={signOut} aria-label="Sign out" title="Sign out" className="flex h-8 w-8 items-center justify-center rounded-md text-ink-3 transition-colors duration-150 hover:bg-line-2 hover:text-ink">
+            <LogOut className="h-4 w-4" />
+          </button>
         </div>
-        <nav aria-label="Supplier portal" className="scrollbar-thin flex gap-5 overflow-x-auto border-t border-line px-4 md:hidden">
-          {NAV.map((n) => <NavItem key={n.href} {...n} pathname={pathname} unread={n.badge ? data?.unread : undefined} />)}
-        </nav>
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">{children}</main>
-      <footer className="pb-8 text-center text-[12px] text-ink-3">Verification powered by VendorIQ</footer>
+
+      {open && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+          <aside className="absolute inset-y-0 left-0 w-64 shadow-pop">
+            <button className="absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-md text-side-ink-2 hover:bg-side-hover" aria-label="Close menu" onClick={() => setOpen(false)}>
+              <X className="h-4 w-4" />
+            </button>
+            <Sidebar unread={data?.unread} onNavigate={() => setOpen(false)} />
+          </aside>
+        </div>
+      )}
+      <main className="mx-auto max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8">{children}</main>
       <ScrollToTop />
     </div>
-  );
-}
-
-function NavItem({ href, label, exact, pathname, unread }: { href: string; label: string; exact?: boolean; pathname: string; unread?: number }) {
-  const active = exact ? pathname === href : pathname.startsWith(href);
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "page" : undefined}
-      className={cx("inline-flex h-full min-h-11 items-center gap-1.5 whitespace-nowrap border-b-2 text-[14px] transition-colors duration-150", active ? "border-brand font-semibold text-ink" : "border-transparent text-ink-2 hover:text-ink")}
-    >
-      {label}
-      {unread ? <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-action px-1 text-[11px] font-semibold leading-none text-white">{unread > 9 ? "9+" : unread}</span> : null}
-    </Link>
   );
 }
