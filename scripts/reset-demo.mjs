@@ -4,7 +4,8 @@
 //   2. imports the extra history vendors quietly (checked and decided, but nobody is emailed),
 //      skipping any already present
 //
-//   node --env-file=.env.local scripts/reset-demo.mjs --yes
+//   node --env-file=.env.local scripts/reset-demo.mjs          (dry run: lists what would change)
+//   node --env-file=.env.local scripts/reset-demo.mjs --yes    (apply; applications from the last 2 hours are kept)
 //
 // Needs DATABASE_URL (or DIRECT_URL), SUPABASE_URL, SUPABASE_SECRET_KEY and INTAKE_SHARED_SECRET.
 // BASE_URL defaults to the live app.
@@ -24,11 +25,19 @@ const url = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
 if (!url) throw new Error("DATABASE_URL is not set");
 const sql = postgres(url, { prepare: false, max: 1 });
 
-const apps = await sql`select id, scenario, legal_name, status from applications order by created_at`;
+const apps = await sql`select id, scenario, legal_name, status, created_at from applications order by created_at`;
 const keep = new Set();
 for (const s of [...KEEP_SCENARIOS, ...ADD_HISTORY]) {
   const first = apps.find((a) => a.scenario === s);
   if (first) keep.add(first.id);
+}
+// Never delete something created in the last 2 hours (someone may be testing right now) unless asked to.
+const recentCutoff = Date.now() - 2 * 60 * 60 * 1000;
+const includeRecent = process.argv.includes("--include-recent");
+const recent = apps.filter((a) => !keep.has(a.id) && new Date(a.created_at).getTime() > recentCutoff);
+if (recent.length && !includeRecent) {
+  for (const a of recent) keep.add(a.id);
+  console.log(`Keeping ${recent.length} application(s) created in the last 2 hours (add --include-recent to delete them too).`);
 }
 const drop = apps.filter((a) => !keep.has(a.id));
 console.log(`${apps.length} applications: keeping ${keep.size}, deleting ${drop.length} (${apps.length ? Math.round((drop.length / apps.length) * 100) : 0}%)`);
