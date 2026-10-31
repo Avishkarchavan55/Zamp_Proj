@@ -246,5 +246,29 @@
     "status": "Active",
     "state_code": "24",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "33AAECS7186Q1ZL",
+    "legal_name": "SUNDARAM AUTO COMPONENTS PRIVATE LIMITED",
+    "trade_name": "SUNDARAM AUTO COMPONENTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "33",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "05AAFCH3904M1ZK",
+    "legal_name": "HIMALAYA HERBAL EXTRACTS PRIVATE LIMITED",
+    "trade_name": "HIMALAYA HERBAL EXTRACTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "05",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAGCB5203E1ZA",
+    "legal_name": "BHAVANI DYES AND INTERMEDIATES PRIVATE LIMITED",
+    "trade_name": "BHAVANI DYES AND INTERMEDIATES PRIVATE LIMITED",
+    "status": "Cancelled",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
   }
 ]

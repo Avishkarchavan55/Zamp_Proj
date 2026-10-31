@@ -7,6 +7,7 @@ import useSWR from "swr";
 import type { AppListRow, AuditRow } from "@/components/api-types";
 import { Badge, Button, Card, CardHeader, Empty, PageHeader, Skeleton, StatusPill, ago, cx } from "@/components/ui";
 import { isHighRisk, isUnresponsive, needsAttention } from "@/lib/attention";
+import { WakeUp } from "@/components/wake-up";
 import { eventLabel } from "@/lib/activity";
 import { issueTitle, rejectionReason } from "@/lib/ui-meta";
 
@@ -52,6 +53,7 @@ export default function Overview() {
         }
         right={
           <>
+            <WakeUp />
             <Link href="/share"><Button variant="secondary"><QrCode className="h-4 w-4" />Invite a supplier</Button></Link>
             <Link href="/apply" target="_blank"><Button><Plus className="h-4 w-4" />New application</Button></Link>
           </>

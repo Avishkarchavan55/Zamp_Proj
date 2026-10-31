@@ -9,9 +9,9 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 | 0:00 | 1. The problem | 0:30 |
 | 0:30 | 2. The solution | 0:30 |
 | 1:00 | 3. Portal walkthrough (company and supplier) | 1:00 |
-| 2:00 | 4. Happy path: Shreeji, through the supplier portal | 1:00 |
-| 3:00 | 5. Edge case 1: Lokseva, by email | 1:00 |
-| 4:00 | 6. Edge case 2: Meridian, by Google Form | 0:40 |
+| 2:00 | 4. Happy path: Sundaram, through the supplier portal | 1:00 |
+| 3:00 | 5. Edge case 1: Himalaya, by email | 1:00 |
+| 4:00 | 6. Edge case 2: Bhavani, by Google Form | 0:40 |
 | 4:40 | 7. Close | 0:20 |
 
 ---
@@ -51,29 +51,29 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 [Sign out. Pick Supplier portal, click one supplier from the list. 12 seconds. Show the sidebar: Supplier portal, Become a supplier, Notifications.]
 **"The supplier portal is what a vendor sees: where their application stands, exactly what is missing, and Notifications. Every email we send also appears here as a short note."**
 
-## 4. Happy path: Shreeji, through the supplier portal (2:00 to 3:00)
-Folder: `1-happy-path-portal-shreeji`. Be signed in to the Company portal in the same browser first, so the sample-fill tool shows.
+## 4. Happy path: Sundaram, through the supplier portal (2:00 to 3:00)
+Folder: `1-happy-path-portal-sundaram`. Be signed in to the Company portal in the same browser first, so the sample-fill tool shows.
 
 [Screen: supplier portal, Become a supplier, then Apply on the portal.]
-**"First, a normal vendor. Shreeji Precision applies through the portal."**
+**"First, a normal vendor. Sundaram Auto Components, a company in Coimbatore, applies through the portal."**
 
-[Use the fill tool: Clean submission. Fields and all five documents fill at once. Change the contact email to your own. Press Submit. 15 seconds. Cut here if it feels slow.]
+[Use the fill tool: Private limited, MSME Small. Fields and all five documents fill at once. Change the contact email to your own. Press Submit. 15 seconds. Cut here if it feels slow.]
 **"I have pre-filled the form to save time. Normally the vendor types this and attaches four or five documents."**
 
-[Run page opens: eight stages tick through live. 20 seconds.]
+[Run page opens: the stages tick through live. 20 seconds.]
 **"Now the pipeline runs live. It reads each document, validates the PAN, the GSTIN and its check digit, the bank code, the pincode against the state, compares every document against the others, and applies the policy."**
 
 [Result: Approved. Open the vendor: checks list, ERP vendor record. 15 seconds.]
-**"Approved in about a minute, with no human involved. Because Shreeji is a Micro enterprise, the system adds a condition: pay within 45 days. And because a cheque cannot prove who owns the account, it adds: confirm bank ownership before the first payment. An ERP vendor record is ready."**
+**"Approved in about a minute, with no human involved. Because Sundaram is a registered Small enterprise, the system adds a condition: pay within 45 days. And because a cheque cannot prove who owns the account, it adds: confirm bank ownership before the first payment. An ERP vendor record is ready."**
 
 [Switch to the supplier portal, Notifications. 10 seconds.]
 **"And the supplier gets the approval by email and as a notification in their portal."**
 
-## 5. Edge case 1: Lokseva, by email (3:00 to 4:00)
-Folder: `2-edge-case-email-lokseva`. Have the Gmail draft ready (see README), so you only press Send.
+## 5. Edge case 1: Himalaya, by email (3:00 to 4:00)
+Folder: `2-edge-case-email-himalaya`. Have the Gmail draft ready (see README), so you only press Send.
 
 [Screen: Gmail. The draft has four attachments and no cheque.]
-**"Edge case one: a vendor who skips the form and just emails documents. Lokseva sends four files. Notice there is no bank cheque."**
+**"Edge case one: a vendor who skips the form and just emails documents. Himalaya Herbal Extracts sends four files. Notice there is no bank cheque."**
 
 [Press Send. Switch to All vendors. Wait for the new row (about a minute; cut the wait in editing). 10 seconds.]
 **"Within a minute the inbox picks it up. The system sorts each attachment into the right document type, and builds the application from the documents themselves."**
@@ -81,25 +81,25 @@ Folder: `2-edge-case-email-lokseva`. Have the Gmail draft ready (see README), so
 [Open the vendor: Email tag, Waiting for vendor, the requested items. Then Emails to vendors. 15 seconds.]
 **"It does not reject. It sees that the bank proof is missing and that the details were read from documents, not typed by the vendor. So it asks for exactly two things: send the cheque, and confirm these details. That email went out automatically, with a link."**
 
-[Open the supplier portal as Lokseva: the Action needed card and the notification. 8 seconds.]
+[Open the supplier portal as Himalaya: the Action needed card and the notification. 8 seconds.]
 **"The supplier sees the same request in their portal."**
 
-[Open the link from the email. Details are pre-filled. Upload send-later/Lokseva_Cancelled_Cheque.png. Press Confirm. Approved. 17 seconds.]
+[Open the link from the email. Details are pre-filled. Upload send-later/Himalaya_Cancelled_Cheque.png. Press Confirm. Approved. 17 seconds.]
 **"They confirm, attach the cheque, and the full checks run again. Approved. If they never replied, reminders go out every one to two days and the vendor is flagged as unresponsive for the team."**
 
-## 6. Edge case 2: Meridian, by Google Form (4:00 to 4:40)
-Folder: `3-edge-case-google-form-meridian`. Use the pre-filled Google Form link from the README.
+## 6. Edge case 2: Bhavani, by Google Form (4:00 to 4:40)
+Folder: `3-edge-case-google-form-bhavani`. Use the pre-filled Google Form link from the README.
 
 [Screen: the Google Form, already filled except the four uploads. Upload the four files. Submit. Cut to the console. 12 seconds.]
-**"Edge case two: the Google Form. Meridian Office Solutions looks perfect. Every document is consistent, every ID is valid."**
+**"Edge case two: the Google Form. Bhavani Dyes and Intermediates looks fine. The documents are consistent and the IDs are valid."**
 
-[All vendors: the Meridian row with the Google Form tag, status Rejected. Open it. Point at the red check. 18 seconds.]
-**"But look at the bank account. The rules found it already belongs to another vendor: Apex Facility Services, already approved, different PAN. That is the classic payment-diversion pattern. A reader checking one application at a time would never see it. The system rejected it automatically, and shows the reason category, the other company and its vendor ID."**
+[All vendors: the Bhavani row with the Google Form tag, status Rejected. Open it. Point at the red check. 18 seconds.]
+**"But the GST registration has been cancelled. The system checks the GSTIN against the registry, not just its format, so a certificate that looks real but is no longer valid is caught. A cancelled registration means we cannot buy from them legally, so it is rejected automatically, with the reason shown."**
 
 [Point at Emails to vendors: nothing was sent. 6 seconds.]
 **"Notice nothing was emailed. Rejections never go out automatically. A person tells the vendor."**
 
-[Optional, 4 seconds: supplier portal for Meridian shows "With our team".]
+[Optional, 4 seconds: supplier portal for Bhavani shows "With our team".]
 
 ## 7. Close (4:40 to 5:00)
 [Screen: Overview, then the Info page.]
@@ -111,8 +111,8 @@ Folder: `3-edge-case-google-form-meridian`. Use the pre-filled Google Form link 
 
 ## If you run long (cut in this order)
 1. The Info sentence in the walkthrough.
-2. The supplier portal check in the Lokseva case.
-3. The optional Meridian supplier-portal line.
+2. The supplier portal check in the Himalaya case.
+3. The optional Bhavani supplier-portal line.
 
 ## Words to avoid on camera
 Say "sample vendor", not "demo". Say "Needs attention", not "Needs your decision" (the old name). Say "reminders every one to two days"; the two-minute timing is only for testing.

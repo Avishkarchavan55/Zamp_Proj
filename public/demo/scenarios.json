@@ -1290,5 +1290,129 @@
     "resubmission": {
       "reply": "reply/Narmada_Cancelled_Cheque.png"
     }
+  },
+  {
+    "id": "sundaram",
+    "group": "example",
+    "title": "Private limited, MSME Small",
+    "vendor": "Sundaram Auto Components Private Limited",
+    "summary": "A complete, consistent private limited company that is a registered Small enterprise.",
+    "expected": "Approved (bank ownership condition, pay within 45 days)",
+    "form": {
+      "legal_name": "Sundaram Auto Components Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAECS7186Q",
+      "gstin": "33AAECS7186Q1ZL",
+      "cin": "U34300TN2017PTC118653",
+      "owner_name": "Karthik Subramanian",
+      "address": "Plot 36, SIDCO Industrial Estate",
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "pincode": "641001",
+      "contact_name": "Karthik Subramanian",
+      "contact_email": "accounts@sundaramauto.in",
+      "contact_phone": "+91 98420 55631",
+      "website": "sundaramauto.in",
+      "category": "Automotive machined parts",
+      "bank_account_holder": "Sundaram Auto Components Pvt Ltd",
+      "bank_account_number": "7412093356",
+      "bank_ifsc": "KKBK0000721",
+      "bank_name": "Kotak Mahindra Bank",
+      "msme_registered": "yes",
+      "udyam_number": "UDYAM-TN-02-0034567",
+      "msme_category": "Small"
+    },
+    "files": {
+      "incorporation": "Sundaram_Certificate_of_Incorporation.pdf",
+      "gst": "Sundaram_GST_REG-06.pdf",
+      "pan": "Sundaram_PAN_Card.png",
+      "bank_proof": "Sundaram_Cancelled_Cheque.png",
+      "udyam": "Sundaram_Udyam_Certificate.pdf"
+    },
+    "resubmission": {}
+  },
+  {
+    "id": "email-himalaya",
+    "group": "email",
+    "title": "Email intake: Himalaya Herbal Extracts",
+    "vendor": "Himalaya Herbal Extracts Private Limited",
+    "summary": "Vendor emails its documents (no cheque); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
+    "expected": "Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved",
+    "form": {
+      "legal_name": "Himalaya Herbal Extracts Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAFCH3904M",
+      "gstin": "05AAFCH3904M1ZK",
+      "cin": "U24233UT2018PTC008841",
+      "owner_name": "Neha Rawat",
+      "address": "Plot 12, SIDCUL Industrial Area",
+      "city": "Dehradun",
+      "state": "Uttarakhand",
+      "pincode": "248001",
+      "contact_name": "Neha Rawat",
+      "contact_email": "accounts@himalayaherbal.in",
+      "contact_phone": "+91 94120 66318",
+      "website": "himalayaherbal.in",
+      "category": "Herbal extracts and supplements",
+      "bank_account_holder": "Himalaya Herbal Extracts Pvt Ltd",
+      "bank_account_number": "50200092614417",
+      "bank_ifsc": "HDFC0000103",
+      "bank_name": "Hdfc Bank",
+      "msme_registered": "yes",
+      "udyam_number": "UDYAM-UT-04-0027715",
+      "msme_category": "Micro"
+    },
+    "files": {},
+    "email_files": [
+      "Himalaya_Certificate_of_Incorporation.pdf",
+      "Himalaya_GST_Certificate.pdf",
+      "Himalaya_PAN.png",
+      "Himalaya_Udyam.pdf"
+    ],
+    "resubmission": {
+      "reply": "reply/Himalaya_Cancelled_Cheque.png"
+    }
+  },
+  {
+    "id": "bhavani",
+    "group": "demo",
+    "title": "Cancelled GST registration",
+    "vendor": "Bhavani Dyes and Intermediates Pvt Ltd",
+    "summary": "Everything else is consistent, but the GST registration has been cancelled. Best tried through the Google Form.",
+    "expected": "Rejected - GST registration cancelled",
+    "form": {
+      "legal_name": "Bhavani Dyes and Intermediates Pvt Ltd",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAGCB5203E",
+      "gstin": "24AAGCB5203E1ZA",
+      "cin": "U24114GJ2013PTC074420",
+      "owner_name": "Rakesh Tandel",
+      "address": "Plot 88, GIDC Phase 2",
+      "city": "Vapi",
+      "state": "Gujarat",
+      "pincode": "396191",
+      "contact_name": "Rakesh Tandel",
+      "contact_email": "accounts@bhavanidyes.in",
+      "contact_phone": "+91 98250 44187",
+      "website": "bhavanidyes.in",
+      "category": "Dyes and chemical intermediates",
+      "bank_account_holder": "Bhavani Dyes And Intermediates Pvt Ltd",
+      "bank_account_number": "917020061928344",
+      "bank_ifsc": "UTIB0000080",
+      "bank_name": "Axis Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Bhavani_Certificate_of_Incorporation.pdf",
+      "gst": "Bhavani_GST_REG-06.pdf",
+      "pan": "Bhavani_PAN_Card.png",
+      "bank_proof": "Bhavani_Cancelled_Cheque.png"
+    },
+    "resubmission": {}
   }
 ]

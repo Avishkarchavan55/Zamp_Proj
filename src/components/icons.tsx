@@ -66,6 +66,7 @@ export { default as MinusCircle } from "@carbon/icons-react/es/SubtractAlt.js";
 export { default as Moon } from "@carbon/icons-react/es/Moon.js";
 export { default as Paperclip } from "@carbon/icons-react/es/Attachment.js";
 export { default as Plus } from "@carbon/icons-react/es/Add.js";
+export { default as Power } from "@carbon/icons-react/es/Power.js";
 export { default as QrCode } from "@carbon/icons-react/es/QrCode.js";
 export { default as Quote } from "@carbon/icons-react/es/Quotes.js";
 export { default as Recycle } from "@carbon/icons-react/es/Renew.js";

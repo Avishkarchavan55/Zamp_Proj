@@ -68,7 +68,7 @@ ORDINAL_DAYS = {
 }
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
           "October", "November", "December"]
-YEAR_WORDS = {2014: "Two thousand fourteen", 2015: "Two thousand fifteen", 2016: "Two thousand sixteen", 2017: "Two thousand seventeen",
+YEAR_WORDS = {2013: "Two thousand thirteen", 2014: "Two thousand fourteen", 2015: "Two thousand fifteen", 2016: "Two thousand sixteen", 2017: "Two thousand seventeen",
               2018: "Two thousand eighteen", 2019: "Two thousand nineteen", 2020: "Two thousand twenty",
               2021: "Two thousand twenty-one", 2022: "Two thousand twenty-two"}
 
@@ -449,6 +449,41 @@ VENDORS["narmada"] = dict(
     owner_name="Dhruv Mehta", website="narmadapumps.in", category="Industrial water pumps",
     ifsc="ICIC0000027", bank="ICICI BANK", branch="MUMBAI",
     account="003301552847", cheque_name="NARMADA PUMP INDUSTRIES PVT LTD", micr="400229002",
+)
+
+# Video kit (final set): a clean MSME portal vendor, an email vendor with no cheque, and a Google Form vendor whose GST registration is cancelled.
+VENDORS["sundaram"] = dict(
+    legal_name="SUNDARAM AUTO COMPONENTS PRIVATE LIMITED", form_name="Sundaram Auto Components Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAECS7186Q", state_code="33", cin="U34300TN2017PTC118653", inc_date=(22, 2, 2017),
+    address="Plot 36, SIDCO Industrial Estate", city="Coimbatore", state="Tamil Nadu", pincode="641001",
+    contact_name="Karthik Subramanian", contact_email="accounts@sundaramauto.in", contact_phone="+91 98420 55631",
+    owner_name="Karthik Subramanian", website="sundaramauto.in", category="Automotive machined parts",
+    ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+    account="7412093356", cheque_name="SUNDARAM AUTO COMPONENTS PVT LTD", micr="411485002",
+    udyam="UDYAM-TN-02-0034567", msme_declared="Small", msme_cert="Small",
+)
+VENDORS["himalaya"] = dict(
+    legal_name="HIMALAYA HERBAL EXTRACTS PRIVATE LIMITED", form_name="Himalaya Herbal Extracts Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAFCH3904M", state_code="05", cin="U24233UT2018PTC008841", inc_date=(5, 11, 2018),
+    address="Plot 12, SIDCUL Industrial Area", city="Dehradun", state="Uttarakhand", pincode="248001",
+    contact_name="Neha Rawat", contact_email="accounts@himalayaherbal.in", contact_phone="+91 94120 66318",
+    owner_name="Neha Rawat", website="himalayaherbal.in", category="Herbal extracts and supplements",
+    ifsc="HDFC0000103", bank="HDFC BANK", branch="PUNE - FERGUSSON COLLEGE ROAD",
+    account="50200092614417", cheque_name="HIMALAYA HERBAL EXTRACTS PVT LTD", micr="411240003",
+    udyam="UDYAM-UT-04-0027715", msme_declared="Micro", msme_cert="Micro",
+)
+VENDORS["bhavani"] = dict(
+    legal_name="BHAVANI DYES AND INTERMEDIATES PRIVATE LIMITED", form_name="Bhavani Dyes and Intermediates Pvt Ltd",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCB5203E", state_code="24", cin="U24114GJ2013PTC074420", inc_date=(8, 8, 2013),
+    address="Plot 88, GIDC Phase 2", city="Vapi", state="Gujarat", pincode="396191",
+    contact_name="Rakesh Tandel", contact_email="accounts@bhavanidyes.in", contact_phone="+91 98250 44187",
+    owner_name="Rakesh Tandel", website="bhavanidyes.in", category="Dyes and chemical intermediates",
+    ifsc="UTIB0000080", bank="AXIS BANK", branch="MANINAGAR",
+    account="917020061928344", cheque_name="BHAVANI DYES AND INTERMEDIATES PVT LTD", micr="380211005",
+    gst_status="Cancelled",
 )
 
 for v in VENDORS.values():
@@ -1080,6 +1115,68 @@ def main():
                       summary="Vendor emails three documents (no cheque, not an MSME); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
                       expected="Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
                       files={}, email_files=nm_files, resubmission={"reply": nm_reply}))
+
+
+    # Video kit (final set).
+    v = VENDORS["sundaram"]
+    sd_dir = os.path.join(PUBLIC, "sundaram")
+    os.makedirs(sd_dir, exist_ok=True)
+    sd_files = dict(
+        incorporation=write(sd_dir, "Sundaram_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(sd_dir, "Sundaram_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(sd_dir, "Sundaram_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(sd_dir, "Sundaram_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+        udyam=write(sd_dir, "Sundaram_Udyam_Certificate.pdf", udyam_pdf(v), truth_udyam(v)),
+    )
+    index.append(dict(id="sundaram", group="example", title="Private limited, MSME Small", vendor=v["form_name"],
+                      summary="A complete, consistent private limited company that is a registered Small enterprise.",
+                      expected="Approved (bank ownership condition, pay within 45 days)", form=form_for(v), files=sd_files,
+                      resubmission={}))
+
+    v = VENDORS["himalaya"]
+    hm_dir = os.path.join(PUBLIC, "email-himalaya")
+    os.makedirs(os.path.join(hm_dir, "reply"), exist_ok=True)
+    hm_files = [
+        write(hm_dir, "Himalaya_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        write(hm_dir, "Himalaya_GST_Certificate.pdf", gst_pdf(v), truth_gst(v)),
+        write(hm_dir, "Himalaya_PAN.png", pan_card_png(v), truth_pan(v)),
+        write(hm_dir, "Himalaya_Udyam.pdf", udyam_pdf(v), truth_udyam(v)),
+    ]
+    hm_reply = "reply/" + write(os.path.join(hm_dir, "reply"), "Himalaya_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v))
+    with open(os.path.join(hm_dir, "EMAIL.txt"), "w", encoding="utf8") as fh:
+        fh.write(f"""To: the onboarding inbox
+Subject: Vendor registration - Himalaya Herbal Extracts
+
+Hello Acme team,
+
+We make herbal extracts and supplements and would like to register as your supplier.
+Our company documents are attached. We are a registered MSME (Micro).
+
+Regards,
+Neha Rawat
+Himalaya Herbal Extracts Pvt Ltd
++91 94120 66318
+
+ATTACH (first email): {', '.join(hm_files)}
+Then REPLY to VendorIQ's request email and attach: {hm_reply}
+""")
+    index.append(dict(id="email-himalaya", group="email", title="Email intake: Himalaya Herbal Extracts", vendor=v["form_name"],
+                      summary="Vendor emails its documents (no cheque); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
+                      expected="Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
+                      files={}, email_files=hm_files, resubmission={"reply": hm_reply}))
+
+    v = VENDORS["bhavani"]
+    bh_dir = os.path.join(PUBLIC, "bhavani")
+    os.makedirs(bh_dir, exist_ok=True)
+    bh_files = dict(
+        incorporation=write(bh_dir, "Bhavani_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(bh_dir, "Bhavani_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(bh_dir, "Bhavani_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(bh_dir, "Bhavani_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    index.append(dict(id="bhavani", group="demo", title="Cancelled GST registration", vendor=v["form_name"],
+                      summary="Everything else is consistent, but the GST registration has been cancelled. Best tried through the Google Form.",
+                      expected="Rejected - GST registration cancelled", form=form_for(v), files=bh_files, resubmission={}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)
