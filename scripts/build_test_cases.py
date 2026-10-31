@@ -36,11 +36,11 @@ CASES = [
      "Open the vendor → the red check shows the other company, its PAN and vendor ID. No email is sent: rejections go through a person."),
     ("E2-sister-company-gst", "northstar", "edge", "portal",
      "Every field is valid on its own, but the GST certificate belongs to a sister company with a near-identical name (Solutions vs Supplies) and a different PAN.",
-     None, "**Needs your decision**: *GSTIN belongs to another company* and *Company name doesn't match documents*.",
+     None, "**Needs attention**: *GSTIN belongs to another company* and *Company name doesn't match documents*.",
      "The review page shows the form value next to what the GST certificate says, with the document highlighted."),
     ("E3-doctored-cheque", "lakshmi", "edge", "portal",
      "Tampering: the cheque prints HDFC Bank, but its IFSC belongs to ICICI Bank, and the image was saved from Photoshop.",
-     None, "**Needs your decision**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*.",
+     None, "**Needs attention**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*.",
      "The live IFSC lookup names the real bank; the file's metadata names the editing software."),
     ("E4-wrong-document", "kaveri", "edge", "portal",
      "The vendor put their GST certificate in the bank-proof slot. AI recognises the document type and asks for the right one.",
@@ -54,7 +54,7 @@ CASES = [
      "*Emails to vendors* lists the request and both reminders; the vendor gets a red *no reply* tag on the overview."),
     ("E6-msme-category-mismatch", "pragati", "edge", "portal",
      "The vendor declares *Micro* enterprise (which legally requires payment within 45 days), but the Udyam certificate says *Medium*.",
-     None, "**Needs your decision**: *MSME category doesn't match certificate* (it decides the payment terms).",
+     None, "**Needs attention**: *MSME category doesn't match certificate* (it decides the payment terms).",
      "The review page explains why it matters: MSMED Act s.15 and Income-tax s.43B(h)."),
     ("X1-clean-company-msme", "shreeji", "example", "portal",
      "A complete, consistent private limited company that is a registered Micro enterprise.",
@@ -83,7 +83,7 @@ EMAIL_CASES = [
      "1. Email the **4 files** in this folder to the onboarding inbox, subject `Vendor registration - Sahyadri Castings`.\n"
      "2. When the *Action needed* email arrives, **reply to it** (keep the subject: it contains the `[VEN-…]` reference) and attach `reply/Sahyadri_Cancelled_Cheque.png`.\n"
      "3. The next email asks only to confirm the details: open the link and press **Confirm**.\n\n"
-     "Variation: send the cheque as a **new** email (no reference) from the same address — it still joins the same application.",
+     "Variation: send the cheque as a **new** email (no reference) from the same address - it still joins the same application.",
      "**Waiting for vendor** → reply with cheque → **Waiting** (confirm only) → **Approved**.",
      "Only one email per step, no duplicates; the reminder loop stops as soon as the vendor replies."),
 ]
@@ -156,16 +156,16 @@ All companies, IDs and account numbers are fictional; IFSC and PIN codes are rea
 
 **Before you start**
 - **Use your own email address as the contact email** (on the portal: *Send the vendor emails to*, in the Google Form: *Contact email*; for email cases you send from your own account anyway). Emails go to the address on the application, and the fictional addresses in these files may belong to real domains.
-- Run each vendor **once**. Submitting the same vendor again is caught as *May already be a vendor* — a valid test of duplicate detection, but not the result described here.
-- Reminders come every 2 minutes (demo timing; 1–2 days in real use).
+- Run each vendor **once**. Submitting the same vendor again is caught as *May already be a vendor* - a valid test of duplicate detection, but not the result described here.
+- Reminders come every 2 minutes (demo timing; 1-2 days in real use).
 
-## Edge cases — things that must be caught
+## Edge cases - things that must be caught
 
 | Case | Vendor | Channel | Expected |
 |---|---|---|---|
 {rows("edge")}
 
-## Examples to try — normal vendors, every channel
+## Examples to try - normal vendors, every channel
 
 | Case | Vendor | Channel | Expected |
 |---|---|---|---|

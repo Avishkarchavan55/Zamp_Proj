@@ -1,11 +1,11 @@
 /**
- * VendorIQ — Google Form intake (Apps Script, free, runs inside Google).
+ * VendorIQ - Google Form intake (Apps Script, free, runs inside Google).
  *
  * 1. Open https://script.google.com → New project → paste this file.
  * 2. Set VENDORIQ_URL and SECRET below (SECRET = the app's INTAKE_SHARED_SECRET).
  * 3. Run createVendorForm() once. It builds the form with all text questions and format validations,
  *    and installs the on-submit trigger. Apps Script cannot create file-upload questions, so add the
- *    five upload questions by hand (titles must match FILE_MAP exactly) — see google/README.md.
+ *    five upload questions by hand (titles must match FILE_MAP exactly) - see google/README.md.
  * 4. Each submission is posted to VendorIQ with its files; the files are read straight from Drive here,
  *    so VendorIQ never needs access to your Drive.
  */
@@ -85,7 +85,7 @@ function onFormSubmit(e) {
 
 /** One-off: builds the form with validations and installs the submit trigger. */
 function createVendorForm() {
-  const form = FormApp.create("Acme Manufacturing — Supplier registration");
+  const form = FormApp.create("Acme Manufacturing - Supplier registration");
   form.setDescription("Register as a supplier. Your documents are verified automatically; we'll email you if anything is missing.");
   form.setCollectEmail(true);
   const text = function (title, required, pattern, help) {

@@ -11,7 +11,7 @@ Same as X4, but the vendor sends the cheque by **replying to our email** instead
 2. When the *Action needed* email arrives, **reply to it** (keep the subject: it contains the `[VEN-…]` reference) and attach `reply/Sahyadri_Cancelled_Cheque.png`.
 3. The next email asks only to confirm the details: open the link and press **Confirm**.
 
-Variation: send the cheque as a **new** email (no reference) from the same address — it still joins the same application.
+Variation: send the cheque as a **new** email (no reference) from the same address - it still joins the same application.
 
 ## Expected result
 **Waiting for vendor** → reply with cheque → **Waiting** (confirm only) → **Approved**.

@@ -13,7 +13,7 @@ Every field is valid on its own, but the GST certificate belongs to a sister com
 - **By hand:** type the values below and attach the files in this folder.
 
 ## Expected result
-**Needs your decision**: *GSTIN belongs to another company* and *Company name doesn't match documents*.
+**Needs attention**: *GSTIN belongs to another company* and *Company name doesn't match documents*.
 
 ## What to look at
 The review page shows the form value next to what the GST certificate says, with the document highlighted.

@@ -73,7 +73,10 @@ export default function ApplyPage() {
             </p>
           </div>
         </div>
-        <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-line pt-4">
+        <div className="mt-5 border-t border-line pt-4 text-[13px] leading-5 text-ink-2">
+          Track your application in the <a href="/login?portal=supplier" className="font-medium text-brand hover:underline">supplier portal</a>: sign in with this reference and <span className="font-medium text-ink">{form.contact_email}</span>. You will also see a notification there for every email we send you.
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
           {isStaff && (
             <a href={`/runs/${done.runId}`} className="btn inline-flex h-10 items-center gap-2 rounded-md bg-action px-4 text-[14px] font-medium text-white transition-colors duration-150 hover:bg-action-2">
               Watch the checks run <ArrowRight className="h-4 w-4" />

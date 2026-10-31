@@ -1,4 +1,5 @@
 import { composeManualMessage, describeDelivery, dispatch } from "@/lib/comms";
+import { json, query } from "@/lib/db";
 import { requireStaff } from "@/lib/auth";
 import { appUrl, bad } from "@/lib/http";
 import { audit, getApplication } from "@/lib/repo";
@@ -14,7 +15,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/applications/[i
   const app = await getApplication(id);
   if (!app) return bad("Unknown application", 404);
 
-  const body = (await req.json()) as { subject?: string; message?: string; include_link?: boolean };
+  const body = (await req.json()) as { subject?: string; message?: string; include_link?: boolean; replaces?: string };
   const subject = String(body.subject ?? "").trim();
   const message = String(body.message ?? "").trim();
   if (!subject) return bad("Add a subject");
@@ -25,8 +26,15 @@ export async function POST(req: Request, ctx: RouteContext<"/api/applications/[i
   const content = composeManualMessage(app, { subject, message, includeLink: !!body.include_link, sender: staff.name }, url);
   const comm = await dispatch({
     app, runId: app.latest_run_id, kind: "manual_message", to: app.contact_email, content, appUrl: url, reminders: false,
-    meta: { sender: staff.name },
+    meta: { sender: staff.name, snippet: message.replace(/\s+/g, " ").slice(0, 160), include_link: !!body.include_link },
   });
-  await audit(id, staff.name, "message_sent", { communication_id: comm.id, subject: content.subject });
+  // An edited copy of an email that never went out replaces it (it stays visible, marked as replaced).
+  if (body.replaces) {
+    await query(
+      `update communications set meta = coalesce(meta,'{}'::jsonb) || $2::jsonb where id = $1 and application_id = $3 and status in ('not_configured','failed')`,
+      [body.replaces, json({ superseded_by: comm.id }), id],
+    );
+  }
+  await audit(id, staff.name, "message_sent", { communication_id: comm.id, subject: content.subject, ...(body.replaces ? { edited_from: body.replaces } : {}) });
   return Response.json({ ok: true, communication: comm, delivery: describeDelivery(comm, app.contact_email).text });
 }

@@ -321,7 +321,7 @@ export function validationChecks(ctx: CheckContext): Check[] {
       status: ph.valid ? "passed" : "warning", severity: "low", route: "none",
       message: ph.valid ? `${ph.mobile ? "Mobile" : "Landline"} number in a valid Indian format.` : `"${app.contact_phone}" is not a valid Indian phone number.`,
       evidence: { form: app.contact_phone },
-      rule: "Informational: Indian mobiles are 10 digits starting 6–9; landlines carry an STD code.",
+      rule: "Informational: Indian mobiles are 10 digits starting 6-9; landlines carry an STD code.",
     });
   }
 
@@ -409,10 +409,10 @@ export function crossReferenceChecks(ctx: CheckContext): Check[] {
       code: "xref.gstin_pan", category: "cross_reference", label: "GSTIN belongs to this PAN",
       status: ok ? "passed" : "failed", severity: "critical", route: ok ? "none" : "review",
       message: ok
-        ? `Characters 3–12 of the GSTIN (${g.embeddedPan}) equal the PAN.`
+        ? `Characters 3-12 of the GSTIN (${g.embeddedPan}) equal the PAN.`
         : `The GSTIN is registered to PAN ${g.embeddedPan}, but the vendor's PAN is ${pan.value}. The GST registration belongs to a different legal entity.`,
       evidence: { form: app.pan, document: g.value, expected: pan.value, actual: g.embeddedPan },
-      rule: "A GSTIN embeds the holder's PAN in characters 3–12; it must be the vendor's own PAN.",
+      rule: "A GSTIN embeds the holder's PAN in characters 3-12; it must be the vendor's own PAN.",
     });
   } else {
     out.push({
@@ -485,7 +485,7 @@ export function crossReferenceChecks(ctx: CheckContext): Check[] {
         status: ok ? "passed" : "failed", severity: "medium", route: ok ? "none" : "review",
         message: ok ? `CIN year ${cin.year} matches the incorporation date ${incDate}.` : `CIN encodes ${cin.year} but the certificate says ${incDate}.`,
         evidence: { form: app.cin, document: incDate, document_slot: "incorporation" },
-        rule: "Characters 9–12 of a CIN are the year of incorporation.",
+        rule: "Characters 9-12 of a CIN are the year of incorporation.",
       });
     }
   }

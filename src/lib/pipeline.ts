@@ -12,6 +12,7 @@ import { json, one, query } from "./db";
 import { decide } from "./decision";
 import { extractDocument, extractorLabel, extractorMode, type ReadResult } from "./extractor";
 import { DOC_SLOTS, DOC_TYPE_LABELS } from "./policy";
+import { notifySupplier } from "./notify";
 import { draftFromDocuments } from "./draft";
 import { FORM_FIELDS, audit, getApplication, normaliseForm, updateApplicationFields } from "./repo";
 import { getDocumentBytes } from "./storage";
@@ -118,6 +119,11 @@ export async function runPipeline(runId: string, appUrl: string) {
   try {
     const app = (await getApplication(appId))!;
     await audit(appId, "system", "run_started", { run_id: runId, trigger: run.trigger });
+    // Imported history is recorded and decided, but nobody is notified or emailed.
+    const quiet = !!(app.intake_meta as { quiet?: boolean } | null)?.quiet;
+    if (run.trigger === "submission" && !quiet) {
+      await notifySupplier(appId, { kind: "received", title: "Application received", body: "We are checking your documents now. This usually takes about a minute.", link: "/portal" }).catch(() => {});
+    }
 
     // 1. Intake ---------------------------------------------------------------------------------
     await enter("intake");
@@ -236,7 +242,7 @@ export async function runPipeline(runId: string, appUrl: string) {
       }
     }
 
-    // 3–4. Deterministic validation + cross-reference --------------------------------------------
+    // 3-4. Deterministic validation + cross-reference --------------------------------------------
     await enter("validation");
     const v = validationChecks(ctx);
     await record(v);
@@ -284,6 +290,9 @@ export async function runPipeline(runId: string, appUrl: string) {
       [appId, decision.outcome, json(decision)],
     );
     await audit(appId, "policy_engine", "decision", { run_id: runId, outcome: decision.outcome, rule: fired.rule, headline: decision.headline });
+    if (decision.outcome === "in_review" && !quiet) {
+      await notifySupplier(appId, { kind: "with_team", title: "Your application is with our team", body: "A member of our team is reviewing it. We will contact you if we need anything else.", link: "/portal" }).catch(() => {});
+    }
     await pause();
 
     // 8. Communication ---------------------------------------------------------------------------

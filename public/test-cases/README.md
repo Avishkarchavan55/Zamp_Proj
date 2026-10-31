@@ -5,21 +5,21 @@ All companies, IDs and account numbers are fictional; IFSC and PIN codes are rea
 
 **Before you start**
 - **Use your own email address as the contact email** (on the portal: *Send the vendor emails to*, in the Google Form: *Contact email*; for email cases you send from your own account anyway). Emails go to the address on the application, and the fictional addresses in these files may belong to real domains.
-- Run each vendor **once**. Submitting the same vendor again is caught as *May already be a vendor* — a valid test of duplicate detection, but not the result described here.
-- Reminders come every 2 minutes (demo timing; 1–2 days in real use).
+- Run each vendor **once**. Submitting the same vendor again is caught as *May already be a vendor* - a valid test of duplicate detection, but not the result described here.
+- Reminders come every 2 minutes (demo timing; 1-2 days in real use).
 
-## Edge cases — things that must be caught
+## Edge cases - things that must be caught
 
 | Case | Vendor | Channel | Expected |
 |---|---|---|---|
 | [E1-shared-bank-account](./E1-shared-bank-account/HOW-TO-TEST.md) | Meridian Office Solutions Pvt Ltd | Portal | **Rejected** automatically: *Bank account used by another vendor*. |
-| [E2-sister-company-gst](./E2-sister-company-gst/HOW-TO-TEST.md) | Northstar Industrial Supplies Pvt Ltd | Portal | **Needs your decision**: *GSTIN belongs to another company* and *Company name doesn't match documents*. |
-| [E3-doctored-cheque](./E3-doctored-cheque/HOW-TO-TEST.md) | Lakshmi Engineering Works Pvt Ltd | Portal | **Needs your decision**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*. |
+| [E2-sister-company-gst](./E2-sister-company-gst/HOW-TO-TEST.md) | Northstar Industrial Supplies Pvt Ltd | Portal | **Needs attention**: *GSTIN belongs to another company* and *Company name doesn't match documents*. |
+| [E3-doctored-cheque](./E3-doctored-cheque/HOW-TO-TEST.md) | Lakshmi Engineering Works Pvt Ltd | Portal | **Needs attention**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*. |
 | [E4-wrong-document](./E4-wrong-document/HOW-TO-TEST.md) | Kaveri Freight and Logistics Pvt Ltd | Portal | **Waiting for vendor** → after you upload the cheque → **Approved**. |
 | [E5-vendor-never-replies](./E5-vendor-never-replies/HOW-TO-TEST.md) | Bluewave Technologies Pvt Ltd | Portal | **Waiting for vendor** → reminder 1 (~2 min) → reminder 2 (~4 min) → flagged **No reply** (~6 min). |
-| [E6-msme-category-mismatch](./E6-msme-category-mismatch/HOW-TO-TEST.md) | Pragati Polymers Pvt Ltd | Portal | **Needs your decision**: *MSME category doesn't match certificate* (it decides the payment terms). |
+| [E6-msme-category-mismatch](./E6-msme-category-mismatch/HOW-TO-TEST.md) | Pragati Polymers Pvt Ltd | Portal | **Needs attention**: *MSME category doesn't match certificate* (it decides the payment terms). |
 
-## Examples to try — normal vendors, every channel
+## Examples to try - normal vendors, every channel
 
 | Case | Vendor | Channel | Expected |
 |---|---|---|---|

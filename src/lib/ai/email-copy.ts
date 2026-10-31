@@ -20,7 +20,7 @@ export async function aiIntro(opts: {
   channel: string;
 }): Promise<string | null> {
   if (!process.env.GEMINI_API_KEY || process.env.AI_EMAIL_COPY === "off") return null;
-  const prompt = `Write the opening paragraph (2–3 sentences, plain text, no greeting line, no sign-off) of an email from
+  const prompt = `Write the opening paragraph (2-3 sentences, plain text, no greeting line, no sign-off) of an email from
 ${opts.buyer}'s vendor onboarding team to ${opts.contact} at ${opts.vendor}.
 Context: ${opts.reminderNo ? `this is reminder number ${opts.reminderNo}; they have not responded yet` : `they applied via ${opts.channel} to become a supplier`}.
 We need these items (the list itself is shown separately below your paragraph, do not repeat it):

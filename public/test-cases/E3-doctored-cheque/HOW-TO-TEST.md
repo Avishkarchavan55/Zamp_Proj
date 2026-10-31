@@ -13,7 +13,7 @@ Tampering: the cheque prints HDFC Bank, but its IFSC belongs to ICICI Bank, and 
 - **By hand:** type the values below and attach the files in this folder.
 
 ## Expected result
-**Needs your decision**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*.
+**Needs attention**: *Cheque bank ≠ IFSC bank* and *Document edited in image software*.
 
 ## What to look at
 The live IFSC lookup names the real bank; the file's metadata names the editing software.

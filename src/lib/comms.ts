@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import nodemailer, { type Transporter } from "nodemailer";
 import { aiIntro } from "./ai/email-copy";
 import { json, one, query } from "./db";
+import { noticeFor, notifySupplier } from "./notify";
 import { BUYER, COMMS } from "./policy";
 import type { Application, Decision, RequestedItem } from "./types";
 
@@ -226,6 +227,11 @@ export async function dispatch(opts: {
      values ($1,$2,$3,$4,$5,$6,$7,'queued','n8n',$8::jsonb)`,
     [id, opts.app.id, opts.runId, opts.kind, opts.to, opts.content.subject, opts.content.html, json(meta)],
   );
+  // The same message, shorter, in the supplier portal. Imported history is never notified.
+  if (!(opts.app.intake_meta as { quiet?: boolean } | null)?.quiet) {
+    const notice = noticeFor(opts.kind, opts.app, opts.content, opts.meta);
+    if (notice) await notifySupplier(opts.app.id, notice).catch(() => {});
+  }
 
   if ((opts.app.intake_meta as { quiet?: boolean } | null)?.quiet) {
     // Imported history: keep the record of what would have been sent, but do not email anyone.

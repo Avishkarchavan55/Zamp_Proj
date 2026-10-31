@@ -20,9 +20,9 @@ interface Item {
 const PAGES: Item[] = [
   { id: "p-overview", label: "Overview", icon: LayoutDashboard, href: "/" },
   { id: "p-apps", label: "All vendors", icon: FileStack, href: "/applications" },
-  { id: "p-review", label: "Needs your decision", icon: UsersRound, href: "/review" },
+  { id: "p-review", label: "Needs attention", icon: UsersRound, href: "/review" },
   { id: "p-comms", label: "Emails to vendors", icon: Inbox, href: "/outbox" },
-  { id: "p-policy", label: "How decisions are made", icon: ScaleIcon, href: "/policy" },
+  { id: "p-policy", label: "How to use", icon: ScaleIcon, href: "/how-to-use" },
   { id: "p-new", label: "New vendor application", hint: "Opens the supplier portal", icon: Plus, href: "/apply", external: true },
 ];
 

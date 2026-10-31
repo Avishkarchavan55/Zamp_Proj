@@ -1,11 +1,12 @@
 "use client";
 
-import { CheckCircle2, ChevronRight, FileSpreadsheet, Globe, Mail, ShieldAlert, TriangleAlert } from "@/components/icons";
+import { CheckCircle2, ChevronRight, Clock3, FileSpreadsheet, Globe, Mail, ShieldAlert, TriangleAlert } from "@/components/icons";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
 import type { AppListRow } from "@/components/api-types";
 import { Card, Empty, PageHeader, Skeleton, ago, cx } from "@/components/ui";
+import { isHighRisk, isUnresponsive, needsAttention } from "@/lib/attention";
 import { ENTITY_SHORT, issueTitle } from "@/lib/ui-meta";
 
 /** Issue families a reviewer thinks in. They drive the tabs. */
@@ -15,11 +16,9 @@ const FAMILIES = [
   { key: "msme", label: "MSME", test: /msme|udyam/ },
   { key: "duplicate", label: "Possible duplicate", test: /duplicate_vendor/ },
   { key: "documents", label: "Documents", test: /^doc\.|legib|type/ },
+  { key: "noreply", label: "No reply", test: /(?!)/ },
 ] as const;
 type Family = (typeof FAMILIES)[number]["key"];
-
-/** Fraud-shaped signals rank above ordinary mismatches. */
-const HIGH_RISK = /^risk\.|ext\.bank_name|doc_metadata|xref\.gstin_pan/;
 
 const CHANNEL = {
   portal: { icon: Globe, label: "Portal" },
@@ -27,26 +26,29 @@ const CHANNEL = {
   google_form: { icon: FileSpreadsheet, label: "Google Form" },
 } as const;
 
-const families = (a: AppListRow) => new Set(FAMILIES.filter((f) => (a.reasons ?? []).some((r) => f.test.test(r.code))).map((f) => f.key));
-const isHighRisk = (a: AppListRow) => (a.reasons ?? []).some((r) => HIGH_RISK.test(r.code));
+const families = (a: AppListRow) => {
+  const set = new Set<Family>(FAMILIES.filter((f) => (a.reasons ?? []).some((r) => f.test.test(r.code))).map((f) => f.key));
+  if (isUnresponsive(a)) set.add("noreply");
+  return set;
+};
 
 export default function ReviewQueue() {
   const { data } = useSWR<AppListRow[]>("/api/applications", { refreshInterval: 4000 });
   const [filter, setFilter] = useState<Family | "all">("all");
   const [sort, setSort] = useState<"oldest" | "risk">("oldest");
 
-  const all = (data ?? []).filter((a) => a.status === "in_review");
+  const all = (data ?? []).filter(needsAttention);
   const shown = all
     .filter((a) => filter === "all" || families(a).has(filter))
     .sort((a, b) => (sort === "risk" ? Number(isHighRisk(b)) - Number(isHighRisk(a)) : 0) || a.updated_at.localeCompare(b.updated_at));
-  const waitingOnVendor = (data ?? []).filter((a) => a.status === "awaiting_vendor").length;
+  const waitingOnVendor = (data ?? []).filter((a) => a.status === "awaiting_vendor" && !isUnresponsive(a)).length;
   const oldest = all.reduce<AppListRow | null>((o, a) => (!o || a.updated_at < o.updated_at ? a : o), null);
   const highRisk = all.filter(isHighRisk).length;
 
   return (
     <div>
       <PageHeader
-        title="Needs your decision"
+        title="Needs attention"
         subtitle={
           !data ? " " : all.length
             ? <>
@@ -54,14 +56,14 @@ export default function ReviewQueue() {
                 {highRisk > 0 && <>, <span className="font-medium text-critical-ink">{highRisk} with fraud-type signals</span></>}
                 {oldest && <>. Longest wait: {ago(oldest.updated_at).replace(" ago", "")}.</>}
               </>
-            : "Nothing to decide. Every vendor was handled automatically."
+            : "Nothing needs your attention. Everything is being handled automatically."
         }
       />
 
       {!data ? (
         <Card><div className="space-y-px"><Skeleton className="h-16 rounded-none" /><Skeleton className="h-16 rounded-none" /><Skeleton className="h-16 rounded-none" /></div></Card>
       ) : all.length === 0 ? (
-        <Card><Empty icon={CheckCircle2} title="You're all caught up">New cases appear here only when documents disagree or something looks risky.</Empty></Card>
+        <Card><Empty icon={CheckCircle2} title="You're all caught up">Cases appear here when documents disagree, something looks risky, or a supplier stops replying.</Empty></Card>
       ) : (
         <Card>
           <div className="flex flex-wrap items-end justify-between gap-x-6 border-b border-line px-4">
@@ -82,7 +84,7 @@ export default function ReviewQueue() {
           </div>
 
           <div className="hidden grid-cols-[minmax(0,1.1fr)_minmax(0,1.8fr)_120px_96px_16px] gap-4 border-b border-line bg-line-2 px-4 py-2 text-[12px] font-semibold text-ink-2 md:grid">
-            <span>Vendor</span><span>What does not add up</span><span>Risk</span><span>Waiting</span><span />
+            <span>Vendor</span><span>What needs attention</span><span>Type</span><span>Waiting</span><span />
           </div>
 
           {shown.length === 0 ? (
@@ -109,7 +111,10 @@ function Case({ a }: { a: AppListRow }) {
   const high = isHighRisk(a);
   const titles = [...new Set((a.reasons ?? []).map((r) => issueTitle(r.code)))];
   // The first reason, in the words of the check that raised it ("Label: message").
-  const lead = (a.reasons ?? [])[0]?.text.split(": ").slice(1).join(": ");
+  const silent = isUnresponsive(a);
+  const lead = silent
+    ? `No reply after every reminder. Still waiting for: ${(a.requested_items ?? []).map((i) => i.title).join(", ") || "the requested items"}.`
+    : (a.reasons ?? [])[0]?.text.split(": ").slice(1).join(": ");
   const ch = CHANNEL[a.source as keyof typeof CHANNEL] ?? CHANNEL.portal;
   return (
     <li>
@@ -127,12 +132,12 @@ function Case({ a }: { a: AppListRow }) {
         </span>
         <span className="min-w-0">
           {lead && <span className="line-clamp-2 text-[13px] leading-5 text-ink">{lead}</span>}
-          {titles.length > 1 && <span className="mt-0.5 block truncate text-[12px] text-ink-3">{titles.join(", ")}</span>}
+          {!silent && titles.length > 1 && <span className="mt-0.5 block truncate text-[12px] text-ink-3">{titles.join(", ")}</span>}
         </span>
         <span>
-          <span className={cx("inline-flex h-5 items-center gap-1 rounded-full px-2 text-[12px] font-medium", high ? "bg-critical-soft text-critical-ink" : "bg-serious-soft text-serious-ink")}>
-            {high ? <ShieldAlert className="h-3.5 w-3.5" /> : <TriangleAlert className="h-3.5 w-3.5" />}
-            {high ? "Higher risk" : "Needs a look"}
+          <span className={cx("inline-flex h-5 items-center gap-1 rounded-full px-2 text-[12px] font-medium", silent ? "bg-warn-soft text-warn-ink" : high ? "bg-critical-soft text-critical-ink" : "bg-serious-soft text-serious-ink")}>
+            {silent ? <Clock3 className="h-3.5 w-3.5" /> : high ? <ShieldAlert className="h-3.5 w-3.5" /> : <TriangleAlert className="h-3.5 w-3.5" />}
+            {silent ? "No reply" : high ? "Higher risk" : "Needs a look"}
           </span>
         </span>
         <span className="text-[13px] tabular-nums text-ink-2">{ago(a.updated_at).replace(" ago", "")}</span>

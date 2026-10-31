@@ -9,8 +9,8 @@ export default async function SharePage() {
   return (
     <div>
       <PageHeader
-        title="Become a supplier"
-        subtitle="Send this page to new suppliers - by email, WhatsApp or printed on RFQs and purchase orders. The QR codes work on paper."
+        title="Invite a supplier"
+        subtitle="Send this page to new suppliers by email or WhatsApp, or print it on RFQs and purchase orders. The QR codes work on paper."
         right={
           <>
             <CopyLink url={url} />

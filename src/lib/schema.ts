@@ -171,6 +171,19 @@ create table if not exists app_users (
   last_login  timestamptz
 );
 
+-- In-portal notices for suppliers, written alongside every email we send them.
+create table if not exists notifications (
+  id             text primary key,
+  application_id text not null references applications(id) on delete cascade,
+  kind           text not null,
+  title          text not null,
+  body           text not null default '',
+  link           text,
+  created_at     timestamptz not null default now(),
+  read_at        timestamptz
+);
+create index if not exists notifications_app_idx on notifications(application_id, created_at desc);
+
 -- Supabase exposes the public schema over its REST API. RLS with no policies = no public access;
 -- the app connects as the table owner and is unaffected.
 alter table applications enable row level security;
@@ -183,4 +196,5 @@ alter table communications enable row level security;
 alter table audit_log enable row level security;
 alter table gst_registry enable row level security;
 alter table app_users enable row level security;
+alter table notifications enable row level security;
 `;

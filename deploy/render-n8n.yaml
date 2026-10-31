@@ -22,7 +22,7 @@ services:
         sync: false
       - key: N8N_HOST                    # e.g. vendoriq-n8n.onrender.com
         sync: false
-      - key: N8N_ENCRYPTION_KEY          # long random string — keep it safe, credentials are encrypted with it
+      - key: N8N_ENCRYPTION_KEY          # long random string - keep it safe, credentials are encrypted with it
         sync: false
       - key: GENERIC_TIMEZONE
         value: Asia/Kolkata

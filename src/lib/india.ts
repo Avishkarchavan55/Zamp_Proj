@@ -120,7 +120,7 @@ export function validateUdyam(udyam: string) {
   return { value: u, valid: UDYAM_RE.test(u), stateCode: u.slice(6, 8), stateName: CIN_STATE_CODES[u.slice(6, 8)] ?? null };
 }
 
-/** Indian mobile (+91, starts 6–9) or landline with STD code. */
+/** Indian mobile (+91, starts 6-9) or landline with STD code. */
 export function validatePhone(phone: string) {
   const d = (phone ?? "").replace(/[^\d]/g, "").replace(/^(91|0)(?=\d{10}$)/, "");
   return { digits: d, mobile: /^[6-9]\d{9}$/.test(d), valid: /^[6-9]\d{9}$/.test(d) || /^[1-9]\d{9}$/.test(d) };

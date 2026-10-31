@@ -81,7 +81,7 @@ export interface ExtractedField {
   value: string;
   source_quote: string;
   confidence: number;
-  /** [ymin, xmin, ymax, xmax] on page 1, 0–1000 (Gemini only). */
+  /** [ymin, xmin, ymax, xmax] on page 1, 0-1000 (Gemini only). */
   box_2d?: number[] | null;
   /** Independent confirmations, e.g. "text_layer" or a second model id. */
   verified_by?: string[];

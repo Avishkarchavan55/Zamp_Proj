@@ -47,7 +47,7 @@ Write for a busy, non-technical reviewer. Use only the facts above; do not inven
 - summary: 2 sentences - what does not add up, in plain words.
 - likely_benign: 1 sentence - the most plausible innocent explanation.
 - likely_risk: 1 sentence - what could go wrong (fraud, tax or payment risk) if it is not innocent.
-- ask_vendor: 1–3 specific things to ask the vendor for that would resolve it (title + one-sentence instruction addressed to the vendor).`;
+- ask_vendor: 1-3 specific things to ask the vendor for that would resolve it (title + one-sentence instruction addressed to the vendor).`;
   for (const model of [process.env.GEMINI_MODEL ?? "gemini-3.5-flash-lite", process.env.GEMINI_FALLBACK_MODEL ?? "gemini-3.5-flash"]) {
     try {
       const raw = await geminiJson({ model, parts: [{ text: prompt }], schema: SCHEMA, temperature: 0.2, timeoutMs: 20_000 });

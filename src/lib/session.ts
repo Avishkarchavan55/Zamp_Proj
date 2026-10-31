@@ -17,7 +17,7 @@ export interface Session {
 export const SESSION_COOKIE = "viq_session";
 const MAX_AGE_S = 60 * 60 * 10;
 
-function key() {
+export function signingKey() {
   const secret = process.env.AUTH_SECRET;
   if (!secret && process.env.NODE_ENV === "production") throw new Error("AUTH_SECRET must be set in production");
   return new TextEncoder().encode(secret ?? "vendoriq-local-development-secret-change-me");
@@ -29,13 +29,13 @@ export async function signSession(s: Session) {
     .setSubject(s.sub)
     .setIssuedAt()
     .setExpirationTime(`${MAX_AGE_S}s`)
-    .sign(key());
+    .sign(signingKey());
 }
 
 export async function verifySession(token: string | undefined | null): Promise<Session | null> {
   if (!token) return null;
   try {
-    const { payload } = await jwtVerify(token, key(), { algorithms: ["HS256"] });
+    const { payload } = await jwtVerify(token, signingKey(), { algorithms: ["HS256"] });
     return { sub: String(payload.sub), name: String(payload.name), email: String(payload.email), role: payload.role as Role };
   } catch {
     return null;

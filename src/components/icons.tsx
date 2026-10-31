@@ -91,6 +91,10 @@ export { default as X } from "@carbon/icons-react/es/Close.js";
 export { default as XCircle } from "@carbon/icons-react/es/CloseFilled.js";
 export { default as Zap } from "@carbon/icons-react/es/Lightning.js";
 
+export { default as Edit } from "@carbon/icons-react/es/Edit.js";
+export { default as Reply } from "@carbon/icons-react/es/Reply.js";
+export { default as UserAvatar } from "@carbon/icons-react/es/UserAvatar.js";
+
 import type { SVGProps } from "react";
 
 /** Loading spinner: an open ring. Pair with `animate-spin`. */

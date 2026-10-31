@@ -7,6 +7,7 @@ import { Suspense, useState } from "react";
 import useSWR from "swr";
 import type { AppListRow } from "@/components/api-types";
 import { Badge, Button, Card, Empty, PageHeader, Skeleton, StatusPill, ago, cx } from "@/components/ui";
+import { ActivityLog } from "@/components/activity-log";
 import type { AppStatus } from "@/lib/types";
 import { ENTITY_SHORT, STATUS_META, rejectionReason } from "@/lib/ui-meta";
 
@@ -24,6 +25,7 @@ function Applications() {
   const params = useSearchParams();
   const router = useRouter();
   const status = (params.get("status") as AppStatus | null) ?? "all";
+  const view = params.get("view") === "activity" ? "activity" : "vendors";
   const [q, setQ] = useState("");
   const { data } = useSWR<AppListRow[]>("/api/applications", { refreshInterval: 4000 });
 
@@ -37,9 +39,20 @@ function Applications() {
     <div>
       <PageHeader
         title="All vendors"
-        subtitle="Every vendor who applied, and where they stand."
+        subtitle={view === "activity" ? "Everything that happened, with the exact time." : "Every vendor who applied, and where they stand."}
         right={<Link href="/apply" target="_blank"><Button><Plus className="h-4 w-4" />New application</Button></Link>}
       />
+      <div role="tablist" aria-label="View" className="mb-4 flex gap-5 border-b border-line">
+        {([["vendors", "Vendors", "/applications"], ["activity", "Activity log", "/applications?view=activity"]] as const).map(([key, label, href]) => (
+          <button
+            key={key} role="tab" aria-selected={view === key} onClick={() => router.replace(href)}
+            className={cx("-mb-px inline-flex h-10 items-center border-b-2 text-[14px] transition-colors duration-150", view === key ? "border-brand font-semibold text-ink" : "border-transparent text-ink-2 hover:text-ink")}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {view === "activity" ? <ActivityLog /> : (
       <Card>
         <div className="flex flex-wrap items-end justify-between gap-x-6 border-b border-line px-4">
           <div role="tablist" aria-label="Filter by status" className="scrollbar-thin -mb-px flex gap-x-5 overflow-x-auto">
@@ -116,6 +129,7 @@ function Applications() {
           </div>
         )}
       </Card>
+      )}
     </div>
   );
 }

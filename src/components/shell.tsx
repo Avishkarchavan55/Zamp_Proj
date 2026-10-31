@@ -1,13 +1,16 @@
 "use client";
 
-import { ExternalLink, FileStack, Inbox, LayoutDashboard, LogOut, Menu, QrCode, ScaleIcon, Search, ShieldCheck, UsersRound, X } from "@/components/icons";
+import { FileStack, Inbox, LayoutDashboard, LogOut, Menu, ScaleIcon, Search, ShieldCheck, UsersRound, X } from "@/components/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+import type { AppListRow } from "./api-types";
 import { CommandPalette } from "./command-palette";
+import { NotificationBell } from "./notification-bell";
 import { ScrollToTop } from "./page-nav";
 import { ThemeToggle } from "./theme-toggle";
+import { needsAttention } from "@/lib/attention";
 import { cx } from "./ui";
 
 export interface Me {
@@ -18,15 +21,14 @@ export interface Me {
   can_decide: boolean;
   can_override_rejection: boolean;
 }
-type AppRow = { status: string };
 
 /** The same names are used in the command palette, page titles and empty states. */
 export const NAV = [
   { href: "/", label: "Overview", icon: LayoutDashboard },
   { href: "/applications", label: "All vendors", icon: FileStack },
-  { href: "/review", label: "Needs your decision", icon: UsersRound, badge: true },
+  { href: "/review", label: "Needs attention", icon: UsersRound, badge: true },
   { href: "/outbox", label: "Emails to vendors", icon: Inbox },
-  { href: "/policy", label: "How decisions are made", icon: ScaleIcon },
+  { href: "/how-to-use", label: "How to use", icon: ScaleIcon },
 ];
 
 export function useMe() {
@@ -47,13 +49,12 @@ function Logo() {
   );
 }
 
-function NavLink({ href, label, icon: Icon, active, badge, external, onNavigate }: {
-  href: string; label: string; icon: React.ElementType; active?: boolean; badge?: number; external?: boolean; onNavigate?: () => void;
+function NavLink({ href, label, icon: Icon, active, badge, onNavigate }: {
+  href: string; label: string; icon: React.ElementType; active?: boolean; badge?: number; onNavigate?: () => void;
 }) {
   return (
     <Link
       href={href}
-      target={external ? "_blank" : undefined}
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
       className={cx(
@@ -72,8 +73,8 @@ function NavLink({ href, label, icon: Icon, active, badge, external, onNavigate 
 
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
-  const { data: apps } = useSWR<AppRow[]>("/api/applications", { refreshInterval: 5000 });
-  const reviewCount = apps?.filter((a) => a.status === "in_review").length ?? 0;
+  const { data: apps } = useSWR<AppListRow[]>("/api/applications", { refreshInterval: 5000 });
+  const reviewCount = apps?.filter(needsAttention).length ?? 0;
   return (
     <div className="flex h-full flex-col border-r border-side-line bg-side">
       <div className="flex h-12 shrink-0 items-center border-b border-side-line px-4">
@@ -87,9 +88,6 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             badge={n.badge ? reviewCount : undefined}
           />
         ))}
-        <div className="my-2 border-t border-side-line" />
-        <NavLink href="/share" label="Become a supplier" icon={QrCode} active={pathname.startsWith("/share")} onNavigate={onNavigate} />
-        <NavLink href="/apply" label="Supplier portal" icon={ExternalLink} external onNavigate={onNavigate} />
       </nav>
     </div>
   );
@@ -153,6 +151,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button className="flex h-8 w-8 items-center justify-center rounded-md text-ink-2 hover:bg-line-2 md:hidden" aria-label="Search" onClick={() => setPalette(true)}>
             <Search className="h-4 w-4" />
           </button>
+          <NotificationBell />
           <ThemeToggle />
           <span className="mx-1 hidden h-5 w-px bg-line sm:block" />
           <UserMenu />

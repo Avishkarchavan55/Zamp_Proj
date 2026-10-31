@@ -7,6 +7,7 @@ import {
 } from "@/components/icons";
 import Link from "next/link";
 import { BackButton } from "@/components/page-nav";
+import { auditDetailText } from "@/lib/activity";
 import { EmailVendor } from "@/components/email-vendor";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -539,18 +540,7 @@ function Timeline({ audit, runs }: { audit: AuditRow[]; runs: ApplicationDetail[
 }
 
 function AuditDetail({ a }: { a: AuditRow }) {
-  const d = a.detail ?? {};
-  let text = "";
-  if (a.action === "decision") text = String(d.headline ?? "");
-  else if (a.action.startsWith("review_") || a.action === "clarification_requested") text = String(d.note ?? "");
-  else if (a.action === "resubmitted" || a.action === "details_confirmed") {
-    const docs = (d.documents as { slot: string; filename: string }[] | undefined) ?? [];
-    const fields = Object.entries((d.fields as Record<string, { from: string; to: string }>) ?? {});
-    text = [d.channel === "email" ? "by email reply" : "", ...docs.map((x) => `uploaded ${x.filename}`), ...fields.map(([k, v]) => `${k}: ${v.from || "-"} → ${v.to}`)].filter(Boolean).join(" · ");
-  } else if (a.action === "submitted") text = d.channel ? `via ${CHANNEL_LABEL[String(d.channel)] ?? d.channel}` : "";
-  else if (a.action === "vendor_contacted") text = ((d.items as string[]) ?? []).join(" · ");
-  else if (a.action === "email_sent" || a.action === "reminder_sent") text = [String(d.subject ?? (d.reminder_no ? `Reminder #${d.reminder_no}` : "")), d.channel === "smtp" ? `(SMTP backup: ${String(d.reason ?? "")})` : ""].join(" ");
-  else if (a.action === "erp_exported") text = `${String(d.vendor_code)} · ${String(d.format)}`;
+  const text = auditDetailText(a.action, a.detail);
   if (!text) return null;
   return <div className="mt-0.5 text-[12px] text-ink-2">{text}</div>;
 }

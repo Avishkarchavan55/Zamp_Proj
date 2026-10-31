@@ -4,7 +4,8 @@ import { json, one, query } from "@/lib/db";
 import { appUrl, bad, n8nAuthorised } from "@/lib/http";
 import { COMMS } from "@/lib/policy";
 import { smtpFallback } from "@/lib/comms";
-import { audit } from "@/lib/repo";
+import { notifySupplier, noticeFor } from "@/lib/notify";
+import { audit, getApplication } from "@/lib/repo";
 
 /**
  * Events reported back by the n8n workflow so the audit trail reflects what was actually delivered.
@@ -51,6 +52,11 @@ export async function POST(req: Request) {
           body.html ?? "", json({ parent: comm.id, reminder_no: body.reminder_no ?? null, message_id: body.message_id ?? null, delivered_to: body.to ?? null })],
       );
       await audit(comm.application_id, "n8n", "reminder_sent", { communication_id: id, parent: comm.id, reminder_no: body.reminder_no });
+      {
+        const app = await getApplication(comm.application_id);
+        const notice = app && !(app.intake_meta as { quiet?: boolean } | null)?.quiet ? noticeFor("reminder", app, { subject: body.subject ?? "" }) : null;
+        if (app && notice) await notifySupplier(app.id, notice).catch(() => {});
+      }
       nextReminder = (body.reminder_no ?? 1) + 1;
       break;
     }

@@ -13,7 +13,7 @@ The vendor declares *Micro* enterprise (which legally requires payment within 45
 - **By hand:** type the values below and attach the files in this folder.
 
 ## Expected result
-**Needs your decision**: *MSME category doesn't match certificate* (it decides the payment terms).
+**Needs attention**: *MSME category doesn't match certificate* (it decides the payment terms).
 
 ## What to look at
 The review page explains why it matters: MSMED Act s.15 and Income-tax s.43B(h).

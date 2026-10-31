@@ -71,7 +71,7 @@ export function CheckBadge({ status }: { status: CheckStatus }) {
 
 /** A panel: white layer, hairline border, nothing else. Depth is the border, not a shadow. */
 export function Card({ children, className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div {...rest} className={cx("rounded-md border border-line bg-surface", className)}>{children}</div>;
+  return <div {...rest} className={cx("min-w-0 rounded-md border border-line bg-surface", className)}>{children}</div>;
 }
 
 /** Panel title bar. The icon prop is accepted for older call sites but not drawn: titles carry the meaning. */
