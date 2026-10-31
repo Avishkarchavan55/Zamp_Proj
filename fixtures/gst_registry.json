@@ -230,5 +230,21 @@
     "status": "Active",
     "state_code": "33",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "33AABCA5518J1ZW",
+    "legal_name": "ANNAPURNA SPICES PRIVATE LIMITED",
+    "trade_name": "ANNAPURNA SPICES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "33",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AABCN6247L1ZA",
+    "legal_name": "NARMADA PUMP INDUSTRIES PRIVATE LIMITED",
+    "trade_name": "NARMADA PUMP INDUSTRIES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
   }
 ]

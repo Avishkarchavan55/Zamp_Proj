@@ -429,6 +429,28 @@ VENDORS = {
 }
 VENDORS["shreeji"].update(udyam="UDYAM-MH-26-0012345", msme_declared="Micro", msme_cert="Micro")
 
+# Added for the video: a second clean portal vendor and a second email-intake vendor (no Udyam, standard payment terms).
+VENDORS["annapurna"] = dict(
+    legal_name="ANNAPURNA SPICES PRIVATE LIMITED", form_name="Annapurna Spices Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AABCA5518J", state_code="33", cin="U15490TN2016PTC107742", inc_date=(12, 9, 2016),
+    address="27, Anna Salai", city="Chennai", state="Tamil Nadu", pincode="600002",
+    contact_name="Meenakshi Iyer", contact_email="accounts@annapurnaspices.in", contact_phone="+91 94440 31872",
+    owner_name="Meenakshi Iyer", website="annapurnaspices.in", category="Packaged spices and masalas",
+    ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+    account="50100455127730", cheque_name="ANNAPURNA SPICES PVT LTD", micr="560240004",
+)
+VENDORS["narmada"] = dict(
+    legal_name="NARMADA PUMP INDUSTRIES PRIVATE LIMITED", form_name="Narmada Pump Industries Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AABCN6247L", state_code="24", cin="U29120GJ2015PTC084229", inc_date=(14, 7, 2015),
+    address="Plot 214, GIDC Sachin", city="Surat", state="Gujarat", pincode="395003",
+    contact_name="Dhruv Mehta", contact_email="accounts@narmadapumps.in", contact_phone="+91 98250 77419",
+    owner_name="Dhruv Mehta", website="narmadapumps.in", category="Industrial water pumps",
+    ifsc="ICIC0000027", bank="ICICI BANK", branch="MUMBAI",
+    account="003301552847", cheque_name="NARMADA PUMP INDUSTRIES PVT LTD", micr="400229002",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1018,6 +1040,46 @@ def main():
                       summary="Vendor emails its documents (no cheque); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
                       expected="Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
                       files={}, email_files=lk_files, resubmission={"reply": lk_reply}))
+
+
+    # Video kit: a second clean portal vendor (Approved, standard 60-day terms).
+    v = VENDORS["annapurna"]
+    an_dir = os.path.join(PUBLIC, "annapurna")
+    os.makedirs(an_dir, exist_ok=True)
+    an_files = dict(
+        incorporation=write(an_dir, "Annapurna_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(an_dir, "Annapurna_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(an_dir, "Annapurna_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(an_dir, "Annapurna_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    index.append(dict(id="annapurna", group="example", title="Private limited, no MSME", vendor=v["form_name"],
+                      summary="A complete, consistent private limited company that is not an MSME. Standard 60-day payment terms.",
+                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=an_files,
+                      resubmission={}))
+
+    # Video kit: a second email-intake vendor (documents only, no cheque, not an MSME).
+    v = VENDORS["narmada"]
+    nm_dir = os.path.join(PUBLIC, "email-narmada")
+    os.makedirs(os.path.join(nm_dir, "reply"), exist_ok=True)
+    nm_files = [
+        write(nm_dir, "Narmada_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        write(nm_dir, "Narmada_GST_Certificate.pdf", gst_pdf(v), truth_gst(v)),
+        write(nm_dir, "Narmada_PAN.png", pan_card_png(v), truth_pan(v)),
+    ]
+    nm_reply = "reply/" + write(os.path.join(nm_dir, "reply"), "Narmada_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v))
+    with open(os.path.join(nm_dir, "EMAIL.txt"), "w", encoding="utf8") as fh:
+        fh.write(
+            "To: the onboarding inbox\n"
+            "Subject: Vendor registration - Narmada Pump Industries\n\n"
+            "Hello Acme team,\n\nWe manufacture industrial water pumps and would like to register as your supplier.\n"
+            "Our company documents are attached.\n\n"
+            "Regards,\nDhruv Mehta\nNarmada Pump Industries Pvt Ltd\n+91 98250 77419\n\n"
+            f"ATTACH (first email): {', '.join(nm_files)}\n"
+            f"Then REPLY to VendorIQ's request email and attach: {nm_reply}\n")
+    index.append(dict(id="email-narmada", group="email", title="Email intake: Narmada Pump Industries", vendor=v["form_name"],
+                      summary="Vendor emails three documents (no cheque, not an MSME); VendorIQ builds the application, asks for the cheque, vendor replies with it.",
+                      expected="Waiting for vendor (confirm + cheque) -> reply -> confirm -> Approved", form=form_for(v),
+                      files={}, email_files=nm_files, resubmission={"reply": nm_reply}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

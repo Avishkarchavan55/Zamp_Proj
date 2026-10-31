@@ -8,6 +8,13 @@ Everything needed to record the 5-minute video. Script: [VIDEO-SCRIPT.md](./VIDE
 | `2-edge-case-email-lokseva` | Part 5 | Email | **Waiting for vendor** (cheque + confirm details), then **Approved** after the reply |
 | `3-edge-case-google-form-meridian` | Part 6 | Google Form | **Rejected**: bank account already used by Apex Facility Services |
 
+**Spare cases** (same style, in case a main one gets used up while rehearsing; swap the name in the script):
+
+| Folder | Replaces | Channel | Expected result |
+|---|---|---|---|
+| `4-happy-path-portal-annapurna` | Shreeji (Part 4) | Supplier portal (Apply) | **Approved**, one condition: bank ownership check; 60-day payment terms (not an MSME) |
+| `5-edge-case-email-narmada` | Lokseva (Part 5) | Email | **Waiting for vendor** (cheque + confirm details), then **Approved** after the reply |
+
 Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional.
 
 ## Before you record (once)

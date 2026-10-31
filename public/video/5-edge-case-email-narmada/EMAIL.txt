@@ -1,0 +1,15 @@
+To: the onboarding inbox
+Subject: Vendor registration - Narmada Pump Industries
+
+Hello Acme team,
+
+We manufacture industrial water pumps and would like to register as your supplier.
+Our company documents are attached.
+
+Regards,
+Dhruv Mehta
+Narmada Pump Industries Pvt Ltd
++91 98250 77419
+
+ATTACH (first email): Narmada_Certificate_of_Incorporation.pdf, Narmada_GST_Certificate.pdf, Narmada_PAN.png
+Then REPLY to VendorIQ's request email and attach: reply/Narmada_Cancelled_Cheque.png
