@@ -36,13 +36,19 @@ export function WakeUp() {
     const mine = ++token.current;
     setResults({});
     setRunning(true);
-    await Promise.all(STEPS.map(async ({ step, label }) => {
-      let r: Result;
-      try {
-        const res = await fetch(`/api/wake?step=${step}`, { method: "POST" });
-        r = res.ok ? await res.json() : { step, state: "error", title: label, detail: `Request failed (${res.status})`, ms: 0 };
-      } catch {
-        r = { step, state: "error", title: label, detail: "Could not reach the server", ms: 0 };
+    await Promise.all(STEPS.map(async ({ step, label }, i) => {
+      let r: Result = { step, state: "error", title: label, detail: "Could not reach the server", ms: 0 };
+      await new Promise((go) => setTimeout(go, i * 300));
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const res = await fetch(`/api/wake?step=${step}`, { method: "POST" });
+          if (res.ok) { r = await res.json(); break; }
+          r = { step, state: "error", title: label, detail: res.status === 401 ? "Signed out. Sign in again." : `Request failed (${res.status})`, ms: 0 };
+          if (res.status < 500) break;
+        } catch {
+          // network blip: retry
+        }
+        await new Promise((go) => setTimeout(go, 1200));
       }
       if (token.current === mine) setResults((cur) => ({ ...cur, [step]: r }));
     }));

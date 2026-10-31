@@ -151,7 +151,18 @@ const STEPS: Record<string, (req: Request) => Promise<Omit<Result, "step" | "ms"
 
 /** One system per call, so the page can show each result as soon as it is ready. */
 export async function POST(req: Request) {
-  const staff = await requireStaff();
+  // The sign-in check touches the database; several steps arrive together, so retry a busy pooler once.
+  let staff: Awaited<ReturnType<typeof requireStaff>>;
+  try {
+    staff = await requireStaff();
+  } catch {
+    await sleep(600);
+    try {
+      staff = await requireStaff();
+    } catch {
+      return Response.json({ step: "", state: "warn", title: "Wake up", detail: "Database was busy, try again", ms: 0 }, { status: 503 });
+    }
+  }
   if (staff instanceof Response) return staff;
   const step = new URL(req.url).searchParams.get("step") ?? "";
   const run = STEPS[step];
