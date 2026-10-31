@@ -189,7 +189,7 @@ export function CheckGroups({ checks, openIssues = true, toggle = true }: { chec
 const OUTCOME_STYLE = {
   approved: { icon: ShieldCheck, fill: "bg-good-soft", tint: "text-good-ink", label: "Approved" },
   awaiting_vendor: { icon: Clock3, fill: "bg-warn-soft", tint: "text-warn-ink", label: "Waiting for the vendor" },
-  in_review: { icon: TriangleAlert, fill: "bg-serious-soft", tint: "text-serious-ink", label: "Needs your decision" },
+  in_review: { icon: TriangleAlert, fill: "bg-serious-soft", tint: "text-serious-ink", label: "Needs attention" },
   rejected: { icon: Ban, fill: "bg-critical-soft", tint: "text-critical-ink", label: "Rejected" },
 } as const;
 

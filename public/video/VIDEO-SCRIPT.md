@@ -45,8 +45,8 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 [Click Emails to vendors. Click How follow-ups work (pop-up), then Compose email. 10 seconds.]
 **"Every email the system sends is here. Follow-ups and reminders go out automatically, and you can also write, edit and send his own."**
 
-[Click How to use. Scroll once. 4 seconds.]
-**"And the rules are written down in plain words."**
+[Click Info. Scroll once. 4 seconds.]
+**"And the Info page lists the rules in plain words."**
 
 [Sign out. Pick Supplier portal, click one supplier from the list. 12 seconds. Show the sidebar: Supplier portal, Become a supplier, Notifications.]
 **"The supplier portal is what a vendor sees: where their application stands, exactly what is missing, and Notifications. Every email we send also appears here as a short note."**
@@ -102,7 +102,7 @@ Folder: `3-edge-case-google-form-meridian`. Use the pre-filled Google Form link 
 [Optional, 4 seconds: supplier portal for Meridian shows "With our team".]
 
 ## 7. Close (4:40 to 5:00)
-[Screen: Overview, then the How to use page.]
+[Screen: Overview, then the Info page.]
 
 **"Three channels, one pipeline. AI for reading, written rules for deciding, people for the unclear. Everything is logged and every rejection is explained.**
 **In production I would connect the government GST, PAN and bank-verification services, and add a one-time code for supplier sign-in. Thank you."**
@@ -110,7 +110,7 @@ Folder: `3-edge-case-google-form-meridian`. Use the pre-filled Google Form link 
 ---
 
 ## If you run long (cut in this order)
-1. The How to use sentence in the walkthrough.
+1. The Info sentence in the walkthrough.
 2. The supplier portal check in the Lokseva case.
 3. The optional Meridian supplier-portal line.
 

@@ -15,7 +15,7 @@ export const STATUS_META: Record<AppStatus, { label: string; tone: Tone; short: 
   processing: { label: "Checking…", tone: "info", short: "Checking" },
   approved: { label: "Approved", tone: "good", short: "Approved" },
   awaiting_vendor: { label: "Waiting for vendor", tone: "warn", short: "Waiting for vendor" },
-  in_review: { label: "Needs your decision", tone: "serious", short: "Needs decision" },
+  in_review: { label: "Needs attention", tone: "serious", short: "Needs attention" },
   rejected: { label: "Rejected", tone: "critical", short: "Rejected" },
 };
 

@@ -1,4 +1,4 @@
-/** How a request for missing documents is followed up. Shown in a dialog on the Emails page and on How to use. */
+/** How a request for missing documents is followed up. Shown in a dialog on the Emails page and on Info. */
 export function FollowUpSteps({ waitMinutes, maxReminders }: { waitMinutes?: number; maxReminders?: number }) {
   const steps = [
     { t: "Request written", d: "VendorIQ writes one email listing exactly what is missing, with a link to upload it." },

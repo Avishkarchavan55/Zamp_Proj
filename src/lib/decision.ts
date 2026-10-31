@@ -70,7 +70,7 @@ export function decide(checks: Check[], vendorName: string): Decision {
     case "R3":
       return {
         outcome: "in_review",
-        headline: `Needs your decision - ${reviewHits.length === 1 ? "one thing doesn't" : `${reviewHits.length} things don't`} add up`,
+        headline: `Needs attention - ${reviewHits.length === 1 ? "one thing doesn't" : `${reviewHits.length} things don't`} add up`,
         summary: `The documents do not tell one consistent story. ${reviewHits[0].message}`,
         reasons: reasons(reviewHits),
         next_actions: [

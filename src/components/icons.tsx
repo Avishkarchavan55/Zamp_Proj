@@ -27,6 +27,7 @@ export { default as ChevronRight } from "@carbon/icons-react/es/ChevronRight.js"
 export { default as Circle } from "@carbon/icons-react/es/CircleDash.js";
 export { default as CircleDashed } from "@carbon/icons-react/es/CircleDash.js";
 export { default as CircleHelp } from "@carbon/icons-react/es/Help.js";
+export { default as InformationIcon } from "@carbon/icons-react/es/Information.js";
 export { default as ClipboardList } from "@carbon/icons-react/es/Task.js";
 export { default as Clock3 } from "@carbon/icons-react/es/Time.js";
 export { default as CornerDownLeft } from "@carbon/icons-react/es/ArrowDownLeft.js";

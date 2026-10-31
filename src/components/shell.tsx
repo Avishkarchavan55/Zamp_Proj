@@ -1,6 +1,6 @@
 "use client";
 
-import { FileStack, Inbox, LayoutDashboard, LogOut, Menu, ScaleIcon, Search, ShieldCheck, UsersRound, X } from "@/components/icons";
+import { FileStack, Inbox, InformationIcon, LayoutDashboard, LogOut, Menu, Search, ShieldCheck, UsersRound, X } from "@/components/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ export const NAV = [
   { href: "/applications", label: "All vendors", icon: FileStack },
   { href: "/review", label: "Needs attention", icon: UsersRound, badge: true },
   { href: "/outbox", label: "Emails to vendors", icon: Inbox },
-  { href: "/how-to-use", label: "How to use", icon: ScaleIcon },
+  { href: "/info", label: "Info", icon: InformationIcon },
 ];
 
 export function useMe() {
