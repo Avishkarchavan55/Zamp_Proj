@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
 import type { AppListRow, AuditRow } from "@/components/api-types";
-import { Button, Card, CardHeader, Empty, PageHeader, Skeleton, ago, cx } from "@/components/ui";
+import { Badge, Button, Card, CardHeader, Empty, PageHeader, Skeleton, StatusPill, ago, cx } from "@/components/ui";
 import { isHighRisk, isUnresponsive, needsAttention } from "@/lib/attention";
 import { eventLabel } from "@/lib/activity";
 import { issueTitle, rejectionReason } from "@/lib/ui-meta";
@@ -114,6 +114,8 @@ export default function Overview() {
               </ul>
             )}
           </Card>
+
+          <Workflow />
         </div>
 
         <div className="min-w-0 space-y-6">
@@ -142,6 +144,60 @@ export default function Overview() {
         </div>
       </div>
     </div>
+  );
+}
+
+const STEPS: { title: string; by: string; tone: "brand" | "neutral" | "info"; text: string }[] = [
+  { title: "Application arrives", by: "System", tone: "neutral", text: "Through the supplier portal, an email with attachments, or the Google Form. Documents are stored privately and a run starts at once." },
+  { title: "Documents are classified and read", by: "AI", tone: "brand", text: "Each upload is identified (GST certificate, PAN, cheque and so on) and its fields are read with a quote, a confidence and a location. If one model is busy, the next takes over." },
+  { title: "Identifiers are validated", by: "Rules", tone: "neutral", text: "PAN, GSTIN with its check digit, IFSC, CIN, Udyam and phone numbers are checked against their official structure, in code and never by AI." },
+  { title: "Everything is cross-checked", by: "Rules and live lookups", tone: "info", text: "Form against documents, GSTIN against PAN, names and states, the bank from the IFSC directory and the pincode from India Post." },
+  { title: "Risk and duplicates", by: "Rules", tone: "neutral", text: "A bank account used by another vendor, an existing PAN or GSTIN, documents edited in image software, and the sender's email authenticity." },
+  { title: "Decision by written policy", by: "Rules", tone: "neutral", text: "Four rules are applied top to bottom and the first match decides. The reason and the evidence are recorded." },
+] as const;
+
+const OUTCOMES: { status: "approved" | "awaiting_vendor" | "in_review" | "rejected"; text: string }[] = [
+  { status: "approved", text: "ERP vendor record, conditions attached, supplier notified." },
+  { status: "awaiting_vendor", text: "Supplier emailed what is missing, then reminded." },
+  { status: "in_review", text: "A person decides, with the evidence laid out." },
+  { status: "rejected", text: "A person tells the supplier, with the reason." },
+];
+
+/** The whole journey of an application, from arrival to outcome, in the order it happens. */
+function Workflow() {
+  return (
+    <Card>
+      <CardHeader title="How an application is processed" subtitle="From the moment details and documents arrive to the outcome" />
+      <ol className="px-4 py-4">
+        {STEPS.map((st, i) => (
+          <li key={st.title} className="relative flex gap-3 pb-4">
+            {i < STEPS.length && <span aria-hidden className="absolute left-[11px] top-6 h-[calc(100%-1.5rem)] w-px bg-line-strong" />}
+            <span className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-line-strong bg-surface text-[12px] font-semibold tabular-nums text-ink-2">{i + 1}</span>
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-[14px] font-semibold leading-6 text-ink">{st.title}</h3>
+                <Badge tone={st.tone}>{st.by}</Badge>
+              </div>
+              <p className="text-[13px] leading-5 text-ink-2">{st.text}</p>
+            </div>
+          </li>
+        ))}
+        <li className="relative flex gap-3">
+          <span className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-action text-[12px] font-semibold tabular-nums text-white">{STEPS.length + 1}</span>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-[14px] font-semibold leading-6 text-ink">One of four outcomes</h3>
+            <ul className="mt-1 divide-y divide-line border border-line">
+              {OUTCOMES.map((o) => (
+                <li key={o.status} className="grid gap-x-3 gap-y-1 px-3 py-2 sm:grid-cols-[150px_1fr] sm:items-center">
+                  <span><StatusPill status={o.status} /></span>
+                  <span className="text-[13px] leading-5 text-ink-2">{o.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </Card>
   );
 }
 
