@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FileSlot, fetchAsFile } from "@/components/file-slot";
 import { useToast } from "@/components/toast";
 import { useLocalStorage } from "@/components/use-local";
+import { Turnstile } from "@/components/turnstile";
 import { useIsStaff } from "@/components/use-staff";
 import { Button, Card, cx } from "@/components/ui";
 import { ENTITY_LABELS, STATES } from "@/lib/india";
@@ -32,20 +33,6 @@ const EMPTY: ApplicationForm = {
 const TURNSTILE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 const INTAKE_EMAIL = process.env.NEXT_PUBLIC_INTAKE_EMAIL;
 const GOOGLE_FORM_URL = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL;
-
-/** Cloudflare Turnstile widget (invisible-by-default captcha); renders nothing when not configured. */
-function Turnstile() {
-  useEffect(() => {
-    if (!TURNSTILE_KEY || document.getElementById("cf-turnstile-script")) return;
-    const s = document.createElement("script");
-    s.id = "cf-turnstile-script";
-    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    s.async = true;
-    document.head.appendChild(s);
-  }, []);
-  if (!TURNSTILE_KEY) return null;
-  return <div className="cf-turnstile" data-sitekey={TURNSTILE_KEY} data-theme="light" />;
-}
 
 export default function ApplyPage() {
   const [form, setForm] = useState<ApplicationForm>(EMPTY);
@@ -183,7 +170,7 @@ export default function ApplyPage() {
           </div>
         </Section>
 
-        <Turnstile />
+        {TURNSTILE_KEY && !isStaff && <Turnstile siteKey={TURNSTILE_KEY} fallbackEmail={INTAKE_EMAIL} />}
 
         <div className="flex flex-col-reverse items-stretch justify-between gap-3 sm:flex-row sm:items-center">
           <p className="text-xs text-ink-3">By submitting you confirm the information is accurate. Incomplete applications are not rejected — we&apos;ll tell you exactly what&apos;s missing.</p>

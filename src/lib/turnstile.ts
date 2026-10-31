@@ -1,13 +1,17 @@
 import "server-only";
+import { getSession } from "./auth";
 
 /**
  * Cloudflare Turnstile (free, invisible captcha) for the public vendor portal. Skipped when not
- * configured, and for trusted server-to-server callers (seed script, Apps Script) holding the intake secret.
+ * configured, for trusted server-to-server callers (seed script, Apps Script) holding the intake secret,
+ * and for signed-in staff.
  */
 export async function verifyHuman(req: Request, token: string | null): Promise<string | null> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) return null;
   if (trustedCaller(req)) return null;
+  // Signed-in staff (testing the portal, entering an application for a vendor) are already authenticated.
+  if (await getSession()) return null;
   if (!token) return "Please complete the human verification.";
   const body = new URLSearchParams({ secret, response: token });
   const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0];
