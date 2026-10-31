@@ -17,7 +17,16 @@ export async function POST(req: Request) {
   if (t && now - t.since < 600_000 && t.n >= 10) return bad("Too many attempts. Please wait a few minutes and try again.", 429);
   tries.set(ip, t && now - t.since < 600_000 ? { n: t.n + 1, since: t.since } : { n: 1, since: now });
 
-  const body = (await req.json().catch(() => ({}))) as { reference?: string; email?: string };
+  const body = (await req.json().catch(() => ({}))) as { reference?: string; email?: string; pick?: string };
+
+  // One-click entry: choose a supplier from the list on the sign-in page (same open access as the company portal).
+  if (body.pick) {
+    const [row] = await query<{ contact_email: string }>(`select contact_email from applications where upper(id) = $1`, [String(body.pick).trim().toUpperCase()]);
+    if (!row?.contact_email) return bad("That supplier could not be found.", 404);
+    (await cookies()).set(SUPPLIER_COOKIE, await signSupplier(row.contact_email), supplierCookieOptions);
+    return Response.json({ ok: true });
+  }
+
   const reference = String(body.reference ?? "").trim().toUpperCase();
   const email = String(body.email ?? "").trim().toLowerCase();
   if (!reference || !email) return bad("Enter your application reference and the contact email you gave.");
