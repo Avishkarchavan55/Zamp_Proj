@@ -53,8 +53,25 @@ const ENTITY_MAP = {
   "Sole Proprietorship": "proprietorship",
 };
 
+/**
+ * Runs on every submission. Reads the answers and files, posts them to VendorIQ, and retries on trouble.
+ * A submission that still fails is remembered and resent by retryFailed() every 5 minutes, so nothing is lost.
+ */
 function onFormSubmit(e) {
-  const response = e.response;
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    deliver(e.response);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function deliver(response) {
+  const props = PropertiesService.getScriptProperties();
+  const id = response.getId();
+  if (props.getProperty("done_" + id)) return console.log("Already delivered " + id);
+  const t0 = Date.now();
   const fields = {};
   const files = [];
   response.getItemResponses().forEach(function (r) {
@@ -70,17 +87,72 @@ function onFormSubmit(e) {
       let value = String(answer || "").trim();
       if (title === "Entity type") value = ENTITY_MAP[value] || value;
       if (title === "MSME (Udyam) registered?") value = value === "Yes" ? "yes" : "no";
+      if (title === "MSME category" && value === "Not applicable") value = "";
       fields[FIELD_MAP[title]] = value;
     }
   });
-  const res = UrlFetchApp.fetch(VENDORIQ_URL, {
-    method: "post",
-    contentType: "application/json",
-    headers: { "x-vendoriq-secret": SECRET },
-    payload: JSON.stringify({ fields: fields, files: files, response_id: response.getId(), respondent_email: response.getRespondentEmail() }),
-    muteHttpExceptions: true,
+  const payload = JSON.stringify({ fields: fields, files: files, response_id: id, respondent_email: response.getRespondentEmail() });
+  const read = Date.now() - t0;
+
+  let code = 0;
+  let text = "";
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = UrlFetchApp.fetch(VENDORIQ_URL, {
+        method: "post",
+        contentType: "application/json",
+        headers: { "x-vendoriq-secret": SECRET },
+        payload: payload,
+        muteHttpExceptions: true,
+      });
+      code = res.getResponseCode();
+      text = res.getContentText();
+      if (code < 300) break;
+      if (code < 500 && code !== 429) break; // our data is wrong: retrying will not help
+    } catch (err) {
+      code = 0;
+      text = String(err);
+    }
+    Utilities.sleep(attempt * 2000);
+  }
+  console.log("VendorIQ responded " + code + " in " + (Date.now() - t0) + " ms (reading files " + read + " ms): " + text);
+
+  const failed = JSON.parse(props.getProperty("failed") || "[]").filter(function (x) { return x !== id; });
+  if (code > 0 && code < 300) {
+    props.setProperty("done_" + id, "1");
+  } else if (code === 0 || code >= 500 || code === 429) {
+    failed.push(id);
+    console.error("Delivery failed, will retry: " + id);
+  }
+  props.setProperty("failed", JSON.stringify(failed));
+}
+
+/** Resends submissions that failed (server asleep, network). Installed by createVendorForm() and installRetryTrigger(). */
+function retryFailed() {
+  const props = PropertiesService.getScriptProperties();
+  const failed = JSON.parse(props.getProperty("failed") || "[]");
+  if (!failed.length) return;
+  const form = FormApp.openById(props.getProperty("FORM_ID"));
+  failed.forEach(function (id) {
+    const response = form.getResponse(id);
+    if (response) deliver(response);
   });
-  console.log("VendorIQ responded", res.getResponseCode(), res.getContentText());
+}
+
+function installRetryTrigger() {
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === "retryFailed") ScriptApp.deleteTrigger(t); });
+  ScriptApp.newTrigger("retryFailed").timeBased().everyMinutes(5).create();
+}
+
+/** Run this once after pasting the script: checks the URL and the secret, and lists the triggers. */
+function testConnection() {
+  const res = UrlFetchApp.fetch(VENDORIQ_URL, {
+    method: "post", contentType: "application/json", headers: { "x-vendoriq-secret": SECRET },
+    payload: JSON.stringify({ fields: {} }), muteHttpExceptions: true,
+  });
+  const code = res.getResponseCode();
+  console.log(code === 400 ? "OK: VendorIQ answered and accepted the secret." : code === 401 ? "WRONG SECRET: copy INTAKE_SHARED_SECRET from Vercel." : "Unexpected answer " + code + ": " + res.getContentText());
+  console.log("Triggers: " + ScriptApp.getProjectTriggers().map(function (t) { return t.getHandlerFunction() + " (" + t.getEventType() + ")"; }).join(", "));
 }
 
 /** One-off: builds the form with validations and installs the submit trigger. */
@@ -116,6 +188,7 @@ function createVendorForm() {
   form.addListItem().setTitle("MSME category").setChoiceValues(["Micro", "Small", "Medium", "Not applicable"]);
   ScriptApp.newTrigger("onFormSubmit").forForm(form).onFormSubmit().create();
   PropertiesService.getScriptProperties().setProperty("FORM_ID", form.getId());
+  installRetryTrigger();
   console.log("Form created: " + form.getEditUrl());
   console.log("Now add these file-upload questions by hand: " + Object.keys(FILE_MAP).join(" | "));
 }
@@ -125,5 +198,7 @@ function resendLatestResponse() {
   const form = FormApp.openById(PropertiesService.getScriptProperties().getProperty("FORM_ID"));
   const responses = form.getResponses();
   if (!responses.length) return console.log("No responses yet");
-  onFormSubmit({ response: responses[responses.length - 1] });
+  const last = responses[responses.length - 1];
+  PropertiesService.getScriptProperties().deleteProperty("done_" + last.getId());
+  deliver(last);
 }

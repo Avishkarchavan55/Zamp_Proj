@@ -1,4 +1,5 @@
 import { after } from "next/server";
+import { one } from "@/lib/db";
 import { SLOTS, appUrl, bad } from "@/lib/http";
 import { intakeStructured } from "@/lib/intake";
 import { runPipeline } from "@/lib/pipeline";
@@ -22,6 +23,11 @@ export async function POST(req: Request) {
     respondent_email?: string;
   };
   if (!body.fields?.legal_name) return bad("legal_name is required");
+  // Google retries a failed trigger and the script resends on errors; the same response never creates a second application.
+  if (body.response_id) {
+    const seen = await one<{ id: string }>("select id from applications where intake_meta->>'response_id' = $1 limit 1", [body.response_id]);
+    if (seen) return Response.json({ id: seen.id, duplicate: true }, { status: 200 });
+  }
   const files: [DocSlot, IncomingFile][] = (body.files ?? [])
     .filter((f) => SLOTS.includes(f.slot as DocSlot) && f.b64)
     .map((f) => [f.slot as DocSlot, { name: f.name, type: realMime(f.mime, f.name), bytes: Buffer.from(f.b64, "base64") }]);

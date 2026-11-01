@@ -46,3 +46,4 @@ next-env.d.ts
 # Design skills (third-party / house material, not part of the product)
 /.claude/skills/
 /01-core-frontend/
+google/*-READY.gs
