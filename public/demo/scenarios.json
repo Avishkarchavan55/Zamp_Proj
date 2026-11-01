@@ -1455,5 +1455,47 @@
       "Rajputana_Cancelled_Cheque.png"
     ],
     "resubmission": {}
+  },
+  {
+    "id": "malabar",
+    "group": "demo",
+    "title": "Wrong document in the PAN field (Google Form)",
+    "vendor": "Malabar Spice Exports Private Limited",
+    "summary": "The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
+    "expected": "Awaiting vendor (PAN card) -> resubmission -> Approved",
+    "form": {
+      "legal_name": "Malabar Spice Exports Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAHCM6120L",
+      "gstin": "32AAHCM6120L1ZK",
+      "cin": "U15400KL2016PTC045512",
+      "owner_name": "Anita Menon",
+      "address": "Door 14/221, Willingdon Island",
+      "city": "Kochi",
+      "state": "Kerala",
+      "pincode": "682003",
+      "contact_name": "Anita Menon",
+      "contact_email": "accounts@malabarspice.in",
+      "contact_phone": "+91 94470 28163",
+      "website": "malabarspice.in",
+      "category": "Spices and spice extracts",
+      "bank_account_holder": "Malabar Spice Exports Pvt Ltd",
+      "bank_account_number": "50100274439081",
+      "bank_ifsc": "HDFC0000053",
+      "bank_name": "Hdfc Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Malabar_Certificate_of_Incorporation.pdf",
+      "gst": "Malabar_GST_REG-06.pdf",
+      "pan": "Malabar_Scan_0412.pdf",
+      "bank_proof": "Malabar_Cancelled_Cheque.png"
+    },
+    "resubmission": {
+      "pan": "resubmission/Malabar_PAN_Card.png"
+    }
   }
 ]

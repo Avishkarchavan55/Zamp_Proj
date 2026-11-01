@@ -278,5 +278,13 @@
     "status": "Active",
     "state_code": "08",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "32AAHCM6120L1ZK",
+    "legal_name": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "trade_name": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "32",
+    "constitution": "Private Limited Company"
   }
 ]

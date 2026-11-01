@@ -115,6 +115,12 @@ Folder: `4-edge-case-email-rajputana`. It will not fit in five minutes with the 
 [Gmail: send the email with all four attachments. Open All vendors when the row appears. Open the link in the email and press Confirm. Then Needs attention.]
 **"A different kind of email edge case. This vendor sends a complete set, but look at the cheque: it prints HDFC Bank, while the IFSC code belongs to ICICI, and the file was saved from Photoshop. Neither is proof of fraud, so the system does not reject. It puts the vendor in Needs attention with both findings side by side, and a person decides."**
 
+## Extra edge case (spare): Malabar, by Google Form, wrong document then fixed
+Folder: `5-edge-case-google-form-malabar`. Use it instead of Bhavani if you prefer a "fix and approve" story over a rejection.
+
+[Google Form: attach the four files, including `Malabar_Scan_0412.pdf` in the PAN field. Submit. Open All vendors, then the vendor: Waiting for vendor, "the file in this slot is a GST certificate, not a PAN card". Open the link from the email, upload `send-later/Malabar_PAN_Card.png`, submit. Approved.]
+**"A vendor made an honest mistake: in the PAN field they attached the GST certificate again. The system reads what each file actually is, not what the slot says. It does not reject. It asks for exactly one thing, the PAN card, with a link. The vendor uploads it, only the PAN checks re-run, and the application is approved."**
+
 
 ## If you run long (cut in this order)
 1. The Info sentence in the walkthrough.

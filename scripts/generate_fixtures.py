@@ -498,6 +498,17 @@ VENDORS["rajputana"] = dict(
     cheque_software="Adobe Photoshop 25.0 (Windows)",
 )
 
+VENDORS["malabar"] = dict(
+    legal_name="MALABAR SPICE EXPORTS PRIVATE LIMITED", form_name="Malabar Spice Exports Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCM6120L", state_code="32", cin="U15400KL2016PTC045512", inc_date=(9, 5, 2016),
+    address="Door 14/221, Willingdon Island", city="Kochi", state="Kerala", pincode="682003",
+    contact_name="Anita Menon", contact_email="accounts@malabarspice.in", contact_phone="+91 94470 28163",
+    owner_name="Anita Menon", website="malabarspice.in", category="Spices and spice extracts",
+    ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+    account="50100274439081", cheque_name="MALABAR SPICE EXPORTS PVT LTD", micr="560240004",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1219,6 +1230,22 @@ ATTACH: {', '.join(rj_files)}
                       summary="Vendor emails a complete set, but the cheque prints HDFC while its IFSC belongs to ICICI and the image was saved from Photoshop.",
                       expected="Waiting for vendor (confirm details) -> confirm -> Needs attention (bank/IFSC mismatch + editing-software hint)",
                       form=form_for(v), files={}, email_files=rj_files, resubmission={}))
+
+    v = VENDORS["malabar"]
+    ml_dir = os.path.join(PUBLIC, "malabar")
+    os.makedirs(os.path.join(ml_dir, "resubmission"), exist_ok=True)
+    ml_files = dict(
+        incorporation=write(ml_dir, "Malabar_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(ml_dir, "Malabar_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        # The mistake: the GST certificate is uploaded again in the PAN slot.
+        pan=write(ml_dir, "Malabar_Scan_0412.pdf", gst_pdf(v), truth_gst(v)),
+        bank_proof=write(ml_dir, "Malabar_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    ml_resub = "resubmission/" + write(os.path.join(ml_dir, "resubmission"), "Malabar_PAN_Card.png", pan_card_png(v), truth_pan(v))
+    index.append(dict(id="malabar", group="demo", title="Wrong document in the PAN field (Google Form)", vendor=v["form_name"],
+                      summary="The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
+                      expected="Awaiting vendor (PAN card) -> resubmission -> Approved", form=form_for(v), files=ml_files,
+                      resubmission=dict(pan=ml_resub)))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)
