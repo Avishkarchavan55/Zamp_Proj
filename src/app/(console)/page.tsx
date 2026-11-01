@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Plus, QrCode } from "@/components/icons";
+import { ArrowRight, CheckCircle2, ChevronRight, Eye, GitBranch, Hourglass, Inbox, Plus, QrCode, Scale, ScanSearch, ShieldAlert, ShieldCheck, XCircle } from "@/components/icons";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
 import type { AppListRow, AuditRow } from "@/components/api-types";
-import { Badge, Button, Card, CardHeader, Empty, PageHeader, Skeleton, StatusPill, ago, cx } from "@/components/ui";
+import { Button, Card, CardHeader, Empty, PageHeader, Skeleton, ago, cx } from "@/components/ui";
 import { isHighRisk, isUnresponsive, needsAttention } from "@/lib/attention";
 import { WakeUp } from "@/components/wake-up";
 import { eventLabel } from "@/lib/activity";
@@ -149,20 +149,28 @@ export default function Overview() {
   );
 }
 
-const STEPS: { title: string; by: string; tone: "brand" | "neutral" | "info"; text: string }[] = [
-  { title: "Application arrives", by: "System", tone: "neutral", text: "Through the supplier portal, an email with attachments, or the Google Form. Documents are stored privately and a run starts at once." },
-  { title: "Documents are classified and read", by: "AI", tone: "brand", text: "Each upload is identified (GST certificate, PAN, cheque and so on) and its fields are read with a quote, a confidence and a location. If one model is busy, the next takes over." },
-  { title: "Identifiers are validated", by: "Rules", tone: "neutral", text: "PAN, GSTIN with its check digit, IFSC, CIN, Udyam and phone numbers are checked against their official structure, in code and never by AI." },
-  { title: "Everything is cross-checked", by: "Rules and live lookups", tone: "info", text: "Form against documents, GSTIN against PAN, names and states, the bank from the IFSC directory and the pincode from India Post." },
-  { title: "Risk and duplicates", by: "Rules", tone: "neutral", text: "A bank account used by another vendor, an existing PAN or GSTIN, documents edited in image software, and the sender's email authenticity." },
-  { title: "Decision by written policy", by: "Rules", tone: "neutral", text: "Four rules are applied top to bottom and the first match decides. The reason and the evidence are recorded." },
-] as const;
+type Actor = "System" | "AI" | "Rules" | "Rules and live lookups";
+const STEPS: { title: string; by: Actor; Icon: React.ElementType; text: string; chips: string[] }[] = [
+  { title: "Application arrives", by: "System", Icon: Inbox, text: "Documents are stored privately and a run starts at once.", chips: ["Portal", "Email", "Google Form"] },
+  { title: "Documents are read", by: "AI", Icon: ScanSearch, text: "Each upload is identified and its fields read with a quote, a confidence and a location. If one model is busy, the next takes over.", chips: ["GST", "PAN", "Cheque", "Udyam"] },
+  { title: "Identifiers are validated", by: "Rules", Icon: ShieldCheck, text: "Official structure and check digit, in code and never by AI.", chips: ["PAN", "GSTIN", "IFSC", "CIN"] },
+  { title: "Everything is cross-checked", by: "Rules and live lookups", Icon: GitBranch, text: "Form against documents, GSTIN against PAN, names and states, the bank from the IFSC directory, the pincode from India Post.", chips: ["Names", "State", "Bank", "Pincode"] },
+  { title: "Risk and duplicates", by: "Rules", Icon: ShieldAlert, text: "A bank account used by another vendor, a known PAN or GSTIN, documents edited in image software, the sender's authenticity.", chips: ["Duplicates", "Tampering", "Sender"] },
+  { title: "Decision by written policy", by: "Rules", Icon: Scale, text: "Four rules are applied top to bottom and the first match decides. The reason and the evidence are recorded.", chips: ["R1", "R2", "R3", "R4"] },
+];
 
-const OUTCOMES: { status: "approved" | "awaiting_vendor" | "in_review" | "rejected"; text: string }[] = [
-  { status: "approved", text: "ERP vendor record, conditions attached, supplier notified." },
-  { status: "awaiting_vendor", text: "Supplier emailed what is missing, then reminded." },
-  { status: "in_review", text: "A person decides, with the evidence laid out." },
-  { status: "rejected", text: "A person tells the supplier, with the reason." },
+const ACTOR: Record<Actor, { tile: string; tag: string }> = {
+  System: { tile: "bg-navy-soft text-ink", tag: "bg-navy-soft text-ink-2" },
+  AI: { tile: "bg-brand text-white", tag: "bg-brand-soft text-brand-2" },
+  Rules: { tile: "bg-navy text-white", tag: "bg-navy-soft text-ink-2" },
+  "Rules and live lookups": { tile: "bg-[#0043ce] text-white", tag: "bg-info-soft text-info-ink" },
+};
+
+const OUTCOMES: { status: "approved" | "awaiting_vendor" | "in_review" | "rejected"; label: string; Icon: React.ElementType; bar: string; tile: string; text: string }[] = [
+  { status: "approved", label: "Approved", Icon: CheckCircle2, bar: "bg-good", tile: "bg-good-soft text-good-ink", text: "ERP vendor record, conditions attached, supplier notified." },
+  { status: "awaiting_vendor", label: "Waiting for vendor", Icon: Hourglass, bar: "bg-warn", tile: "bg-warn-soft text-warn-ink", text: "Supplier emailed what is missing, then reminded." },
+  { status: "in_review", label: "Needs attention", Icon: Eye, bar: "bg-serious", tile: "bg-serious-soft text-serious-ink", text: "A person decides, with the evidence laid out." },
+  { status: "rejected", label: "Rejected", Icon: XCircle, bar: "bg-critical", tile: "bg-critical-soft text-critical-ink", text: "A person tells the supplier, with the reason." },
 ];
 
 /** The whole journey of an application, from arrival to outcome, in the order it happens. */
@@ -170,35 +178,58 @@ function Workflow() {
   return (
     <Card>
       <CardHeader title="How an application is processed" subtitle="From the moment details and documents arrive to the outcome" />
-      <ol className="px-4 py-4">
-        {STEPS.map((st, i) => (
-          <li key={st.title} className="relative flex gap-3 pb-4">
-            {i < STEPS.length && <span aria-hidden className="absolute left-[11px] top-6 h-[calc(100%-1.5rem)] w-px bg-line-strong" />}
-            <span className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-line-strong bg-surface text-[12px] font-semibold tabular-nums text-ink-2">{i + 1}</span>
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-[14px] font-semibold leading-6 text-ink">{st.title}</h3>
-                <Badge tone={st.tone}>{st.by}</Badge>
-              </div>
-              <p className="text-[13px] leading-5 text-ink-2">{st.text}</p>
-            </div>
-          </li>
-        ))}
-        <li className="relative flex gap-3">
-          <span className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-action text-[12px] font-semibold tabular-nums text-white">{STEPS.length + 1}</span>
-          <div className="min-w-0 flex-1">
-            <h3 className="text-[14px] font-semibold leading-6 text-ink">One of four outcomes</h3>
-            <ul className="mt-1 divide-y divide-line border border-line">
-              {OUTCOMES.map((o) => (
-                <li key={o.status} className="grid gap-x-3 gap-y-1 px-3 py-2 sm:grid-cols-[150px_1fr] sm:items-center">
-                  <span><StatusPill status={o.status} /></span>
-                  <span className="text-[13px] leading-5 text-ink-2">{o.text}</span>
-                </li>
-              ))}
-            </ul>
+      <div className="space-y-5 px-4 py-5">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] font-medium text-ink-2">
+          {["Arrives", "AI reads", "Rules check", "Policy decides", "Outcome"].map((t, i, all) => (
+            <span key={t} className="flex items-center gap-2">
+              <span className={cx("rounded-full px-2.5 py-1", i === 1 ? "bg-brand text-white" : i === all.length - 1 ? "bg-action text-white" : "bg-navy-soft text-ink")}>{t}</span>
+              {i < all.length - 1 && <ArrowRight className="h-3.5 w-3.5 text-ink-3" aria-hidden />}
+            </span>
+          ))}
+        </div>
+
+        <ol className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {STEPS.map((st, i) => {
+            const a = ACTOR[st.by];
+            return (
+              <li key={st.title} className="group relative flex min-w-0 flex-col border border-line bg-surface p-3.5 transition-all duration-150 hover:-translate-y-0.5 hover:border-brand hover:shadow-md">
+                <div className="flex items-start justify-between gap-2">
+                  <span className={cx("flex h-10 w-10 shrink-0 items-center justify-center", a.tile)}><st.Icon className="h-5 w-5" aria-hidden /></span>
+                  <span className="text-[28px] font-light leading-none tabular-nums text-line-strong/60">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <h3 className="mt-3 text-[14px] font-semibold leading-5 text-ink">{st.title}</h3>
+                <span className={cx("mt-1 w-fit px-1.5 py-0.5 text-[11px] font-medium", a.tag)}>{st.by}</span>
+                <p className="mt-2 flex-1 text-[13px] leading-5 text-ink-2">{st.text}</p>
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {st.chips.map((c) => <span key={c} className="border border-line bg-field px-1.5 py-0.5 text-[11px] text-ink-2">{c}</span>)}
+                </div>
+                {i % 3 !== 2 && <ChevronRight aria-hidden className="absolute -right-[13px] top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 bg-surface text-brand xl:block" />}
+              </li>
+            );
+          })}
+        </ol>
+
+        <div>
+          <div className="mb-2 flex items-center gap-3">
+            <span className="text-[12px] font-semibold uppercase tracking-wide text-ink-2">Then, one of four outcomes</span>
+            <span className="h-px flex-1 bg-line" />
           </div>
-        </li>
-      </ol>
+          <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {OUTCOMES.map((o) => (
+              <li key={o.status} className="min-w-0 border border-line bg-surface">
+                <span className={cx("block h-1", o.bar)} />
+                <div className="p-3">
+                  <div className="flex items-center gap-2">
+                    <span className={cx("flex h-7 w-7 shrink-0 items-center justify-center", o.tile)}><o.Icon className="h-4 w-4" aria-hidden /></span>
+                    <span className="text-[13px] font-semibold text-ink">{o.label}</span>
+                  </div>
+                  <p className="mt-2 text-[12.5px] leading-5 text-ink-2">{o.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </Card>
   );
 }
