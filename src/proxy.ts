@@ -6,7 +6,7 @@ import { SESSION_COOKIE, verifySession } from "./lib/session";
  * those authenticates itself (resubmission token, shared secret, Turnstile).
  */
 const PUBLIC_PREFIXES = [
-  "/login", "/apply", "/supplier", "/vendor/", "/demo/", "/test-cases/",
+  "/go", "/login", "/apply", "/supplier", "/vendor/", "/demo/", "/test-cases/",
   "/api/auth/", "/api/vendor/", "/api/intake/", "/api/n8n/", "/api/health", "/api/channels",
   // The supplier portal has its own sign-in (reference + email); it never grants staff access.
   "/portal", "/api/supplier/",
