@@ -1,4 +1,4 @@
-# Extra Google Form edge case: Malabar Spice Exports (wrong document, then fixed)
+# Part 6: Malabar Spice Exports (edge case, Google Form, wrong document)
 
 The vendor **attached the wrong file in the PAN card field** (the GST certificate again, in a file called `Malabar_Scan_0412.pdf`). VendorIQ notices, asks for the right one, and approves after the vendor resubmits.
 

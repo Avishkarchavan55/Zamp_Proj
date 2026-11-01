@@ -520,6 +520,18 @@ VENDORS["konkan"] = dict(
     account="002705418836", cheque_name="KONKAN COASTAL FOODS PVT LTD", micr="422229002",
 )
 
+VENDORS["vidarbha"] = dict(
+    legal_name="VIDARBHA OFFICE TRADERS PRIVATE LIMITED", form_name="Vidarbha Office Traders Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCV5408H", state_code="27", cin="U51909MH2019PTC324471", inc_date=(3, 6, 2019),
+    address="Shop 14, Itwari Market Road", city="Nagpur", state="Maharashtra", pincode="440002",
+    contact_name="Rohan Deshpande", contact_email="accounts@vidarbhatraders.in", contact_phone="+91 98230 60418",
+    owner_name="Rohan Deshpande", website="vidarbhatraders.in", category="Office stationery and consumables",
+    # Same account as Apex Facility Services (an existing approved vendor): payment-diversion pattern.
+    ifsc="SBIN0000847", bank="STATE BANK OF INDIA", branch="HYDERABAD MAIN",
+    account="38291045672", cheque_name="VIDARBHA OFFICE TRADERS PVT LTD", micr="500002003",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1271,6 +1283,36 @@ ATTACH: {', '.join(rj_files)}
                       summary="A complete, consistent private limited company with four documents and no MSME registration.",
                       expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=kk_files,
                       resubmission={}))
+
+    v = VENDORS["vidarbha"]
+    vd_dir = os.path.join(PUBLIC, "email-vidarbha")
+    os.makedirs(vd_dir, exist_ok=True)
+    vd_files = [
+        write(vd_dir, "Vidarbha_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        write(vd_dir, "Vidarbha_GST_Certificate.pdf", gst_pdf(v), truth_gst(v)),
+        write(vd_dir, "Vidarbha_PAN.png", pan_card_png(v), truth_pan(v)),
+        write(vd_dir, "Vidarbha_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    ]
+    with open(os.path.join(vd_dir, "EMAIL.txt"), "w", encoding="utf8") as fh:
+        fh.write(f"""To: the onboarding inbox
+Subject: Vendor registration - Vidarbha Office Traders
+
+Hello Acme team,
+
+We supply office stationery and consumables from Nagpur and would like to register as your supplier.
+All four documents, including our cancelled cheque, are attached.
+
+Regards,
+Rohan Deshpande
+Vidarbha Office Traders Pvt Ltd
++91 98230 60418
+
+ATTACH: {', '.join(vd_files)}
+""")
+    index.append(dict(id="email-vidarbha", group="email", title="Email intake: Vidarbha Office Traders (bank account of another vendor)", vendor=v["form_name"],
+                      summary="Vendor emails a complete, consistent set, but the cheque's account already belongs to Apex Facility Services, a different company.",
+                      expected="Rejected - bank account linked to another legal entity",
+                      form=form_for(v), files={}, email_files=vd_files, resubmission={}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

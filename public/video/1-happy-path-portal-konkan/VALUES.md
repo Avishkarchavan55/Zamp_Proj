@@ -1,6 +1,6 @@
-# Extra happy path: Konkan Coastal Foods (portal, not MSME)
+# Part 4: Konkan Coastal Foods (happy path, supplier portal)
 
-A clean private limited company in Ratnagiri with **four documents and no MSME registration**. Shorter than Sundaram (no Udyam certificate, no 45-day condition).
+A clean private limited company in Ratnagiri with **four documents and no MSME registration**. Plain and quick: no MSME, so no payment-terms condition.
 
 **Where:** Supplier portal, Become a supplier, then Apply.
 **Fastest:** on the Apply page use *Staff tool: fill this form with a sample vendor* and pick **Private limited, not MSME**. It fills every field and attaches all four documents. **Change the contact email to your own**, then press **Submit application**.

@@ -1,0 +1,14 @@
+To: the onboarding inbox
+Subject: Vendor registration - Vidarbha Office Traders
+
+Hello Acme team,
+
+We supply office stationery and consumables from Nagpur and would like to register as your supplier.
+All four documents, including our cancelled cheque, are attached.
+
+Regards,
+Rohan Deshpande
+Vidarbha Office Traders Pvt Ltd
++91 98230 60418
+
+ATTACH: Vidarbha_Certificate_of_Incorporation.pdf, Vidarbha_GST_Certificate.pdf, Vidarbha_PAN.png, Vidarbha_Cancelled_Cheque.png
