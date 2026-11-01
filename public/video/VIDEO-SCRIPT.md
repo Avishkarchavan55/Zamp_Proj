@@ -109,6 +109,13 @@ Folder: `3-edge-case-google-form-bhavani`. Use the pre-filled Google Form link f
 
 ---
 
+## Extra edge case (spare, if you have time): Rajputana, by email, doctored cheque
+Folder: `4-edge-case-email-rajputana`. It will not fit in five minutes with the other three; use it instead of Himalaya for a "risk" story, or as a second take.
+
+[Gmail: send the email with all four attachments. Open All vendors when the row appears. Open the link in the email and press Confirm. Then Needs attention.]
+**"A different kind of email edge case. This vendor sends a complete set, but look at the cheque: it prints HDFC Bank, while the IFSC code belongs to ICICI, and the file was saved from Photoshop. Neither is proof of fraud, so the system does not reject. It puts the vendor in Needs attention with both findings side by side, and a person decides."**
+
+
 ## If you run long (cut in this order)
 1. The Info sentence in the walkthrough.
 2. The supplier portal check in the Himalaya case.

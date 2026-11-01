@@ -1414,5 +1414,46 @@
       "bank_proof": "Bhavani_Cancelled_Cheque.png"
     },
     "resubmission": {}
+  },
+  {
+    "id": "email-rajputana",
+    "group": "email",
+    "title": "Email intake: Rajputana Textiles (doctored cheque)",
+    "vendor": "Rajputana Textiles Private Limited",
+    "summary": "Vendor emails a complete set, but the cheque prints HDFC while its IFSC belongs to ICICI and the image was saved from Photoshop.",
+    "expected": "Waiting for vendor (confirm details) -> confirm -> Needs attention (bank/IFSC mismatch + editing-software hint)",
+    "form": {
+      "legal_name": "Rajputana Textiles Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAGCR7716K",
+      "gstin": "08AAGCR7716K1ZX",
+      "cin": "U17111RJ2015PTC048827",
+      "owner_name": "Vikram Shekhawat",
+      "address": "Plot F-24, Sitapura Industrial Area",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "pincode": "302022",
+      "contact_name": "Vikram Shekhawat",
+      "contact_email": "accounts@rajputanatextiles.in",
+      "contact_phone": "+91 98290 31472",
+      "website": "rajputanatextiles.in",
+      "category": "Block-printed fabrics",
+      "bank_account_holder": "Rajputana Textiles Pvt Ltd",
+      "bank_account_number": "50100417725639",
+      "bank_ifsc": "ICIC0000027",
+      "bank_name": "Hdfc Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {},
+    "email_files": [
+      "Rajputana_Certificate_of_Incorporation.pdf",
+      "Rajputana_GST_Certificate.pdf",
+      "Rajputana_PAN.png",
+      "Rajputana_Cancelled_Cheque.png"
+    ],
+    "resubmission": {}
   }
 ]

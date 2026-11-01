@@ -486,6 +486,18 @@ VENDORS["bhavani"] = dict(
     gst_status="Cancelled",
 )
 
+VENDORS["rajputana"] = dict(
+    legal_name="RAJPUTANA TEXTILES PRIVATE LIMITED", form_name="Rajputana Textiles Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCR7716K", state_code="08", cin="U17111RJ2015PTC048827", inc_date=(14, 2, 2015),
+    address="Plot F-24, Sitapura Industrial Area", city="Jaipur", state="Rajasthan", pincode="302022",
+    contact_name="Vikram Shekhawat", contact_email="accounts@rajputanatextiles.in", contact_phone="+91 98290 31472",
+    owner_name="Vikram Shekhawat", website="rajputanatextiles.in", category="Block-printed fabrics",
+    ifsc="ICIC0000027", bank="HDFC BANK", branch="JAIPUR",
+    account="50100417725639", cheque_name="RAJPUTANA TEXTILES PVT LTD", micr="302240002",
+    cheque_software="Adobe Photoshop 25.0 (Windows)",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1177,6 +1189,36 @@ Then REPLY to VendorIQ's request email and attach: {hm_reply}
     index.append(dict(id="bhavani", group="demo", title="Cancelled GST registration", vendor=v["form_name"],
                       summary="Everything else is consistent, but the GST registration has been cancelled. Best tried through the Google Form.",
                       expected="Rejected - GST registration cancelled", form=form_for(v), files=bh_files, resubmission={}))
+
+    v = VENDORS["rajputana"]
+    rj_dir = os.path.join(PUBLIC, "email-rajputana")
+    os.makedirs(rj_dir, exist_ok=True)
+    rj_files = [
+        write(rj_dir, "Rajputana_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        write(rj_dir, "Rajputana_GST_Certificate.pdf", gst_pdf(v), truth_gst(v)),
+        write(rj_dir, "Rajputana_PAN.png", pan_card_png(v), truth_pan(v)),
+        write(rj_dir, "Rajputana_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    ]
+    with open(os.path.join(rj_dir, "EMAIL.txt"), "w", encoding="utf8") as fh:
+        fh.write(f"""To: the onboarding inbox
+Subject: New vendor registration - Rajputana Textiles
+
+Hello Acme team,
+
+We supply block-printed fabrics from Jaipur and would like to register as your supplier.
+All four documents, including our cancelled cheque, are attached.
+
+Regards,
+Vikram Shekhawat
+Rajputana Textiles Pvt Ltd
++91 98290 31472
+
+ATTACH: {', '.join(rj_files)}
+""")
+    index.append(dict(id="email-rajputana", group="email", title="Email intake: Rajputana Textiles (doctored cheque)", vendor=v["form_name"],
+                      summary="Vendor emails a complete set, but the cheque prints HDFC while its IFSC belongs to ICICI and the image was saved from Photoshop.",
+                      expected="Waiting for vendor (confirm details) -> confirm -> Needs attention (bank/IFSC mismatch + editing-software hint)",
+                      form=form_for(v), files={}, email_files=rj_files, resubmission={}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

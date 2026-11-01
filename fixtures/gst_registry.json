@@ -270,5 +270,13 @@
     "status": "Cancelled",
     "state_code": "24",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "08AAGCR7716K1ZX",
+    "legal_name": "RAJPUTANA TEXTILES PRIVATE LIMITED",
+    "trade_name": "RAJPUTANA TEXTILES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "08",
+    "constitution": "Private Limited Company"
   }
 ]

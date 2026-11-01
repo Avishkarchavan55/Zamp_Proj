@@ -1,0 +1,14 @@
+To: the onboarding inbox
+Subject: New vendor registration - Rajputana Textiles
+
+Hello Acme team,
+
+We supply block-printed fabrics from Jaipur and would like to register as your supplier.
+All four documents, including our cancelled cheque, are attached.
+
+Regards,
+Vikram Shekhawat
+Rajputana Textiles Pvt Ltd
++91 98290 31472
+
+ATTACH: Rajputana_Certificate_of_Incorporation.pdf, Rajputana_GST_Certificate.pdf, Rajputana_PAN.png, Rajputana_Cancelled_Cheque.png
