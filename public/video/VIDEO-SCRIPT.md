@@ -104,25 +104,6 @@ Folder: `3-edge-case-google-form-malabar`. Use the pre-filled Google Form link f
 
 ---
 
-## Extra edge case (spare, if you have time): Rajputana, by email, doctored cheque
-Folder: `4-edge-case-email-rajputana`. It will not fit in five minutes with the other three; use it instead of Himalaya for a "risk" story, or as a second take.
-
-[Gmail: send the email with all four attachments. Open All vendors when the row appears. Open the link in the email and press Confirm. Then Needs attention.]
-**"A different kind of email edge case. This vendor sends a complete set, but look at the cheque: it prints HDFC Bank, while the IFSC code belongs to ICICI, and the file was saved from Photoshop. Neither is proof of fraud, so the system does not reject. It puts the vendor in Needs attention with both findings side by side, and a person decides."**
-
-## Extra edge case (spare): Malabar, by Google Form, wrong document then fixed
-Folder: `5-edge-case-google-form-malabar`. Use it instead of Bhavani if you prefer a "fix and approve" story over a rejection.
-
-[Google Form: attach the four files, including `Malabar_Scan_0412.pdf` in the PAN field. Submit. Open All vendors, then the vendor: Waiting for vendor, "the file in this slot is a GST certificate, not a PAN card". Open the link from the email, upload `send-later/Malabar_PAN_Card.png`, submit. Approved.]
-**"A vendor made an honest mistake: in the PAN field they attached the GST certificate again. The system reads what each file actually is, not what the slot says. It does not reject. It asks for exactly one thing, the PAN card, with a link. The vendor uploads it, only the PAN checks re-run, and the application is approved."**
-
-## Extra happy path (spare): Konkan, through the supplier portal, not MSME
-Folder: `6-happy-path-portal-konkan`. Same flow as Sundaram but shorter: four documents, no MSME condition. Use it if you want a quicker happy path, or as a second take.
-
-[Apply page: fill tool, Private limited, not MSME. Change the email to your own. Submit. The run page ticks through. Approved. Open the vendor: one condition, bank ownership, and the ERP record.]
-**"A plain case: Konkan Coastal Foods, four documents, nothing unusual. Everything checks out and it is approved in about a minute. The one condition is the bank: a cheque cannot prove who owns the account, so the system asks us to confirm it before the first payment."**
-
-
 ## If you run long (cut in this order)
 1. The Info sentence in the walkthrough.
 2. The supplier portal Notifications line in the happy path.
