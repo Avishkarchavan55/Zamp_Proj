@@ -8,9 +8,10 @@ Everything needed to record the 5-minute video. Script: [VIDEO-SCRIPT.md](./VIDE
 | `2-edge-case-email-himalaya` | Part 5 | Email | **Waiting for vendor** (cheque + confirm details), then **Approved** after the reply |
 | `3-edge-case-google-form-bhavani` | Part 6 | Google Form | **Rejected**: GST registration cancelled |
 | `5-edge-case-google-form-malabar` | Spare / extra edge | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
+| `6-happy-path-portal-konkan` | Spare / extra happy path | Supplier portal (Apply) | **Approved**, one condition: bank ownership check (not MSME, four documents) |
 | `4-edge-case-email-rajputana` | Spare / extra edge | Email | **Waiting for vendor** (confirm details), then **Needs attention**: cheque bank does not match IFSC, edited in Photoshop |
 
-Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional. These five vendors have never been submitted, so each runs fresh once.
+Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional. These six vendors have never been submitted, so each runs fresh once.
 
 ## Before you record (once)
 1. Press **Wake up** (top right of Overview). It checks the database, n8n, the Gmail inbox, the Google Form, the AI readers and any stuck emails or runs, and fixes what it can.

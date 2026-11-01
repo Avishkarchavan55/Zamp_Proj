@@ -509,6 +509,17 @@ VENDORS["malabar"] = dict(
     account="50100274439081", cheque_name="MALABAR SPICE EXPORTS PVT LTD", micr="560240004",
 )
 
+VENDORS["konkan"] = dict(
+    legal_name="KONKAN COASTAL FOODS PRIVATE LIMITED", form_name="Konkan Coastal Foods Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCK4417Q", state_code="27", cin="U15122MH2017PTC298754", inc_date=(22, 9, 2017),
+    address="Plot 9, MIDC Mirjole", city="Ratnagiri", state="Maharashtra", pincode="415612",
+    contact_name="Sneha Joshi", contact_email="accounts@konkancoastal.in", contact_phone="+91 98600 41275",
+    owner_name="Sneha Joshi", website="konkancoastal.in", category="Seafood processing and packaging",
+    ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
+    account="002705418836", cheque_name="KONKAN COASTAL FOODS PVT LTD", micr="422229002",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1246,6 +1257,20 @@ ATTACH: {', '.join(rj_files)}
                       summary="The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
                       expected="Awaiting vendor (PAN card) -> resubmission -> Approved", form=form_for(v), files=ml_files,
                       resubmission=dict(pan=ml_resub)))
+
+    v = VENDORS["konkan"]
+    kk_dir = os.path.join(PUBLIC, "konkan")
+    os.makedirs(kk_dir, exist_ok=True)
+    kk_files = dict(
+        incorporation=write(kk_dir, "Konkan_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(kk_dir, "Konkan_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(kk_dir, "Konkan_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(kk_dir, "Konkan_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    index.append(dict(id="konkan", group="example", title="Private limited, not MSME", vendor=v["form_name"],
+                      summary="A complete, consistent private limited company with four documents and no MSME registration.",
+                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=kk_files,
+                      resubmission={}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

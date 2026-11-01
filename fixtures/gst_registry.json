@@ -286,5 +286,13 @@
     "status": "Active",
     "state_code": "32",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "27AAHCK4417Q1ZZ",
+    "legal_name": "KONKAN COASTAL FOODS PRIVATE LIMITED",
+    "trade_name": "KONKAN COASTAL FOODS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "27",
+    "constitution": "Private Limited Company"
   }
 ]

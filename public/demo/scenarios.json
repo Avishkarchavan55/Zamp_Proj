@@ -1497,5 +1497,45 @@
     "resubmission": {
       "pan": "resubmission/Malabar_PAN_Card.png"
     }
+  },
+  {
+    "id": "konkan",
+    "group": "example",
+    "title": "Private limited, not MSME",
+    "vendor": "Konkan Coastal Foods Private Limited",
+    "summary": "A complete, consistent private limited company with four documents and no MSME registration.",
+    "expected": "Approved (bank ownership condition before first payment)",
+    "form": {
+      "legal_name": "Konkan Coastal Foods Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAHCK4417Q",
+      "gstin": "27AAHCK4417Q1ZZ",
+      "cin": "U15122MH2017PTC298754",
+      "owner_name": "Sneha Joshi",
+      "address": "Plot 9, MIDC Mirjole",
+      "city": "Ratnagiri",
+      "state": "Maharashtra",
+      "pincode": "415612",
+      "contact_name": "Sneha Joshi",
+      "contact_email": "accounts@konkancoastal.in",
+      "contact_phone": "+91 98600 41275",
+      "website": "konkancoastal.in",
+      "category": "Seafood processing and packaging",
+      "bank_account_holder": "Konkan Coastal Foods Pvt Ltd",
+      "bank_account_number": "002705418836",
+      "bank_ifsc": "ICIC0000027",
+      "bank_name": "Icici Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Konkan_Certificate_of_Incorporation.pdf",
+      "gst": "Konkan_GST_REG-06.pdf",
+      "pan": "Konkan_PAN_Card.png",
+      "bank_proof": "Konkan_Cancelled_Cheque.png"
+    },
+    "resubmission": {}
   }
 ]

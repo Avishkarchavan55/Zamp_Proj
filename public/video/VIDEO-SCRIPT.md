@@ -121,6 +121,12 @@ Folder: `5-edge-case-google-form-malabar`. Use it instead of Bhavani if you pref
 [Google Form: attach the four files, including `Malabar_Scan_0412.pdf` in the PAN field. Submit. Open All vendors, then the vendor: Waiting for vendor, "the file in this slot is a GST certificate, not a PAN card". Open the link from the email, upload `send-later/Malabar_PAN_Card.png`, submit. Approved.]
 **"A vendor made an honest mistake: in the PAN field they attached the GST certificate again. The system reads what each file actually is, not what the slot says. It does not reject. It asks for exactly one thing, the PAN card, with a link. The vendor uploads it, only the PAN checks re-run, and the application is approved."**
 
+## Extra happy path (spare): Konkan, through the supplier portal, not MSME
+Folder: `6-happy-path-portal-konkan`. Same flow as Sundaram but shorter: four documents, no MSME condition. Use it if you want a quicker happy path, or as a second take.
+
+[Apply page: fill tool, Private limited, not MSME. Change the email to your own. Submit. The run page ticks through. Approved. Open the vendor: one condition, bank ownership, and the ERP record.]
+**"A plain case: Konkan Coastal Foods, four documents, nothing unusual. Everything checks out and it is approved in about a minute. The one condition is the bank: a cheque cannot prove who owns the account, so the system asks us to confirm it before the first payment."**
+
 
 ## If you run long (cut in this order)
 1. The Info sentence in the walkthrough.
