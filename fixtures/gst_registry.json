@@ -302,5 +302,13 @@
     "status": "Active",
     "state_code": "27",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "36AAHCK9162D1ZF",
+    "legal_name": "KAKATIYA RICE MILLS PRIVATE LIMITED",
+    "trade_name": "KAKATIYA RICE MILLS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "36",
+    "constitution": "Private Limited Company"
   }
 ]

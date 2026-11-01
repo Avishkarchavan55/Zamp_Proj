@@ -1578,5 +1578,45 @@
       "Vidarbha_Cancelled_Cheque.png"
     ],
     "resubmission": {}
+  },
+  {
+    "id": "kakatiya",
+    "group": "example",
+    "title": "Private limited, not MSME (second)",
+    "vendor": "Kakatiya Rice Mills Private Limited",
+    "summary": "A complete, consistent private limited company with four documents and no MSME registration.",
+    "expected": "Approved (bank ownership condition before first payment)",
+    "form": {
+      "legal_name": "Kakatiya Rice Mills Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAHCK9162D",
+      "gstin": "36AAHCK9162D1ZF",
+      "cin": "U15312TG2018PTC124856",
+      "owner_name": "Srinivas Reddy",
+      "address": "Survey No. 212, Hanamkonda Road",
+      "city": "Warangal",
+      "state": "Telangana",
+      "pincode": "506002",
+      "contact_name": "Srinivas Reddy",
+      "contact_email": "accounts@kakatiyarice.in",
+      "contact_phone": "+91 94400 52871",
+      "website": "kakatiyarice.in",
+      "category": "Rice milling and packaged rice",
+      "bank_account_holder": "Kakatiya Rice Mills Pvt Ltd",
+      "bank_account_number": "8814026673",
+      "bank_ifsc": "KKBK0000721",
+      "bank_name": "Kotak Mahindra Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Kakatiya_Certificate_of_Incorporation.pdf",
+      "gst": "Kakatiya_GST_REG-06.pdf",
+      "pan": "Kakatiya_PAN_Card.png",
+      "bank_proof": "Kakatiya_Cancelled_Cheque.png"
+    },
+    "resubmission": {}
   }
 ]

@@ -4,7 +4,8 @@ Everything needed to record the 5-minute video. Script: [VIDEO-SCRIPT.md](./VIDE
 
 | Folder | Used in | Channel | Expected result |
 |---|---|---|---|
-| `1-happy-path-portal-gomti` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
+| `4-happy-path-portal-kakatiya` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
+| `1-happy-path-portal-gomti` | already used | Supplier portal (Apply) | Gomti is already in the system; keep only as a reference |
 | `2-edge-case-email-vidarbha` | Part 5 | Email | **Rejected**: bank account already belongs to Apex Facility Services (fraud pattern) |
 | `3-edge-case-google-form-nilgiri` | Part 6 | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
 

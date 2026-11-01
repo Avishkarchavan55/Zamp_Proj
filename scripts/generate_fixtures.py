@@ -532,6 +532,17 @@ VENDORS["vidarbha"] = dict(
     account="38291045672", cheque_name="VIDARBHA OFFICE TRADERS PVT LTD", micr="500002003",
 )
 
+VENDORS["kakatiya"] = dict(
+    legal_name="KAKATIYA RICE MILLS PRIVATE LIMITED", form_name="Kakatiya Rice Mills Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCK9162D", state_code="36", cin="U15312TG2018PTC124856", inc_date=(7, 12, 2018),
+    address="Survey No. 212, Hanamkonda Road", city="Warangal", state="Telangana", pincode="506002",
+    contact_name="Srinivas Reddy", contact_email="accounts@kakatiyarice.in", contact_phone="+91 94400 52871",
+    owner_name="Srinivas Reddy", website="kakatiyarice.in", category="Rice milling and packaged rice",
+    ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+    account="8814026673", cheque_name="KAKATIYA RICE MILLS PVT LTD", micr="411485002",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1313,6 +1324,20 @@ ATTACH: {', '.join(vd_files)}
                       summary="Vendor emails a complete, consistent set, but the cheque's account already belongs to Apex Facility Services, a different company.",
                       expected="Rejected - bank account linked to another legal entity",
                       form=form_for(v), files={}, email_files=vd_files, resubmission={}))
+
+    v = VENDORS["kakatiya"]
+    kt_dir = os.path.join(PUBLIC, "kakatiya")
+    os.makedirs(kt_dir, exist_ok=True)
+    kt_files = dict(
+        incorporation=write(kt_dir, "Kakatiya_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(kt_dir, "Kakatiya_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(kt_dir, "Kakatiya_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(kt_dir, "Kakatiya_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    index.append(dict(id="kakatiya", group="example", title="Private limited, not MSME (second)", vendor=v["form_name"],
+                      summary="A complete, consistent private limited company with four documents and no MSME registration.",
+                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=kt_files,
+                      resubmission={}))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)
