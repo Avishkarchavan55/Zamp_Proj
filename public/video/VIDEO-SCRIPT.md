@@ -9,9 +9,9 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 | 0:00 | 1. The problem | 0:30 |
 | 0:30 | 2. The solution | 0:30 |
 | 1:00 | 3. Portal walkthrough (company and supplier) | 1:00 |
-| 2:00 | 4. Happy path: Kakatiya, through the supplier portal | 1:00 |
+| 2:00 | 4. Happy path: Sutlej, through the supplier portal | 1:00 |
 | 3:00 | 5. Edge case 1: Vidarbha, by email, fraud | 1:00 |
-| 4:00 | 6. Edge case 2: Nilgiri, by Google Form, wrong document | 0:40 |
+| 4:00 | 6. Edge case 2: Utkal, by Google Form, wrong document | 0:40 |
 | 4:40 | 7. Close | 0:20 |
 
 ---
@@ -51,11 +51,11 @@ Every case below uses the files in this folder. Prepare everything in [README.md
 [Sign out. Pick Supplier portal, click one supplier from the list. 12 seconds. Show the sidebar: Supplier portal, Become a supplier, Notifications.]
 **"The supplier portal is what a vendor sees: where their application stands, exactly what is missing, and Notifications. Every email we send also appears here as a short note."**
 
-## 4. Happy path: Kakatiya, through the supplier portal (2:00 to 3:00)
-Folder: `4-happy-path-portal-kakatiya`. Be signed in to the Company portal in the same browser first, so the sample-fill tool shows.
+## 4. Happy path: Sutlej, through the supplier portal (2:00 to 3:00)
+Folder: `1-happy-path-portal-sutlej`. Be signed in to the Company portal in the same browser first, so the sample-fill tool shows.
 
 [Screen: supplier portal, Become a supplier, then Apply on the portal.]
-**"First, a normal vendor. Kakatiya Rice Mills, a rice miller in Warangal, applies through the portal."**
+**"First, a normal vendor. Sutlej Hosiery Mills, a knitwear maker in Ludhiana, applies through the portal."**
 
 [Use the fill tool: Private limited, not MSME. Fields and all four documents fill at once. Change the contact email to your own. Press Submit. 15 seconds. Cut here if it feels slow.]
 **"I have pre-filled the form to save time. Normally the vendor types this and attaches four documents."**
@@ -84,16 +84,16 @@ Folder: `2-edge-case-email-vidarbha`. Have the Gmail draft ready (see README), s
 [Point at Emails to vendors: nothing was sent. 10 seconds.]
 **"Notice nothing was emailed to the vendor. Rejections never go out automatically. A person decides what to say, and the case is flagged for the Finance Controller."**
 
-## 6. Edge case 2: Nilgiri, by Google Form, wrong document (4:00 to 4:40)
-Folder: `3-edge-case-google-form-nilgiri`. Use the pre-filled Google Form link from the README.
+## 6. Edge case 2: Utkal, by Google Form, wrong document (4:00 to 4:40)
+Folder: `3-edge-case-google-form-utkal`. Use the pre-filled Google Form link from the README.
 
-[Screen: the Google Form, already filled except the four uploads. Upload the four files, with Nilgiri_Scan_0412.pdf in the PAN field. Submit. Cut to the console. 12 seconds.]
+[Screen: the Google Form, already filled except the four uploads. Upload the four files, with Utkal_Scan_0719.pdf in the PAN field. Submit. Cut to the console. 12 seconds.]
 **"Edge case two: the Google Form. A vendor made an honest mistake: in the PAN field they attached the GST certificate again."**
 
-[All vendors: the Nilgiri row with the Google Form tag, Waiting for vendor. Open it: "The file in this slot is a GST certificate, not a PAN card". 12 seconds.]
+[All vendors: the Utkal row with the Google Form tag, Waiting for vendor. Open it: "The file in this slot is a GST certificate, not a PAN card". 12 seconds.]
 **"The system reads what each file actually is, not what the slot says. It does not reject. It asks for exactly one thing, the PAN card, with a link."**
 
-[Open the link from the email. Upload send-later/Nilgiri_PAN_Card.png. Submit. Approved. 16 seconds.]
+[Open the link from the email. Upload send-later/Utkal_PAN_Card.png. Submit. Approved. 16 seconds.]
 **"The vendor uploads it, only the PAN checks re-run, and the application is approved."**
 
 ## 7. Close (4:40 to 5:00)

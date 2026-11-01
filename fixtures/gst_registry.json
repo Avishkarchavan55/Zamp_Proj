@@ -310,5 +310,21 @@
     "status": "Active",
     "state_code": "36",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "03AAHCS8315F1ZJ",
+    "legal_name": "SUTLEJ HOSIERY MILLS PRIVATE LIMITED",
+    "trade_name": "SUTLEJ HOSIERY MILLS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "03",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "21AAGCU6027N1Z6",
+    "legal_name": "UTKAL CASHEW PROCESSORS PRIVATE LIMITED",
+    "trade_name": "UTKAL CASHEW PROCESSORS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "21",
+    "constitution": "Private Limited Company"
   }
 ]

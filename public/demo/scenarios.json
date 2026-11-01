@@ -1618,5 +1618,87 @@
       "bank_proof": "Kakatiya_Cancelled_Cheque.png"
     },
     "resubmission": {}
+  },
+  {
+    "id": "sutlej",
+    "group": "example",
+    "title": "Private limited, not MSME (third)",
+    "vendor": "Sutlej Hosiery Mills Private Limited",
+    "summary": "A complete, consistent private limited company with four documents and no MSME registration.",
+    "expected": "Approved (bank ownership condition before first payment)",
+    "form": {
+      "legal_name": "Sutlej Hosiery Mills Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAHCS8315F",
+      "gstin": "03AAHCS8315F1ZJ",
+      "cin": "U17115PB2016PTC040129",
+      "owner_name": "Harpreet Gill",
+      "address": "Plot 118, Focal Point Phase 5",
+      "city": "Ludhiana",
+      "state": "Punjab",
+      "pincode": "141003",
+      "contact_name": "Harpreet Gill",
+      "contact_email": "accounts@sutlejhosiery.in",
+      "contact_phone": "+91 98140 36275",
+      "website": "sutlejhosiery.in",
+      "category": "Knitted garments and hosiery",
+      "bank_account_holder": "Sutlej Hosiery Mills Pvt Ltd",
+      "bank_account_number": "50200118347265",
+      "bank_ifsc": "HDFC0000103",
+      "bank_name": "Hdfc Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Sutlej_Certificate_of_Incorporation.pdf",
+      "gst": "Sutlej_GST_REG-06.pdf",
+      "pan": "Sutlej_PAN_Card.png",
+      "bank_proof": "Sutlej_Cancelled_Cheque.png"
+    },
+    "resubmission": {}
+  },
+  {
+    "id": "utkal",
+    "group": "demo",
+    "title": "Wrong document in the PAN field (Google Form, second)",
+    "vendor": "Utkal Cashew Processors Private Limited",
+    "summary": "The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
+    "expected": "Awaiting vendor (PAN card) -> resubmission -> Approved",
+    "form": {
+      "legal_name": "Utkal Cashew Processors Private Limited",
+      "trade_name": "",
+      "entity_type": "private_limited",
+      "pan": "AAGCU6027N",
+      "gstin": "21AAGCU6027N1Z6",
+      "cin": "U15319OR2017PTC021788",
+      "owner_name": "Subhashree Mohanty",
+      "address": "Plot 5, Mancheswar Industrial Estate",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "751010",
+      "contact_name": "Subhashree Mohanty",
+      "contact_email": "accounts@utkalcashew.in",
+      "contact_phone": "+91 94370 61842",
+      "website": "utkalcashew.in",
+      "category": "Cashew processing and packaging",
+      "bank_account_holder": "Utkal Cashew Processors Pvt Ltd",
+      "bank_account_number": "7712038459",
+      "bank_ifsc": "KKBK0000721",
+      "bank_name": "Kotak Mahindra Bank",
+      "msme_registered": "no",
+      "udyam_number": "",
+      "msme_category": ""
+    },
+    "files": {
+      "incorporation": "Utkal_Certificate_of_Incorporation.pdf",
+      "gst": "Utkal_GST_REG-06.pdf",
+      "pan": "Utkal_Scan_0719.pdf",
+      "bank_proof": "Utkal_Cancelled_Cheque.png"
+    },
+    "resubmission": {
+      "pan": "resubmission/Utkal_PAN_Card.png"
+    }
   }
 ]

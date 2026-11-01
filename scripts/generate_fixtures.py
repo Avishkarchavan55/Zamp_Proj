@@ -543,6 +543,27 @@ VENDORS["kakatiya"] = dict(
     account="8814026673", cheque_name="KAKATIYA RICE MILLS PVT LTD", micr="411485002",
 )
 
+VENDORS["sutlej"] = dict(
+    legal_name="SUTLEJ HOSIERY MILLS PRIVATE LIMITED", form_name="Sutlej Hosiery Mills Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCS8315F", state_code="03", cin="U17115PB2016PTC040129", inc_date=(25, 8, 2016),
+    address="Plot 118, Focal Point Phase 5", city="Ludhiana", state="Punjab", pincode="141003",
+    contact_name="Harpreet Gill", contact_email="accounts@sutlejhosiery.in", contact_phone="+91 98140 36275",
+    owner_name="Harpreet Gill", website="sutlejhosiery.in", category="Knitted garments and hosiery",
+    ifsc="HDFC0000103", bank="HDFC BANK", branch="PUNE - FERGUSSON COLLEGE ROAD",
+    account="50200118347265", cheque_name="SUTLEJ HOSIERY MILLS PVT LTD", micr="411240003",
+)
+VENDORS["utkal"] = dict(
+    legal_name="UTKAL CASHEW PROCESSORS PRIVATE LIMITED", form_name="Utkal Cashew Processors Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCU6027N", state_code="21", cin="U15319OR2017PTC021788", inc_date=(14, 3, 2017),
+    address="Plot 5, Mancheswar Industrial Estate", city="Bhubaneswar", state="Odisha", pincode="751010",
+    contact_name="Subhashree Mohanty", contact_email="accounts@utkalcashew.in", contact_phone="+91 94370 61842",
+    owner_name="Subhashree Mohanty", website="utkalcashew.in", category="Cashew processing and packaging",
+    ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+    account="7712038459", cheque_name="UTKAL CASHEW PROCESSORS PVT LTD", micr="411485002",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
@@ -1338,6 +1359,36 @@ ATTACH: {', '.join(vd_files)}
                       summary="A complete, consistent private limited company with four documents and no MSME registration.",
                       expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=kt_files,
                       resubmission={}))
+
+    v = VENDORS["sutlej"]
+    sj_dir = os.path.join(PUBLIC, "sutlej")
+    os.makedirs(sj_dir, exist_ok=True)
+    sj_files = dict(
+        incorporation=write(sj_dir, "Sutlej_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(sj_dir, "Sutlej_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(sj_dir, "Sutlej_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(sj_dir, "Sutlej_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    index.append(dict(id="sutlej", group="example", title="Private limited, not MSME (third)", vendor=v["form_name"],
+                      summary="A complete, consistent private limited company with four documents and no MSME registration.",
+                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=sj_files,
+                      resubmission={}))
+
+    v = VENDORS["utkal"]
+    uk_dir = os.path.join(PUBLIC, "utkal")
+    os.makedirs(os.path.join(uk_dir, "resubmission"), exist_ok=True)
+    uk_files = dict(
+        incorporation=write(uk_dir, "Utkal_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(uk_dir, "Utkal_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        # The mistake: the GST certificate is uploaded again in the PAN slot.
+        pan=write(uk_dir, "Utkal_Scan_0719.pdf", gst_pdf(v), truth_gst(v)),
+        bank_proof=write(uk_dir, "Utkal_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    )
+    uk_resub = "resubmission/" + write(os.path.join(uk_dir, "resubmission"), "Utkal_PAN_Card.png", pan_card_png(v), truth_pan(v))
+    index.append(dict(id="utkal", group="demo", title="Wrong document in the PAN field (Google Form, second)", vendor=v["form_name"],
+                      summary="The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
+                      expected="Awaiting vendor (PAN card) -> resubmission -> Approved", form=form_for(v), files=uk_files,
+                      resubmission=dict(pan=uk_resub)))
 
     with open(os.path.join(PUBLIC, "scenarios.json"), "w") as fh:
         json.dump(index, fh, indent=2)

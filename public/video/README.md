@@ -4,12 +4,11 @@ Everything needed to record the 5-minute video. Script: [VIDEO-SCRIPT.md](./VIDE
 
 | Folder | Used in | Channel | Expected result |
 |---|---|---|---|
-| `4-happy-path-portal-kakatiya` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
-| `1-happy-path-portal-gomti` | already used | Supplier portal (Apply) | Gomti is already in the system; keep only as a reference |
+| `1-happy-path-portal-sutlej` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
 | `2-edge-case-email-vidarbha` | Part 5 | Email | **Rejected**: bank account already belongs to Apex Facility Services (fraud pattern) |
-| `3-edge-case-google-form-nilgiri` | Part 6 | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
+| `3-edge-case-google-form-utkal` | Part 6 | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
 
-Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional. Each vendor can be run **once**; a second run is caught as "may already be a vendor".
+Folders already used on the website are in `used/` (they would be caught as existing vendors). Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional. Each vendor can be run **once**; a second run is caught as "may already be a vendor".
 
 ## Before you record (once)
 1. Press **Wake up** (top right of Overview). It checks the database, n8n, the Gmail inbox, the Google Form, the AI readers and any stuck emails or runs, and fixes what it can.
@@ -21,7 +20,7 @@ Each folder has a `VALUES.md` with the exact text to type. All names, IDs and ac
 
 ## Prepare these before pressing record
 - **Gmail draft (Part 5):** a new draft to `acmevendoronboarding@gmail.com` with the subject and body from `2-edge-case-email-vidarbha/EMAIL.txt` and the **four** files attached.
-- **Google Form (Part 6):** open the live form, fill the text fields using `3-edge-case-google-form-nilgiri/VALUES.md`, then in the form's three-dot menu choose **Get pre-filled link**, fill the text fields there, copy the link and open it for recording. Uploads cannot be pre-filled, so you attach the four files on camera (or trim the wait in editing). Remember the PAN field gets `Nilgiri_Scan_0412.pdf`.
+- **Google Form (Part 6):** open the live form, fill the text fields using `3-edge-case-google-form-utkal/VALUES.md`, then in the form's three-dot menu choose **Get pre-filled link**, fill the text fields there, copy the link and open it for recording. Uploads cannot be pre-filled, so you attach the four files on camera (or trim the wait in editing). Start from a blank form or a freshly built link, never an old pre-filled one (it carries the previous vendor's address and sends the application to Needs attention). Easiest: run `prefilledLinkUtkal` in the Apps Script and open the link it prints. Remember the PAN field gets `Utkal_Scan_0719.pdf`.
   Live form: https://docs.google.com/forms/d/e/1FAIpQLScKSR6gw7gLbEeBdnJIfayYgipGbyclKOuP7RKfSfRN9_4M8g/viewform
 - **Tabs, in order:** Login page, Gmail draft, pre-filled Google Form.
 

@@ -202,3 +202,45 @@ function resendLatestResponse() {
   PropertiesService.getScriptProperties().deleteProperty("done_" + last.getId());
   deliver(last);
 }
+
+/**
+ * Prints a ready-made pre-filled link for the Google Form edge case (Utkal Cashew Processors), so no value
+ * is ever typed wrong or carried over from an earlier vendor. Run it, open View > Logs, open the link.
+ * The contact email is left blank on purpose: type your own. File uploads cannot be pre-filled.
+ */
+function prefilledLinkUtkal() {
+  const values = {
+    "Legal name of business": "Utkal Cashew Processors Pvt Ltd",
+    "Entity type": "Private Limited Company",
+    "Proprietor / authorised signatory": "Subhashree Mohanty",
+    "PAN": "AAGCU6027N",
+    "GSTIN": "21AAGCU6027N1Z6",
+    "CIN (companies only)": "U15319OR2017PTC021788",
+    "Registered address": "Plot 5, Mancheswar Industrial Estate",
+    "City": "Bhubaneswar",
+    "State": "Odisha",
+    "PIN code": "751010",
+    "Contact person": "Subhashree Mohanty",
+    "Phone": "+91 94370 61842",
+    "What will you supply?": "Cashew processing and packaging",
+    "Account holder name": "Utkal Cashew Processors Pvt Ltd",
+    "Account number": "7712038459",
+    "IFSC": "KKBK0000721",
+    "Bank name": "Kotak Mahindra Bank",
+    "MSME (Udyam) registered?": "No",
+    "MSME category": "Not applicable",
+  };
+  const form = FormApp.openById(PropertiesService.getScriptProperties().getProperty("FORM_ID"));
+  let response = form.createResponse();
+  form.getItems().forEach(function (item) {
+    const v = values[item.getTitle()];
+    if (v === undefined) return;
+    const t = item.getType();
+    let r = null;
+    if (t === FormApp.ItemType.TEXT) r = item.asTextItem().createResponse(v);
+    else if (t === FormApp.ItemType.LIST) r = item.asListItem().createResponse(v);
+    else if (t === FormApp.ItemType.MULTIPLE_CHOICE) r = item.asMultipleChoiceItem().createResponse(v);
+    if (r) response = response.withItemResponse(r);
+  });
+  console.log("Open this link, type your own contact email, attach the four files, and submit:\n" + response.toPrefilledUrl());
+}
