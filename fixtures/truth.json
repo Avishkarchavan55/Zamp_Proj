@@ -1,5 +1,5 @@
 {
- "a6862c1d694ffdfadf5fae556e87ee56ec7adfde8bd32a29e16039bc23805064": {
+ "4f5573f48f1a414907256ef48f99553cf1f1f49181c25d01fbd7b6587788fc1e": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -43,7 +43,7 @@
   ],
   "notes": ""
  },
- "8fff8154f0accdd96d570b98ff253367ba3e2f76230c481a71e929730bcb46e6": {
+ "9a7639374be11a7797cb6a85a084bf51ad709e8be4862e1c2cce9a13562a18da": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -151,7 +151,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "eb4940b57806a63b1a11e9acf95d006bfa38729741d7686a50bcb2ecffb21f70": {
+ "040df68ea45d2c6f74a43d98b209fce370dc102c69ebd9a951f5256558e816b1": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -183,7 +183,7 @@
   ],
   "notes": ""
  },
- "73f4da34081e39e0cfdb7053d9db51bd004b90bb1a0c15141a340ab62715ccb3": {
+ "de7d649834b4aa3c2bd4dbc136c0af12ecdc2097c6e62f9b38885e11c926ea89": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -227,7 +227,7 @@
   ],
   "notes": ""
  },
- "fd8ad231905a0ba4592574749ba3aaf1f351f8202b7dc4788a555c088904d958": {
+ "c563a5c85142799d3735f455fd054baf1ed53570f555275c5a64ca6e5cc1a11d": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -297,7 +297,7 @@
   ],
   "notes": ""
  },
- "bea7d0770e71c5cc9d49271f5604dc76a3e21ce79af649aaf285e6ba135f7799": {
+ "9a6e21f6ce4c05e95d70c2772b3610a7383e613be5065c74e3b451656c840e22": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -379,7 +379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "753b120458857eb09fd33773fbed5738c97d565368a738294ab6865e23cd54aa": {
+ "e88d2a271ac45c237f94adc5840a0b397ecd78b30769f03fbb15d088032d9295": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -423,7 +423,7 @@
   ],
   "notes": ""
  },
- "25dd8452f3a9ef4152ff6af4aba8124935373024f9a88c8ec3859080e8dd703b": {
+ "3c68200c35e9ce5498dd13378fd7e19dd41dd0b0a77ff0a6a5dc1fbc5c37f560": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -531,7 +531,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "32b1d5d0d82f086db930a8103284f6ea1ea46a0d8990b760f2573389126906dc": {
+ "9d59c93c04d7fe3cd875ef1f44f1d625120e6724ef65b9e3f6fe9b1915fbaad7": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -575,7 +575,7 @@
   ],
   "notes": ""
  },
- "a4f53f9fb773042a61e5f122496d2305d24933b1228cd3ef48b826619f43f070": {
+ "31fcb8b1f461968aa68d28b85b88b67d25f339fb6009a49445b4ed1ebaa32c26": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -683,7 +683,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a2a1c59efa70c22f0caf4ff1de61e7f71c86c5853f9ca18ba472534778748fbf": {
+ "8ed8691b348f69fda2d86882424aca9d9b31fe1c9bee37928a454e6e5bfc4130": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -727,7 +727,7 @@
   ],
   "notes": ""
  },
- "9ce99a1acfb3d3415df2a7e8feaabf60b735e3639f4c769adb2beaba2d890e19": {
+ "bf27dee7d5f1fc0c5c9000589d26109eaaf5a56c6a159dfbc180fdc6202aa6d5": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -835,7 +835,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "dc35dbe2dd2e6a2fa067be7b2f06fed4fed549b74373f55fafc40da35ec2d2aa": {
+ "be5a7e9d6d48cb1d99e8f2b66b28986a30cc88e025b801c99f0dd0c9d136fafb": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "degraded",
@@ -911,7 +911,7 @@
   ],
   "notes": ""
  },
- "9c7ac372c9b85414394a3c782972a4b6c860d76508aa29910977838a48c1ee7f": {
+ "e5105a79ce5acdb08c6099e7cd57c309156636149991c024d16493d49d0271c9": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "degraded",
@@ -949,7 +949,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "daf301d7cbb62dd8375390d91335019323be6acf61643d428e4dd582a4eb9e1f": {
+ "f102b3f2e58608086047d084955e877d7c5260054562d2aa3ff4b8785b11ad05": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -993,7 +993,7 @@
   ],
   "notes": ""
  },
- "91d923d08599e5367ed389859f9bd17d86a76a1841d67937fcf8c73c9998d961": {
+ "ae1cad1549e531633f36bd30b32b9d7f9bdf58d71ed8e5dd576a18ef803bd1cc": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1075,7 +1075,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "bb0be1b9ec44a2da1d103b2d807022e165e9bcbc7088549ac399ec66db9c8610": {
+ "91b0eba8e6a4cd619e47e29952224c334faf3b39b28eee548e17d5d8e04f41f9": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1119,7 +1119,7 @@
   ],
   "notes": ""
  },
- "42649d594ce36c2f5cc549d10b11fd2b990cea85dda060f8a7c174b3aade7279": {
+ "d427ea21940c14716b429b06f3e83a8c19f570ca00d1e408be9ef3563519c048": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1227,7 +1227,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8c9edafb85255407a85b73ca01e158dc79ffed3c2a475c28bb9bccefe2791943": {
+ "cf16ccf9c67e802190f758cfd26453843bf215fac78a51ba2b87a8bf2c1662f6": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1271,7 +1271,7 @@
   ],
   "notes": ""
  },
- "3c8c678ecd4b3aae33324203cebbe9cf33da354eb87e17c189323052c53ccd20": {
+ "37c8002a209246b79df0238bacbf290f590b63bef9aeb147aa677be472fc404f": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1379,7 +1379,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "ade59536248291d3120a9c82c0cd15e00ea84a2ec72f07ccf7a57e6e06d2eb8a": {
+ "07593244a01aff76ce33c8a22e61b8d550bef9d2858aa44af5b6f7406c371d86": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1411,7 +1411,7 @@
   ],
   "notes": ""
  },
- "1ea96d6395625c97054d795501514dd64c13ebfa473b881462ed44d120cafa8a": {
+ "301cf38410a6db72153799941455d71499dc1fbe5b5f148bd7b80f574e0369d0": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1519,7 +1519,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a155f5d50f1988593561ee9ed46514428e91463bffe7a4de50510872806df6f8": {
+ "5c34708b60e2f5e2c9e4ad7e6d7126728e9e1a582b188d705dbefbdf9bea6532": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1633,7 +1633,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a77a8b6f8b804123b944501773c6ba553b96858ffe4ec9b794b7e70b2a487775": {
+ "c4c72a6622d9c80891abd3681a98175727cb8fddae4172f262b62614108e898f": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1677,7 +1677,7 @@
   ],
   "notes": ""
  },
- "92cf97126c9ad2ca7e15229b4bc7541c38d505c04f1cf8e2f4c658b118d28f66": {
+ "08c6f186591f7b826ebc72cef71931ccb7fa956f245958de267f62634cc52b46": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1785,7 +1785,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "a378bc5ced85aab85f9f88111a0d6285266e8e5d2bb3095fb442c116bf9f18c8": {
+ "db5001779462c3f0d6187238e8a073f0453d1bd4eb5437e08455bb068815fed1": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -1829,7 +1829,7 @@
   ],
   "notes": ""
  },
- "79d32294d9869b7bc65a81c7fb1eefef88bdf48d6413c6b6980b2cc529ad0518": {
+ "e989f99ec1bcfcf4b732ebc3807cbfadc567ebb91bba8a021564dde42b05a08d": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1937,7 +1937,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "7f8d95962df32f54da70bc90a3c1a0c52bce23fc7783e6d7429fb5cfa2feb1bc": {
+ "b5576aadca1628a9eca75bc24c2ee53094d3e323604d2c94eb5ee3122b7afb7f": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -1969,7 +1969,7 @@
   ],
   "notes": ""
  },
- "d3c871788a265020575c41e164f109a7f3656dc4df596f805dd9937cbb708e86": {
+ "c04f9e10f478a401ca5eb85bdca853da690c927d7d0eab9276c8756e2a546bf6": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2083,7 +2083,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "75d515ab267793fe9427c67e09051bbd601c38b8d873e7c5aba7670db0686684": {
+ "7786f2ca8cd97acd836570b09fe919c7ec0803969daadcb73bdd48f57485eb7f": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2191,7 +2191,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "3df86b8071bbf4ab03613976abb7cbca7594748f5648890bdcceee173e334683": {
+ "634cde768335e191261c38da02e151c61e18bcd7371f594572a3685ee98955cc": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2235,7 +2235,7 @@
   ],
   "notes": ""
  },
- "9dae4397ccc3173dbbc542cc5aa2aa32a38255c160b0c7114348973da9d0cdff": {
+ "92fa8ae4240b99fbd0b0ba3ba313ab70e51e57f84a58c737a6b83f59f61fd555": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2343,7 +2343,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "db731cb9dd2139af1425670b6e2f2126937bada2dde7084f421fb98262625723": {
+ "2d9777b41ed8f385395e4029d529809d766602790fdb4702f3d3bfc246b2b186": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2375,7 +2375,7 @@
   ],
   "notes": ""
  },
- "2ffd7d27c365cd23199ece780cfcdbcfff24249b38a71a922f167992d12360b2": {
+ "95b08d7a39c3c4a618da51026fd3ba069c3e82aa3c172390868a72a995a75c09": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2419,7 +2419,7 @@
   ],
   "notes": ""
  },
- "c329c3c4efb08f54c89427369dc497765cb43b7db78f86645f0d317dcf91e350": {
+ "a5e2e8a170528d390634081fcc96b158f32a8db23e8c2ed7a260e517910f8eb4": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2527,7 +2527,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "19621d52de566eafbaca5acb3ab467138e5ed155add873ddccbc5663bf1e0271": {
+ "0651f435fda1d58a47d635e3093c9d4734cca5a330c00d75ea33876198f52a34": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2571,7 +2571,7 @@
   ],
   "notes": ""
  },
- "d669b4736a9db1e414d24ed17ff05c86775cd25102b3d6dd04d651616648119d": {
+ "76999936b4c70c35d545d292c316412099d547035ec31263841dde3cdb5f7e48": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2653,7 +2653,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "845a00f18335a8a86bc3a7598d6a079b30ac1d1d8222c1bb9a657daa71b35550": {
+ "49d25eb65dbe98407f5fd812e7c3f669e573ca339dec03fad0b595277863e634": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2697,7 +2697,7 @@
   ],
   "notes": ""
  },
- "93b5495f5b725bd7b31a181ad11ad347e70632321c77134318145066fc675298": {
+ "8759c796a5861e0f73fb8a50556b062e24ffbb9926ed5c111d51961a9c836f2c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2805,7 +2805,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "e13d3a5a42bb324235827543783c10ab598bedd0234fa6df001d8cd0fedb47d9": {
+ "eb55f1c307b78123dfc1daef69d25a6e069f86b04608750f354dfd83a4f70872": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -2849,7 +2849,7 @@
   ],
   "notes": ""
  },
- "b25c2cdcd8996d21b5131a8eb4b38abb26181fccd8e47a2e081eef87918cd07b": {
+ "8da7077491c49878fc5661f1303f3a18966622937aa437f72180b89608ac20d4": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -2957,7 +2957,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "94e96cef5dc7129a31746c9727ad871f82f7611df43e4f82d24cb4292733cd8b": {
+ "a5b1085e0f686718f99665a2ce3cb97ddd0deff4a2a34c832b507a64754a1cbb": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3001,7 +3001,7 @@
   ],
   "notes": ""
  },
- "828af16b0e1da8d24d36f123cd294d9b425a6997ca217262f3a99c4d5f889cd8": {
+ "9ad2627b9e8f23916fceb54225a3300566aab7a231e8c203d383717399ca822f": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3109,7 +3109,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "63b0a0040cb5868635663d89b0fbd419ca2b58ebfcc33ccba37ab32fcfee6fd0": {
+ "08a7a19ea42c9a068b2a75e9a2edeeb5a9b6d452aacfc60e36f5a68e20031ef0": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3153,7 +3153,7 @@
   ],
   "notes": ""
  },
- "aa065f548d0497f4e57d7aabca37220b0207e652e9465aec559c19f255c8c93c": {
+ "296b43c4b15268a77d0c6e9a62a7c3e6a99eae3dc762c0860d51b0aa283b382c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3261,7 +3261,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "1aad43b368593224441aaa0e42f74c4cc55dab28521e1286c647cb776c50c112": {
+ "cc48388216f848604b618d197566af4c04e40723f491e987763677c26001ed51": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3305,7 +3305,7 @@
   ],
   "notes": ""
  },
- "8f168b6995e449a92aa6bc6ac2ee1fea64455724f6809e07228e0dae2b4b2320": {
+ "d2f483b49f8bc09be6eb19cc00a459f79706de45a8598fabe39af9a45843581d": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3413,7 +3413,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "ed6bab2c06720c8bb3b6606d11f7cc977cf70638a27d81a1fc76b45b6cbf7172": {
+ "f6b2ca0c0a6fdb67df01252abbd62200e2957bab5ec01b62b9207df6281d0336": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3457,7 +3457,7 @@
   ],
   "notes": ""
  },
- "7b1cf651cef5e6616a9fae2279098176318331736b0ab613a76080c09dd97474": {
+ "cd084a1ea4815298cb8de1d6821ef3e24fed203b5e189a9d0a010b228f3a4019": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3565,7 +3565,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "27e860f51d262730f1f3ce599009fdecd7138b0d121cf02314b7725c80389ffa": {
+ "067632c8da3953c862db8c130c2510781b8741652881458c58a66d20ca9eee73": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3597,7 +3597,7 @@
   ],
   "notes": ""
  },
- "441d55ff41512b2da9a7eb33709314c0c30c879d3c0297ea21e13b6c07bc831c": {
+ "3956fdf28b51d601bea784de668ca6b9db6bcd81eca05b7ec4ca41c989ffd350": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3641,7 +3641,7 @@
   ],
   "notes": ""
  },
- "62776b2ebd4b18a7b495d82dffb5b5705af586d2c330f2065da73821f8bb7458": {
+ "66b87987b40b7aa058ad8eefaed0b08d47c3fa48bb2a8fb2562f9c79fe6688e1": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3749,7 +3749,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "fc63b735ea184ac88b5f5bf5a2bfd7a0f98705833e7fed0d1a060720366533af": {
+ "ea205746f53aa251ac752846e01415858118e0669dca3106dd64b6b59932ac13": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3793,7 +3793,7 @@
   ],
   "notes": ""
  },
- "26cbaf37ad065f121c1c90a26068e54e76b8bfc5ac97889dd749547e26818f5d": {
+ "04f88efabb0aa35fe15deddd320f1e4580cff38e78fdc54c4ca0cafbde418e49": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -3901,7 +3901,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "d403304c73b69295e9c5e0eea68a4861e869a63bb8467a6eb374cf64d3e48a79": {
+ "c1966e575b9eadfa0d87993803629968314d6e191b002c244b01ad78527fe31c": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -3945,7 +3945,7 @@
   ],
   "notes": ""
  },
- "6505877e7a19656e58500a9f7d12448287e74c2da2aab84b9cd570e3060e5b53": {
+ "fe123115433e9f40c75f907b5d30190529460108ff65911a17e5550c5b437921": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4053,7 +4053,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "4415cac68742b3d2e5e3b780fdb722a0646b36ab8749feb0c94849ebf9f93ed5": {
+ "d898b86dff29837db3350c826004465789867507b290e3e9546dca76d72692df": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4097,7 +4097,7 @@
   ],
   "notes": ""
  },
- "17d03140109c9bcb65589fff192f7632184c4f2b1ab1b090a0d1e2e5464005f2": {
+ "7b4de2d0269d2071ec8cade7196f7744c9987830bf969cf1e61df5189f65660c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4205,7 +4205,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8d2992bcf61ceff5e13aa90a9aff2e4c3a879b753df84f904bb859231b77fecd": {
+ "4d786de5043af9a701647302e2085f6695e5efe075c9a5442d56f7543264ce0b": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4249,7 +4249,7 @@
   ],
   "notes": ""
  },
- "b69c17043981c049bb95d064defac57139db7eb39dd789de63013cd00d274b0c": {
+ "e58a3f27b0eb3e8565ccac766637dd31b752bd0d32ef624d61c230e466bb4d02": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4319,7 +4319,7 @@
   ],
   "notes": ""
  },
- "515ee70cdbf0b9767f28763abbd9aa98d45629fbc243c86fb66477179c0b70d9": {
+ "5fc52f4d091bd27dd409883e605d96f27a45b2aee68d2a6b49e3a6b16901a52f": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4389,7 +4389,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "9066e6f1ea352a21a32b293b96cf7753cece2ea4b9ed7bc0b980145d011f17be": {
+ "b0071295cd0e0294a33236e0b70ed41f330808f037f24da14cf52ec8fca3bb51": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4433,7 +4433,7 @@
   ],
   "notes": ""
  },
- "9a7e4bbdc2c715d50edc2b3b957dbace5ea29ce3a749398a67fcf833ef68f585": {
+ "126f0810ace429e347fa0bc33fdf57137b6a319c83503e239cfd09b3e00d6a9d": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4503,7 +4503,7 @@
   ],
   "notes": ""
  },
- "ec3df11e4684cf6f05452b4322d49986a9bed57274a1ec8121263cd8137ee352": {
+ "5e452bcb284106bb3aca013c2861c9e3c25d1a9dfadacd47934f6bf25af1ce8e": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4573,7 +4573,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "c1c126fd5867051ceb70380967740f702e26eee85f451df4e39aa1ae74329c79": {
+ "5fc8d241dbb41b029d71079329f7453b7151549d545d4898d65a01037686af69": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4617,7 +4617,7 @@
   ],
   "notes": ""
  },
- "05135ff0f362930ef36e0e9be98278bf25404eaddb5b4aed2256a98ee41919c3": {
+ "8b572537d56eafe7da8c8fee828d8ea0b407710ff660f451917bc5bfb69aa31b": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4725,7 +4725,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "d29554467b3b90f7328a996cfb9250bfc8939cfbd88acb940b91ab580eb7ca46": {
+ "5a957316de3ec0ae261e6ae4c2097f027eebb7ac3ab6fbf0aef17772141415f1": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4769,7 +4769,7 @@
   ],
   "notes": ""
  },
- "f697b5d70457adbe63b9ed4f422142d76a8088bcce833f1e9ad40f813fb2ae63": {
+ "b928b351875ce3a35a74783ec32f4d715e524b415de7f085074ca5bd591b2c93": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -4877,7 +4877,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "7f584281e0783e77a56f52b5718eb54a2d46bdfafcde0452ae914f29319d66d5": {
+ "a492d05759c1bc7d950e6ec27781ce92bf6bd817d0788068d7271cd94b65e8e4": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -4921,7 +4921,7 @@
   ],
   "notes": ""
  },
- "2447e47cf727163ce79b2a219de5eaa1133d1742415b6c83f637f03b9319d9c3": {
+ "b5fd24f7c97bb5a7858b02a9acde4c56eca624c5a19d150d1cf50aed50eecb0a": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5029,7 +5029,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "4618be7529de6d71a6c8913de4a5733a89895c47d14d234a7030ec07d04b818c": {
+ "d25fc6154ae0d413afbcd0e152f82429ca8b07d0296801e8336529a7619dd53c": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5061,7 +5061,7 @@
   ],
   "notes": ""
  },
- "ee8cb9ba5a4c062ebb10b755940f55e3d4e4a58ed1509417c5818a96f3c151a2": {
+ "498e32101f39542585c5f4b4e76621a8467cc32c501299a58cca7f1c76ec7963": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -5105,7 +5105,7 @@
   ],
   "notes": ""
  },
- "581e99564de2c6d92b647f1bbd87fcdbb3681a8f60de41300a8acf57580fa209": {
+ "57aa08519555059ad6a302fc4c4f8f762916f66e28e23f1e6f0bcd46f1da66f1": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5175,7 +5175,7 @@
   ],
   "notes": ""
  },
- "6967400d38603914cc696f7c88a7ceb65d57c1d52e6db85a65fe8924244cb0ba": {
+ "87a0432e5ae420da8c2cd403cff62e2fbfa0f01bb790275fca321fc383423b3c": {
   "detected_type": "udyam_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5245,7 +5245,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "eb8d9538ca3815e23d60a8138c632f8e1f943f437f7a26258c9656816dd5743b": {
+ "9cc4cfc8d67b08e327b5b1bd2793561b635683f228c0d262b683edaaa31acd05": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -5289,7 +5289,7 @@
   ],
   "notes": ""
  },
- "31052e54c11b36f1a0ea76a4204af6bc777b582ba8078662b2a2be024596fcc9": {
+ "34364ef6a89af937bf7f5e805fb29d9a8565e40fe97118ed05e535c65565a488": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5397,7 +5397,7 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "cd868efaab30d7654a6b0db87a22dfe5c82e3eae627c4fed99bf2d489b3c90e2": {
+ "b008378e423d20fcc9061b67aa9e096ec158d760045b3549c2d4e4737021470e": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -5441,7 +5441,7 @@
   ],
   "notes": ""
  },
- "fc6a00b612678e57ad635e9cfb91780c73966f0a732a7b4c3e55ecfe0bd39ded": {
+ "7efe4a73411e565f2f928a192528047bc7a57ea80c7c1b1e31e6cc8e9e180c31": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
@@ -5549,71 +5549,71 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8d7743432e642e3ec5599df15e1d7d688481f0772c69135aa450147cc8e57e0d": {
+ "482110ab768de2efd2e5b99c4118b84bba0785f8f0d0424b90cc998b6f6f8db6": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
   "fields": [
    {
     "key": "legal_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "I hereby certify that MALABAR SPICE EXPORTS PRIVATE LIMITED is incorporated",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "I hereby certify that NILGIRI TEA ESTATES PRIVATE LIMITED is incorporated",
     "confidence": 0.98
    },
    {
     "key": "cin",
-    "value": "U15400KL2016PTC045512",
-    "source_quote": "Corporate Identity Number of the company is U15400KL2016PTC045512",
+    "value": "U01271TN2015PTC099184",
+    "source_quote": "Corporate Identity Number of the company is U01271TN2015PTC099184",
     "confidence": 0.98
    },
    {
     "key": "pan",
-    "value": "AAHCM6120L",
-    "source_quote": "Permanent Account Number (PAN) of the company is AAHCM6120L",
+    "value": "AAHCN7345B",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAHCN7345B",
     "confidence": 0.98
    },
    {
     "key": "registration_date",
-    "value": "2016-05-09",
-    "source_quote": "2016-05-09",
+    "value": "2015-01-12",
+    "source_quote": "2015-01-12",
     "confidence": 0.98
    },
    {
     "key": "address",
-    "value": "Door 14/221, Willingdon Island, Kochi, Kerala, India - 682003",
-    "source_quote": "Door 14/221, Willingdon Island, Kochi, Kerala, India - 682003",
+    "value": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, India - 643101",
+    "source_quote": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, India - 643101",
     "confidence": 0.98
    },
    {
     "key": "state",
-    "value": "Kerala",
-    "source_quote": "Kerala",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "515b0abacdb417a67e89b4811f4af0e183306fb7f2d6f7c1a883b054cca97e53": {
+ "4a187ca7f9b9febea2ca4c39c413aae03aaafa3ac33637dfb9f23b76cb6260d7": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
   "fields": [
    {
     "key": "gstin",
-    "value": "32AAHCM6120L1ZK",
-    "source_quote": "Registration Number : 32AAHCM6120L1ZK",
+    "value": "33AAHCN7345B1ZP",
+    "source_quote": "Registration Number : 33AAHCN7345B1ZP",
     "confidence": 0.98
    },
    {
     "key": "legal_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "NILGIRI TEA ESTATES PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
     "key": "trade_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "NILGIRI TEA ESTATES PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
@@ -5624,40 +5624,40 @@
    },
    {
     "key": "address",
-    "value": "Door 14/221, Willingdon Island, Kochi, Kerala, 682003",
-    "source_quote": "Door 14/221, Willingdon Island, Kochi, Kerala, 682003",
+    "value": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, 643101",
+    "source_quote": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, 643101",
     "confidence": 0.98
    },
    {
     "key": "state",
-    "value": "Kerala",
-    "source_quote": "Kerala",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "7546d8daec0495ffde77840d0503e693b8fe65f8265743110c30d8c24fe17942": {
+ "b2503d41c2200d6bc3000870609cc25829705cff8392dac16c6a0257a6c2f17c": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
   "fields": [
    {
     "key": "gstin",
-    "value": "32AAHCM6120L1ZK",
-    "source_quote": "Registration Number : 32AAHCM6120L1ZK",
+    "value": "33AAHCN7345B1ZP",
+    "source_quote": "Registration Number : 33AAHCN7345B1ZP",
     "confidence": 0.98
    },
    {
     "key": "legal_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "NILGIRI TEA ESTATES PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
     "key": "trade_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "NILGIRI TEA ESTATES PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
@@ -5668,34 +5668,34 @@
    },
    {
     "key": "address",
-    "value": "Door 14/221, Willingdon Island, Kochi, Kerala, 682003",
-    "source_quote": "Door 14/221, Willingdon Island, Kochi, Kerala, 682003",
+    "value": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, 643101",
+    "source_quote": "Glendale Estate Office, Kotagiri Road, Coonoor, Tamil Nadu, 643101",
     "confidence": 0.98
    },
    {
     "key": "state",
-    "value": "Kerala",
-    "source_quote": "Kerala",
+    "value": "Tamil Nadu",
+    "source_quote": "Tamil Nadu",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "7420157d400cb76ba21623e31d61b25ada15edfb768b9c9010541df417fcb63b": {
+ "ad4804be798b14306c4f4ad045ff5234dc65a1c408b3d8f2114c9697087cb762": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
   "fields": [
    {
     "key": "account_holder_name",
-    "value": "MALABAR SPICE EXPORTS PVT LTD",
-    "source_quote": "For MALABAR SPICE EXPORTS PVT LTD",
+    "value": "NILGIRI TEA ESTATES PVT LTD",
+    "source_quote": "For NILGIRI TEA ESTATES PVT LTD",
     "confidence": 0.97
    },
    {
     "key": "account_number",
-    "value": "50100274439081",
-    "source_quote": "50100274439081",
+    "value": "50100309118274",
+    "source_quote": "50100309118274",
     "confidence": 0.97
    },
    {
@@ -5719,97 +5719,97 @@
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "8362d1e6256ce0af46529ee6c62d7ed43c7e80b029959d46fec637742fc86ee0": {
+ "cdb59776e17cfa25453b12385a74ef027dbb45472c1dc793fe15df926ade6a52": {
   "detected_type": "pan_card",
   "type_confidence": 0.99,
   "legibility": "clear",
   "fields": [
    {
     "key": "pan",
-    "value": "AAHCM6120L",
-    "source_quote": "AAHCM6120L",
+    "value": "AAHCN7345B",
+    "source_quote": "AAHCN7345B",
     "confidence": 0.98
    },
    {
     "key": "legal_name",
-    "value": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
-    "source_quote": "MALABAR SPICE EXPORTS PRIVATE LIMITED",
+    "value": "NILGIRI TEA ESTATES PRIVATE LIMITED",
+    "source_quote": "NILGIRI TEA ESTATES PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
     "key": "registration_date",
-    "value": "2016-05-09",
-    "source_quote": "2016-05-09",
+    "value": "2015-01-12",
+    "source_quote": "2015-01-12",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "b777037da88c15635d59e7ae73b4a851d4b08d17d7cf58fbeea19f704191dde0": {
+ "a4b213c431c826e6b52f240ab49ad6cffbfedae4c2a49819c8a7e01841b4fb49": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
   "fields": [
    {
     "key": "legal_name",
-    "value": "KONKAN COASTAL FOODS PRIVATE LIMITED",
-    "source_quote": "I hereby certify that KONKAN COASTAL FOODS PRIVATE LIMITED is incorporated",
+    "value": "GOMTI CERAMICS PRIVATE LIMITED",
+    "source_quote": "I hereby certify that GOMTI CERAMICS PRIVATE LIMITED is incorporated",
     "confidence": 0.98
    },
    {
     "key": "cin",
-    "value": "U15122MH2017PTC298754",
-    "source_quote": "Corporate Identity Number of the company is U15122MH2017PTC298754",
+    "value": "U26914UP2016PTC083315",
+    "source_quote": "Corporate Identity Number of the company is U26914UP2016PTC083315",
     "confidence": 0.98
    },
    {
     "key": "pan",
-    "value": "AAHCK4417Q",
-    "source_quote": "Permanent Account Number (PAN) of the company is AAHCK4417Q",
+    "value": "AAGCG2284P",
+    "source_quote": "Permanent Account Number (PAN) of the company is AAGCG2284P",
     "confidence": 0.98
    },
    {
     "key": "registration_date",
-    "value": "2017-09-22",
-    "source_quote": "2017-09-22",
+    "value": "2016-04-18",
+    "source_quote": "2016-04-18",
     "confidence": 0.98
    },
    {
     "key": "address",
-    "value": "Plot 9, MIDC Mirjole, Ratnagiri, Maharashtra, India - 415612",
-    "source_quote": "Plot 9, MIDC Mirjole, Ratnagiri, Maharashtra, India - 415612",
+    "value": "B-27, Industrial Area, Sector 4, Lucknow, Uttar Pradesh, India - 226010",
+    "source_quote": "B-27, Industrial Area, Sector 4, Lucknow, Uttar Pradesh, India - 226010",
     "confidence": 0.98
    },
    {
     "key": "state",
-    "value": "Maharashtra",
-    "source_quote": "Maharashtra",
+    "value": "Uttar Pradesh",
+    "source_quote": "Uttar Pradesh",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "8a75fed6b9d38410f2b15e1b5ba4703c87ef4651cd3b766ece1143a598019790": {
+ "061095a238be8b8bb705180f0787dc5b5a322f9b345d555c7b3314b9eaf1a51a": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",
   "fields": [
    {
     "key": "gstin",
-    "value": "27AAHCK4417Q1ZZ",
-    "source_quote": "Registration Number : 27AAHCK4417Q1ZZ",
+    "value": "09AAGCG2284P1ZZ",
+    "source_quote": "Registration Number : 09AAGCG2284P1ZZ",
     "confidence": 0.98
    },
    {
     "key": "legal_name",
-    "value": "KONKAN COASTAL FOODS PRIVATE LIMITED",
-    "source_quote": "KONKAN COASTAL FOODS PRIVATE LIMITED",
+    "value": "GOMTI CERAMICS PRIVATE LIMITED",
+    "source_quote": "GOMTI CERAMICS PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
     "key": "trade_name",
-    "value": "KONKAN COASTAL FOODS PRIVATE LIMITED",
-    "source_quote": "KONKAN COASTAL FOODS PRIVATE LIMITED",
+    "value": "GOMTI CERAMICS PRIVATE LIMITED",
+    "source_quote": "GOMTI CERAMICS PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
@@ -5820,84 +5820,84 @@
    },
    {
     "key": "address",
-    "value": "Plot 9, MIDC Mirjole, Ratnagiri, Maharashtra, 415612",
-    "source_quote": "Plot 9, MIDC Mirjole, Ratnagiri, Maharashtra, 415612",
+    "value": "B-27, Industrial Area, Sector 4, Lucknow, Uttar Pradesh, 226010",
+    "source_quote": "B-27, Industrial Area, Sector 4, Lucknow, Uttar Pradesh, 226010",
     "confidence": 0.98
    },
    {
     "key": "state",
-    "value": "Maharashtra",
-    "source_quote": "Maharashtra",
+    "value": "Uttar Pradesh",
+    "source_quote": "Uttar Pradesh",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "0b3bfc162529c7f774e6cb827630e8a024930074cc1194e8733c3687ac82f641": {
+ "19b3990c52b34e9c78efef2ca0a3aec629283f82b406dda40f7d053d270fa650": {
   "detected_type": "pan_card",
   "type_confidence": 0.99,
   "legibility": "clear",
   "fields": [
    {
     "key": "pan",
-    "value": "AAHCK4417Q",
-    "source_quote": "AAHCK4417Q",
+    "value": "AAGCG2284P",
+    "source_quote": "AAGCG2284P",
     "confidence": 0.98
    },
    {
     "key": "legal_name",
-    "value": "KONKAN COASTAL FOODS PRIVATE LIMITED",
-    "source_quote": "KONKAN COASTAL FOODS PRIVATE LIMITED",
+    "value": "GOMTI CERAMICS PRIVATE LIMITED",
+    "source_quote": "GOMTI CERAMICS PRIVATE LIMITED",
     "confidence": 0.98
    },
    {
     "key": "registration_date",
-    "value": "2017-09-22",
-    "source_quote": "2017-09-22",
+    "value": "2016-04-18",
+    "source_quote": "2016-04-18",
     "confidence": 0.98
    }
   ],
   "notes": ""
  },
- "11c1a26d009a6419f33b3fe398bff2adce8c2b7ba26786167cf3807e2f8074c3": {
+ "9e8435438b7b03bd02e39262687fb16f30b9a7f8a93228eb07e264ac8a87b5c8": {
   "detected_type": "cancelled_cheque",
   "type_confidence": 0.98,
   "legibility": "clear",
   "fields": [
    {
     "key": "account_holder_name",
-    "value": "KONKAN COASTAL FOODS PVT LTD",
-    "source_quote": "For KONKAN COASTAL FOODS PVT LTD",
+    "value": "GOMTI CERAMICS PVT LTD",
+    "source_quote": "For GOMTI CERAMICS PVT LTD",
     "confidence": 0.97
    },
    {
     "key": "account_number",
-    "value": "002705418836",
-    "source_quote": "002705418836",
+    "value": "918010073345129",
+    "source_quote": "918010073345129",
     "confidence": 0.97
    },
    {
     "key": "ifsc",
-    "value": "ICIC0000027",
-    "source_quote": "IFSC: ICIC0000027",
+    "value": "UTIB0000080",
+    "source_quote": "IFSC: UTIB0000080",
     "confidence": 0.97
    },
    {
     "key": "bank_name",
-    "value": "ICICI BANK",
-    "source_quote": "ICICI BANK",
+    "value": "AXIS BANK",
+    "source_quote": "AXIS BANK",
     "confidence": 0.97
    },
    {
     "key": "branch",
-    "value": "NASHIK",
-    "source_quote": "NASHIK",
+    "value": "MANINAGAR",
+    "source_quote": "MANINAGAR",
     "confidence": 0.97
    }
   ],
   "notes": "Document is crossed and marked CANCELLED."
  },
- "700907669dc4e39e797d8a218370ff4ca8856f8d3026e93085d184b24b601921": {
+ "96adbc17d11aa308dfe9ee7ce46f03cb5c15f8854527e042b1a06b480b651ae1": {
   "detected_type": "certificate_of_incorporation",
   "type_confidence": 0.99,
   "legibility": "clear",
@@ -5941,7 +5941,7 @@
   ],
   "notes": ""
  },
- "7be251e17aea640d98886bdc35fb6e90cdc35d7c8139ae8a03d44413b0903fd9": {
+ "cdf25e5cea758757c93c2f445769220692840a6545f6353e90ef560407e53e97": {
   "detected_type": "gst_registration_certificate",
   "type_confidence": 0.97,
   "legibility": "clear",

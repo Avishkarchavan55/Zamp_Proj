@@ -498,26 +498,26 @@ VENDORS["rajputana"] = dict(
     cheque_software="Adobe Photoshop 25.0 (Windows)",
 )
 
-VENDORS["malabar"] = dict(
-    legal_name="MALABAR SPICE EXPORTS PRIVATE LIMITED", form_name="Malabar Spice Exports Private Limited",
+VENDORS["nilgiri"] = dict(
+    legal_name="NILGIRI TEA ESTATES PRIVATE LIMITED", form_name="Nilgiri Tea Estates Private Limited",
     trade_name="", entity_type="private_limited",
-    pan="AAHCM6120L", state_code="32", cin="U15400KL2016PTC045512", inc_date=(9, 5, 2016),
-    address="Door 14/221, Willingdon Island", city="Kochi", state="Kerala", pincode="682003",
-    contact_name="Anita Menon", contact_email="accounts@malabarspice.in", contact_phone="+91 94470 28163",
-    owner_name="Anita Menon", website="malabarspice.in", category="Spices and spice extracts",
+    pan="AAHCN7345B", state_code="33", cin="U01271TN2015PTC099184", inc_date=(12, 1, 2015),
+    address="Glendale Estate Office, Kotagiri Road", city="Coonoor", state="Tamil Nadu", pincode="643101",
+    contact_name="Meenakshi Ramesh", contact_email="accounts@nilgiritea.in", contact_phone="+91 94430 81257",
+    owner_name="Meenakshi Ramesh", website="nilgiritea.in", category="Tea and tea packaging",
     ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
-    account="50100274439081", cheque_name="MALABAR SPICE EXPORTS PVT LTD", micr="560240004",
+    account="50100309118274", cheque_name="NILGIRI TEA ESTATES PVT LTD", micr="560240004",
 )
 
-VENDORS["konkan"] = dict(
-    legal_name="KONKAN COASTAL FOODS PRIVATE LIMITED", form_name="Konkan Coastal Foods Private Limited",
+VENDORS["gomti"] = dict(
+    legal_name="GOMTI CERAMICS PRIVATE LIMITED", form_name="Gomti Ceramics Private Limited",
     trade_name="", entity_type="private_limited",
-    pan="AAHCK4417Q", state_code="27", cin="U15122MH2017PTC298754", inc_date=(22, 9, 2017),
-    address="Plot 9, MIDC Mirjole", city="Ratnagiri", state="Maharashtra", pincode="415612",
-    contact_name="Sneha Joshi", contact_email="accounts@konkancoastal.in", contact_phone="+91 98600 41275",
-    owner_name="Sneha Joshi", website="konkancoastal.in", category="Seafood processing and packaging",
-    ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
-    account="002705418836", cheque_name="KONKAN COASTAL FOODS PVT LTD", micr="422229002",
+    pan="AAGCG2284P", state_code="09", cin="U26914UP2016PTC083315", inc_date=(18, 4, 2016),
+    address="B-27, Industrial Area, Sector 4", city="Lucknow", state="Uttar Pradesh", pincode="226010",
+    contact_name="Aditi Srivastava", contact_email="accounts@gomticeramics.in", contact_phone="+91 94150 27316",
+    owner_name="Aditi Srivastava", website="gomticeramics.in", category="Ceramic tiles and sanitaryware",
+    ifsc="UTIB0000080", bank="AXIS BANK", branch="MANINAGAR",
+    account="918010073345129", cheque_name="GOMTI CERAMICS PVT LTD", micr="380211005",
 )
 
 VENDORS["vidarbha"] = dict(
@@ -1254,34 +1254,34 @@ ATTACH: {', '.join(rj_files)}
                       expected="Waiting for vendor (confirm details) -> confirm -> Needs attention (bank/IFSC mismatch + editing-software hint)",
                       form=form_for(v), files={}, email_files=rj_files, resubmission={}))
 
-    v = VENDORS["malabar"]
-    ml_dir = os.path.join(PUBLIC, "malabar")
-    os.makedirs(os.path.join(ml_dir, "resubmission"), exist_ok=True)
-    ml_files = dict(
-        incorporation=write(ml_dir, "Malabar_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
-        gst=write(ml_dir, "Malabar_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+    v = VENDORS["nilgiri"]
+    nl_dir = os.path.join(PUBLIC, "nilgiri")
+    os.makedirs(os.path.join(nl_dir, "resubmission"), exist_ok=True)
+    nl_files = dict(
+        incorporation=write(nl_dir, "Nilgiri_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(nl_dir, "Nilgiri_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
         # The mistake: the GST certificate is uploaded again in the PAN slot.
-        pan=write(ml_dir, "Malabar_Scan_0412.pdf", gst_pdf(v), truth_gst(v)),
-        bank_proof=write(ml_dir, "Malabar_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+        pan=write(nl_dir, "Nilgiri_Scan_0412.pdf", gst_pdf(v), truth_gst(v)),
+        bank_proof=write(nl_dir, "Nilgiri_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
     )
-    ml_resub = "resubmission/" + write(os.path.join(ml_dir, "resubmission"), "Malabar_PAN_Card.png", pan_card_png(v), truth_pan(v))
-    index.append(dict(id="malabar", group="demo", title="Wrong document in the PAN field (Google Form)", vendor=v["form_name"],
+    nl_resub = "resubmission/" + write(os.path.join(nl_dir, "resubmission"), "Nilgiri_PAN_Card.png", pan_card_png(v), truth_pan(v))
+    index.append(dict(id="nilgiri", group="demo", title="Wrong document in the PAN field (Google Form)", vendor=v["form_name"],
                       summary="The vendor attached the GST certificate where the PAN card belongs. Best tried through the Google Form; the vendor resubmits the PAN card from the link.",
-                      expected="Awaiting vendor (PAN card) -> resubmission -> Approved", form=form_for(v), files=ml_files,
-                      resubmission=dict(pan=ml_resub)))
+                      expected="Awaiting vendor (PAN card) -> resubmission -> Approved", form=form_for(v), files=nl_files,
+                      resubmission=dict(pan=nl_resub)))
 
-    v = VENDORS["konkan"]
-    kk_dir = os.path.join(PUBLIC, "konkan")
-    os.makedirs(kk_dir, exist_ok=True)
-    kk_files = dict(
-        incorporation=write(kk_dir, "Konkan_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
-        gst=write(kk_dir, "Konkan_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
-        pan=write(kk_dir, "Konkan_PAN_Card.png", pan_card_png(v), truth_pan(v)),
-        bank_proof=write(kk_dir, "Konkan_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
+    v = VENDORS["gomti"]
+    gm_dir = os.path.join(PUBLIC, "gomti")
+    os.makedirs(gm_dir, exist_ok=True)
+    gm_files = dict(
+        incorporation=write(gm_dir, "Gomti_Certificate_of_Incorporation.pdf", incorporation_pdf(v), truth_incorporation(v)),
+        gst=write(gm_dir, "Gomti_GST_REG-06.pdf", gst_pdf(v), truth_gst(v)),
+        pan=write(gm_dir, "Gomti_PAN_Card.png", pan_card_png(v), truth_pan(v)),
+        bank_proof=write(gm_dir, "Gomti_Cancelled_Cheque.png", cheque_png(v), truth_cheque(v)),
     )
-    index.append(dict(id="konkan", group="example", title="Private limited, not MSME", vendor=v["form_name"],
+    index.append(dict(id="gomti", group="example", title="Private limited, not MSME", vendor=v["form_name"],
                       summary="A complete, consistent private limited company with four documents and no MSME registration.",
-                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=kk_files,
+                      expected="Approved (bank ownership condition before first payment)", form=form_for(v), files=gm_files,
                       resubmission={}))
 
     v = VENDORS["vidarbha"]

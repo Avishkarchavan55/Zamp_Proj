@@ -4,9 +4,9 @@ Everything needed to record the 5-minute video. Script: [VIDEO-SCRIPT.md](./VIDE
 
 | Folder | Used in | Channel | Expected result |
 |---|---|---|---|
-| `1-happy-path-portal-konkan` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
+| `1-happy-path-portal-gomti` | Part 4 | Supplier portal (Apply) | **Approved**, one condition: bank ownership check |
 | `2-edge-case-email-vidarbha` | Part 5 | Email | **Rejected**: bank account already belongs to Apex Facility Services (fraud pattern) |
-| `3-edge-case-google-form-malabar` | Part 6 | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
+| `3-edge-case-google-form-nilgiri` | Part 6 | Google Form | **Waiting for vendor** (GST certificate uploaded in the PAN field), then **Approved** after the PAN card is resubmitted |
 
 Each folder has a `VALUES.md` with the exact text to type. All names, IDs and account numbers are fictional. Each vendor can be run **once**; a second run is caught as "may already be a vendor".
 
@@ -20,7 +20,7 @@ Each folder has a `VALUES.md` with the exact text to type. All names, IDs and ac
 
 ## Prepare these before pressing record
 - **Gmail draft (Part 5):** a new draft to `acmevendoronboarding@gmail.com` with the subject and body from `2-edge-case-email-vidarbha/EMAIL.txt` and the **four** files attached.
-- **Google Form (Part 6):** open the live form, fill the text fields using `3-edge-case-google-form-malabar/VALUES.md`, then in the form's three-dot menu choose **Get pre-filled link**, fill the text fields there, copy the link and open it for recording. Uploads cannot be pre-filled, so you attach the four files on camera (or trim the wait in editing). Remember the PAN field gets `Malabar_Scan_0412.pdf`.
+- **Google Form (Part 6):** open the live form, fill the text fields using `3-edge-case-google-form-nilgiri/VALUES.md`, then in the form's three-dot menu choose **Get pre-filled link**, fill the text fields there, copy the link and open it for recording. Uploads cannot be pre-filled, so you attach the four files on camera (or trim the wait in editing). Remember the PAN field gets `Nilgiri_Scan_0412.pdf`.
   Live form: https://docs.google.com/forms/d/e/1FAIpQLScKSR6gw7gLbEeBdnJIfayYgipGbyclKOuP7RKfSfRN9_4M8g/viewform
 - **Tabs, in order:** Login page, Gmail draft, pre-filled Google Form.
 
