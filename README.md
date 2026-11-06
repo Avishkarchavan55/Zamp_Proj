@@ -5,6 +5,11 @@ VendorIQ reads the documents, checks them against what the vendor declared, agai
 against live public directories, and decides **Approved / Awaiting vendor / Needs review / Rejected**
 with every reason visible. Anything the vendor must fix is requested automatically and chased by n8n.
 
+**Live demo:** https://zamp-prep.vercel.app (sign in with one click, no password; all vendors and documents are fictional).
+Built for the Zamp ASA case study (PS-2, vendor onboarding). A 5-minute walkthrough script and ready-to-use test cases are in [public/video](public/video).
+
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · Supabase (Postgres, Storage, Realtime) · n8n (email in and out) · Gemini with Flash-Lite, OpenRouter and Workers AI fallbacks · Google Apps Script (Form intake) · Cloudflare Turnstile · Vercel.
+
 **Design rule: the AI reads documents; code decides.** Identifiers are compared by code, decisions come
 from four ordered policy rules, and anything that could not be verified is shown as *Unverified* -
 never as *Passed*.
