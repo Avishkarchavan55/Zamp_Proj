@@ -326,5 +326,85 @@
     "status": "Active",
     "state_code": "21",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "23AAFCC3185J1ZO",
+    "legal_name": "CHAMBAL VALLEY AGRO INDUSTRIES PRIVATE LIMITED",
+    "trade_name": "CHAMBAL VALLEY AGRO INDUSTRIES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "23",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "18AAHCB2941R1Z4",
+    "legal_name": "BRAHMAPUTRA TEA MACHINERY PRIVATE LIMITED",
+    "trade_name": "BRAHMAPUTRA TEA MACHINERY PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "18",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "08AAGCM7752K1ZY",
+    "legal_name": "MARWAR LEATHER WORKS PRIVATE LIMITED",
+    "trade_name": "MARWAR LEATHER WORKS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "08",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "09AAHCV6418M1ZP",
+    "legal_name": "VARANASI SILK WEAVERS PRIVATE LIMITED",
+    "trade_name": "VARANASI SILK WEAVERS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "09",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "37AAGCP4036D1ZM",
+    "legal_name": "PENNAR STEEL FABRICATORS PRIVATE LIMITED",
+    "trade_name": "PENNAR STEEL FABRICATORS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "37",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAGCT8826F1Z7",
+    "legal_name": "TAPTI ENGINEERING WORKS (INDIA) PRIVATE LIMITED",
+    "trade_name": "TAPTI ENGINEERING WORKS (INDIA) PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "24AAHCR1273G1ZJ",
+    "legal_name": "RANN SALT TRADERS PRIVATE LIMITED",
+    "trade_name": "RANN SALT TRADERS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "24",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "09AAFCA9024H1ZN",
+    "legal_name": "ARAVALI BRASS HANDICRAFTS PRIVATE LIMITED",
+    "trade_name": "ARAVALI BRASS HANDICRAFTS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "09",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "19AAHCT5719E1Z5",
+    "legal_name": "TEESTA VALLEY TEA TRADERS PRIVATE LIMITED",
+    "trade_name": "TEESTA VALLEY TEA TRADERS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "19",
+    "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "21AAHCM4093K1ZD",
+    "legal_name": "MAHANADI PACKAGING AND LOGISTICS PRIVATE LIMITED",
+    "trade_name": "MAHANADI PACKAGING AND LOGISTICS PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "21",
+    "constitution": "Private Limited Company"
   }
 ]

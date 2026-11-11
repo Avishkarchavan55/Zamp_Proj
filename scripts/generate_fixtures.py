@@ -564,6 +564,114 @@ VENDORS["utkal"] = dict(
     account="7712038459", cheque_name="UTKAL CASHEW PROCESSORS PVT LTD", micr="411485002",
 )
 
+# ---- Testing kit (public/testing): ten vendors used by scripts/build_testing_kit.py ----------------------
+VENDORS["chambal"] = dict(  # T01 happy path, email
+    legal_name="CHAMBAL VALLEY AGRO INDUSTRIES PRIVATE LIMITED", form_name="Chambal Valley Agro Industries Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAFCC3185J", state_code="23", cin="U01100MP2017PTC043961", inc_date=(6, 4, 2017),
+    address="Plot 31, Industrial Area, Maharajpura", city="Gwalior", state="Madhya Pradesh", pincode="474001",
+    contact_name="Pooja Tomar", contact_email="accounts@chambalagro.in", contact_phone="+91 94250 71836",
+    owner_name="Pooja Tomar", website="chambalagro.in", category="Agricultural inputs and seeds",
+    ifsc="HDFC0000103", bank="HDFC BANK", branch="PUNE - FERGUSSON COLLEGE ROAD",
+    account="50200126043381", cheque_name="CHAMBAL VALLEY AGRO INDUSTRIES PVT LTD", micr="411240003",
+    udyam="UDYAM-MP-12-0019284", msme_declared="Small", msme_cert="Small",
+)
+VENDORS["brahmaputra"] = dict(  # T02 skewed, low-resolution, poorly lit scans, portal
+    legal_name="BRAHMAPUTRA TEA MACHINERY PRIVATE LIMITED", form_name="Brahmaputra Tea Machinery Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCB2941R", state_code="18", cin="U29299AS2016PTC017352", inc_date=(11, 7, 2016),
+    address="NH 37, Beltola Tiniali", city="Guwahati", state="Assam", pincode="781005",
+    contact_name="Dipankar Bora", contact_email="accounts@brahmaputramachinery.in", contact_phone="+91 98640 23517",
+    owner_name="Dipankar Bora", website="brahmaputramachinery.in", category="Tea processing machinery",
+    ifsc="UTIB0000080", bank="AXIS BANK", branch="MANINAGAR",
+    account="917030058126470", cheque_name="BRAHMAPUTRA TEA MACHINERY PVT LTD", micr="380211005",
+)
+VENDORS["marwar"] = dict(  # T03 formatting variations, other layouts, missing optional fields, Google Form
+    legal_name="MARWAR LEATHER WORKS PRIVATE LIMITED", form_name="Marwar Leather Works Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCM7752K", state_code="08", cin="U19201RJ2018PTC060214", inc_date=(19, 9, 2018),
+    address="E-112, Basni Industrial Area Phase 2", city="Jodhpur", state="Rajasthan", pincode="342001",
+    contact_name="Mahendra Rathore", contact_email="accounts@marwarleather.in", contact_phone="+91 94140 55218",
+    owner_name="Mahendra Rathore", website="marwarleather.in", category="Leather goods",
+    ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+    account="50100344702918", cheque_name="MARWAR LEATHER WORKS PVT LTD", micr="560240004",
+)
+VENDORS["varanasi"] = dict(  # T04 Hindi and English documents, different layouts, portal
+    legal_name="VARANASI SILK WEAVERS PRIVATE LIMITED", form_name="Varanasi Silk Weavers Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCV6418M", state_code="09", cin="U17119UP2015PTC070447", inc_date=(2, 2, 2015),
+    address="D 33/12, Lallapura Road", city="Varanasi", state="Uttar Pradesh", pincode="221001",
+    contact_name="Anita Pandey", contact_email="accounts@varanasisilk.in", contact_phone="+91 94150 38264",
+    owner_name="Anita Pandey", website="varanasisilk.in", category="Silk fabrics and sarees",
+    ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
+    account="004905612387", cheque_name="VARANASI SILK WEAVERS PVT LTD", micr="422229002",
+)
+VENDORS["pennar"] = dict(  # T05 wrong document uploaded, portal
+    legal_name="PENNAR STEEL FABRICATORS PRIVATE LIMITED", form_name="Pennar Steel Fabricators Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCP4036D", state_code="37", cin="U28999AP2016PTC102945", inc_date=(13, 10, 2016),
+    address="Door 8-2-17, Gandhi Nagar Industrial Estate", city="Nellore", state="Andhra Pradesh", pincode="524001",
+    contact_name="Venkat Naidu", contact_email="accounts@pennarsteel.in", contact_phone="+91 94400 17352",
+    owner_name="Venkat Naidu", website="pennarsteel.in", category="Structural steel fabrication",
+    ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+    account="6623187045", cheque_name="PENNAR STEEL FABRICATORS PVT LTD", micr="411485002",
+)
+VENDORS["tapti"] = dict(  # T06 sister-company GSTIN, email
+    legal_name="TAPTI ENGINEERING WORKS PRIVATE LIMITED", form_name="Tapti Engineering Works Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAGCT8820B", state_code="24", cin="U28910GJ2017PTC096118", inc_date=(5, 5, 2017),
+    address="Plot 77, Pandesara GIDC", city="Surat", state="Gujarat", pincode="395003",
+    contact_name="Jignesh Mehta", contact_email="accounts@taptiengineering.in", contact_phone="+91 98250 66431",
+    owner_name="Jignesh Mehta", website="taptiengineering.in", category="Engineering components",
+    ifsc="UTIB0000080", bank="AXIS BANK", branch="MANINAGAR",
+    account="917040072219634", cheque_name="TAPTI ENGINEERING WORKS PVT LTD", micr="380211005",
+    gst_pan="AAGCT8826F", gst_legal_name="TAPTI ENGINEERING WORKS (INDIA) PRIVATE LIMITED",
+)
+VENDORS["rann"] = dict(  # T07 bank account already registered to an approved vendor (Sai Krupa), Google Form
+    legal_name="RANN SALT TRADERS PRIVATE LIMITED", form_name="Rann Salt Traders Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCR1273G", state_code="24", cin="U51909GJ2019PTC108833", inc_date=(30, 1, 2019),
+    address="Plot 6, Sector 8, Gandhidham", city="Gandhidham", state="Gujarat", pincode="370201",
+    contact_name="Bharat Solanki", contact_email="accounts@rannsalt.in", contact_phone="+91 98790 41256",
+    owner_name="Bharat Solanki", website="rannsalt.in", category="Industrial salt trading",
+    # Account and IFSC of Sai Krupa Fabricators, an approved vendor with a different PAN.
+    ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
+    account="002705018342", cheque_name="RANN SALT TRADERS PVT LTD", micr="422229002",
+)
+VENDORS["aravali"] = dict(  # T08 edited files and handwritten annotations, portal
+    legal_name="ARAVALI BRASS HANDICRAFTS PRIVATE LIMITED", form_name="Aravali Brass Handicrafts Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAFCA9024H", state_code="09", cin="U36999UP2016PTC081530", inc_date=(8, 8, 2016),
+    address="Plot 21, Majhola Industrial Area", city="Moradabad", state="Uttar Pradesh", pincode="244001",
+    contact_name="Imran Khan", contact_email="accounts@aravalibrass.in", contact_phone="+91 94120 77385",
+    owner_name="Imran Khan", website="aravalibrass.in", category="Brass handicrafts",
+    ifsc="HDFC0000103", bank="HDFC BANK", branch="PUNE - FERGUSSON COLLEGE ROAD",
+    account="50200177630452", cheque_name="ARAVALI BRASS HANDICRAFTS PVT LTD", micr="411240003",
+    cheque_software="Adobe Photoshop 25.0 (Windows)",
+)
+VENDORS["teesta"] = dict(  # T09 transposed PAN digits typed on the form, Google Form
+    legal_name="TEESTA VALLEY TEA TRADERS PRIVATE LIMITED", form_name="Teesta Valley Tea Traders Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCT5719E", state_code="19", cin="U15500WB2018PTC226470", inc_date=(21, 6, 2018),
+    address="Hill Cart Road, Sevoke More", city="Siliguri", state="West Bengal", pincode="734001",
+    contact_name="Sourav Ghosh", contact_email="accounts@teestatea.in", contact_phone="+91 98320 45167",
+    owner_name="Sourav Ghosh", website="teestatea.in", category="Tea trading and blending",
+    ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
+    account="006105412966", cheque_name="TEESTA VALLEY TEA TRADERS PVT LTD", micr="422229002",
+)
+VENDORS["mahanadi"] = dict(  # T10 conflicting company names across documents, email
+    legal_name="MAHANADI PACKAGING INDUSTRIES PRIVATE LIMITED", form_name="Mahanadi Packaging Industries Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCM4093K", state_code="21", cin="U21021OR2017PTC022871", inc_date=(17, 5, 2017),
+    address="Plot 14, Jagatpur Industrial Estate", city="Cuttack", state="Odisha", pincode="753001",
+    contact_name="Prasanta Das", contact_email="accounts@mahanadipack.in", contact_phone="+91 94370 28615",
+    owner_name="Prasanta Das", website="mahanadipack.in", category="Corrugated packaging",
+    ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+    account="9915274036", cheque_name="MAHANADI PACKAGERS PVT LTD", micr="411485002",
+    gst_legal_name="MAHANADI PACKAGING AND LOGISTICS PRIVATE LIMITED",
+)
+
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])
