@@ -672,6 +672,17 @@ VENDORS["mahanadi"] = dict(  # T10 conflicting company names across documents, e
 )
 
 
+VENDORS["pushpagiri"] = dict(  # T11 happy path, portal
+    legal_name="PUSHPAGIRI COFFEE ESTATES PRIVATE LIMITED", form_name="Pushpagiri Coffee Estates Private Limited",
+    trade_name="", entity_type="private_limited",
+    pan="AAHCP7184L", state_code="29", cin="U01132KA2017PTC103518", inc_date=(9, 3, 2017),
+    address="Estate Office, Mysore Road", city="Madikeri", state="Karnataka", pincode="571201",
+    contact_name="Kavitha Ponnappa", contact_email="accounts@pushpagiricoffee.in", contact_phone="+91 98450 62173",
+    owner_name="Kavitha Ponnappa", website="pushpagiricoffee.in", category="Coffee growing and curing",
+    ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+    account="50100418329076", cheque_name="PUSHPAGIRI COFFEE ESTATES PVT LTD", micr="560240004",
+)
+
 for v in VENDORS.values():
     v["gstin"] = gstin(v["state_code"], v.get("gst_pan", v["pan"]))
     v.setdefault("gst_legal_name", v["legal_name"])

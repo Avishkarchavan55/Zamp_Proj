@@ -406,5 +406,13 @@
     "status": "Active",
     "state_code": "21",
     "constitution": "Private Limited Company"
+  },
+  {
+    "gstin": "29AAHCP7184L1ZM",
+    "legal_name": "PUSHPAGIRI COFFEE ESTATES PRIVATE LIMITED",
+    "trade_name": "PUSHPAGIRI COFFEE ESTATES PRIVATE LIMITED",
+    "status": "Active",
+    "state_code": "29",
+    "constitution": "Private Limited Company"
   }
 ]

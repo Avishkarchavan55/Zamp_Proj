@@ -882,18 +882,53 @@ Any of the three differing names is called a match, or the application is approv
                 expected="Waiting (confirm) → Needs attention (name conflicts)", vendor=v["form_name"])
 
 
+# ------------------------------------------------------------------ T11
+def build_t11():
+    v = V["pushpagiri"]
+    d = case_dir("T11-A-happy-path-portal")
+    names = [
+        save(d, "Pushpagiri_Certificate_of_Incorporation.pdf", g.incorporation_pdf(v)),
+        save(d, "Pushpagiri_GST_REG-06.pdf", g.gst_pdf(v)),
+        save(d, "Pushpagiri_PAN_Card.png", g.pan_card_png(v)),
+        save(d, "Pushpagiri_Cancelled_Cheque.png", g.cheque_png(v)),
+    ]
+    md(os.path.join(d, "HOW-TO-TEST.md"), f"""
+# T11: Complete, consistent vendor (Dataset A, happy path), by portal
+
+**Channel:** Supplier portal. **Tests:** complete details, correct documents, matching identifiers, valid bank information, consistent company details, with the vendor typing the form itself. Not an MSME, so there is no payment-terms condition.
+
+## How to test
+{PORTAL_STEPS}
+
+## Form values
+{table(v)}
+
+## Files
+{files_list(names)}
+
+## Expected result
+**Approved** in about a minute with no human involved, with one condition: *confirm bank ownership before the first payment* (a cheque cannot prove who owns the account). An **ERP vendor record** appears on the vendor page, and the supplier receives an approval email and a notification in the supplier portal.
+Every check is green: PAN, GSTIN with its check digit, CIN, IFSC against the live directory, pincode against the state, and the names across the form and all four documents.
+
+## Fails if
+It is rejected, held for the vendor or sent to Needs attention, or any check is red. Nothing in this case is wrong.
+""")
+    return dict(id="T11", folder="T11-A-happy-path-portal", dataset="A: Happy path", channel="Portal", title="Complete, consistent vendor typed in the portal",
+                expected="Approved (bank ownership condition), ERP record", vendor=v["form_name"])
+
+
 def main():
     if os.path.isdir(OUT):
         for root, _dirs, names in os.walk(OUT):
             for n in names:
                 os.remove(os.path.join(root, n))
     os.makedirs(OUT, exist_ok=True)
-    summary = [f() for f in (build_t01, build_t02, build_t03, build_t04, build_t05, build_t06, build_t07, build_t08, build_t09, build_t10)]
+    summary = [f() for f in (build_t01, build_t02, build_t03, build_t04, build_t05, build_t06, build_t07, build_t08, build_t09, build_t10, build_t11)]
 
     rows = "\n".join(
         f"| [{s['id']}](./{s['folder']}/HOW-TO-TEST.md) | {s['dataset']} | {s['channel']} | {s['title']} | {s['expected']} |" for s in summary)
     md(os.path.join(OUT, "README.md"), f"""
-# Testing kit: ten cases for all three channels
+# Testing kit: eleven cases for all three channels
 
 Datasets: **A** happy path, **B** realistic variations (robustness), **C** adversarial and edge cases. Every name, ID and account number is fictional. Each folder has its documents and a `HOW-TO-TEST.md` with the exact steps, the values to type, the expected result and what counts as a failure.
 
@@ -905,7 +940,7 @@ Coverage of the list you asked for:
 
 | Test | Case |
 |---|---|
-| Complete details, correct documents, matching identifiers, valid bank information, consistent company details | T01 |
+| Complete details, correct documents, matching identifiers, valid bank information, consistent company details | T01 (email), T11 (portal) |
 | Different PDF layouts, different document layouts | T03, T04 |
 | Low-resolution images, skewed scans, poor lighting | T02 |
 | Different capitalisation, minor formatting variations, missing optional fields | T03 |

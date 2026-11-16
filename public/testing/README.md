@@ -1,4 +1,4 @@
-# Testing kit: ten cases for all three channels
+# Testing kit: eleven cases for all three channels
 
 Datasets: **A** happy path, **B** realistic variations (robustness), **C** adversarial and edge cases. Every name, ID and account number is fictional. Each folder has its documents and a `HOW-TO-TEST.md` with the exact steps, the values to type, the expected result and what counts as a failure.
 
@@ -14,12 +14,13 @@ Datasets: **A** happy path, **B** realistic variations (robustness), **C** adver
 | [T08](./T08-C-edited-files-annotations-portal/HOW-TO-TEST.md) | C: Adversarial | Portal | Edited-file metadata and handwritten annotations | Needs attention (two file-origin flags); annotations do not break the reading |
 | [T09](./T09-C-transposed-digits-form/HOW-TO-TEST.md) | C: Adversarial | Google Form | Transposed digits in a typed identifier | Needs attention (PAN conflict with evidence) |
 | [T10](./T10-C-conflicting-names-email/HOW-TO-TEST.md) | C: Adversarial | Email | Company name differs across documents | Waiting (confirm) → Needs attention (name conflicts) |
+| [T11](./T11-A-happy-path-portal/HOW-TO-TEST.md) | A: Happy path | Portal | Complete, consistent vendor typed in the portal | Approved (bank ownership condition), ERP record |
 
 Coverage of the list you asked for:
 
 | Test | Case |
 |---|---|
-| Complete details, correct documents, matching identifiers, valid bank information, consistent company details | T01 |
+| Complete details, correct documents, matching identifiers, valid bank information, consistent company details | T01 (email), T11 (portal) |
 | Different PDF layouts, different document layouts | T03, T04 |
 | Low-resolution images, skewed scans, poor lighting | T02 |
 | Different capitalisation, minor formatting variations, missing optional fields | T03 |
