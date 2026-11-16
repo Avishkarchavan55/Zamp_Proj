@@ -414,6 +414,42 @@ VENDORS = {
         ifsc="HDFC0000053", bank="STATE BANK OF INDIA", branch="KORAMANGALA",
         account="50200034551289", cheque_name="TRIVENI ELECTRICALS PVT LTD", micr="560240004",
     ),
+    # History, needs a decision: everything matches but the cheque image was saved from Photoshop.
+    "bhagirathi": dict(
+        legal_name="BHAGIRATHI CABLES PRIVATE LIMITED", form_name="Bhagirathi Cables Pvt Ltd",
+        trade_name="", entity_type="private_limited",
+        pan="AAHCB3306N", state_code="19", cin="U31300WB2016PTC213377", inc_date=(14, 3, 2016),
+        address="22, Netaji Subhas Road", city="Kolkata", state="West Bengal", pincode="700001",
+        contact_name="Subir Sen", contact_email="subir@bhagirathicables.in", contact_phone="+91 98300 41872",
+        owner_name="Subir Sen", website="bhagirathicables.in", category="Electrical cables",
+        ifsc="HDFC0000053", bank="HDFC BANK", branch="BANGALORE - KORAMANGALAM",
+        account="50100288461907", cheque_name="BHAGIRATHI CABLES PVT LTD", micr="560240004",
+        cheque_software="Adobe Photoshop 25.0 (Windows)",
+    ),
+    # History, needs a decision: the GST certificate carries a different company name.
+    "godavari": dict(
+        legal_name="GODAVARI AGRO INDUSTRIES PRIVATE LIMITED", form_name="Godavari Agro Industries Pvt Ltd",
+        gst_legal_name="GODAVARI AGRO AND FOODS PRIVATE LIMITED",
+        trade_name="", entity_type="private_limited",
+        pan="AAGCG6128P", state_code="36", cin="U01119TG2018PTC124590", inc_date=(2, 8, 2018),
+        address="H.No 6-3-1090, Rajbhavan Road, Somajiguda", city="Hyderabad", state="Telangana", pincode="500082",
+        contact_name="Ramesh Reddy", contact_email="ramesh@godavariagro.in", contact_phone="+91 98490 31256",
+        owner_name="Ramesh Reddy", website="godavariagro.in", category="Agricultural produce processing",
+        ifsc="ICIC0000027", bank="ICICI BANK", branch="NASHIK",
+        account="004905776120", cheque_name="GODAVARI AGRO INDUSTRIES PVT LTD", micr="422229002",
+    ),
+    # History, needs a decision: the GSTIN belongs to a sister company (different PAN, similar name).
+    "yamuna": dict(
+        legal_name="YAMUNA TEXTILES PRIVATE LIMITED", form_name="Yamuna Textiles Pvt Ltd",
+        gst_legal_name="YAMUNA FABRICS PRIVATE LIMITED", gst_pan="AAJCY2475M",
+        trade_name="", entity_type="private_limited",
+        pan="AAHCY8832L", state_code="23", cin="U17110MP2015PTC034402", inc_date=(27, 11, 2015),
+        address="14, Race Course Road", city="Indore", state="Madhya Pradesh", pincode="452001",
+        contact_name="Neha Joshi", contact_email="neha@yamunatextiles.in", contact_phone="+91 98270 66143",
+        owner_name="Neha Joshi", website="yamunatextiles.in", category="Cotton fabrics",
+        ifsc="KKBK0000721", bank="KOTAK MAHINDRA BANK", branch="PUNE",
+        account="8841276039", cheque_name="YAMUNA TEXTILES PVT LTD", micr="411485002",
+    ),
     # History, needs a decision: declares a Small enterprise, the Udyam certificate says Medium.
     "krishna": dict(
         legal_name="KRISHNA FOOD PRODUCTS PRIVATE LIMITED", form_name="Krishna Food Products Pvt Ltd",
@@ -1157,6 +1193,9 @@ SCENARIOS = [
     dict(id="mahalaxmi", vendor="mahalaxmi", group="history", title="History (GSTIN of a sister company)", summary="", expected="Needs review"),
     dict(id="triveni", vendor="triveni", group="history", title="History (cheque bank differs from IFSC)", summary="", expected="Needs review"),
     dict(id="krishna", vendor="krishna", group="history", title="History (MSME category mismatch)", summary="", expected="Needs review"),
+    dict(id="bhagirathi", vendor="bhagirathi", group="history", title="History (cheque saved in Photoshop)", summary="", expected="Needs review"),
+    dict(id="godavari", vendor="godavari", group="history", title="History (company name differs on GST)", summary="", expected="Needs review"),
+    dict(id="yamuna", vendor="yamuna", group="history", title="History (GSTIN of a sister company)", summary="", expected="Needs review"),
     dict(id="apex", vendor="apex", group="history", title="Existing vendor (history)", summary="", expected="Approved"),
     dict(id="saikrupa", vendor="saikrupa", group="history", title="History", summary="", expected="Approved"),
     dict(id="orion", vendor="orion", group="history", title="Cancelled GST registration", summary="", expected="Rejected"),
